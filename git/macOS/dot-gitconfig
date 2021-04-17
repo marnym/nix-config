@@ -1,0 +1,7 @@
+[user]
+	name = Markus Nyman
+	email = markus@markusn.dev
+[credential]
+	helper = osxkeychain
+[core]
+	autocrlf = input
