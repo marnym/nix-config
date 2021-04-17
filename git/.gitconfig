@@ -1,0 +1,5 @@
+[user]
+	email = markus@nyma.cc
+	name = Markus Nyman
+[core]
+	autocrlf = input
