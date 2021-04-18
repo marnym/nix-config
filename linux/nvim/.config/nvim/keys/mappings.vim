@@ -44,3 +44,4 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
+nnoremap <C-s> a<C-X><C-S>

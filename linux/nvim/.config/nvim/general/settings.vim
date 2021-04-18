@@ -46,6 +46,7 @@ set incsearch
 set scrolloff=8
 
 set complete+=kspell
+autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_gb
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
