@@ -45,6 +45,8 @@ set undofile
 set incsearch
 set scrolloff=8
 
+set complete+=kspell
+
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
 " You can't stop me

@@ -1,4 +1,26 @@
-let g:coc_global_extensions = ['coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-tslint', 'coc-tslint-plugin', 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sh', 'coc-pyright', 'coc-metals', 'coc-go', 'coc-deno', 'coc-clangd', 'coc-html']
+let g:coc_global_extensions = [
+      \ 'coc-emoji', 
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-tsserver',
+      \ 'coc-tslint',
+      \ 'coc-tslint-plugin',
+      \ 'coc-css',
+      \ 'coc-json',
+      \ 'coc-pyls',
+      \ 'coc-yaml',
+      \ 'coc-sh',
+      \ 'coc-pyright',
+      \ 'coc-metals',
+      \ 'coc-go',
+      \ 'coc-deno',
+      \ 'coc-clangd',
+      \ 'coc-html',
+      \ 'coc-vimtex',
+      \ 'coc-texlab',
+      \ 'coc-json',
+      \ 'coc-snippets',
+      \ ]
 
 "" TextEdit might fail if hidden is not set.
 set hidden
