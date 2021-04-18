@@ -7,11 +7,4 @@ source $HOME/.config/nvim/plug-config/nerdtree.vim
 source $HOME/.config/nvim/plug-config/airline.vim
 source $HOME/.config/nvim/plug-config/fzf.vim
 source $HOME/.config/nvim/plug-config/rnvimr.vim
-source $HOME/.config/nvim/plug-config/lsp-config.vim
-
-
-" luafile $HOME/.config/nvim/lua/plugins/lspinstall.lua
-" luafile $HOME/.config/nvim/lua/plugins/compe-config.lua
-" luafile $HOME/.config/nvim/plug-config/treesitter.lua
-
 
