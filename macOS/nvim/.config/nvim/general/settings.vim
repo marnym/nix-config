@@ -4,6 +4,7 @@ let g:mapleader = "\<Space>"
 
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
+set noerrorbells                        " Doesn't make a fuss about errors
 set nowrap                              " Display long lines as just one line
 set encoding=utf-8                      " The encoding displayed
 set pumheight=10                        " Makes popup menu smaller
@@ -28,16 +29,19 @@ set relativenumber                      " Relative linenumbers
 set cursorline                          " Enable highlighting of the current line
 set background=dark                     " tell vim what the background color looks like
 set showtabline=2                       " Always show tabs
-" set noshowmode                          " We don't need to see things like -- INSERT -- anymore
+set noshowmode                          " We don't need to see things like -- INSERT -- anymore
 set nobackup                            " This is recommended by coc
+set noswapfile
 set nowritebackup                       " This is recommended by coc
 set updatetime=300                      " Faster completion
 set timeoutlen=500                      " By default timeoutlen is 1000 ms
 set formatoptions-=cro                  " Stop newline continution of comments
 set clipboard=unnamedplus               " Copy paste between vim and everything else
 set autochdir                           " Your working directory will always be the same as your working directory
-set backupdir=~/.vim/tmp//,.
-set directory=~/.vim/tmp//,.
+set undodir=~/.vim/undodir
+set undofile
+set incsearch
+set scrolloff=8
 
 au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
