@@ -16,9 +16,10 @@ Plug 'unblevable/quick-scope'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
-" Plug 'neovim/nvim-lspconfig'
-" Plug 'hrsh7th/nvim-compe'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'gruvbox-community/gruvbox'
 " List ends here. Plugins become visible to Vim after this call.
 call plug#end()
 
-colorscheme dracula
+colorscheme gruvbox
+highlight Normal guibg=none

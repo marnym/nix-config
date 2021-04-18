@@ -2,6 +2,8 @@
 nnoremap <Space> <Nop>
 let g:mapleader = "\<Space>"
 
+set shortmess+=c
+
 syntax enable                           " Enables syntax highlighing
 set hidden                              " Required to keep multiple buffers open multiple buffers
 set noerrorbells                        " Doesn't make a fuss about errors
