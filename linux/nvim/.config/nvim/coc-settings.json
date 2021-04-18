@@ -3,6 +3,11 @@
 
   // python config
   "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true
+  "python.linting.pylintEnabled": true,
+
+  // codelens
+  "codeLens.enable": true,
+  "java.referencesCodeLens.enabled": true,
+  "java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
 
 }
