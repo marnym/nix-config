@@ -3,3 +3,4 @@
 	name = Markus Nyman
 [core]
 	autocrlf = input
+	editor = nvim
