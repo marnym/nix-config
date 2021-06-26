@@ -30,7 +30,7 @@ gaps outer 4
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/scripts/blur-lock.sh --nofork 
+exec --no-startup-id xss-lock --transfer-sleep-lock --ignore-sleep -- ~/.config/i3/scripts/blur-lock.sh --nofork 
 
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
@@ -191,10 +191,11 @@ exec --no-startup-id numlockx on
 exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet
-exec --no-startup-id xset s 480 dpms 600 600 600
+# exec --no-startup-id xset s 480 dpms 600 600 600
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id redshift-gtk
 exec --no-startup-id firefox
+exec --no-startup-id spotify
 exec --no-startup-id flameshot
 
 
@@ -205,7 +206,7 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 # exec --no-startup-id setxkbmap fi
 
 # Setup mac keyboard
-exec --no-startup-id setxkbmap -model macintosh -layout fi -variant ,mac
+exec --no-startup-id setxkbmap -model macintosh -layout fi
 
 # Fixes less and greater than keys on mac keyboard
 exec_always --no-startup-id xmodmap -e "keycode 49 = less greater less greater bar brokenbar bar"
@@ -265,13 +266,15 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
+client.focused          #6272A4 #6272A4 #F8F8F2 #00ff00   #6272A4
+client.focused_inactive #44475A #44475A #F8F8F2 #00ff00  #44475A
+client.unfocused        #282A36 #282A36 #BFBFBF #00ff00      #282A36
+client.urgent           #44475A #FF5555 #F8F8F2 #00ff00     #FF5555
+client.placeholder      #282A36 #282A36 #F8F8F2 #00ff00     #282A36
 
 client.background       #F8F8F2
+
+new_window normal 3
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

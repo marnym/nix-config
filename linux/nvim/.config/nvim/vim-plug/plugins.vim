@@ -17,7 +17,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'gruvbox-community/gruvbox'
+Plug 'morhetz/gruvbox'
 Plug 'lervag/vimtex'
 Plug 'dense-analysis/ale'
 Plug 'liuchengxu/vim-which-key'
