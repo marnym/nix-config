@@ -86,11 +86,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -102,6 +102,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias zshconfig="nvim ~/.zshrc"
+alias vim="nvim"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -131,3 +132,9 @@ set rtp+=/usr/local/opt/fzf
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+# heroku autocomplete setup
+HEROKU_AC_ZSH_SETUP_PATH=/Users/markusnyman/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
+export GOPATH=$HOME/go
+export XDG_CONFIG_HOME=/Users/markusnyman/.config
