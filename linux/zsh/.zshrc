@@ -110,3 +110,6 @@ alias vim="nvim"
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PATH="$PATH:/home/markus/.local/share/coursier/bin"
+export PATH="/home/markus/.local/bin:$PATH"
+
