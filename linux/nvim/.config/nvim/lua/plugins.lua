@@ -22,6 +22,7 @@ return require('packer').startup(function()
         },
       }
   use 'scalameta/nvim-metals'
+  use 'p00f/nvim-ts-rainbow'
 	end
 )
 

@@ -7,5 +7,6 @@ require('plug-config.compe-config')
 require('plug-config.nerdtree')
 require("plug-config.autopairs")
 require("plug-config.quickscope")
+require("plug-config.vsnip")
 
 vim.g.colors_name = 'gruvbox'
