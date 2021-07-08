@@ -3,6 +3,7 @@ require'nvim-treesitter.configs'.setup {
     "bash",
     "bibtex",
     "c",
+    "comment",
     "cmake",
     "cpp",
     "css",
