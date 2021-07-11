@@ -39,7 +39,6 @@ opt.expandtab = true                           -- Converts tabs to spaces
 opt.expandtab = true                           -- Converts tabs to spaces
 opt.smartindent = true                         -- Makes indenting smart opt.autoindent = true                          -- Good auto indent
 opt.smartindent = true                         -- Makes indenting smart opt.autoindent = true                          -- Good auto indent
-opt.laststatus = 0                        -- Always display the status line
 opt.number = true                              -- Line numbers
 opt.relativenumber = true                      -- Relative linenumbers
 opt.cursorline = true                          -- Enable highlighting of the current line
@@ -48,16 +47,13 @@ opt.showtabline = 2                       -- Always show tabs
 opt.showmode = false                          -- We don't need to see things like -- INSERT -- anymore
 opt.backup = false                            -- This is recommended by coc
 opt.swapfile = false
-opt.swapfile = false
 opt.writebackup = false                       -- This is recommended by coc
 opt.updatetime=300                      -- Faster completion
 opt.timeoutlen=500                      -- By default timeoutlen is 1000 ms
 opt.formatoptions:remove({'c', 'r', 'o'})                  -- Stop newline continution of comments
-opt.formatoptions:remove({'c', 'r', 'o'})                  -- Stop newline continution of comments
 opt.clipboard = 'unnamedplus'               -- Copy paste between vim and everything else
 opt.autochdir = true                           -- Your working directory will always be the same as your working directory
 opt.undodir = CACHE_PATH .. '/undo'
-opt.undofile = true
 opt.undofile = true
 opt.incsearch = true
 opt.scrolloff = 8

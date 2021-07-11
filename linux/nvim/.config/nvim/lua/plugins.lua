@@ -11,9 +11,7 @@ return require('packer').startup(function()
   use 'unblevable/quick-scope'
   use 'nvim-telescope/telescope.nvim'
   use 'gruvbox-community/gruvbox'
-  use({ "hrsh7th/nvim-compe", requires = { { "hrsh7th/vim-vsnip", 'hrsh7th/vim-vsnip-integ' } } })
-  use "rafamadriz/friendly-snippets"
-  use 'itchyny/lightline.vim'
+  use({ "hrsh7th/nvim-compe", requires = { { "hrsh7th/vim-vsnip", 'hrsh7th/vim-vsnip-integ', "rafamadriz/friendly-snippets" } } })
   use 'windwp/nvim-autopairs'
   use { 'junegunn/fzf.vim',
         requires = {
@@ -23,6 +21,11 @@ return require('packer').startup(function()
       }
   use 'scalameta/nvim-metals'
   use 'p00f/nvim-ts-rainbow'
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
+  -- use 'glepnir/lspsaga.nvim'
 	end
 )
 
