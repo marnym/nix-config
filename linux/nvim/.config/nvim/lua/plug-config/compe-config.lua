@@ -39,6 +39,6 @@ require'compe'.setup {
     vsnip = true;
     spell = true;
     snippets_nvim = true;
-    treesitter = true;
+    -- treesitter = true;
   };
 }
