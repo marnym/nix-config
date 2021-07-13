@@ -25,6 +25,7 @@ return require('packer').startup(function()
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
+  use 'b3nj5m1n/kommentary'
   -- use 'glepnir/lspsaga.nvim'
 	end
 )
