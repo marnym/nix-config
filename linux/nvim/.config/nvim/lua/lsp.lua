@@ -61,10 +61,18 @@ local on_attach = function(client, bufnr)
 end
 
 local function setup_servers()
+
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
   for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{ on_attach = on_attach }
+    if server == "deno" then
+      require'lspconfig'[server].setup{ on_attach = on_attach, capabilities = capabilities, root_dir = nvim_lsp.util.root_pattern('deno_project.json') }
+    else
+      require'lspconfig'[server].setup{ on_attach = on_attach, capabilities = capabilities }
+    end
   end
 end
 

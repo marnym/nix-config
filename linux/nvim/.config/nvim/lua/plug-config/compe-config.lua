@@ -4,6 +4,8 @@ local function map(mode, lhs, rhs, opts)
   vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
+vim.opt.completeopt = "noinsert,menuone,noselect"
+
 map('i', '<C-Space>', 'compe#complete()', { silent = true, expr = true })
 map("i", "<CR>", "compe#confirm({ 'keys': '<CR>', 'select': v:true })", { silent = true, expr = true })
 map('i', '<C-e>', "compe#close('<C-e>')", { silent = true, expr = true })
@@ -38,7 +40,7 @@ require'compe'.setup {
     nvim_lua = true;
     vsnip = true;
     spell = true;
-    snippets_nvim = true;
+    snippets_nvim = false;
     -- treesitter = true;
   };
 }

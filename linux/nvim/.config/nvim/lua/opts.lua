@@ -57,7 +57,6 @@ opt.undodir = CACHE_PATH .. '/undo'
 opt.undofile = true
 opt.incsearch = true
 opt.scrolloff = 8
-opt.completeopt = "noinsert,menuone,noselect"
 
 -- opt.complete = vim.o.complete .. 'kspell'
 -- opt.complete = vim.bo.complete .. 'kspell'
