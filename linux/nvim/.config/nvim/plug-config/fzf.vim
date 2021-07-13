@@ -15,6 +15,7 @@ map <C-p> :GFiles<CR>
 map <leader>b :Buffers<CR>
 nnoremap <leader>g :Rg<CR>
 nnoremap <leader>t :Tags<CR>
+nnoremap <leader>bt :BTags<CR>
 nnoremap <leader>m :Marks<CR>
 
 
