@@ -3,6 +3,8 @@ local nvim_lsp = require'lspconfig'
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
+  print("" .. client.name .. " language server started")
+
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
@@ -71,6 +73,47 @@ local function setup_servers()
   for _, server in pairs(servers) do
     if server == "deno" then
       require'lspconfig'[server].setup{ on_attach = on_attach, capabilities = capabilities, root_dir = nvim_lsp.util.root_pattern('deno_project.json') }
+    elseif server == "efm" then
+
+      local eslint = {
+        lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
+        lintIgnoreExitCode = true,
+        lintStdin = true,
+        lintFormats = {
+          "%f(%l,%c): %tarning %m",
+          "%f(%l,%c): %rror %m",
+        }
+      }
+
+      require'lspconfig'[server].setup{
+        on_attach = on_attach,
+        capabilities = capabilities,
+        init_options = { documentFormatting = false, codeAction = false },
+        root_dir = require("lspconfig").util.root_pattern(".git/", "package.json"),
+        settings = {
+          log_level = 1,
+          log_file = '~/efm.log',
+          rootMarkers = { ".git/", "package.json" },
+          languages = {
+            javascript = {eslint},
+            javascriptreact = {eslint},
+            ["javascript.jsx"] = {eslint},
+            typescript = {eslint},
+            ["typescript.tsx"] = {eslint},
+            typescriptreact = {eslint},
+            vue = {eslint}
+          }
+        },
+        filetypes = {
+          "javascript",
+          "javascript.tsx",
+          "javascriptreact",
+          "typescript",
+          "typescript.tsx",
+          "typescriptreact",
+          "vue"
+        }
+      }
     else
       require'lspconfig'[server].setup{ on_attach = on_attach, capabilities = capabilities }
     end
