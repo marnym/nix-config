@@ -20,6 +20,7 @@ require'nvim-treesitter.configs'.setup {
     "rust",
     "scala",
     "scss",
+    "toml",
     "tsx",
     "typescript",
     "vue",
