@@ -1,7 +1,8 @@
 [user]
 	name = Markus Nyman
-	email = markus@markusn.dev
+	email = nymak@tuta.io
 [credential]
 	helper = osxkeychain
 [core]
 	autocrlf = input
+  editor = nvim
