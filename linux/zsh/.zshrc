@@ -112,4 +112,4 @@ alias vim="nvim"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export PATH="$PATH:/home/markus/.local/share/coursier/bin"
 export PATH="/home/markus/.local/bin:$PATH"
-
+export PATH="/home/markus/.deno/bin:$PATH"
