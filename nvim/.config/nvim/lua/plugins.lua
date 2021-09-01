@@ -11,6 +11,7 @@ return require('packer').startup(function()
   use 'unblevable/quick-scope'
   use 'nvim-telescope/telescope.nvim'
   use 'gruvbox-community/gruvbox'
+  use 'chriskempson/base16-vim'
   use({ "hrsh7th/nvim-compe", requires = { { "hrsh7th/vim-vsnip", 'hrsh7th/vim-vsnip-integ', "rafamadriz/friendly-snippets" } } })
   use 'windwp/nvim-autopairs'
   use { 'junegunn/fzf.vim',

@@ -10,4 +10,4 @@ require("plug-config.quickscope")
 require("plug-config.lualine")
 require("plug-config.nvim-metals")
 
-vim.g.colors_name = 'gruvbox'
+vim.g.colors_name = 'base16-atelier-dune'
