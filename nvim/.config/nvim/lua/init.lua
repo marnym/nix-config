@@ -1,4 +1,3 @@
-require('opts')
 require('binds')
 require('plugins')
 require('lsp')
@@ -9,5 +8,5 @@ require("plug-config.autopairs")
 require("plug-config.quickscope")
 require("plug-config.lualine")
 require("plug-config.nvim-metals")
+require('opts')
 
-vim.g.colors_name = 'base16-atelier-dune'

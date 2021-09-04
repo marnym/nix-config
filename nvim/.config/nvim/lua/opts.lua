@@ -13,7 +13,6 @@ end
 -- set leader key 
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
 g.mapleader = ' '
-g.colorscheme = 'gruvbox'
 
 opt.shortmess:remove('F'):append('c')
 
@@ -61,3 +60,8 @@ opt.scrolloff = 8
 -- opt.complete = vim.o.complete .. 'kspell'
 -- opt.complete = vim.bo.complete .. 'kspell'
 -- autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_gb
+vim.g.base16colorspace = 256
+vim.cmd [[colorscheme base16-gruvbox-dark-hard]]
+vim.o.termguicolors = true
+vim.cmd [[ highlight Comment cterm=italic gui=italic ]]
+

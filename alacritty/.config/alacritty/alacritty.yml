@@ -14,16 +14,16 @@
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
-#env:
+env:
   # TERM variable
   #
   # This value is used to set the `$TERM` environment variable for
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+  TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. The number of columns
@@ -50,7 +50,7 @@
   #  y: 0
 
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
@@ -61,7 +61,7 @@
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background and no title bar buttons
-  #decorations: full
+  decorations: transparent
 
   # Startup Mode (changes require restart)
   #
@@ -93,10 +93,10 @@
   # and `light`. Set this to `None` to use the default theme variant.
   #gtk_theme_variant: None
 
-#scrolling:
+    #scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  #history: 10000
+  # history: 0
 
   # Scrolling distance multiplier.
   #multiplier: 3
@@ -112,43 +112,46 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     #family: NotoSansMono Nerd Font
-    family: NotoSansMono Nerd Font
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Regular
+    style: Retina
 
   # Bold font face
-  #bold:
+  bold:
     # Font family
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    family: FiraCode Nerd Font
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold
+    style: Bold
 
   # Italic font face
-  #italic:
+  italic:
     # Font family
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    family: JetBrains Mono NL
 
     # The `style` can be specified to pick a specific face.
-    #style: Italic
+    style: Italic
 
   # Bold italic font face
-  #bold_italic:
+  bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
+    family: JetBrains Mono NL
 
     # The `style` can be specified to pick a specific face.
-    #style: Bold Italic
+    style: Bold Italic
 
   # Point size
   #size: 11.0
@@ -159,7 +162,7 @@ font:
   # spacing.
   #offset:
   #  x: 0
-  #  y: 0
+  y: 14
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the
@@ -172,46 +175,53 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  #use_thin_strokes: true
+  use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
 
+# Base16 Atelier Dune - alacritty color config
+# Bram de Haan (http://atelierbramdehaan.nl)
 colors:
   # Default colors
   primary:
-    background: '0x20201d'
-    foreground: '0xa6a28c'
+    background: '#1d2021'
+    foreground: '#d5c4a1'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x20201d'
-    cursor: '0xa6a28c'
+    text: '#1d2021'
+    cursor: '#d5c4a1'
 
-  # Normal colors
   normal:
-    black:   '0x20201d'
-    red:     '0xd73737'
-    green:   '0x60ac39'
-    yellow:  '0xae9513'
-    blue:    '0x6684e1'
-    magenta: '0xb854d4'
-    cyan:    '0x1fad83'
-    white:   '0xa6a28c'
+    black:   '#1d2021'
+    red:     '#fb4934'
+    green:   '#b8bb26'
+    yellow:  '#fabd2f'
+    blue:    '#83a598'
+    magenta: '#d3869b'
+    cyan:    '#8ec07c'
+    white:   '#d5c4a1'
 
   # Bright colors
-  bright:
-    black:   '0x7d7a68'
-    red:     '0xb65611'
-    green:   '0x292824'
-    yellow:  '0x6e6b5e'
-    blue:    '0x999580'
-    magenta: '0xe8e4cf'
-    cyan:    '0xd43552'
-    white:   '0xfefbec'
+    bright:
+      black:   '#665c54'
+      red:     '#fb4934'
+      green:   '#b8bb26'
+      yellow:  '#fabd2f'
+      blue:    '#83a598'
+      magenta: '#d3869b'
+      cyan:    '#8ec07c'
+      white:   '#fbf1c7'
 
-draw_bold_text_with_bright_colors: false
+  indexed_colors:
+    - { index: 16, color: '#fe8019' }
+    - { index: 17, color: '#d65d0e' }
+    - { index: 18, color: '#3c3836' }
+    - { index: 19, color: '#504945' }
+    - { index: 20, color: '#bdae93' }
+    - { index: 21, color: '#ebdbb2' }
 
   # Cursor colors
   #
@@ -335,13 +345,13 @@ draw_bold_text_with_bright_colors: false
 # The value `0.0` is completely transparent and `1.0` is opaque.
 #background_opacity: 1.0
 
-#selection:
+selection:
   # This string contains all characters that are used as separators for
   # "semantic words" in Alacritty.
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+  save_to_clipboard: true
 
 #cursor:
   # Cursor style
