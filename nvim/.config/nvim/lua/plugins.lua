@@ -9,7 +9,6 @@ return require('packer').startup(function()
   use 'kabouzeid/nvim-lspinstall'
   use 'scrooloose/NERDTree'
   use 'unblevable/quick-scope'
-  use 'nvim-telescope/telescope.nvim'
   use 'gruvbox-community/gruvbox'
   use {
     'chriskempson/base16-vim',
@@ -21,7 +20,14 @@ return require('packer').startup(function()
             'junegunn/fzf',
             run = './install --bin',
         },
-      }
+  }
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { 
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-lua/popup.nvim'}
+    }
+  }
   use 'scalameta/nvim-metals'
   use 'p00f/nvim-ts-rainbow'
   use {

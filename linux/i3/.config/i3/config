@@ -248,6 +248,8 @@ for_window [class="Pamac-manager"] floating enable
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 
+for_window [class="zoom"] floating enable
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -295,3 +297,5 @@ client.background       $base07
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 bindsym $mod+shift+x exec ~/.config/i3/scripts/blur-lock.sh
+
+mouse_warping none
