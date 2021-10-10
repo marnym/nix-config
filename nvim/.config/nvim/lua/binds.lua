@@ -7,8 +7,8 @@ end
 -- Better nav for omnicomplete
 -- vim.cmd 'inoremap <expr> <c-j> ("\\<C-n>")'
 -- vim.cmd 'inoremap <expr> <c-k> ("\\<C-p>")'
-map('i', '<C-j>', '("\\<C-n>")', { expr = true })
-map('i', '<C-k>', '("\\<C-p>")', { expr = true })
+--[[ map('i', '<C-j>', '("\\<C-n>")', { expr = true })
+map('i', '<C-k>', '("\\<C-p>")', { expr = true }) ]]
 
 -- Use alt + hjkl to resize windows
 map('n', '<M-j>', ':resize -2<CR>', { silent = true })
