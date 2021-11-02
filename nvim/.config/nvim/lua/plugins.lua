@@ -36,5 +36,6 @@ return require('packer').startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
   use 'b3nj5m1n/kommentary'
+  use 'lervag/vimtex'
 	end
 )
