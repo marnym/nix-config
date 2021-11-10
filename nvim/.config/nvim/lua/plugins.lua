@@ -5,8 +5,10 @@ local fn = vim.fn
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
+  use {
+    'neovim/nvim-lspconfig',
+    'williamboman/nvim-lsp-installer',
+  }
   use 'scrooloose/NERDTree'
   use 'unblevable/quick-scope'
   use 'gruvbox-community/gruvbox'
@@ -29,7 +31,7 @@ return require('packer').startup(function()
       {'nvim-lua/popup.nvim'}
     }
   }
-  use 'scalameta/nvim-metals'
+  use{'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }}
   use 'p00f/nvim-ts-rainbow'
   use {
     'hoob3rt/lualine.nvim',

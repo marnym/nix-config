@@ -63,68 +63,26 @@ local on_attach = function(client, bufnr)
 
 end
 
+
 local function setup_servers()
 
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    if server == "deno" then
-      require'lspconfig'[server].setup{ on_attach = on_attach, capabilities = capabilities, root_dir = nvim_lsp.util.root_pattern('deno_project.json') }
-    elseif server == "efm" then
+  local lsp_installer = require("nvim-lsp-installer")
 
-      local eslint = {
-        lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
-        lintIgnoreExitCode = true,
-        lintStdin = true,
-        lintFormats = {
-          "%f(%l,%c): %tarning %m",
-          "%f(%l,%c): %rror %m",
-        }
-      }
-
-      require'lspconfig'[server].setup{
-        on_attach = on_attach,
-        capabilities = capabilities,
-        init_options = { documentFormatting = false, codeAction = false },
-        root_dir = require("lspconfig").util.root_pattern(".git/", "package.json"),
-        settings = {
-          log_level = 1,
-          log_file = '~/efm.log',
-          rootMarkers = { ".git/", "package.json" },
-          languages = {
-            javascript = {eslint},
-            javascriptreact = {eslint},
-            ["javascript.jsx"] = {eslint},
-            typescript = {eslint},
-            ["typescript.tsx"] = {eslint},
-            typescriptreact = {eslint},
-            vue = {eslint}
-          }
-        },
-        filetypes = {
-          "javascript",
-          "javascript.tsx",
-          "javascriptreact",
-          "typescript",
-          "typescript.tsx",
-          "typescriptreact",
-          "vue"
-        }
-      }
+  lsp_installer.on_server_ready(function(server)
+    local opts = { on_attach = on_attach, capabilities = capabilities }
+    if server.name == "deno" then
+       opts.root_dir = nvim_lsp.util.root_pattern('deno_project.json')
+    else if server.name == "tsserver" then
+      opts.root_dir = nvim_lsp.util.root_pattern('tsconfig.json')
     else
-      require'lspconfig'[server].setup{ on_attach = on_attach, capabilities = capabilities }
+      server:setup(opts)
     end
   end
 end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+)
 end
+setup_servers()
 
 
