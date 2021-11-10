@@ -72,17 +72,13 @@ local function setup_servers()
 
   lsp_installer.on_server_ready(function(server)
     local opts = { on_attach = on_attach, capabilities = capabilities }
-    if server.name == "deno" then
-       opts.root_dir = nvim_lsp.util.root_pattern('deno_project.json')
-    else if server.name == "tsserver" then
-      opts.root_dir = nvim_lsp.util.root_pattern('tsconfig.json')
-    else
-      server:setup(opts)
+    if server.name == "denols" then
+      opts.root_dir = nvim_lsp.util.root_pattern("deno.json")
     end
-  end
+    server:setup(opts)
+  end)
 end
-)
-end
+
 setup_servers()
 
 
