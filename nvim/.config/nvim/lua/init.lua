@@ -10,4 +10,5 @@ require("plug-config.lualine")
 require("plug-config.nvim-metals")
 require('opts')
 require('plug-config.nerdtree')
+require('plug-config.indent-blankline')
 

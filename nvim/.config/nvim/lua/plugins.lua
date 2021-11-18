@@ -39,5 +39,11 @@ return require('packer').startup(function()
   }
   use 'b3nj5m1n/kommentary'
   use 'lervag/vimtex'
+  use {
+      'iamcco/markdown-preview.nvim',
+      run = 'cd app && yarn install',
+      ft = {'markdown'}
+  }
+  use 'lukas-reineke/indent-blankline.nvim'
 	end
 )
