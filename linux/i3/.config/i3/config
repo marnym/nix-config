@@ -32,16 +32,8 @@ set $base0F #d43552
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:"Noto Sans" 12
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
 workspace_layout default
 default_border none
-
-gaps inner 8
-gaps outer 4
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -91,12 +83,6 @@ bindsym $mod+d exec rofi -modi drun -show drun -display-drun "Apps : " -line-pad
 bindsym $mod+t exec rofi -show window -display-window "Window : " -line-padding 4 \
                 -lines 10 -padding 50 -hide-scrollbar \
                 -show-icons -drun-icon-theme "Papirus" -font "Roboto 11"
-
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -161,9 +147,8 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-set $monitor_one DP-2
-set $monitor_two HDMI-0
-
+set $monitor_one DP-0
+set $monitor_two HDMI-1
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -190,17 +175,19 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 workspace $ws1 output $monitor_one
+workspace $ws2 output $monitor_one
 workspace $ws3 output $monitor_one
+workspace $ws4 output $monitor_one
 workspace $ws5 output $monitor_one
-workspace $ws7 output $monitor_one
-workspace $ws9 output $monitor_one
-workspace $ws2 output $monitor_two
-workspace $ws4 output $monitor_two
 workspace $ws6 output $monitor_two
-workspace $ws8 output $monitor_two
-workspace $ws10 output $monitor_two
+workspace $ws7 output $monitor_two
+workspace $ws8 output $monitor_one
+workspace $ws9 output $monitor_one
+workspace $ws10 output $monitor_one
 
-# assign [class="spotify"] $ws10
+for_window [class="TelegramDesktop"] move to workspace $ws8
+for_window [class="tutanota-desktop"] move to workspace $ws8
+for_window [class="Joplin"] move to workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
 
 exec --no-startup-id /usr/bin/lxpolkit
@@ -209,24 +196,12 @@ exec --no-startup-id numlockx on
 exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id blueberry-tray
 exec --no-startup-id nm-applet
-# exec --no-startup-id xset s 480 dpms 600 600 600
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 exec --no-startup-id redshift-gtk
 exec --no-startup-id spotify
 exec --no-startup-id flameshot
-
-
-# Sets screen
-exec --no-startup-id ~/.screenlayout/monitor.sh
-
-# Sets keyboard layout to finnish
-# exec --no-startup-id setxkbmap fi
-
-# Setup mac keyboard
-# exec --no-startup-id setxkbmap -model macintosh -layout fi
-
-# Fixes less and greater than keys on mac keyboard
-# exec_always --no-startup-id xmodmap -e "keycode 49 = less greater less greater bar brokenbar bar"
+exec --no-startup-id telegram-desktop
+exec --no-startup-id /home/markus/Applications/appimages/tutanota-desktop-linux.AppImage
 
 # Nitrogen
 exec --no-startup-id nitrogen --restore
@@ -234,21 +209,14 @@ exec --no-startup-id nitrogen --restore
 # Picom
 exec picom -CGbf
 
-for_window [class="Yad" instance="yad"] floating enable
-for_window [class="Galculator" instance="galculator"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
-
-for_window [class="Xsane" instance="xsane"] floating enable
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="qt5ct" instance="qt5ct"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
-for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
-for_window [class="Pamac-manager"] floating enable
+for_window [class="zoom"] floating enable
+for_window [class="Bitwarden"] floating enable
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 
-for_window [class="zoom"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -284,7 +252,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child Border
 client.focused          $base05 $base0D $base00 $base0D $base0C
@@ -294,8 +261,29 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
 bindsym $mod+shift+x exec ~/.config/i3/scripts/blur-lock.sh
 
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	font pango:Roboto 12, Font Awesome 12	
+        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+	position top
+	tray_output primary
+	strip_workspace_numbers yes
+  	colors {
+		background #282A36
+		statusline #F8F8F2
+		separator  #44475A
+
+		focused_workspace  #44475A #44475A #F8F8F2
+		active_workspace   #282A36 #44475A #F8F8F2
+		inactive_workspace #282A36 #282A36 #BFBFBF
+		urgent_workspace   #FF5555 #FF5555 #F8F8F2
+		binding_mode       #FF5555 #FF5555 #F8F8F2
+  	}
+}
+
 mouse_warping none
+
+for_window [class="^.*"] border pixel 1

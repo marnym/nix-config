@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-command -v jq >/dev/null 2>&1 || { echo >&2 "Program 'jq' required but it is not installed.  
-Aborting."; exit 1; }
-command -v wget >/dev/null 2>&1 || { echo >&2 "Program 'wget' required but is not installed.  
-Aborting."; exit 1; }
+command -v jq >/dev/null 2>&1 || { echo >&2 "Program 'jq' required but it is not installed. Aborting."; exit 1; }
+command -v wget >/dev/null 2>&1 || { echo >&2 "Program 'wget' required but is not installed. Aborting."; exit 1; }
 
 APIKEY="get your key first"
 #ZIPCODE="1234"
