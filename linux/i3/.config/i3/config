@@ -181,15 +181,15 @@ workspace $ws4 output $monitor_one
 workspace $ws5 output $monitor_one
 workspace $ws6 output $monitor_two
 workspace $ws7 output $monitor_two
-workspace $ws8 output $monitor_one
-workspace $ws9 output $monitor_one
+workspace $ws8 output $monitor_two
+workspace $ws9 output $monitor_two
 workspace $ws10 output $monitor_one
 
 for_window [class="TelegramDesktop"] move to workspace $ws8
 for_window [class="tutanota-desktop"] move to workspace $ws8
-for_window [class="Joplin"] move to workspace $ws9
-for_window [class="Spotify"] move to workspace $ws10
-for_window [class="Bitwarden"] move to workspace $ws10
+for_window [class="Joplin"] move to workspace $ws10
+for_window [class="Spotify"] move to workspace $ws9
+for_window [class="Bitwarden"] move to workspace $ws9
 
 exec --no-startup-id /usr/bin/lxpolkit
 
