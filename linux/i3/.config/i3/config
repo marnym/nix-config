@@ -268,7 +268,7 @@ bindsym $mod+shift+x exec ~/.config/i3/scripts/blur-lock.sh
 bar {
 	font pango:Roboto 12, Font Awesome 12	
         status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	position top
+	position bottom
 	tray_output primary
 	strip_workspace_numbers yes
   	colors {
