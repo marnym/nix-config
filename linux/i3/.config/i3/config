@@ -189,6 +189,7 @@ for_window [class="TelegramDesktop"] move to workspace $ws8
 for_window [class="tutanota-desktop"] move to workspace $ws8
 for_window [class="Joplin"] move to workspace $ws9
 for_window [class="Spotify"] move to workspace $ws10
+for_window [class="Bitwarden"] move to workspace $ws10
 
 exec --no-startup-id /usr/bin/lxpolkit
 
@@ -212,7 +213,6 @@ exec picom -CGbf
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="qt5ct" instance="qt5ct"] floating enable
 for_window [class="zoom"] floating enable
-for_window [class="Bitwarden"] floating enable
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
