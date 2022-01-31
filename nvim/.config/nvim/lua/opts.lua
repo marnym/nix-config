@@ -59,7 +59,6 @@ opt.scrolloff = 8
 -- opt.complete = vim.bo.complete .. 'kspell'
 -- autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_gb
 vim.g.base16colorspace = 256
-vim.cmd [[colorscheme base16-gruvbox-dark-hard]]
-vim.o.termguicolors = true
+vim.cmd [[colorscheme gruvbox]]
 vim.cmd [[ highlight Comment cterm=italic gui=italic ]]
 
