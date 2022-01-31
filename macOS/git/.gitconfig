@@ -1,8 +1,17 @@
 [user]
 	name = Markus Nyman
 	email = nymak@tuta.io
+	signingKey = ""
 [credential]
 	helper = osxkeychain
 [core]
 	autocrlf = input
   editor = nvim
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false
+[init]
+	defaultBranch = master
