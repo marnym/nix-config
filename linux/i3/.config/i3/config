@@ -188,6 +188,7 @@ workspace $ws10 output $monitor_one
 for_window [class="TelegramDesktop"] move to workspace $ws8
 for_window [class="tutanota-desktop"] move to workspace $ws8
 for_window [class="Joplin"] move to workspace $ws10
+for_window [class="Todoist"] move to workspace $ws10
 for_window [class="Spotify"] move to workspace $ws9
 for_window [class="Bitwarden"] move to workspace $ws9
 
