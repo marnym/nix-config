@@ -114,9 +114,5 @@ export PATH="$PATH:/home/markus/.local/share/coursier/bin"
 export PATH="/home/markus/.local/bin:$PATH"
 export PATH="/home/markus/.deno/bin:$PATH"
 
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    exec startx
-fi
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 source /usr/share/nvm/init-nvm.sh

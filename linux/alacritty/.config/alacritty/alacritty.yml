@@ -179,40 +179,34 @@ font:
 # If `true`, bold text is drawn using the bright color variants.
 #draw_bold_text_with_bright_colors: false
 
-
-# Base16 Atelier Dune - alacritty color config
-# Bram de Haan (http://atelierbramdehaan.nl)
+# Colors (Dracula)
 colors:
   # Default colors
   primary:
-    background: '#1d2021'
-    foreground: '#d5c4a1'
+    background: '#282a36'
+    foreground: '#f8f8f2'
 
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '#1d2021'
-    cursor: '#d5c4a1'
-
+  # Normal colors
   normal:
-    black:   '#1d2021'
-    red:     '#fb4934'
-    green:   '#b8bb26'
-    yellow:  '#fabd2f'
-    blue:    '#83a598'
-    magenta: '#d3869b'
-    cyan:    '#8ec07c'
-    white:   '#d5c4a1'
+    black:   '#000000'
+    red:     '#ff5555'
+    green:   '#50fa7b'
+    yellow:  '#f1fa8c'
+    blue:    '#caa9fa'
+    magenta: '#ff79c6'
+    cyan:    '#8be9fd'
+    white:   '#bfbfbf'
 
   # Bright colors
-    bright:
-      black:   '#665c54'
-      red:     '#fb4934'
-      green:   '#b8bb26'
-      yellow:  '#fabd2f'
-      blue:    '#83a598'
-      magenta: '#d3869b'
-      cyan:    '#8ec07c'
-      white:   '#fbf1c7'
+  bright:
+    black:   '#575b70'
+    red:     '#ff6e67'
+    green:   '#5af78e'
+    yellow:  '#f4f99d'
+    blue:    '#caa9fa'
+    magenta: '#ff92d0'
+    cyan:    '#9aedfe'
+    white:   '#e6e6e6'
 
   indexed_colors:
     - { index: 16, color: '#fe8019' }
