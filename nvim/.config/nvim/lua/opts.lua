@@ -5,11 +5,6 @@ local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
 local g = vim.g      -- a table to access global variables
 local opt = vim.opt
 
-function _G.dump(...)
-	local objects = vim.tbl_map(vim.inspect, {...})
-	print(unpack(objects))
-end
-
 -- set leader key 
 vim.api.nvim_set_keymap('', ' ', '', {noremap = true})
 g.mapleader = ' '
@@ -55,10 +50,8 @@ opt.undofile = true
 opt.incsearch = true
 opt.scrolloff = 8
 
--- opt.complete = vim.o.complete .. 'kspell'
--- opt.complete = vim.bo.complete .. 'kspell'
--- autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_gb
-vim.g.base16colorspace = 256
-vim.cmd [[colorscheme gruvbox]]
 vim.cmd [[ highlight Comment cterm=italic gui=italic ]]
+
+local onedark = require("onedark")
+onedark.load()
 

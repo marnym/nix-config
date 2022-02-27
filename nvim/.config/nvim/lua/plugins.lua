@@ -4,17 +4,14 @@ local fn = vim.fn
 
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'navarasu/onedark.nvim'
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '668de0951a36ef17016074f1120b6aacbe6c4515' }
   use {
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
   }
   use 'scrooloose/NERDTree'
   use 'unblevable/quick-scope'
-  use 'gruvbox-community/gruvbox'
-  use {
-    'chriskempson/base16-vim',
-      }
   use({ "hrsh7th/nvim-cmp", requires = { { 'hrsh7th/cmp-path', 'hrsh7th/cmp-buffer', "hrsh7th/cmp-nvim-lsp", "hrsh7th/vim-vsnip", 'hrsh7th/cmp-vsnip', "rafamadriz/friendly-snippets" } } })
   use "ray-x/lsp_signature.nvim"
   use 'windwp/nvim-autopairs'
@@ -32,7 +29,6 @@ return require('packer').startup(function()
     }
   }
   use{'scalameta/nvim-metals', requires = { "nvim-lua/plenary.nvim" }}
-  use 'p00f/nvim-ts-rainbow'
   use {
     'hoob3rt/lualine.nvim',
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
