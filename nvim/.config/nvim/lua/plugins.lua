@@ -41,5 +41,6 @@ return require('packer').startup(function()
       ft = {'markdown'}
   }
   use 'lukas-reineke/indent-blankline.nvim'
+  use 'fladson/vim-kitty'
 	end
 )
