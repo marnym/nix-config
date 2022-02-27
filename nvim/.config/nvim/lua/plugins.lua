@@ -5,7 +5,7 @@ local fn = vim.fn
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'navarasu/onedark.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '668de0951a36ef17016074f1120b6aacbe6c4515' }
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', commit = '668de0951a36ef17016074f1120b6aacbe6c4515', requires = { "p00f/nvim-ts-rainbow" }}
   use {
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
