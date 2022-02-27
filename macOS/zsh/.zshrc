@@ -104,6 +104,7 @@ fi
 alias zshconfig="~/.zshrc"
 alias vim="nvim"
 alias love="/Applications/love.app/Contents/MacOS/love"
+alias ssh="kitty +kitten ssh"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
