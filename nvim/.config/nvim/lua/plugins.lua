@@ -15,12 +15,6 @@ return require('packer').startup(function()
   use({ "hrsh7th/nvim-cmp", requires = { { 'hrsh7th/cmp-path', 'hrsh7th/cmp-buffer', "hrsh7th/cmp-nvim-lsp", "hrsh7th/vim-vsnip", 'hrsh7th/cmp-vsnip', "rafamadriz/friendly-snippets" } } })
   use "ray-x/lsp_signature.nvim"
   use 'windwp/nvim-autopairs'
-  use { 'junegunn/fzf.vim',
-        requires = {
-            'junegunn/fzf',
-            run = './install --bin',
-        },
-  }
   use {
     'nvim-telescope/telescope.nvim',
     requires = { 

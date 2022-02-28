@@ -43,6 +43,8 @@ opt.writebackup = false                       -- This is recommended by coc
 opt.updatetime=300                      -- Faster completion
 opt.timeoutlen=500                      -- By default timeoutlen is 1000 ms
 cmd([[autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o]])                  -- Stop newline continution of comments
+cmd([[autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us]])
+
 opt.clipboard = 'unnamedplus'               -- Copy paste between vim and everything else
 opt.autochdir = true                           -- Your working directory will always be the same as your working directory
 opt.undodir = CACHE_PATH .. '/undo'

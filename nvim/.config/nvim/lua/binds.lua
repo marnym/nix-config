@@ -28,3 +28,5 @@ map('n', '<C-h>', '<C-w>h', { silent = true })
 map('n', '<C-j>', '<C-w>j', { silent = true })
 map('n', '<C-k>', '<C-w>k', { silent = true })
 map('n', '<C-l>', '<C-w>l', { silent = true })
+
+map('n', '<C-s>', 'a<C-X><C-S>', { silent = true })
