@@ -10,6 +10,13 @@ return require('packer').startup(function()
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
   }
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+    }
+  }
+  use "jose-elias-alvarez/nvim-lsp-ts-utils"
   use 'scrooloose/NERDTree'
   use 'unblevable/quick-scope'
   use({ "hrsh7th/nvim-cmp", requires = { { 'hrsh7th/cmp-path', 'hrsh7th/cmp-buffer', "hrsh7th/cmp-nvim-lsp", "hrsh7th/vim-vsnip", 'hrsh7th/cmp-vsnip', "rafamadriz/friendly-snippets" } } })
