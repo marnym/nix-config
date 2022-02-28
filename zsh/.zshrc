@@ -13,7 +13,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -54,3 +54,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export GOPATH=$HOME/go
 export XDG_CONFIG_HOME=$HOME/.config
 
+source /Users/markusnyman/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
