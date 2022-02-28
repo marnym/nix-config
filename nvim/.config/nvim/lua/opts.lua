@@ -52,8 +52,5 @@ opt.undofile = true
 opt.incsearch = true
 opt.scrolloff = 8
 
-vim.cmd [[ highlight Comment cterm=italic gui=italic ]]
-
-local onedark = require("onedark")
-onedark.load()
+vim.cmd[[colorscheme tokyonight]]
 

@@ -31,7 +31,7 @@ end
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'onedark',
+    theme = 'tokyonight',
     section_separators = {'', ''},
     component_separators = {'', ''},
     disabled_filetypes = {}
