@@ -54,4 +54,4 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export GOPATH=$HOME/go
 export XDG_CONFIG_HOME=$HOME/.config
 
-source /Users/markusnyman/Downloads/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
