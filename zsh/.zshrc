@@ -26,6 +26,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 
 alias zshconfig="nvim ~/.zshrc"
 alias ssh="kitty +kitten ssh"
+alias stow="stow --no-folding -vSt ~"
 
 case `uname` in
   Darwin)

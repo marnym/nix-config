@@ -1,6 +1,0 @@
-[user]
-	email = nymak@tuta.io
-	name = Markus Nyman
-[core]
-	autocrlf = input
-	editor = nvim

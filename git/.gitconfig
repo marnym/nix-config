@@ -2,11 +2,9 @@
 	name = Markus Nyman
 	email = nymak@tuta.io
 	signingKey = ""
-[credential]
-	helper = osxkeychain
 [core]
 	autocrlf = input
-  editor = nvim
+	editor = nvim
 [gpg]
 	program = gpg
 [commit]
@@ -15,3 +13,5 @@
 	forceSignAnnotated = false
 [init]
 	defaultBranch = master
+[includeIf "gitdir:/Users"]
+  path = ~/.gitconfig-macos
