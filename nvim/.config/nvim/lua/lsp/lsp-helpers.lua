@@ -51,7 +51,7 @@ function M.setup_servers()
   local lsp_installer = require("nvim-lsp-installer")
 
   lsp_installer.on_server_ready(function(server)
-    local opts = { on_attach = on_attach, capabilities = capabilities }
+    local opts = { on_attach = M.on_attach, capabilities = capabilities }
     if server.name == "denols" then
       opts.root_dir = nvim_lsp.util.root_pattern("deno.json")
     elseif server.name == "tsserver" then
@@ -69,9 +69,13 @@ function M.setup_servers()
 
         M.on_attach(client, bufnr)
       end
+    elseif server.name == "sumneko_lua" and vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()):match(".dotfiles") then
+      local luadev = require("lua-dev").setup()
+      opts = luadev
     end
     server:setup(opts)
   end)
+
 end
 
 return M
