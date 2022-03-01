@@ -72,6 +72,12 @@ function M.setup_servers()
     elseif server.name == "sumneko_lua" and vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()):match(".dotfiles") then
       local luadev = require("lua-dev").setup()
       opts = luadev
+    elseif server.name == "volar" then
+      opts.on_attach = function (client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        M.on_attach(client, bufnr)
+      end
     end
     server:setup(opts)
   end)
