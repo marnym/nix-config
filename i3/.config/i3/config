@@ -9,7 +9,6 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -237,6 +236,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+shift+x exec ~/.config/i3/scripts/blur-lock.sh
+bindsym Mod1+period exec rofimoji
 
 # class                 border  bground text    indicator child_border
 client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
