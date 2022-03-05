@@ -26,8 +26,8 @@ opt.splitright = true                          -- Vertical splits will automatic
 opt.autoindent = true
 cmd([[ filetype plugin indent on ]])
 opt.conceallevel = 0                      -- So that I can see `` in markdown files
-opt.tabstop = 2                           -- Insert 2 spaces for a tab
-opt.shiftwidth = 2                        -- Change the number of space characters inserted for indentation
+opt.tabstop = 4                           -- Insert 2 spaces for a tab
+opt.shiftwidth = 4                        -- Change the number of space characters inserted for indentation
 opt.smarttab = true                            -- Makes tabbing smarter will realize you have 2 vs 4
 opt.expandtab = true                           -- Converts tabs to spaces
 -- opt.smartindent = true                         -- Makes indenting smart opt.autoindent = true                          -- Good auto indent
@@ -35,7 +35,7 @@ opt.number = true                              -- Line numbers
 opt.relativenumber = true                      -- Relative linenumbers
 opt.cursorline = true                          -- Enable highlighting of the current line
 opt.background = 'dark'                     -- tell vim what the background color looks like
-opt.showtabline = 2                       -- Always show tabs
+opt.showtabline = 0                       -- Always show tabs
 opt.showmode = false                          -- We don't need to see things like -- INSERT -- anymore
 opt.backup = false                            -- This is recommended by coc
 opt.swapfile = false
