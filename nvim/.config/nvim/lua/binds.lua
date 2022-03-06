@@ -33,5 +33,9 @@ map('n', '<C-s>', 'a<C-X><C-S>', { silent = true })
 
 -- Plugins
 map('', '<Leader>n', ':NERDTreeToggle<CR>')
+
 map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
 map('n', '<leader>th', '<cmd>Gitsigns preview_hunk<CR>')
+map('n', '<leader>tn', '<cmd>Gitsigns next_hunk<CR>')
+map('n', '<leader>tp', '<cmd>Gitsigns prev_hunk<CR>')
+
