@@ -1,7 +1,7 @@
 local null_ls = require("null-ls")
 local lsp_helpers = require('lsp.lsp-helpers')
 
-function eslint_condition(utils)
+local function eslint_condition(utils)
   return utils.root_has_file({ ".eslintrc", ".eslintrc.json", ".eslintrc.js" })
 end
 
@@ -19,6 +19,7 @@ null_ls.setup({
       end
     },
     null_ls.builtins.formatting.black,
+    null_ls.builtins.code_actions.gitsigns,
   },
   on_attach = lsp_helpers.on_attach,
 })
