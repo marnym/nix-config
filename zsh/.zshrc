@@ -25,7 +25,6 @@ if [[ -n $SSH_CONNECTION ]]; then
  fi
 
 alias zshconfig="nvim ~/.zshrc"
-alias ssh="kitty +kitten ssh"
 alias stow="stow --no-folding -vSt ~"
 
 case `uname` in
@@ -53,5 +52,10 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 export GOPATH=$HOME/go
 export XDG_CONFIG_HOME=$HOME/.config
+
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 
 source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
