@@ -76,5 +76,11 @@ return require('packer').startup(function()
         require('neogen').setup()
       end
     }
-	end
+    use {
+      'Darazaki/indent-o-matic',
+      config = function ()
+        require('indent-o-matic').setup()
+      end
+    }
+  end
 )

@@ -23,14 +23,9 @@ opt.iskeyword:append('-')
 opt.mouse = 'a'                             -- Enable your mouse
 opt.splitbelow = true                          -- Horizontal splits will automatically be below
 opt.splitright = true                          -- Vertical splits will automatically be to the right
-opt.autoindent = true
-cmd([[ filetype plugin indent on ]])
+opt.tabstop = 4
+opt.shiftwidth = 4
 opt.conceallevel = 0                      -- So that I can see `` in markdown files
-opt.tabstop = 4                           -- Insert 2 spaces for a tab
-opt.shiftwidth = 4                        -- Change the number of space characters inserted for indentation
-opt.smarttab = true                            -- Makes tabbing smarter will realize you have 2 vs 4
-opt.expandtab = true                           -- Converts tabs to spaces
--- opt.smartindent = true                         -- Makes indenting smart opt.autoindent = true                          -- Good auto indent
 opt.number = true                              -- Line numbers
 opt.relativenumber = true                      -- Relative linenumbers
 opt.cursorline = true                          -- Enable highlighting of the current line
