@@ -1,7 +1,4 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-return require("packer").startup(function()
+return require("packer").startup(function(use)
 	-- Packer
 	use("wbthomason/packer.nvim")
 
@@ -69,7 +66,7 @@ return require("packer").startup(function()
 	use("folke/lua-dev.nvim")
 
 	-- Utils
-	use("scrooloose/NERDTree")
+	use("tpope/vim-vinegar")
 	use("unblevable/quick-scope")
 	use("windwp/nvim-autopairs")
 	use({
@@ -95,7 +92,7 @@ return require("packer").startup(function()
 	use({
 		"Darazaki/indent-o-matic",
 		config = function()
-			require("indent-o-matic").setup()
+			require("indent-o-matic").setup({})
 		end,
 	})
 end)
