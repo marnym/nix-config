@@ -23,6 +23,7 @@ plugins=(
   scala
   sbt
   terraform
+  tmux
 )
 
 source $ZSH/oh-my-zsh.sh
