@@ -13,7 +13,17 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ENABLE_CORRECTION="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-plugins=(git zsh-autosuggestions)
+plugins=(
+  git
+  zsh-autosuggestions
+  kubectl 
+  colored-man-pages 
+  docker
+  docker-compose
+  scala
+  sbt
+  terraform
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,6 +36,8 @@ if [[ -n $SSH_CONNECTION ]]; then
 
 alias zshconfig="nvim ~/.zshrc"
 alias stow="stow --no-folding -vSt ~"
+alias a="ansible"
+alias k="kubectl"
 
 case `uname` in
   Darwin)
