@@ -173,6 +173,9 @@ for_window [class="Joplin"] move to workspace $ws10
 for_window [class="Todoist"] move to workspace $ws10
 for_window [class="Spotify"] move to workspace $ws9
 for_window [class="Bitwarden"] move to workspace $ws9
+for_window [class="Steam"] move to workspace $ws4
+for_window [class="csgo_linux64"] move to workspace $ws5
+for_window [class="jetbrains-webstorm"] move to workspace $ws3
 
 exec --no-startup-id /usr/bin/lxpolkit
 
@@ -196,6 +199,7 @@ exec picom -CGbf
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="qt5ct" instance="qt5ct"] floating enable
 for_window [class="zoom"] floating enable
+for_window [class="Steam"] floating enable
 
 for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
