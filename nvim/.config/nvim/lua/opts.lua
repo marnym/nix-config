@@ -23,8 +23,6 @@ opt.iskeyword:append("-")
 opt.mouse = "a" -- Enable your mouse
 opt.splitbelow = true -- Horizontal splits will automatically be below
 opt.splitright = true -- Vertical splits will automatically be to the right
-opt.tabstop = 4
-opt.shiftwidth = 4
 opt.conceallevel = 0 -- So that I can see `` in markdown files
 opt.number = true -- Line numbers
 opt.relativenumber = true -- Relative linenumbers

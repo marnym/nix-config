@@ -89,10 +89,5 @@ return require("packer").startup(function(use)
 			require("neogen").setup()
 		end,
 	})
-	use({
-		"Darazaki/indent-o-matic",
-		config = function()
-			require("indent-o-matic").setup({})
-		end,
-	})
+	use("tpope/vim-sleuth")
 end)
