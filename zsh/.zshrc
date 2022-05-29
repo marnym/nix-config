@@ -25,8 +25,10 @@ case `uname` in
 esac
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f $HOME/.p10k.zsh ] && source ~/.p10k.zsh
+[ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
+
+autoload -Uz compinit && compinit
 
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
 export PATH="$HOME/.local/bin:$PATH"
