@@ -5,6 +5,8 @@ if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
  fi
 
+set -o emacs
+
 alias zshconfig="nvim ~/.zshrc"
 alias stow="stow --no-folding -vSt ~"
 alias a="ansible"
