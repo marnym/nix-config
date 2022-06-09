@@ -1,6 +1,6 @@
+require("plugins")
 require("opts")
 require("binds")
-require("plugins")
 require("lsp.lsp")
 require("plug-config.autopairs")
 require("plug-config.cmp")
