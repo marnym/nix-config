@@ -1,0 +1,23 @@
+let mapleader=" "
+
+set surround
+set showmode
+set scrolloff=5
+set incsearch
+set nu
+
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+map Q gq
+inoremap jk <Esc>
+inoremap kj <Esc>
+
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fs :action GotoSymbol<CR>
+nnoremap <leader>rf :action ReformatCode<CR>
+nnoremap <leader>re :action RenameElement<CR>
+nnoremap gn :action GotoNextError<CR>
+nnoremap gp :action GotoPreviousError<CR>
+vnoremap <leader>gc :action CommentByLineComment<CR>
