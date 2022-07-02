@@ -7,6 +7,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 
 set -o emacs
 
+alias ls="ls --color=auto"
 alias zshconfig="nvim ~/.zshrc"
 alias stow="stow --no-folding -vSt ~"
 alias a="ansible"
