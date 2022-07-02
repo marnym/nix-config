@@ -1,11 +1,35 @@
+autoload -U colors && colors
+
+# History in cache directory
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE="$HOME/.cache/zsh/history"
+
+autoload -U compinit
+zstyle ":completion:*" menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
+
+# vi mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Use vim keys in tab complete menu
+bindkey -M menuselect "h" vi-backward-char
+bindkey -M menuselect "k" vi-up-line-or-history
+bindkey -M menuselect "l" vi-forward-char
+bindkey -M menuselect "j" vi-down-line-or-history
+bindkey -v "^?" backward-delete-char
+bindkey "^e" end-of-line
+bindkey -s "^o" ". ranger\n"
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='vim'
  else
    export EDITOR='nvim'
  fi
-
-set -o emacs
 
 alias ls="ls --color=auto"
 alias zshconfig="nvim ~/.zshrc"
@@ -31,7 +55,6 @@ esac
 [ -f $HOME/.p10k.zsh ] && source ~/.p10k.zsh
 [ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
 
-autoload -Uz compinit && compinit
 
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
 export PATH="$HOME/.local/bin:$PATH"
@@ -45,6 +68,6 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+source $HOME/.dotfiles/zsh/.powerlevel10k/powerlevel10k.zsh-theme
 source $HOME/.dotfiles/zsh/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.dotfiles/zsh/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.dotfiles/zsh/.powerlevel10k/powerlevel10k.zsh-theme
