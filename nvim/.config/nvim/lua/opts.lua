@@ -44,5 +44,8 @@ opt.undodir = CACHE_PATH .. "/undo"
 opt.undofile = true
 opt.incsearch = true
 opt.scrolloff = 8
+opt.shiftwidth = 0
+opt.softtabstop = 0
+opt.tabstop = 4
 
 vim.cmd([[colorscheme tokyonight]])
