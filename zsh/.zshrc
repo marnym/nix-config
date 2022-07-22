@@ -4,6 +4,7 @@ autoload -U colors && colors
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE="$HOME/.cache/zsh/history"
+setopt SHARE_HISTORY
 
 autoload -U compinit
 zstyle ":completion:*" menu select
