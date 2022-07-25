@@ -61,6 +61,7 @@ export PATH="$PATH:$HOME/.local/share/coursier/bin"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export PATH="$HOME/apps:$PATH"
 
 export GOPATH=$HOME/go
 export XDG_CONFIG_HOME=$HOME/.config
