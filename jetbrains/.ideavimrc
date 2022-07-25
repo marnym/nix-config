@@ -28,10 +28,11 @@ map Q gq
 inoremap jk <Esc>
 inoremap kj <Esc>
 
-nnoremap <leader>ff :action GotoFile<CR>
-nnoremap <leader>fs :action GotoSymbol<CR>
-nnoremap <leader>rf :action ReformatCode<CR>
-nnoremap <leader>re :action RenameElement<CR>
-nnoremap gn :action GotoNextError<CR>
-nnoremap gp :action GotoPreviousError<CR>
-vnoremap <leader>gc :action CommentByLineComment<CR>
+map <leader>ff <Action>(GotoFile)
+map <leader>fs <Action>(GotoSymbol)
+map <leader>rf <Action>(ReformatCode)
+map <leader>re <Action>(RenameElement)
+map gn <Action>(GotoNextError)
+map gp <Action>(GotoPreviousError)
+map gh <Action>(QuickJavaDoc)
+map <leader>gc <Action>(CommentByLineComment)
