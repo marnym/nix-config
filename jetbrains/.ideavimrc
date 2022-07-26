@@ -5,7 +5,8 @@ set showmode
 set scrolloff=5
 set incsearch
 set nu
-set clipboard+=unnamed
+set clipboard=unnamedplus
+set clipboard+=ideaput
 
 sethandler <C-A> a:vim
 sethandler <C-D> a:vim
