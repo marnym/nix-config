@@ -5,11 +5,10 @@ local M = {}
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 function M.on_attach(client, bufnr)
-	print("" .. client.name .. " language server started")
-
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
+
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end
@@ -73,8 +72,7 @@ function M.setup_servers()
 
 				M.on_attach(client, bufnr)
 			end
-		elseif
-			server.name == "sumneko_lua"
+		elseif server.name == "sumneko_lua"
 			and vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()):match(".dotfiles")
 		then
 			local luadev = require("lua-dev").setup()
