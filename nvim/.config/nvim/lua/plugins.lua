@@ -89,4 +89,5 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use("tpope/vim-sleuth")
+	use("ahmedkhalf/project.nvim")
 end)
