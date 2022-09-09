@@ -41,41 +41,52 @@ function M.on_attach(client, bufnr)
 	end
 end
 
+local function disable_formatting(client, bufnr)
+	client.resolved_capabilities.document_formatting = false
+	client.resolved_capabilities.document_range_formatting = false
+	M.on_attach(client, bufnr)
+end
+
 function M.setup_servers()
 	local capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities())
-	local lsp_installer = require "nvim-lsp-installer"
-
-	lsp_installer.on_server_ready(function(server)
-		local opts = { on_attach = M.on_attach, capabilities = capabilities }
-		if server.name == "denols" then
-			opts.root_dir = nvim_lsp.util.root_pattern("deno.json", "import_map.json")
-			opts.init_options = {
-				enable = true,
-				unstable = true,
+	require "mason-lspconfig".setup_handlers {
+		function(server_name)
+			local settings = { on_attach = M.on_attach, capabilities = capabilities }
+			nvim_lsp[server_name].setup(settings)
+		end,
+		["denols"] = function()
+			nvim_lsp.denols.setup {
+				root_dir = nvim_lsp.util.root_pattern("deno.json", "import_map.json"),
+				init_options = {
+					enable = true,
+					unstable = true,
+				}
 			}
-		elseif server.name == "tsserver" then
-			opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
-				client.resolved_capabilities.document_range_formatting = false
-				M.on_attach(client, bufnr)
-			end
-		elseif server.name == "sumneko_lua" then
-			opts.settings = {
-				Lua = {
-					diagnostics = {
-						globals = { 'vim' }
+		end,
+		["tsserver"] = function()
+			nvim_lsp.tsserver.setup {
+				on_attach = disable_formatting
+			}
+		end,
+		["sumneko_lua"] = function()
+			nvim_lsp.sumneko_lua.setup {
+				on_attach = M.on_attach,
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { 'vim' }
+						}
 					}
 				}
 			}
-		elseif server.name == "volar" then
-			opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
-				client.resolved_capabilities.document_range_formatting = false
-				M.on_attach(client, bufnr)
-			end
+		end,
+		["volar"] = function()
+			nvim_lsp.volar.setup {
+				on_attach = disable_formatting
+			}
 		end
-		server:setup(opts)
-	end)
+	}
 end
 
 return M
