@@ -42,6 +42,7 @@ vim.opt.scrolloff = 8
 vim.opt.shiftwidth = 0
 vim.opt.softtabstop = 0
 vim.opt.tabstop = 4
+vim.opt.termguicolors = true
 
 vim.cmd "colorscheme tokyonight"
 
