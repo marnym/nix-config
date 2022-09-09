@@ -29,3 +29,4 @@ map("n", "<Leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", 
 map("n", "<Leader>fs", "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", { silent = true })
 map("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", { silent = true })
 map("n", "<Leader>fq", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", { silent = true })
+map("n", "<Leader>pp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", { silent = true })
