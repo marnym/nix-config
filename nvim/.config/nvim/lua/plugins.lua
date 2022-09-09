@@ -61,7 +61,6 @@ return require("packer").startup(function(use)
 		},
 	})
 	use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 	use("folke/lua-dev.nvim")
 
 	-- Utils

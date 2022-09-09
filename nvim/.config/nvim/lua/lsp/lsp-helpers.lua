@@ -42,33 +42,21 @@ function M.on_attach(client, bufnr)
 end
 
 function M.setup_servers()
-	local buf_map = function(bufnr, mode, lhs, rhs, opts)
-		vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
-			silent = true,
-		})
-	end
-
 	local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
 	local lsp_installer = require("nvim-lsp-installer")
 
 	lsp_installer.on_server_ready(function(server)
 		local opts = { on_attach = M.on_attach, capabilities = capabilities }
 		if server.name == "denols" then
-			opts.root_dir = nvim_lsp.util.root_pattern("deno.json")
+			opts.root_dir = nvim_lsp.util.root_pattern("deno.json", "import_map.json")
+			opts.init_options = {
+				enable = true,
+				unstable = true,
+			}
 		elseif server.name == "tsserver" then
 			opts.on_attach = function(client, bufnr)
 				client.resolved_capabilities.document_formatting = false
 				client.resolved_capabilities.document_range_formatting = false
-
-				local ts_utils = require("nvim-lsp-ts-utils")
-				ts_utils.setup({})
-				ts_utils.setup_client(client)
-
-				buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
-				buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
-				buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
-
 				M.on_attach(client, bufnr)
 			end
 		elseif server.name == "sumneko_lua" then

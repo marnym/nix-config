@@ -44,3 +44,8 @@ vim.opt.softtabstop = 0
 vim.opt.tabstop = 4
 
 vim.cmd("colorscheme tokyonight")
+
+-- To appropriately highlight codefences returned from denols, you will need to augment vim.g.markdown_fenced languages
+vim.g.markdown_fenced_languages = {
+	"ts=typescript"
+}
