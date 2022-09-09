@@ -1,4 +1,4 @@
-require("lualine").setup({
+require "lualine".setup {
 	options = {
 		icons_enabled = true,
 		theme = "tokyonight",
@@ -9,7 +9,9 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff" },
-		lualine_c = { "filename" },
+		lualine_c = {
+			{ "filename", path = 1 }
+		},
 		lualine_x = {
 			{
 				"diagnostics",
@@ -30,4 +32,4 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
-})
+}

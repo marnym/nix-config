@@ -1,4 +1,4 @@
-CACHE_PATH = vim.fn.stdpath("cache")
+CACHE_PATH = vim.fn.stdpath "cache"
 
 -- set leader key
 vim.api.nvim_set_keymap("", " ", "", { noremap = true })
@@ -30,8 +30,8 @@ vim.opt.swapfile = false
 vim.opt.writebackup = false -- This is recommended by coc
 vim.opt.updatetime = 300 -- Faster completion
 vim.opt.timeoutlen = 500 -- By default timeoutlen is 1000 ms
-vim.cmd("autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o") -- Stop newline continution of comments
-vim.cmd("autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us")
+vim.cmd "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o" -- Stop newline continution of comments
+vim.cmd "autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us"
 
 vim.opt.clipboard = "unnamedplus" -- Copy paste between vim and everything else
 vim.opt.autochdir = true -- Your working directory will always be the same as your working directory
@@ -43,7 +43,7 @@ vim.opt.shiftwidth = 0
 vim.opt.softtabstop = 0
 vim.opt.tabstop = 4
 
-vim.cmd("colorscheme tokyonight")
+vim.cmd "colorscheme tokyonight"
 
 -- To appropriately highlight codefences returned from denols, you will need to augment vim.g.markdown_fenced languages
 vim.g.markdown_fenced_languages = {

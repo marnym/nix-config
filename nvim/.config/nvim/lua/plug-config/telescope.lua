@@ -6,9 +6,9 @@ local function map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
-local telescope = require("telescope")
+local telescope = require "telescope"
 
-telescope.setup({
+telescope.setup {
 	defaults = {
 		mappings = {
 			i = {
@@ -17,9 +17,9 @@ telescope.setup({
 			},
 		},
 	},
-})
+}
 
-telescope.load_extension("projects")
+telescope.load_extension "projects"
 
 map("n", "<Leader>fp", "<cmd>lua require'telescope.builtin'.git_files{}<CR>", { silent = true })
 map("n", "<Leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { silent = true })

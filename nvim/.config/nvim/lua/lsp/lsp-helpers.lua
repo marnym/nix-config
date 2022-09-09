@@ -1,5 +1,5 @@
-local luadev = require("lua-dev").setup()
-local nvim_lsp = require("lspconfig")
+require "lua-dev".setup()
+local nvim_lsp = require "lspconfig"
 
 local M = {}
 
@@ -37,13 +37,13 @@ function M.on_attach(client, bufnr)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
 	if client.resolved_capabilities.document_formatting then
-		vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+		vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
 	end
 end
 
 function M.setup_servers()
-	local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-	local lsp_installer = require("nvim-lsp-installer")
+	local capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	local lsp_installer = require "nvim-lsp-installer"
 
 	lsp_installer.on_server_ready(function(server)
 		local opts = { on_attach = M.on_attach, capabilities = capabilities }

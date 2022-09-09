@@ -1,16 +1,16 @@
-require("plugins")
-require("opts")
-require("binds")
-require("lsp.lsp")
-require("plug-config.autopairs")
-require("plug-config.cmp")
-require("plug-config.indent-blankline")
-require("plug-config.lsp-signature")
-require("plug-config.lualine")
-require("plug-config.luasnip")
-require("plug-config.null-ls")
-require("plug-config.nvim-metals")
-require("plug-config.project")
-require("plug-config.telescope")
-require("plug-config.treesitter")
-require("plug-config.quickscope")
+require "plugins"
+require "opts"
+require "binds"
+require "lsp.lsp"
+require "plug-config.autopairs"
+require "plug-config.cmp"
+require "plug-config.indent-blankline"
+require "plug-config.lsp-signature"
+require "plug-config.lualine"
+require "plug-config.luasnip"
+require "plug-config.null-ls"
+require "plug-config.nvim-metals"
+require "plug-config.project"
+require "plug-config.telescope"
+require "plug-config.treesitter"
+require "plug-config.quickscope"

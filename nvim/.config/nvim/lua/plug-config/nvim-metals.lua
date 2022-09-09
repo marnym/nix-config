@@ -1,15 +1,10 @@
-local cmd = vim.cmd
-local g = vim.g
+vim.cmd([[augroup lsp]])
+vim.cmd([[autocmd!]])
+vim.cmd([[autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc]])
+vim.cmd([[autocmd FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)]])
+vim.cmd([[augroup end]])
 
-g["metals_server_version"] = "0.10.2+46-e7ab8592-SNAPSHOT"
-
-cmd([[augroup lsp]])
-cmd([[autocmd!]])
-cmd([[autocmd FileType scala setlocal omnifunc=v:lua.vim.lsp.omnifunc]])
-cmd([[autocmd FileType scala,sbt lua require("metals").initialize_or_attach(metals_config)]])
-cmd([[augroup end]])
-
-metals_config = require("metals").bare_config()
+local metals_config = require "metals".bare_config()
 metals_config.init_options.statusBarProvider = "on"
 
 metals_config.settings = {
@@ -25,10 +20,11 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 metals_config.capabilities = capabilities
-metals_config.on_attach = function(client, bufnr)
+metals_config.on_attach = function(_, bufnr)
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
+
 	local function buf_set_option(...)
 		vim.api.nvim_buf_set_option(bufnr, ...)
 	end

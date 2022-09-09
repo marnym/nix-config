@@ -1,4 +1,4 @@
-require("nvim-treesitter.configs").setup({
+require "nvim-treesitter.configs".setup {
 	ensure_installed = {
 		"bash",
 		"bibtex",
@@ -35,4 +35,4 @@ require("nvim-treesitter.configs").setup({
 		extended = true,
 		max_file_lines = 1000,
 	},
-})
+}
