@@ -20,7 +20,6 @@ null_ls.setup({
 		}),
 		null_ls.builtins.formatting.black,
 		null_ls.builtins.code_actions.gitsigns,
-		null_ls.builtins.formatting.stylua,
 	},
 	on_attach = lsp_helpers.on_attach,
 })

@@ -1,3 +1,4 @@
+local luadev = require("lua-dev").setup()
 local nvim_lsp = require("lspconfig")
 
 local M = {}
@@ -71,16 +72,13 @@ function M.setup_servers()
 				M.on_attach(client, bufnr)
 			end
 		elseif server.name == "sumneko_lua" then
-			opts.on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
-				client.resolved_capabilities.document_range_formatting = false
-
-				M.on_attach(client, bufnr)
-			end
-			if vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()):match(".dotfiles") then
-				local luadev = require("lua-dev").setup()
-				opts = luadev
-			end
+			opts.settings = {
+				Lua = {
+					diagnostics = {
+						globals = { 'vim' }
+					}
+				}
+			}
 		elseif server.name == "volar" then
 			opts.on_attach = function(client, bufnr)
 				client.resolved_capabilities.document_formatting = false
