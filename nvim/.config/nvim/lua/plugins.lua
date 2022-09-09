@@ -1,45 +1,52 @@
-return require("packer").startup(function(use)
-	-- Packer
-	use("wbthomason/packer.nvim")
+return require "packer".startup(function(use)
+	-- Plugin installer
+	use "wbthomason/packer.nvim"
 
 	-- Visual
-	use("navarasu/onedark.nvim")
-	use("folke/tokyonight.nvim")
+	use "navarasu/onedark.nvim"
+	use "folke/tokyonight.nvim"
 
-	use({
+	-- Syntax Highlighting
+	use {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
 		requires = { "p00f/nvim-ts-rainbow" },
-	})
-	use({
+	}
+	-- Shows current context in top
+	use "nvim-treesitter/nvim-treesitter-context"
+	-- Status line
+	use {
 		"hoob3rt/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
-	})
-	use({
+	}
+	-- Shows indentation
+	use {
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
-			require("indent_blankline").setup({
+			require "indent_blankline".setup {
 				show_current_context = true,
 				show_current_context_start = true,
-			})
+			}
 		end,
-	})
-	use({
+	}
+	-- Shows git things
+	use {
 		"lewis6991/gitsigns.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
-			require("gitsigns").setup()
+			require "gitsigns".setup()
 		end,
-	})
+	}
 	-- Lsp
-	use({
+	use {
 		"neovim/nvim-lspconfig",
 		"williamboman/nvim-lsp-installer",
-	})
-	use({
+	}
+	-- Autocomplete
+	use {
 		"hrsh7th/nvim-cmp",
 		requires = {
 			{
@@ -52,41 +59,56 @@ return require("packer").startup(function(use)
 				"rafamadriz/friendly-snippets",
 			},
 		},
-	})
+	}
+	-- Shows function signatures
 	use("ray-x/lsp_signature.nvim")
-	use({
+	-- Lsp for eslint etc.
+	use {
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
 		},
-	})
-	use({ "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } })
-	use("folke/lua-dev.nvim")
+	}
+	-- Lsp for Scala
+	use { "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } }
+	-- Plugin for easier nvim dev
+	use "folke/lua-dev.nvim"
 
 	-- Utils
-	use("tpope/vim-vinegar")
-	use("unblevable/quick-scope")
-	use("windwp/nvim-autopairs")
-	use({
+	-- Enhances netrw
+	use "tpope/vim-vinegar"
+	-- Highlights when moving with f and t
+	use "unblevable/quick-scope"
+	-- Sets brackets... automatically
+	use "windwp/nvim-autopairs"
+	-- For searching things
+	use {
 		"nvim-telescope/telescope.nvim",
 		requires = {
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-lua/popup.nvim" },
 		},
-	})
-	use("b3nj5m1n/kommentary")
-	use("lervag/vimtex")
-	use({
+	}
+	-- Line and block commenting
+	use "b3nj5m1n/kommentary"
+	-- LaTeX editing
+	use "lervag/vimtex"
+	-- Preview Markdown in browser
+	use {
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && yarn install",
 		ft = { "markdown" },
-	})
-	use({
+	}
+	-- Better annotations
+	use {
 		"danymat/neogen",
 		config = function()
 			require("neogen").setup()
 		end,
-	})
-	use("tpope/vim-sleuth")
-	use("ahmedkhalf/project.nvim")
-end)
+	}
+	-- Makes indentation consistent
+	use "tpope/vim-sleuth"
+	-- Sets working dir to project root
+	use "ahmedkhalf/project.nvim"
+end
+)
