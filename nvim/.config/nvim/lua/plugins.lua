@@ -25,9 +25,6 @@ return require "packer".startup(function(use)
 		'akinsho/bufferline.nvim',
 		tag = "v2.*",
 		requires = 'kyazdani42/nvim-web-devicons',
-		config = function ()
-			require "bufferline".setup()
-		end
 	}
 	-- Shows indentation
 	use {
@@ -45,9 +42,6 @@ return require "packer".startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-			require "gitsigns".setup()
-		end,
 	}
 	-- Lsp
 	use {
@@ -70,7 +64,7 @@ return require "packer".startup(function(use)
 		},
 	}
 	-- Shows function signatures
-	use("ray-x/lsp_signature.nvim")
+	use "ray-x/lsp_signature.nvim"
 	-- Lsp for eslint etc.
 	use {
 		"jose-elias-alvarez/null-ls.nvim",
@@ -108,13 +102,10 @@ return require "packer".startup(function(use)
 		run = "cd app && yarn install",
 		ft = { "markdown" },
 	}
+	use "ellisonleao/glow.nvim"
 	-- Better annotations
-	use {
-		"danymat/neogen",
-		config = function()
-			require("neogen").setup()
-		end,
-	}
+	use "danymat/neogen"
+
 	-- Makes indentation consistent
 	use "tpope/vim-sleuth"
 	-- Sets working dir to project root
