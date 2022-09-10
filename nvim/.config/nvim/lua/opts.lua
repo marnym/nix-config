@@ -39,8 +39,8 @@ vim.opt.undodir = CACHE_PATH .. "/undo"
 vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
+vim.opt.expandtab = true -- use spaces instead of tabs
 vim.opt.shiftwidth = 0
-vim.opt.softtabstop = 0
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 
