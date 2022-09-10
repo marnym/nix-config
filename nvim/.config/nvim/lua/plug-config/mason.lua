@@ -33,6 +33,5 @@ require "mason-lspconfig".setup {
 		"tailwindcss",
 		"terraformls",
 		"volar",
-		"yamlls",
 	}
 }

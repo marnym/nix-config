@@ -54,6 +54,11 @@ function M.setup_servers()
 			local settings = { on_attach = M.on_attach, capabilities = capabilities }
 			nvim_lsp[server_name].setup(settings)
 		end,
+		["ansiblels"] = function()
+			nvim_lsp.ansiblels.setup {
+				filetypes = { "yml", "yaml", "yml.ansible", "yaml.ansible" }
+			}
+		end,
 		["denols"] = function()
 			nvim_lsp.denols.setup {
 				root_dir = nvim_lsp.util.root_pattern("deno.json", "import_map.json"),

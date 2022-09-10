@@ -25,6 +25,9 @@ return require "packer".startup(function(use)
 		'akinsho/bufferline.nvim',
 		tag = "v2.*",
 		requires = 'kyazdani42/nvim-web-devicons',
+		config = function()
+			require "bufferline".setup()
+		end
 	}
 	-- Shows indentation
 	use {
@@ -42,6 +45,9 @@ return require "packer".startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
+		config = function()
+			require "gitsigns".setup()
+		end
 	}
 	-- Lsp
 	use {
@@ -105,7 +111,12 @@ return require "packer".startup(function(use)
 	}
 	use "ellisonleao/glow.nvim"
 	-- Better annotations
-	use "danymat/neogen"
+	use {
+		"danymat/neogen",
+		config = function()
+			require "neogen".setup()
+		end
+	}
 
 	-- Makes indentation consistent
 	use "tpope/vim-sleuth"
