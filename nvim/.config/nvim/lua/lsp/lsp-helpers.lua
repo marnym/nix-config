@@ -90,6 +90,12 @@ function M.setup_servers()
 			nvim_lsp.volar.setup {
 				on_attach = disable_formatting
 			}
+		end,
+		["texlab"] = function()
+			nvim_lsp.texlab.setup {
+				on_attach = M.on_attach,
+				root_dir = nvim_lsp.util.root_pattern("*.tex")
+			}
 		end
 	}
 end
