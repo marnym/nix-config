@@ -33,6 +33,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias stow="stow --no-folding -vSt ~"
 alias a="ansible"
 alias k="kubectl"
+alias iso="echo 'new Date().toISOString()' | deno | tail -1"
 
 case `uname` in
   Darwin)
