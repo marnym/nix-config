@@ -30,6 +30,7 @@ require "mason-lspconfig".setup {
 		"sqls",
 		"svelte",
 		"taplo",
+		"texlab",
 		"tailwindcss",
 		"terraformls",
 		"volar",
