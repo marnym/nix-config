@@ -56,7 +56,9 @@ function M.setup_servers()
 		end,
 		["ansiblels"] = function()
 			nvim_lsp.ansiblels.setup {
-				filetypes = { "yml", "yaml", "yml.ansible", "yaml.ansible" }
+				filetypes = { "yml", "yaml", "yml.ansible", "yaml.ansible" },
+				root_dir = nvim_lsp.util.root_pattern("ansible.cfg");
+				single_file_support = false,
 			}
 		end,
 		["denols"] = function()
