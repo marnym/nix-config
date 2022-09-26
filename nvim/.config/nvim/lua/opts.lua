@@ -44,7 +44,9 @@ vim.opt.shiftwidth = 0
 vim.opt.tabstop = 4
 vim.opt.termguicolors = true
 
-vim.cmd "colorscheme tokyonight"
+vim.g.catppuccin_flavour = "macchiato"
+require("catppuccin").setup()
+vim.cmd "colorscheme catppuccin"
 
 -- To appropriately highlight codefences returned from denols, you will need to augment vim.g.markdown_fenced languages
 vim.g.markdown_fenced_languages = {

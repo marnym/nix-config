@@ -3,8 +3,7 @@ return require "packer".startup(function(use)
 	use "wbthomason/packer.nvim"
 
 	-- Visual
-	use "navarasu/onedark.nvim"
-	use "folke/tokyonight.nvim"
+	use { "catppuccin/nvim", as = "catppuccin" }
 
 	-- Syntax Highlighting
 	use {
