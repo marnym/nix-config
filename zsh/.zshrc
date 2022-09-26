@@ -17,9 +17,9 @@ bindkey -M menuselect "h" vi-backward-char
 bindkey -M menuselect "k" vi-up-line-or-history
 bindkey -M menuselect "l" vi-forward-char
 bindkey -M menuselect "j" vi-down-line-or-history
-bindkey -v "^?" backward-delete-char
 bindkey "^e" end-of-line
 bindkey -s "^o" ". ranger\n"
+
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -37,6 +37,8 @@ alias iso="echo 'new Date().toISOString()' | deno | tail -1"
 
 case `uname` in
   Darwin)
+    bindkey "^[^[[D" forward-word
+    bindkey "^[^[[C" backward-word
     unsetopt correctall
     unsetopt nomatch
     set rtp+=/usr/local/opt/fzf
@@ -45,6 +47,8 @@ case `uname` in
     source $(brew --prefix nvm)/nvm.sh
   ;;
   Linux)
+    bindkey "^[[1;5C" forward-word
+    bindkey "^[[1;5D" backward-word
     source /usr/share/nvm/init-nvm.sh
   ;;
 esac
