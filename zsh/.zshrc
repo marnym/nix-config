@@ -33,7 +33,6 @@ alias zshconfig="nvim ~/.zshrc"
 alias stow="stow --no-folding -vSt ~"
 alias a="ansible"
 alias k="kubectl"
-alias iso="echo 'new Date().toISOString()' | deno | tail -1"
 
 case `uname` in
   Darwin)
@@ -45,6 +44,7 @@ case `uname` in
 
     export NVM_DIR=~/.nvm
     source $(brew --prefix nvm)/nvm.sh
+    alias iso='echo "new Date().toISOString()" | deno | tail -1 | tr -d \" | sed -e $"s/\x1b\[[0-9;]*m//g" | pbcopy'
   ;;
   Linux)
     bindkey "^[[1;5C" forward-word
