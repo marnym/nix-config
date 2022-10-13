@@ -4,7 +4,7 @@ CACHE_PATH = vim.fn.stdpath "cache"
 vim.api.nvim_set_keymap("", " ", "", { noremap = true })
 vim.g.mapleader = " "
 
-vim.opt.shortmess:remove("F"):append("c")
+-- vim.opt.shortmess:remove("F"):append("c")
 
 vim.opt.hidden = true -- Required to keep multiple buffers open multiple buffers
 vim.opt.errorbells = false -- Doesn't make a fuss about errors

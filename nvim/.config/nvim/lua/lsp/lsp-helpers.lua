@@ -100,6 +100,9 @@ function M.setup_servers()
 			}
 		end
 	}
+	nvim_lsp.voikkols.setup {
+		on_attach = M.on_attach,
+	}
 end
 
 return M

@@ -16,4 +16,5 @@ require "plug-config.treesitter"
 require "plug-config.quickscope"
 require "plug-config.vimtex"
 -- Include lsp last
+require "lsp.voikko"
 require "lsp.lsp"

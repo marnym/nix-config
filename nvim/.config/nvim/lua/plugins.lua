@@ -2,6 +2,10 @@ return require "packer".startup(function(use)
 	-- Plugin installer
 	use "wbthomason/packer.nvim"
 
+	-- startup time
+
+	use "dstein64/vim-startuptime"
+
 	-- Visual
 	use { "catppuccin/nvim", as = "catppuccin" }
 
@@ -9,7 +13,6 @@ return require "packer".startup(function(use)
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
-		commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
 		requires = { "p00f/nvim-ts-rainbow" },
 	}
 	-- Shows current context in top
