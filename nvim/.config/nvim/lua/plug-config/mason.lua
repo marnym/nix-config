@@ -23,7 +23,6 @@ require "mason-lspconfig".setup {
 		"tsserver",
 		"julials",
 		"ltex",
-		"lua-language-server",
 		"sumneko_lua",
 		"marksman",
 		"pyright",

@@ -1,4 +1,4 @@
-require "lua-dev".setup()
+require "neodev".setup()
 local nvim_lsp = require "lspconfig"
 
 local M = {}
@@ -36,19 +36,19 @@ function M.on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
-	if client.resolved_capabilities.document_formatting then
+	if client.server_capabilities.document_formatting then
 		vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()"
 	end
 end
 
 local function disable_formatting(client, bufnr)
-	client.resolved_capabilities.document_formatting = false
-	client.resolved_capabilities.document_range_formatting = false
+	client.server_capabilities.document_formatting = false
+	client.server_capabilities.document_range_formatting = false
 	M.on_attach(client, bufnr)
 end
 
 function M.setup_servers()
-	local capabilities = require "cmp_nvim_lsp".update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	local capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities())
 	require "mason-lspconfig".setup_handlers {
 		function(server_name)
 			local settings = { on_attach = M.on_attach, capabilities = capabilities }

@@ -84,7 +84,7 @@ return require "packer".startup(function(use)
 	-- Lsp for Scala
 	use { "scalameta/nvim-metals", requires = { "nvim-lua/plenary.nvim" } }
 	-- Plugin for easier nvim dev
-	use "folke/lua-dev.nvim"
+	use "folke/neodev.nvim"
 
 	-- Utils
 	-- Enhances netrw
