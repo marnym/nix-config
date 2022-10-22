@@ -2,10 +2,6 @@ return require "packer".startup(function(use)
 	-- Plugin installer
 	use "wbthomason/packer.nvim"
 
-	-- startup time
-
-	use "dstein64/vim-startuptime"
-
 	-- Visual
 	use { "catppuccin/nvim", as = "catppuccin" }
 
@@ -58,25 +54,20 @@ return require "packer".startup(function(use)
 		"neovim/nvim-lspconfig",
 	}
 	-- Autocomplete
+	use "onsails/lspkind.nvim"
 	use {
 		"hrsh7th/nvim-cmp",
 		requires = {
 			{
-				"hrsh7th/cmp-path",
-				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-nvim-lua",
 				"L3MON4D3/LuaSnip",
 				"saadparwaiz1/cmp_luasnip",
 				"rafamadriz/friendly-snippets",
 			},
 		},
-	}
-	use { "ms-jpq/coq_nvim", branch = 'coq',
-		requires = {
-			{ "ms-jpq/coq.artifacts", branch = "artifacts" },
-			{ "ms-jpq/coq.thirdparty", branch = "3p" }
-		}
 	}
 	-- Shows function signatures
 	use "ray-x/lsp_signature.nvim"
