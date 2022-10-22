@@ -1,5 +1,6 @@
 require "neodev".setup()
 local nvim_lsp = require "lspconfig"
+local coq = require "coq"
 
 local M = {}
 
@@ -48,60 +49,66 @@ local function disable_formatting(client, bufnr)
 end
 
 function M.setup_servers()
-	local capabilities = require "cmp_nvim_lsp".default_capabilities(vim.lsp.protocol.make_client_capabilities())
 	require "mason-lspconfig".setup_handlers {
 		function(server_name)
-			local settings = { on_attach = M.on_attach, capabilities = capabilities }
-			nvim_lsp[server_name].setup(settings)
+			local settings = { on_attach = M.on_attach }
+			nvim_lsp[server_name].setup(coq.lsp_ensure_capabilities(settings))
 		end,
 		["ansiblels"] = function()
-			nvim_lsp.ansiblels.setup {
-				filetypes = { "yml", "yaml", "yml.ansible", "yaml.ansible" },
-				root_dir = nvim_lsp.util.root_pattern("ansible.cfg");
-				single_file_support = false,
-			}
+			nvim_lsp.ansiblels.setup(
+				coq.lsp_ensure_capabilities {
+					filetypes = { "yml", "yaml", "yml.ansible", "yaml.ansible" },
+					root_dir = nvim_lsp.util.root_pattern("ansible.cfg");
+					single_file_support = false,
+				}
+			)
 		end,
 		["denols"] = function()
-			nvim_lsp.denols.setup {
-				root_dir = nvim_lsp.util.root_pattern("deno.json", "import_map.json"),
-				init_options = {
-					enable = true,
-					unstable = true,
-				}
-			}
-		end,
-		["tsserver"] = function()
-			nvim_lsp.tsserver.setup {
-				on_attach = disable_formatting
-			}
-		end,
-		["sumneko_lua"] = function()
-			nvim_lsp.sumneko_lua.setup {
-				on_attach = M.on_attach,
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { 'vim' }
-						}
+			nvim_lsp.denols.setup(
+				coq.lsp_ensure_capabilities {
+					root_dir = nvim_lsp.util.root_pattern("deno.json", "import_map.json"),
+					init_options = {
+						enable = true,
+						unstable = true,
 					}
 				}
-			}
+			)
+		end,
+		["tsserver"] = function()
+			nvim_lsp.tsserver.setup(
+				coq.lsp_ensure_capabilities {
+					on_attach = disable_formatting
+				}
+			)
+		end,
+		["sumneko_lua"] = function()
+			nvim_lsp.sumneko_lua.setup(
+				coq.lsp_ensure_capabilities {
+					on_attach = M.on_attach,
+					settings = {
+						Lua = {
+							diagnostics = {
+								globals = { 'vim' }
+							}
+						}
+					}
+				})
 		end,
 		["volar"] = function()
-			nvim_lsp.volar.setup {
-				on_attach = disable_formatting
-			}
+			nvim_lsp.volar.setup(
+				coq.lsp_ensure_capabilities {
+					on_attach = disable_formatting
+				}
+			)
 		end,
 		["texlab"] = function()
-			nvim_lsp.texlab.setup {
-				on_attach = M.on_attach,
-				root_dir = nvim_lsp.util.root_pattern("*.tex")
-			}
+			nvim_lsp.texlab.setup(
+				coq.lsp_ensure_capabilities {
+					on_attach = M.on_attach,
+					root_dir = nvim_lsp.util.root_pattern("*.tex")
+				}
+			)
 		end
-	}
-	nvim_lsp.voikkols.setup {
-		on_attach = M.on_attach,
 	}
 end
 

@@ -72,6 +72,12 @@ return require "packer".startup(function(use)
 			},
 		},
 	}
+	use { "ms-jpq/coq_nvim", branch = 'coq',
+		requires = {
+			{ "ms-jpq/coq.artifacts", branch = "artifacts" },
+			{ "ms-jpq/coq.thirdparty", branch = "3p" }
+		}
+	}
 	-- Shows function signatures
 	use "ray-x/lsp_signature.nvim"
 	-- Lsp for eslint etc.
