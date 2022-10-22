@@ -3,6 +3,8 @@ local nvim_lsp = require "lspconfig"
 
 local M = {}
 
+vim.api.nvim_create_augroup("Format", { clear = false })
+
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 function M.on_attach(client, bufnr)
@@ -36,8 +38,13 @@ function M.on_attach(client, bufnr)
 	buf_set_keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
-	-- TODO: Change to lua autocmd
-	vim.cmd "autocmd BufWritePre <buffer> lua vim.lsp.buf.format({ async = true })"
+	vim.api.nvim_create_autocmd("BufWritePre", {
+		group = "Format",
+		buffer = 0,
+		callback = function()
+			vim.lsp.buf.format()
+		end
+	})
 end
 
 local function disable_formatting(client, bufnr)
