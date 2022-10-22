@@ -52,7 +52,7 @@ bindsym $mod+shift+s exec "flameshot gui"
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/xfce4-terminal
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
