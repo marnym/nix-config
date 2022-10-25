@@ -16,7 +16,7 @@ return require "packer".startup(function(use)
 	-- Status line
 	use {
 		"hoob3rt/lualine.nvim",
-		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+		requires = "kyazdani42/nvim-web-devicons",
 	}
 	-- Buffer line
 	use {
@@ -53,6 +53,7 @@ return require "packer".startup(function(use)
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	}
+	use "someone-stole-my-name/yaml-companion.nvim"
 	-- Autocomplete
 	use "onsails/lspkind.nvim"
 	use {

@@ -20,6 +20,7 @@ telescope.setup {
 }
 
 telescope.load_extension "projects"
+telescope.load_extension "yaml_schema"
 
 map("n", "<Leader>fp", "<cmd>lua require'telescope.builtin'.git_files{}<CR>", { silent = true })
 map("n", "<Leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { silent = true })

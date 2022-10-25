@@ -1,3 +1,11 @@
+local function yaml_schema()
+	local schema_name = require("yaml-companion").get_buf_schema(0).result[1].name
+	if schema_name ~= "none" then
+		return schema_name
+	end
+	return ""
+end
+
 require "lualine".setup {
 	options = {
 		icons_enabled = true,
@@ -18,7 +26,7 @@ require "lualine".setup {
 				sources = { "nvim_diagnostic" },
 				symbols = { error = " ", warn = " ", info = " ", hint = " " },
 			},
-			"encoding",
+			yaml_schema,
 			"filetype",
 		},
 		lualine_y = { "progress" },
