@@ -112,7 +112,6 @@ function M.setup_servers()
 			nvim_lsp.yamlls.setup(cfg)
 		end,
 	}
-	}
 end
 
 return M
