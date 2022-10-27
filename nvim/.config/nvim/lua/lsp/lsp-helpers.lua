@@ -3,9 +3,9 @@ local nvim_lsp = require "lspconfig"
 
 local M = {}
 
-vim.api.nvim_create_augroup("Format", { clear = false })
-
+local format_group = vim.api.nvim_create_augroup("Format", { clear = false })
 local opts = { noremap = true, silent = true }
+
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, opts)
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
@@ -33,11 +33,11 @@ function M.on_attach(client, bufnr)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 
 	vim.api.nvim_create_autocmd("BufWritePre", {
-		group = "Format",
-		buffer = 0,
 		callback = function()
 			vim.lsp.buf.format()
-		end
+		end,
+		group = format_group,
+		buffer = 0,
 	})
 end
 

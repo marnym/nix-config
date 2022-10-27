@@ -6,34 +6,42 @@ local function map(mode, lhs, rhs, opts)
 	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
--- Use alt + hjkl to resize windows
-map("n", "<M-j>", ":resize -2<CR>", { silent = true })
-map("n", "<M-k>", ":resize +2<CR>", { silent = true })
-map("n", "<M-h>", ":vertical resize -2<CR>", { silent = true })
-map("n", "<M-l>", ":vertical resize +2<CR>", { silent = true })
+local opts = { noremap = true, silent = true }
 
-map("i", "jk", "<Esc>", { silent = true })
-map("i", "kj", "<Esc>", { silent = true })
+local function vim_cmd(cmd)
+	return function()
+		return vim.cmd(cmd)
+	end
+end
+
+-- Use alt + hjkl to resize windows
+vim.keymap.set("n", "<M-j>", vim_cmd("resize -2"), opts)
+vim.keymap.set("n", "<M-k>", vim_cmd("resize +2"), opts)
+vim.keymap.set("n", "<M-h>", vim_cmd("vertical resize -2"), opts)
+vim.keymap.set("n", "<M-l>", vim_cmd("vertical resize +2"), opts)
+
+vim.keymap.set("i", "jk", "<Esc>", opts)
+vim.keymap.set("i", "kj", "<Esc>", opts)
 
 -- TAB in general mode will move to text buffer
-map("n", "<TAB>", ":bnext<CR>", { silent = true })
+vim.keymap.set("n", "<TAB>", vim_cmd("bnext"), opts)
 -- SHIFT-TAB will go back
-map("n", "<S-TAB>", ":bprevious<CR>", { silent = true })
+vim.keymap.set("n", "<S-TAB>", vim_cmd("bprevious"), opts)
 
 -- Better tabbing
-map("v", "<", "<gv", { silent = true })
-map("v", ">", ">gv", { silent = true })
+vim.keymap.set("v", "<", "<gv", opts)
+vim.keymap.set("v", ">", ">gv", opts)
 
 -- Better window navigation
-map("n", "<C-h>", "<C-w>h", { silent = true })
-map("n", "<C-j>", "<C-w>j", { silent = true })
-map("n", "<C-k>", "<C-w>k", { silent = true })
-map("n", "<C-l>", "<C-w>l", { silent = true })
+vim.keymap.set("n", "<C-h>", "<C-w>h", opts)
+vim.keymap.set("n", "<C-j>", "<C-w>j", opts)
+vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
+vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 
-map("n", "<C-s>", "a<C-X><C-S>", { silent = true })
+vim.keymap.set("n", "<C-s>", "a<C-X><C-S>", opts)
 
 -- Plugins
-map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
-map("n", "<leader>th", "<cmd>Gitsigns preview_hunk<CR>")
-map("n", "<leader>tn", "<cmd>Gitsigns next_hunk<CR>")
-map("n", "<leader>tp", "<cmd>Gitsigns prev_hunk<CR>")
+vim.keymap.set("n", "<leader>tb", vim_cmd("Gitsigns toggle_current_line_blame"))
+vim.keymap.set("n", "<leader>th", vim_cmd("Gitsigns preview_hunk"))
+vim.keymap.set("n", "<leader>tn", vim_cmd("Gitsigns next_hunk"))
+vim.keymap.set("n", "<leader>tp", vim_cmd("Gitsigns prev_hunk"))

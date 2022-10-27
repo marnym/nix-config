@@ -90,7 +90,10 @@ return require "packer".startup(function(use)
 	-- Highlights when moving with f and t
 	use "unblevable/quick-scope"
 	-- Sets brackets... automatically
-	use "windwp/nvim-autopairs"
+	use {
+		"windwp/nvim-autopairs",
+		setup = function() require "nvim-autopairs".setup() end
+	}
 	-- For searching things
 	use {
 		"nvim-telescope/telescope.nvim",
@@ -115,7 +118,7 @@ return require "packer".startup(function(use)
 	use {
 		"danymat/neogen",
 		config = function()
-			require "neogen".setup({})
+			require "neogen".setup {}
 		end
 	}
 

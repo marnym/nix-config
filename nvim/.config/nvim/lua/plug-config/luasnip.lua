@@ -1,15 +1,9 @@
 require "luasnip.loaders.from_vscode".lazy_load()
 
-local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
+local opts = { noremap = true, silent = true }
 
 -- Jump forward or backward
-map("i", "<expr> <Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", { silent = true })
-map("s", "<expr> <Tab>", "require('luasnip').jump(1)", { silent = true })
-map("i", "<expr> <S-Tab>", "require'luasnip'.jump(-1)", { silent = true })
-map("s", "<expr> <S-Tab>", "require'luasnip'.jump(-1)", { silent = true })
+vim.keymap.set("i", "<expr> <Tab>", "luasnip#expand_or_jumpable() ? '<Plug>luasnip-expand-or-jump' : '<Tab>'", opts)
+vim.keymap.set("s", "<expr> <Tab>", function() require "luasnip".jump(1) end, opts)
+vim.keymap.set("i", "<expr> <S-Tab>", function() require "luasnip".jump(-1) end, opts)
+vim.keymap.set("s", "<expr> <S-Tab>", function() require "luasnip".jump(-1) end, opts)

@@ -1,11 +1,3 @@
-local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 local telescope = require "telescope"
 
 telescope.setup {
@@ -22,12 +14,17 @@ telescope.setup {
 telescope.load_extension "projects"
 telescope.load_extension "yaml_schema"
 
-map("n", "<Leader>fp", "<cmd>lua require'telescope.builtin'.git_files{}<CR>", { silent = true })
-map("n", "<Leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", { silent = true })
-map("n", "<Leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", { silent = true })
-map("n", "<Leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", { silent = true })
-map("n", "<Leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", { silent = true })
-map("n", "<Leader>fs", "<cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<cr>", { silent = true })
-map("n", "<Leader>fr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", { silent = true })
-map("n", "<Leader>fq", "<cmd>lua require('telescope.builtin').diagnostics()<cr>", { silent = true })
-map("n", "<Leader>pp", "<cmd>lua require('telescope').extensions.projects.projects()<cr>", { silent = true })
+local telescope_builtin = require "telescope.builtin"
+
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set("n", "<Leader>fp", telescope_builtin.git_files, opts)
+vim.keymap.set("n", "<Leader>ff", telescope_builtin.find_files, opts)
+vim.keymap.set("n", "<Leader>fg", telescope_builtin.live_grep, opts)
+vim.keymap.set("n", "<Leader>fb", telescope_builtin.buffers, opts)
+vim.keymap.set("n", "<Leader>fh", telescope_builtin.help_tags, opts)
+vim.keymap.set("n", "<Leader>fs", telescope_builtin.lsp_dynamic_workspace_symbols, opts)
+vim.keymap.set("n", "<Leader>fr", telescope_builtin.lsp_references, opts)
+vim.keymap.set("n", "<Leader>fq", telescope_builtin.diagnostics, opts)
+vim.keymap.set("n", "<Leader>pp", telescope.extensions.projects.projects, opts)
+vim.keymap.set("n", "<leader>ys", telescope.extensions.yaml_schema.yaml_schema, opts)

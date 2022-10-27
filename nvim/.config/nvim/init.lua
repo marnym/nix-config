@@ -1,7 +1,6 @@
 require "plugins"
 require "opts"
 require "binds"
-require "plug-config.autopairs"
 require "plug-config.cmp"
 require "plug-config.indent-blankline"
 require "plug-config.lsp-signature"

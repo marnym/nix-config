@@ -8,9 +8,10 @@ local source_mapping = {
 	nvim_lsp = "[LSP]",
 	nvim_lua = "[LUA]",
 	path = "[PATH]",
+	buffer = "[BUFFER]"
 }
 
-cmp.setup({
+cmp.setup {
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body)
@@ -47,6 +48,7 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "path" },
+		{ name = "buffer" },
 	},
 	formatting = {
 		format = function(entry, vim_item)
@@ -55,4 +57,4 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-})
+}

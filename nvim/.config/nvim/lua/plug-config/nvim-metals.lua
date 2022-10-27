@@ -1,4 +1,3 @@
--- TODO: Check old config if there was something important there
 local metals_config = require "metals".bare_config {}
 
 metals_config.settings = {
@@ -6,7 +5,7 @@ metals_config.settings = {
 	excludedPackages = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
 }
 
-local nvim_metals_group = vim.api.nvim_create_augroup("nvim-metals", { clear = true })
+local nvim_metals_group = vim.api.nvim_create_augroup("NvimMetals", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "scala", "sbt" },
 	callback = function()
