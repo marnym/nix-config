@@ -23,9 +23,7 @@ return require "packer".startup(function(use)
 		'akinsho/bufferline.nvim',
 		tag = "v2.*",
 		requires = 'kyazdani42/nvim-web-devicons',
-		config = function()
-			require "bufferline".setup()
-		end
+		config = function() require "bufferline".setup {} end
 	}
 	-- Shows indentation
 	use {
@@ -43,9 +41,7 @@ return require "packer".startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-			require "gitsigns".setup()
-		end
+		config = function() require "gitsigns".setup {} end
 	}
 	-- Lsp
 	use {
@@ -92,7 +88,7 @@ return require "packer".startup(function(use)
 	-- Sets brackets... automatically
 	use {
 		"windwp/nvim-autopairs",
-		setup = function() require "nvim-autopairs".setup() end
+		config = function() require "nvim-autopairs".setup {} end
 	}
 	-- For searching things
 	use {
@@ -117,9 +113,7 @@ return require "packer".startup(function(use)
 	-- Better annotations
 	use {
 		"danymat/neogen",
-		config = function()
-			require "neogen".setup {}
-		end
+		config = function() require "neogen".setup {} end
 	}
 
 	-- Makes indentation consistent
