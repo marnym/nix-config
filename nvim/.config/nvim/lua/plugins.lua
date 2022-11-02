@@ -120,5 +120,7 @@ return require "packer".startup(function(use)
 	use "tpope/vim-sleuth"
 	-- Sets working dir to project root
 	use "ahmedkhalf/project.nvim"
+
+	use "gpanders/editorconfig.nvim"
 end
 )
