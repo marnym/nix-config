@@ -1,11 +1,3 @@
-local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-end
-
 local opts = { noremap = true, silent = true }
 
 local function vim_cmd(cmd)
@@ -39,6 +31,9 @@ vim.keymap.set("n", "<C-k>", "<C-w>k", opts)
 vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 
 vim.keymap.set("n", "<C-s>", "a<C-X><C-S>", opts)
+
+-- bufdelete
+vim.keymap.set("n", "<leader>bd", vim_cmd("bwipeout"), opts)
 
 -- Plugins
 vim.keymap.set("n", "<leader>tb", vim_cmd("Gitsigns toggle_current_line_blame"))
