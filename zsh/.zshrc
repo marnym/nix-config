@@ -33,6 +33,7 @@ alias zshconfig="nvim ~/.zshrc"
 alias stow="stow --no-folding -vSt ~"
 alias a="ansible"
 alias k="kubectl"
+alias p="project.sh"
 
 case `uname` in
   Darwin)
