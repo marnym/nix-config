@@ -79,6 +79,7 @@ function M.setup_servers()
 			nvim_lsp.tsserver.setup {
 				on_attach = disable_formatting,
 				capabilities = capabilities,
+				root_dir = nvim_lsp.util.root_pattern("package.json"),
 			}
 		end,
 		["sumneko_lua"] = function()
