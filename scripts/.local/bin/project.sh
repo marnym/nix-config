@@ -16,4 +16,9 @@ then
     tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-tmux switch-client -t "$selected_name"
+if [[ -z "$TMUX" ]]
+then
+    tmux attach-session -t="$selected_name"
+else
+    tmux switch-client -t "$selected_name"
+fi
