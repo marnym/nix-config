@@ -128,11 +128,6 @@ function M.setup_servers()
 			nvim_lsp.yamlls.setup(cfg)
 		end,
 	}
-
-	nvim_lsp.voikkols.setup {
-		on_attach = M.on_attach,
-		capabilities = capabilities,
-	}
 end
 
 return M
