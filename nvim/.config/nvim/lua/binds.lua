@@ -20,6 +20,9 @@ vim.keymap.set("n", "<TAB>", vim_cmd("bnext"), opts)
 -- SHIFT-TAB will go back
 vim.keymap.set("n", "<S-TAB>", vim_cmd("bprevious"), opts)
 
+-- SHIFT-TAB to de-tab
+vim.keymap.set("i", "<S-TAB>", "<C-d>", opts)
+
 -- Better tabbing
 vim.keymap.set("v", "<", "<gv", opts)
 vim.keymap.set("v", ">", ">gv", opts)
