@@ -82,6 +82,21 @@ function M.setup_servers()
 				root_dir = nvim_lsp.util.root_pattern("package.json"),
 			}
 		end,
+		["gopls"] = function()
+			nvim_lsp.gopls.setup {
+				on_attach = M.on_attach,
+				capabilities = capabilities,
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true,
+							shadow = true
+						},
+						staticcheck = true,
+					}
+				}
+			}
+		end,
 		["sumneko_lua"] = function()
 			nvim_lsp.sumneko_lua.setup {
 				on_attach = M.on_attach,
@@ -112,6 +127,11 @@ function M.setup_servers()
 			local cfg = require("yaml-companion").setup()
 			nvim_lsp.yamlls.setup(cfg)
 		end,
+	}
+
+	nvim_lsp.voikkols.setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
 	}
 end
 
