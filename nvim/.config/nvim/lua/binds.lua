@@ -33,7 +33,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", opts)
 vim.keymap.set("n", "<C-s>", "a<C-X><C-S>", opts)
 
 -- bufdelete
-vim.keymap.set("n", "<leader>bd", vim_cmd("bwipeout"), opts)
+vim.keymap.set("n", "<leader>bd", vim_cmd("bwipeout!"), opts)
 
 -- Plugins
 vim.keymap.set("n", "<leader>tb", vim_cmd("Gitsigns toggle_current_line_blame"))
