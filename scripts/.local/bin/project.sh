@@ -1,6 +1,11 @@
 #!/bin/bash
 
-selected=$(fzf < "$HOME"/.local/share/nvim/project_nvim/project_history)
+selected=$(find ~/dev -mindepth 1 -maxdepth 1 -type d | fzf)
+if [[ -z $selected ]]
+then
+    exit 0
+fi
+
 selected_name=$(basename "$selected")
 
 tmux_running=$(pgrep tmux)
