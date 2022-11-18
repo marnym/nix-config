@@ -1,12 +1,12 @@
 #!/bin/bash
 
-selected=$(find ~/dev -mindepth 1 -maxdepth 1 -type d | fzf)
+selected=$({ find ~/dev/masnen/ ~/dev/nymanm8/ -mindepth 1 -maxdepth 1 -type d; cat "$HOME/.local/share/nvim/project_nvim/project_history"; } | fzf)
 if [[ -z $selected ]]
 then
     exit 0
 fi
 
-selected_name=$(basename "$selected")
+selected_name=$(basename "$selected" | tr . _)
 
 tmux_running=$(pgrep tmux)
 
@@ -25,5 +25,5 @@ if [[ -z "$TMUX" ]]
 then
     tmux attach-session -t="$selected_name"
 else
-    tmux switch-client -t "$selected_name"
+    tmux switch-client -t="$selected_name"
 fi
