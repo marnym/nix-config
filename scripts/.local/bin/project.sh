@@ -1,6 +1,6 @@
 #!/bin/bash
 
-selected=$({ find ~/dev/masnen/ ~/dev/nymanm8/ -mindepth 1 -maxdepth 1 -type d; cat "$HOME/.local/share/nvim/project_nvim/project_history"; } | fzf)
+selected=$({ find ~/dev/masnen ~/dev/nymanm8 -mindepth 1 -maxdepth 1 -type d; cat "$HOME/.local/share/nvim/project_nvim/project_history"; } | fzf)
 if [[ -z $selected ]]
 then
     exit 0
