@@ -106,6 +106,9 @@ function M.setup_servers()
 						diagnostics = {
 							globals = { 'vim' }
 						}
+					},
+					workspace = {
+						checkThirdParty = false,
 					}
 				}
 			}
