@@ -4,8 +4,6 @@ CACHE_PATH = vim.fn.stdpath "cache"
 vim.api.nvim_set_keymap("", " ", "", { noremap = true })
 vim.g.mapleader = " "
 
--- vim.opt.shortmess:remove("F"):append("c")
-
 vim.opt.hidden = true -- Required to keep multiple buffers open multiple buffers
 vim.opt.errorbells = false -- Doesn't make a fuss about errors
 vim.opt.wrap = false -- Display long lines as just one line
@@ -22,7 +20,6 @@ vim.opt.conceallevel = 0 -- So that I can see `` in markdown files
 vim.opt.number = true -- Line numbers
 vim.opt.relativenumber = true -- Relative linenumbers
 vim.opt.cursorline = true -- Enable highlighting of the current line
-vim.opt.background = "dark" -- tell vim what the background color looks like
 vim.opt.showtabline = 0 -- Always show tabs
 vim.opt.showmode = false -- We don't need to see things like -- INSERT -- anymore
 vim.opt.backup = false -- This is recommended by coc
@@ -50,5 +47,5 @@ vim.cmd "colorscheme catppuccin"
 
 -- To appropriately highlight codefences returned from denols, you will need to augment vim.g.markdown_fenced languages
 vim.g.markdown_fenced_languages = {
-	"ts=typescript"
+    "ts=typescript"
 }

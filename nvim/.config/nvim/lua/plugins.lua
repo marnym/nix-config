@@ -18,13 +18,6 @@ return require "packer".startup(function(use)
 		"hoob3rt/lualine.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 	}
-	-- Buffer line
-	use {
-		'akinsho/bufferline.nvim',
-		tag = "v2.*",
-		requires = 'kyazdani42/nvim-web-devicons',
-		config = function() require "bufferline".setup {} end
-	}
 	-- Shows indentation
 	use {
 		"lukas-reineke/indent-blankline.nvim",

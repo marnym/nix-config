@@ -31,7 +31,7 @@ require "nvim-treesitter.configs".setup {
 		enable = true, -- false will disable the whole extension
 	},
 	rainbow = {
-		enable = true,
+		enable = false,
 		extended = true,
 		max_file_lines = 1000,
 	},

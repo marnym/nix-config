@@ -15,11 +15,6 @@ vim.keymap.set("n", "<M-l>", vim_cmd("vertical resize +2"), opts)
 vim.keymap.set("i", "jk", "<Esc>", opts)
 vim.keymap.set("i", "kj", "<Esc>", opts)
 
--- TAB in general mode will move to text buffer
-vim.keymap.set("n", "<TAB>", vim_cmd("bnext"), opts)
--- SHIFT-TAB will go back
-vim.keymap.set("n", "<S-TAB>", vim_cmd("bprevious"), opts)
-
 -- SHIFT-TAB to de-tab
 vim.keymap.set("i", "<S-TAB>", "<C-d>", opts)
 
