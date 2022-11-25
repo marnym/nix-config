@@ -45,7 +45,7 @@ bindsym XF86AudioNext exec --no-startup-id dbus-send --print-reply --dest=org.mp
 bindsym XF86AudioPrev exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
 bindsym $mod+n exec /usr/bin/thunar
-bindsym $mod+g exec /usr/bin/firefox
+bindsym $mod+g exec /usr/bin/brave
 bindsym $mod+shift+s exec "flameshot gui"
 
 # Use Mouse+$mod to drag floating windows to their wanted position
