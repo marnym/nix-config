@@ -44,8 +44,8 @@ function M.on_attach(client, bufnr)
 end
 
 local function disable_formatting(client, bufnr)
-	client.server_capabilities.document_formatting = false
-	client.server_capabilities.document_range_formatting = false
+	client.server_capabilities.documentFormattingProvider = false
+	client.server_capabilities.documentRangeFormattingProvider = false
 	M.on_attach(client, bufnr)
 end
 
@@ -126,6 +126,28 @@ function M.setup_servers()
 				on_attach = M.on_attach,
 				capabilities = capabilities,
 				root_dir = nvim_lsp.util.root_pattern("*.tex")
+			}
+		end,
+		["jsonls"] = function()
+			local json_capabilities = require("cmp_nvim_lsp").default_capabilities()
+			json_capabilities.textDocument.completion.completionItem.snippetSupport = true
+			nvim_lsp.jsonls.setup {
+				on_attach = M.on_attach,
+				capabilities = json_capabilities,
+				settings = {
+					json = {
+						schemas = {
+							{
+								fileMatch = { 'package.json' },
+								url = 'https://json.schemastore.org/package.json',
+							},
+							{
+								fileMatch = { 'tsconfig.json' },
+								url = 'https://json.schemastore.org/tsconfig.json',
+							},
+						},
+					},
+				}
 			}
 		end,
 		["yamlls"] = function()
