@@ -51,7 +51,6 @@ case `uname` in
     bindkey "^[[1;5C" forward-word
     bindkey "^[[1;5D" backward-word
     source /usr/share/nvm/init-nvm.sh
-    export GDK_SCALE=1.25
   ;;
 esac
 
