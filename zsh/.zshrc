@@ -52,6 +52,7 @@ case `uname` in
     bindkey "^[[1;5D" backward-word
     source /usr/share/nvm/init-nvm.sh
     export QT_QPA_PLATFORM=wayland
+    export QT_STYLE_OVERRIDE=kvantum
     export CLUTTER_BACKEND=wayland
     export GDK_SCALE=1
   ;;
