@@ -60,4 +60,5 @@ cmp.setup {
 			return vim_item
 		end,
 	},
+	preselect = cmp.PreselectMode.None
 }
