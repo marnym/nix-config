@@ -10,7 +10,6 @@
     "modules-center": ["clock"],
     "modules-right": ["idle_inhibitor", "pulseaudio", "cpu", "memory", "temperature", "tray"],
     "wlr/workspaces": {
-        "on-click": "activate",
         "disable-scroll": true,
         "all-outputs": true,
         "format": "{name}: {icon}",
