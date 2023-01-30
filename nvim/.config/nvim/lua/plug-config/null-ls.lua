@@ -6,6 +6,7 @@ local function eslint_condition(utils)
 end
 
 null_ls.setup {
+	debug = true,
 	sources = {
 		null_ls.builtins.diagnostics.eslint_d.with({
 			condition = eslint_condition,
@@ -27,4 +28,5 @@ null_ls.setup {
 		},
 	},
 	on_attach = lsp_helpers.on_attach,
+	root_dir = function() return nil end,
 }
