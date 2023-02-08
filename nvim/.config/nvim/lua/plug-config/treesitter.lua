@@ -32,7 +32,7 @@ require "nvim-treesitter.configs".setup {
 	},
 	rainbow = {
 		enable = false,
-		extended = true,
+		extended = false,
 		max_file_lines = 1000,
 	},
 }
