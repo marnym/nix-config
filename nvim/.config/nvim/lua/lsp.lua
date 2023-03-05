@@ -4,8 +4,8 @@ local format_group = vim.api.nvim_create_augroup("Format", { clear = false })
 
 M.keys = {
 	{ "<leader>e", vim.diagnostic.open_float, desc = "Open diagnostic" },
-	{ "gp",        vim.diagnostic.goto_prev,  desc = "Go to previous diagnostic" },
-	{ "gn",        vim.diagnostic.goto_next,  desc = "Go to next diagnostic" },
+	{ "gp", vim.diagnostic.goto_prev, desc = "Go to previous diagnostic" },
+	{ "gn", vim.diagnostic.goto_next, desc = "Go to next diagnostic" },
 	{ "<leader>q", vim.diagnostic.setloclist, desc = "Open diagnostics in loclist" },
 }
 
@@ -56,7 +56,7 @@ function M.setup_servers()
 			local settings = { on_attach = M.on_attach, capabilities = capabilities }
 			nvim_lsp[server_name].setup(settings)
 		end,
-			["ansiblels"] = function()
+		["ansiblels"] = function()
 			nvim_lsp.ansiblels.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
@@ -65,7 +65,7 @@ function M.setup_servers()
 				single_file_support = false,
 			}
 		end,
-			["denols"] = function()
+		["denols"] = function()
 			nvim_lsp.denols.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
@@ -76,14 +76,14 @@ function M.setup_servers()
 				}
 			}
 		end,
-			["tsserver"] = function()
+		["tsserver"] = function()
 			nvim_lsp.tsserver.setup {
 				on_attach = disable_formatting,
 				capabilities = capabilities,
 				root_dir = nvim_lsp.util.root_pattern("package.json"),
 			}
 		end,
-			["gopls"] = function()
+		["gopls"] = function()
 			nvim_lsp.gopls.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
@@ -98,7 +98,7 @@ function M.setup_servers()
 				}
 			}
 		end,
-			["lua_ls"] = function()
+		["lua_ls"] = function()
 			nvim_lsp.lua_ls.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
@@ -114,20 +114,20 @@ function M.setup_servers()
 				}
 			}
 		end,
-			["volar"] = function()
+		["volar"] = function()
 			nvim_lsp.volar.setup {
 				on_attach = disable_formatting,
 				capabilities = capabilities,
 			}
 		end,
-			["texlab"] = function()
+		["texlab"] = function()
 			nvim_lsp.texlab.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
 				root_dir = nvim_lsp.util.root_pattern("*.tex")
 			}
 		end,
-			["jsonls"] = function()
+		["jsonls"] = function()
 			local json_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			json_capabilities.textDocument.completion.completionItem.snippetSupport = true
 			nvim_lsp.jsonls.setup {
@@ -149,7 +149,7 @@ function M.setup_servers()
 				}
 			}
 		end,
-			["yamlls"] = function()
+		["yamlls"] = function()
 			local cfg = require("yaml-companion").setup()
 			nvim_lsp.yamlls.setup(cfg)
 		end,

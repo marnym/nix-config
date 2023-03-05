@@ -13,7 +13,6 @@ function M.setup()
 
 	require "mason-lspconfig".setup {
 		ensure_installed = {
-			--lsp
 			"ansiblels",
 			"bashls",
 			"clangd",
