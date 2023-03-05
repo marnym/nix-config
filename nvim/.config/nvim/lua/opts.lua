@@ -4,7 +4,7 @@ CACHE_PATH = vim.fn.stdpath "cache"
 vim.api.nvim_set_keymap("", " ", "", { noremap = true })
 vim.g.mapleader = " "
 
-vim.opt.hidden = true                                                                    -- Required to keep multiple buffers open multiple buffers
+vim.opt.hidden = true                                                                    -- Required to keep multiple buffers open
 vim.opt.errorbells = false                                                               -- Doesn't make a fuss about errors
 vim.opt.wrap = false                                                                     -- Display long lines as just one line
 vim.opt.pumheight = 10                                                                   -- Makes popup menu smaller
@@ -30,6 +30,7 @@ vim.opt.timeoutlen = 500                                                        
 vim.cmd "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o" -- Stop newline continution of comments
 vim.cmd "autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us"
 
+vim.opt.autochdir = false         -- Do not change directory when changing file
 vim.opt.clipboard = "unnamedplus" -- Copy paste between vim and everything else
 vim.opt.autochdir = true          -- Your working directory will always be the same as your working directory
 vim.opt.undodir = CACHE_PATH .. "/undo"
