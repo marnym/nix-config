@@ -27,8 +27,13 @@ require "lazy".setup {
 		lazy = false,
 		name = "catppuccin",
 		config = function()
-			vim.g.catppuccin_flavour = "macchiato"
-			require "catppuccin".setup()
+			require "catppuccin".setup {
+				transparent_background = true,
+				term_colors = true,
+				styles = {
+					comments = { "italic" },
+				}
+			}
 			vim.cmd "colorscheme catppuccin"
 		end
 	},

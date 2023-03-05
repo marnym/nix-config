@@ -32,7 +32,6 @@ function M.setup()
 			},
 		},
 		on_attach = lsp_helpers.on_attach,
-		root_dir = function() return nil end,
 	}
 end
 
