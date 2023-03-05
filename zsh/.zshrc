@@ -58,10 +58,7 @@ case `uname` in
   ;;
 esac
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[ -f $HOME/.p10k.zsh ] && source ~/.p10k.zsh
 [ -f $HOME/.fzf.zsh ] && source ~/.fzf.zsh
-
 
 export PATH="$PATH:$HOME/.local/share/coursier/bin"
 export PATH="$HOME/.local/bin:$PATH"
@@ -76,6 +73,7 @@ export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-source $HOME/.dotfiles/zsh/.powerlevel10k/powerlevel10k.zsh-theme
 source $HOME/.dotfiles/zsh/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.dotfiles/zsh/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+eval "$(starship init zsh)"
