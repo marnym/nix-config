@@ -46,6 +46,7 @@ case `uname` in
     export NVM_DIR=~/.nvm
     source $(brew --prefix nvm)/nvm.sh
     alias iso='echo "new Date().toISOString()" | deno | tail -1 | tr -d \" | sed -e $"s/\x1b\[[0-9;]*m//g" | pbcopy'
+    export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
   ;;
   Linux)
     bindkey "^[[1;5C" forward-word
