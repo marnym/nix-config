@@ -6,7 +6,9 @@ local function yaml_schema()
 	return ""
 end
 
-require "lualine".setup {
+local M = {}
+
+M.opts = {
 	options = {
 		icons_enabled = true,
 		theme = "catppuccin",
@@ -41,3 +43,5 @@ require "lualine".setup {
 		lualine_z = {},
 	},
 }
+
+return M
