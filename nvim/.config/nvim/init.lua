@@ -1,6 +1,27 @@
 require "opts"
-require "binds"
+
+-- load lazy
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+
 require "plugins"
 
 -- Find out which plugin sets this to true and fix it there
 vim.opt.autochdir = false -- Do not change directory when changing file
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "VeryLazy",
+    callback = function()
+        require "binds"
+    end
+})

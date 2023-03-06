@@ -1,7 +1,37 @@
-local M = {}
-
-function M.setup()
-	require "mason".setup {
+local M = {
+	"williamboman/mason.nvim",
+	dependencies = { {
+		"williamboman/mason-lspconfig.nvim",
+		opts = {
+			ensure_installed = {
+				"ansiblels",
+				"bashls",
+				"clangd",
+				"cmake",
+				"cssls",
+				"denols",
+				"dockerls",
+				"gopls",
+				"html",
+				"jsonls",
+				"tsserver",
+				"ltex",
+				"lua_ls",
+				"marksman",
+				"pyright",
+				"rust_analyzer",
+				"sqls",
+				"svelte",
+				"taplo",
+				"texlab",
+				"tailwindcss",
+				"terraformls",
+				"volar",
+			}
+		},
+		lazy = true
+	} },
+	opts = {
 		ui = {
 			icons = {
 				server_installed = "✓",
@@ -9,35 +39,8 @@ function M.setup()
 				server_uninstalled = "✗",
 			},
 		},
-	}
-
-	require "mason-lspconfig".setup {
-		ensure_installed = {
-			"ansiblels",
-			"bashls",
-			"clangd",
-			"cmake",
-			"cssls",
-			"denols",
-			"dockerls",
-			"gopls",
-			"html",
-			"jsonls",
-			"tsserver",
-			"ltex",
-			"lua_ls",
-			"marksman",
-			"pyright",
-			"rust_analyzer",
-			"sqls",
-			"svelte",
-			"taplo",
-			"texlab",
-			"tailwindcss",
-			"terraformls",
-			"volar",
-		}
-	}
-end
+	},
+	lazy = true,
+}
 
 return M

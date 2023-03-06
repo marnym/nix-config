@@ -1,6 +1,10 @@
-local M = {}
+local M = {
+	"scalameta/nvim-metals",
+	dependencies = { "nvim-lua/plenary.nvim" },
+	ft = { "scala", "sbt" },
+}
 
-function M.setup()
+function M.config()
 	local metals_config = require "metals".bare_config {}
 
 	metals_config.settings = {

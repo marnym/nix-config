@@ -1,6 +1,13 @@
-local M = {}
+local M = {
+	"nvim-treesitter/nvim-treesitter",
+	build = ":TSUpdate",
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter-context",
+		"p00f/nvim-ts-rainbow"
+	},
+}
 
-function M.setup()
+function M.config()
 	require "nvim-treesitter.configs".setup {
 		ensure_installed = {
 			"bash",

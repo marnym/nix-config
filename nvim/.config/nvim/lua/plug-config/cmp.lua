@@ -1,8 +1,22 @@
-local M = {}
+local M = {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter *.*",
+    dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-nvim-lua",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+        "rafamadriz/friendly-snippets",
+        "onsails/lspkind.nvim",
+    },
+}
 
-function M.setup()
+function M.config()
     vim.opt.completeopt = "menu,menuone,noselect"
 
+    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
     local cmp = require "cmp"
     local luasnip = require "luasnip"
     local lspkind = require "lspkind"
@@ -12,7 +26,7 @@ function M.setup()
 
     local source_mapping = {
         nvim_lsp = "[LSP]",
-        nvim_lua = "[LUA]",
+        nvim_lua = "[nvim]",
         path = "[PATH]",
         buffer = "[BUFFER]"
     }
@@ -62,8 +76,18 @@ function M.setup()
                 return vim_item
             end,
         },
-        preselect = cmp.PreselectMode.None
+        preselect = cmp.PreselectMode.None,
+        window = {
+            completion = {
+                border = "rounded",
+            },
+            documentation = {
+                border = "rounded",
+            },
+        }
     }
+
+    cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 return M

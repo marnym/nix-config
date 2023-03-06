@@ -2,9 +2,15 @@ local function eslint_condition(utils)
 	return utils.root_has_file { ".eslintrc", ".eslintrc.json", ".eslintrc.js" }
 end
 
-local M = {}
+local M = {
+	"jose-elias-alvarez/null-ls.nvim",
+	dependencies = {
+		{ "nvim-lua/plenary.nvim" },
+	},
+	event = "InsertEnter *.*",
+}
 
-function M.setup()
+function M.config()
 	local null_ls = require "null-ls"
 	local lsp_helpers = require "lsp"
 

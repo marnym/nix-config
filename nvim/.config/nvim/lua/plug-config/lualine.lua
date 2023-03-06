@@ -10,42 +10,44 @@ local function yaml_schema()
 	return ""
 end
 
-local M = {}
-
-M.opts = {
-	options = {
-		icons_enabled = true,
-		theme = "catppuccin",
-		section_separators = { "", "" },
-		component_separators = { "", "" },
-		disabled_filetypes = {},
-	},
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff" },
-		lualine_c = {
-			{ "filename", path = 1 }
+local M = {
+	"hoob3rt/lualine.nvim",
+	dependencies = "nvim-tree/nvim-web-devicons",
+	opts = {
+		options = {
+			icons_enabled = true,
+			theme = "catppuccin",
+			section_separators = { "", "" },
+			component_separators = { "", "" },
+			disabled_filetypes = {},
 		},
-		lualine_x = {
-			{
-				"diagnostics",
-				sources = { "nvim_diagnostic" },
-				symbols = { error = " ", warn = " ", info = " ", hint = " " },
+		sections = {
+			lualine_a = { "mode" },
+			lualine_b = { "branch", "diff" },
+			lualine_c = {
+				{ "filename", path = 1 }
 			},
-			yaml_schema,
-			"filetype",
+			lualine_x = {
+				{
+					"diagnostics",
+					sources = { "nvim_diagnostic" },
+					symbols = { error = " ", warn = " ", info = " ", hint = " " },
+				},
+				yaml_schema,
+				"filetype",
+			},
+			lualine_y = { "progress" },
+			lualine_z = { "location" },
 		},
-		lualine_y = { "progress" },
-		lualine_z = { "location" },
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
-	},
+		inactive_sections = {
+			lualine_a = {},
+			lualine_b = {},
+			lualine_c = { "filename" },
+			lualine_x = { "location" },
+			lualine_y = {},
+			lualine_z = {},
+		},
+	}
 }
 
 return M
