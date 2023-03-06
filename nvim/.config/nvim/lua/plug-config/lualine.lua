@@ -1,4 +1,8 @@
 local function yaml_schema()
+	if vim.bo.filetype ~= "yaml" then
+		return ""
+	end
+
 	local schema_name = require("yaml-companion").get_buf_schema(0).result[1].name
 	if schema_name ~= "none" then
 		return schema_name

@@ -20,12 +20,15 @@ local treesitter = require "plug-config.treesitter"
 local lualine = require "plug-config.lualine"
 local telescope = require "plug-config.telescope"
 
+local insert_enter_event = "InsertEnter *.*"
+
 require "lazy".setup {
 	-- Visual
 	{
 		"catppuccin/nvim",
 		lazy = false,
 		name = "catppuccin",
+		priority = 1000,
 		config = function()
 			require "catppuccin".setup {
 				transparent_background = true,
@@ -76,12 +79,13 @@ require "lazy".setup {
 		},
 		config = function()
 			require "telescope".load_extension "yaml_schema"
-		end
+		end,
+		ft = "yaml",
 	},
 	-- Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = insert_enter_event,
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -102,7 +106,7 @@ require "lazy".setup {
 			"williamboman/mason-lspconfig.nvim",
 			"folke/neodev.nvim",
 		},
-		event = "InsertEnter",
+		event = insert_enter_event,
 		config = function()
 			mason.setup()
 			lsp.setup_servers()
@@ -120,6 +124,7 @@ require "lazy".setup {
 		"scalameta/nvim-metals",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = metals.setup,
+		ft = { "scala", "sbt" },
 	},
 	{
 		"ray-x/lsp_signature.nvim",
@@ -132,7 +137,8 @@ require "lazy".setup {
 			handler_opts = {
 				border = "single",
 			},
-		}
+		},
+		event = insert_enter_event,
 	},
 	-- Utils
 	"folke/which-key.nvim",
@@ -153,7 +159,8 @@ require "lazy".setup {
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			require "telescope".load_extension "file_browser"
-		end
+		end,
+		lazy = true,
 	},
 	{
 		"nvim-neo-tree/neo-tree.nvim",
