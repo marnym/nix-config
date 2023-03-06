@@ -50,7 +50,7 @@ require "lazy".setup {
 	-- Status line
 	{
 		"hoob3rt/lualine.nvim",
-		dependencies = "kyazdani42/nvim-web-devicons",
+		dependencies = "nvim-tree/nvim-web-devicons",
 		opts = lualine.opts,
 	},
 	{
@@ -154,6 +154,19 @@ require "lazy".setup {
 		config = function()
 			require "telescope".load_extension "file_browser"
 		end
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v2.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+		},
+		keys = {
+			{ "<Leader>n", ":Neotree reveal<CR>" },
+
+		}
 	},
 	"b3nj5m1n/kommentary",
 	"lervag/vimtex",
