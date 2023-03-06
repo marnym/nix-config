@@ -69,7 +69,7 @@ require "lazy".setup {
         "unblevable/quick-scope",
         keys = { "f", "F", "t", "T" },
     },
-    { "windwp/nvim-autopairs", lazy = true },
+    { "windwp/nvim-autopairs", lazy = true, config = true, },
     telescope,
     {
         "nvim-telescope/telescope-file-browser.nvim",
