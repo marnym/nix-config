@@ -75,7 +75,7 @@ require "lazy".setup {
 			"nvim-telescope/telescope.nvim",
 		},
 		config = function()
-			require "telescope".load_extension("yaml_schema")
+			require "telescope".load_extension "yaml_schema"
 		end
 	},
 	-- Autocompletion
@@ -145,8 +145,15 @@ require "lazy".setup {
 			"nvim-lua/plenary.nvim",
 			"nvim-lua/popup.nvim",
 		},
-		config = telescope.setup,
+		opts = telescope.opts,
 		keys = telescope.keys,
+	},
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		config = function()
+			require "telescope".load_extension "file_browser"
+		end
 	},
 	"b3nj5m1n/kommentary",
 	"lervag/vimtex",
