@@ -28,7 +28,7 @@ vim.opt.writebackup = false                                                     
 vim.opt.updatetime = 300                                                                 -- Faster completion
 vim.opt.timeoutlen = 500                                                                 -- By default timeoutlen is 1000 ms
 vim.cmd "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o" -- Stop newline continution of comments
-vim.cmd "autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us"
+-- vim.cmd "autocmd BufRead,BufNewFile *.tex setlocal spell spelllang=en_us"
 
 vim.opt.autochdir = false         -- Do not change directory when changing file
 vim.opt.clipboard = "unnamedplus" -- Copy paste between vim and everything else
@@ -38,9 +38,10 @@ vim.opt.undofile = true
 vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.expandtab = true -- use spaces instead of tabs
-vim.opt.shiftwidth = 0
 vim.opt.tabstop = 4
+vim.opt.shiftwidth = 0
 vim.opt.termguicolors = true
+vim.opt.updatetime = 50
 
 
 -- To appropriately highlight codefences returned from denols, you will need to augment vim.g.markdown_fenced languages

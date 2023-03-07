@@ -6,7 +6,7 @@ SAVEHIST=10000
 HISTFILE="$HOME/.cache/zsh/history"
 setopt SHARE_HISTORY
 
-autoload -U compinit
+autoload -Uz compinit
 zstyle ":completion:*" menu select
 zmodload zsh/complist
 compinit
@@ -66,6 +66,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.deno/bin:$PATH"
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH="$HOME/apps:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 export GOPATH=$HOME/go
 export XDG_CONFIG_HOME=$HOME/.config
@@ -76,5 +77,8 @@ export LC_ALL=en_US.UTF-8
 
 source $HOME/.dotfiles/zsh/.zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.dotfiles/zsh/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+autoload bashcompinit && bashcompinit
+complete -C '/usr/local/bin/aws_completer' aws
 
 eval "$(starship init zsh)"
