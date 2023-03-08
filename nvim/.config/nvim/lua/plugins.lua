@@ -95,6 +95,11 @@ require "lazy".setup {
     "b3nj5m1n/kommentary",
     "lervag/vimtex",
     {
+        "iamcco/markdown-preview.nvim",
+        build = "cd app && npm install",
+        ft = "markdown"
+    },
+    {
         "danymat/neogen",
         config = true,
     },
