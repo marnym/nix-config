@@ -1,174 +1,124 @@
-@import "macchiato.css";
+@import "mocha.css";
 
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-family: JetBrainsMono Nerd Font;
+    font-size: 18px;
+    min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: @text;
 }
 
-window#waybar.hidden {
-    opacity: 0.2;
+/* All independent modules go here */
+#workspaces,
+#window,
+#custom-spotify,
+#idle_inhibitor,
+#tray
+{
+    background-color: @surface0;
+    margin: 7px 3px 0 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 1rem;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
-window#waybar.termite {
-    background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
+/* Everything that belongs to a group goes here */
+#clock,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio
+{
+    background-color: @surface0;
+    margin-top: 7px;
+    padding: 10px 7px;
 }
 
-button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+/* First module of group goes here */
+#pulseaudio,
+#cpu
+{
+    margin-left: 7px;
+    padding-left: 10px;
+    border-radius: 1rem 0 0 1rem;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+/* Last module of group goes here */
+#clock,
+#temperature
+{
+    margin-right: 3px;
+    padding-right: 10px;
+    border-radius: 0rem 1rem 1rem 0;
+}
+
+/* Independent overrides (preferrably in order) */
+#workspaces {
+    min-width: 20px;
+    min-height: 20px;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    color: @lavender;
-}
-
-#workspaces button:hover {
-    background: @sapphire;
+    color: @green;
+    border-radius: 1rem;
+    padding-left: 6px;
+    margin: 5px 0;
+    box-shadow: inset 0 -3px transparent;
+    transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
+    background-color: transparent;
 }
 
 #workspaces button.active {
-    color: @sky;
+    color: @flamingo;
+    border-radius: 1rem;
 }
 
-#workspaces button.urgent {
-    background-color: @red;
+#workspaces button:hover {
+    color: @rosewater;
+    border-radius: 1rem;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
-    padding: 0 10px;
-    background-color: @surface0;
+#idle_inhibitor {
+    min-width: 30px;
+    padding-right: 4px;
+    padding-left: 0;
 }
 
-#window,
-#workspaces {
-    margin: 0 4px;
-    background-color: @surface0;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
-}
-
-#clock {
-    color: @text;
-}
-
-#cpu {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background-color: #9b59b6;
-}
-
-#disk {
-    background-color: #964B00;
+#idle_inhibitor.activated {
+    background-color: @green;
 }
 
 #pulseaudio {
-    color: @pink;
+    color: @green;
 }
 
 #pulseaudio.muted {
     color: @red;
 }
 
-#wireplumber {
-    background-color: #fff0f5;
-    color: #000000;
+#clock {
+    color: @lavender;
 }
 
-#wireplumber.muted {
-    background-color: #f53c3c;
+#cpu {
+    color: @flamingo;
 }
 
-#custom-media {
-    color: #2a5c45;
-    min-width: 100px;
+#memory {
+    color: @mauve;
 }
 
-#custom-media.custom-spotify {
-    color: @green;
+#temperature {
+    color: @blue;
 }
 
-#custom-media.custom-vlc {
-    background-color: #ffa000;
+tooltip {
+    background: @base;
+    border: 1px solid @pink;
 }
 
-#temperature.critical {
-    background-color: @red;
-}
-
-#tray {
-    background-color: #2980b9;
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
-}
-
-#idle_inhibitor {
-    background-color: @overlay0;
-}
-
-#idle_inhibitor.activated {
-    background-color: @lavender;
-    color: @green;
+tooltip label {
+    color: @text;
 }
