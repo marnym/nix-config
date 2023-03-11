@@ -1,4 +1,5 @@
 local wezterm = require "wezterm"
+local act = wezterm.action
 
 return {
     font = wezterm.font 'JetBrainsMono Nerd Font',
