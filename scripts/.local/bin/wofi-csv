@@ -1,0 +1,22 @@
+#!/bin/bash
+
+WORKINGDIR="$HOME/.config/wofi/"
+
+[ ! -f "$WORKINGDIR/$@.csv" ] && exit 0
+
+
+MAP="$WORKINGDIR/$@.csv"
+LINES="$(wc -l < $MAP)"
+
+rm $HOME/.cache/wofi-dmenu
+
+cat "$MAP" \
+    | cut -d ',' -f 1 \
+    | wofi -G -i -d -p "$@ " \
+    | head -n 1 \
+    | xargs -i --no-run-if-empty grep "{}" "$MAP" \
+    | cut -d ',' -f 2 \
+    | head -n 1 \
+    | xargs -i --no-run-if-empty /bin/bash -c "{}"
+
+exit 0
