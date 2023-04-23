@@ -1,19 +1,21 @@
 [user]
-	name = Markus Nyman
-	email = markus@nyman.dev
-	signingKey = ""
+    name = Markus Nyman
+    email = markus@nyman.dev
+    signingKey = ""
 [core]
-	autocrlf = input
-	editor = nvim
+    autocrlf = input
+    editor = nvim
 [gpg]
-	program = gpg
+    program = gpg
 [commit]
-	gpgSign = false
+    gpgSign = false
 [tag]
-	forceSignAnnotated = false
+    forceSignAnnotated = false
 [init]
-	defaultBranch = master
+    defaultBranch = master
 [push]
     autoSetupRemote = true
 [includeIf "gitdir:/Users"]
-  path = ~/.gitconfig-macos
+    path = ~/.gitconfig-macos
+[core]
+    excludesfile = ~/.gitignore_global
