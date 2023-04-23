@@ -95,6 +95,7 @@ require "lazy".setup {
 
         }
     },
+    "tpope/vim-sleuth",
     "b3nj5m1n/kommentary",
     "lervag/vimtex",
     {

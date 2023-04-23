@@ -1,4 +1,4 @@
 Lock,swaylock --color 000000
 Suspend,systemctl suspend
-Restart,systemctl reboot
+Reboot,systemctl reboot
 Shutdown,systemctl shutdown
