@@ -20,7 +20,7 @@ local M = {
 				"marksman",
 				"pyright",
 				"rust_analyzer",
-				"sqls",
+				"sqlls",
 				"svelte",
 				"taplo",
 				"texlab",

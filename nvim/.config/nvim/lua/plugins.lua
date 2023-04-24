@@ -61,7 +61,8 @@ require "lazy".setup {
     {
         "ray-x/lsp_signature.nvim",
         config = true,
-        event = "InsertEnter *.*",
+        lazy = true,
+        event = "InsertEnter",
     },
     -- Utils
     "folke/which-key.nvim",
@@ -106,5 +107,25 @@ require "lazy".setup {
     {
         "danymat/neogen",
         config = true,
+    },
+    {
+        "zbirenbaum/copilot.lua",
+        lazy = true,
+        event = "InsertEnter",
+        config = true,
+        opts = {
+            suggestion = {
+                auto_trigger = true,
+                keymap = {
+                    accept = false,
+                    next = "<M-j>",
+                    prev = "<M-k>",
+                },
+            },
+            filetypes = {
+                lua = true,
+                ["*"] = false,
+            },
+        }
     },
 }

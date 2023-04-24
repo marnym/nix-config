@@ -38,21 +38,23 @@ function M.config()
             end,
         },
         mapping = {
-                ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-                ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-                ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-                ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                ["<C-Space>"] = cmp.mapping.complete(),
-                ["<C-e>"] = cmp.mapping.close(),
-                ["<CR>"] = cmp.mapping.confirm { select = true },
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                if luasnip.expand_or_locally_jumpable() then
+            ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+            ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+            ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+            ["<C-f>"] = cmp.mapping.scroll_docs(4),
+            ["<C-Space>"] = cmp.mapping.complete(),
+            ["<C-e>"] = cmp.mapping.close(),
+            ["<CR>"] = cmp.mapping.confirm { select = true },
+            ["<Tab>"] = cmp.mapping(function(fallback)
+                if require("copilot.suggestion").is_visible() then
+                    require("copilot.suggestion").accept()
+                elseif luasnip.expand_or_locally_jumpable() then
                     luasnip.expand_or_jump()
                 else
                     fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
                 end
             end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
+            ["<S-Tab>"] = cmp.mapping(function(fallback)
                 if cmp.visible() then
                     cmp.select_prev_item()
                 elseif luasnip.locally_jumpable(-1) then
@@ -88,6 +90,14 @@ function M.config()
     }
 
     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+    cmp.event:on("menu_opened", function()
+        vim.b.copilot_suggestion_hidden = true
+    end)
+
+    cmp.event:on("menu_closed", function()
+        vim.b.copilot_suggestion_hidden = false
+    end)
 end
 
 return M
