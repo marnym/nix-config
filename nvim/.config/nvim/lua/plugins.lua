@@ -124,7 +124,9 @@ require "lazy".setup {
             },
             filetypes = {
                 lua = true,
-                ["*"] = false,
+                ["*"] = function()
+                    return vim.fn.filereadable(vim.fn.getcwd() .. "/.copilot") ~= 1
+                end,
             },
         }
     },
