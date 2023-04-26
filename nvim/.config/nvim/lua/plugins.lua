@@ -109,6 +109,14 @@ require "lazy".setup {
         config = true,
     },
     {
+        "ahmedkhalf/project.nvim",
+        config = function()
+            require "project_nvim".setup {
+                silent_chdir = false,
+            }
+        end,
+    },
+    {
         "zbirenbaum/copilot.lua",
         lazy = true,
         event = "InsertEnter",
