@@ -56,6 +56,10 @@ case `uname` in
     export QT_STYLE_OVERRIDE=kvantum
     export CLUTTER_BACKEND=wayland
     export GDK_SCALE=1
+
+    if [[ ! $(pgrep -i -f "Hyprland") ]]; then
+      exec ~/.local/bin/wrappedhl.sh
+    fi
   ;;
 esac
 
