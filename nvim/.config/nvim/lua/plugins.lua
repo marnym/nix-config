@@ -70,7 +70,6 @@ require "lazy".setup {
         "unblevable/quick-scope",
         keys = { "f", "F", "t", "T" },
     },
-    { "windwp/nvim-autopairs", lazy = true, config = true, },
     telescope,
     {
         "nvim-telescope/telescope-file-browser.nvim",
@@ -97,7 +96,6 @@ require "lazy".setup {
         }
     },
     "tpope/vim-sleuth",
-    "b3nj5m1n/kommentary",
     "lervag/vimtex",
     {
         "iamcco/markdown-preview.nvim",
@@ -137,5 +135,21 @@ require "lazy".setup {
                 end,
             },
         }
+    },
+    { "windwp/nvim-autopairs", lazy = true, config = true, },
+    -- mini.nvim
+    {
+        "echasnovski/mini.comment",
+        version = false,
+        config = function()
+            require "mini.comment".setup()
+        end
+    },
+    {
+        "echasnovski/mini.surround",
+        version = false,
+        config = function()
+            require "mini.surround".setup()
+        end
     },
 }
