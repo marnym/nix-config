@@ -14,7 +14,8 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, vim.tbl_extend("forc
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Go to previous diagnostic" }))
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Go to next diagnostic" }))
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist,
-	vim.tbl_extend("force", opts, { desc = "Open diagnostic in loclist" }))
+	vim.tbl_extend("force", opts, { desc = "Open diagnostic in loclist" })
+)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -54,6 +55,16 @@ local function disable_formatting(client, bufnr)
 	M.on_attach(client, bufnr)
 end
 
+local function root_pattern_excludes(root, exclude)
+	local util = require "lspconfig/util"
+	local function matches(path, pattern) return 0 < #vim.fn.glob(util.path.join(path, pattern)) end
+
+	return function(startpath)
+		return util.search_ancestors(startpath,
+			function(path) return matches(path, root) and not matches(path, exclude) end)
+	end
+end
+
 function M.config()
 	local nvim_lsp = require "lspconfig"
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -63,7 +74,7 @@ function M.config()
 			local settings = { on_attach = M.on_attach, capabilities = capabilities }
 			nvim_lsp[server_name].setup(settings)
 		end,
-			["ansiblels"] = function()
+		["ansiblels"] = function()
 			nvim_lsp.ansiblels.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
@@ -72,25 +83,26 @@ function M.config()
 				single_file_support = false,
 			}
 		end,
-			["denols"] = function()
+		["denols"] = function()
 			nvim_lsp.denols.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
-				root_dir = nvim_lsp.util.root_pattern("deno.json", "import_map.json"),
+				root_dir = root_pattern_excludes("deno.json", "package.json"),
 				init_options = {
 					enable = true,
 					unstable = true,
 				}
 			}
 		end,
-			["tsserver"] = function()
+		["tsserver"] = function()
 			nvim_lsp.tsserver.setup {
 				on_attach = disable_formatting,
 				capabilities = capabilities,
-				root_dir = nvim_lsp.util.root_pattern("package.json"),
+				root_dir = root_pattern_excludes("package.json", "deno.json"),
+				single_file_support = false,
 			}
 		end,
-			["gopls"] = function()
+		["gopls"] = function()
 			nvim_lsp.gopls.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
@@ -105,7 +117,7 @@ function M.config()
 				}
 			}
 		end,
-			["lua_ls"] = function()
+		["lua_ls"] = function()
 			nvim_lsp.lua_ls.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
@@ -121,20 +133,20 @@ function M.config()
 				}
 			}
 		end,
-			["volar"] = function()
+		["volar"] = function()
 			nvim_lsp.volar.setup {
 				on_attach = disable_formatting,
 				capabilities = capabilities,
 			}
 		end,
-			["texlab"] = function()
+		["texlab"] = function()
 			nvim_lsp.texlab.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
 				root_dir = nvim_lsp.util.root_pattern("*.tex")
 			}
 		end,
-			["jsonls"] = function()
+		["jsonls"] = function()
 			local json_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			json_capabilities.textDocument.completion.completionItem.snippetSupport = true
 			nvim_lsp.jsonls.setup {
@@ -156,7 +168,7 @@ function M.config()
 				}
 			}
 		end,
-			["yamlls"] = function()
+		["yamlls"] = function()
 			local cfg = require("yaml-companion").setup()
 			nvim_lsp.yamlls.setup(cfg)
 		end,
