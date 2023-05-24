@@ -34,6 +34,11 @@ alias stow="stow --no-folding -vSt ~"
 alias a="ansible"
 alias k="kubectl"
 alias p="project.sh"
+alias g="git"
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+alias gd="git diff"
 
 case `uname` in
   Darwin)
