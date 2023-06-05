@@ -40,6 +40,10 @@ alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
 
+if which exa > /dev/null; then
+  alias ls="exa --color=always"
+fi
+
 case `uname` in
   Darwin)
     bindkey "^[^[[D" forward-word
@@ -61,6 +65,8 @@ case `uname` in
     export QT_STYLE_OVERRIDE=kvantum
     export CLUTTER_BACKEND=wayland
     export GDK_SCALE=1
+
+    alias open="xdg-open"
 
     if [[ ! $(pgrep -i -f "Hyprland") ]]; then
       exec ~/.local/bin/wrappedhl.sh
