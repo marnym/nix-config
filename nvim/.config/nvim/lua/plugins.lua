@@ -96,6 +96,10 @@ require "lazy".setup {
         }
     },
     "tpope/vim-sleuth",
+    {
+        "tpope/vim-fugitive",
+        cmd = { "G", "Git" },
+    },
     "lervag/vimtex",
     {
         "iamcco/markdown-preview.nvim",
