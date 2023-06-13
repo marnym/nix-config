@@ -6,6 +6,7 @@ local metals = require "plug-config.nvim-metals"
 local treesitter = require "plug-config.treesitter"
 local lualine = require "plug-config.lualine"
 local telescope = require "plug-config.telescope"
+local harpoon = require "plug-config.harpoon"
 
 require "lazy".setup {
     -- Visual
@@ -151,4 +152,5 @@ require "lazy".setup {
             require "mini.surround".setup()
         end
     },
+    harpoon,
 }

@@ -8,8 +8,7 @@ local M = {
         {
             "<Leader>fp",
             function() require "telescope.builtin".git_files() end,
-            desc =
-            "Find Git files"
+            desc = "Find Git files"
         },
         { "<Leader>ff", function() require "telescope.builtin".find_files() end },
         { "<Leader>fg", function() require "telescope.builtin".live_grep() end },
@@ -29,8 +28,8 @@ local M = {
         defaults = {
             mappings = {
                 i = {
-                        ["<C-j>"] = "move_selection_next",
-                        ["<C-k>"] = "move_selection_previous",
+                    ["<C-j>"] = "move_selection_next",
+                    ["<C-k>"] = "move_selection_previous",
                 },
             },
             file_ignore_patterns = {
