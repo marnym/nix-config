@@ -92,7 +92,6 @@ require "lazy".setup {
         },
         keys = {
             { "<Leader>n", ":Neotree reveal<CR>" },
-
         }
     },
     "tpope/vim-sleuth",
@@ -110,7 +109,7 @@ require "lazy".setup {
         "ahmedkhalf/project.nvim",
         config = function()
             require "project_nvim".setup {
-                silent_chdir = false,
+                manual_mode = true,
             }
         end,
     },
