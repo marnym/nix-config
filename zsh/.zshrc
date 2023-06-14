@@ -39,6 +39,7 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
+alias nohist="unset HISTFILE"
 
 if which exa > /dev/null; then
   alias ls="exa --color=always"

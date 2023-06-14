@@ -2,7 +2,7 @@ local wezterm = require "wezterm"
 
 local config = {}
 
-local success, stdout, stderr = wezterm.run_child_process { 'uname' }
+local success, stdout, _ = wezterm.run_child_process { 'uname' }
 
 if success and stdout:match('Darwin') then
     wezterm.log_info("Running on macOS")
