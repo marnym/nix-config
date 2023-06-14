@@ -1,8 +1,28 @@
 local wezterm = require "wezterm"
 
-return {
-    font = wezterm.font 'BlexMono Nerd Font',
-    font_size = 14.0,
-    color_scheme = "Catppuccin Mocha",
-    enable_tab_bar = false,
-}
+local config = {}
+
+local success, stdout, stderr = wezterm.run_child_process { 'uname' }
+
+if success and stdout:match('Darwin') then
+    wezterm.log_info("Running on macOS")
+    config.font = wezterm.font_with_fallback({
+        "SF Mono",
+        "JetBrains Mono Nerd Font",
+        "JetBrains Mono",
+    })
+else
+    wezterm.log_info("Running on Linux")
+    config.font = wezterm.font_with_fallback({
+        "IBM Plex Mono",
+        "BlexMono Nerd Font",
+        "JetBrains Mono Nerd Font",
+        "JetBrains Mono",
+    })
+end
+
+config.font_size = 14.0
+config.color_scheme = "Catppuccin Mocha"
+config.enable_tab_bar = false
+
+return config
