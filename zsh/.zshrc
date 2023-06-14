@@ -45,6 +45,10 @@ if which exa > /dev/null; then
   alias ls="exa --color=always"
 fi
 
+if which bat > /dev/null; then
+  alias rat="bat"
+fi
+
 case `uname` in
   Darwin)
     bindkey "^[^[[D" forward-word
