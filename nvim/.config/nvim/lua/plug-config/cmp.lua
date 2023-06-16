@@ -23,12 +23,14 @@ function M.config()
 
     require "luasnip.loaders.from_vscode".lazy_load()
     require "luasnip.loaders.from_vscode".lazy_load({ paths = "~/.snippets" })
+    require "cmp-npm".setup({})
 
     local source_mapping = {
         nvim_lsp = "[LSP]",
         nvim_lua = "[nvim]",
         path = "[PATH]",
-        buffer = "[BUFFER]"
+        buffer = "[BUFFER]",
+        npm = "[NPM]",
     }
 
     cmp.setup {
@@ -65,6 +67,7 @@ function M.config()
             end, { "i", "s" }),
         },
         sources = {
+            { name = "npm",     keyword_length = 4 },
             { name = "nvim_lsp" },
             { name = "nvim_lua" },
             { name = "luasnip", option = { history = false } },
