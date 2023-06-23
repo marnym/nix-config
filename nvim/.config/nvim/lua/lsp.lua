@@ -3,7 +3,7 @@ local M = {
 	dependencies = {
 		"folke/neodev.nvim",
 	},
-	event = "BufReadPre",
+	event = { "BufReadPre", "BufNewFile" },
 }
 
 local format_group = vim.api.nvim_create_augroup("Format", { clear = false })
