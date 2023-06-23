@@ -16,7 +16,33 @@ require "lazy".setup {
         name = "catppuccin",
         priority = 1000,
         config = function()
-            require "catppuccin".setup()
+            require "catppuccin".setup {
+                flavour = "mocha",
+                integrations = {
+                    cmp = true,
+                    gitsigns = true,
+                    mason = true,
+                    mini = true,
+                    native_lsp = {
+                        enabled = true,
+                        virtual_text = {
+                            errors = { "italic" },
+                            hints = { "italic" },
+                            warnings = { "italic" },
+                            information = { "italic" },
+                        },
+                        underlines = {
+                            errors = { "underline" },
+                            hints = { "underline" },
+                            warnings = { "underline" },
+                            information = { "underline" },
+                        },
+                    },
+                    telescope = true,
+                    treesitter = true,
+                    ts_rainbow = true,
+                }
+            }
             vim.cmd "colorscheme catppuccin"
         end
     },
@@ -82,21 +108,6 @@ require "lazy".setup {
         end,
         lazy = true,
     },
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            {
-                "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-                config = true,
-            },
-            "MunifTanjim/nui.nvim",
-        },
-        keys = {
-            { "<Leader>n", ":Neotree reveal<CR>" },
-        }
-    },
     "tpope/vim-sleuth",
     {
         "tpope/vim-fugitive",
@@ -158,6 +169,17 @@ require "lazy".setup {
         config = function()
             require "mini.surround".setup()
         end
+    },
+    {
+        'echasnovski/mini.files',
+        version = false,
+        config = function()
+            require "mini.files".setup()
+        end,
+        keys = {
+            { "<Leader>n", function() vim.cmd [[ lua MiniFiles.open() ]] end },
+            { "-",         function() vim.cmd [[ lua MiniFiles.open() ]] end },
+        }
     },
     harpoon,
 }
