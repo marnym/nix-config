@@ -47,6 +47,10 @@ function M.on_attach(client, bufnr)
 		group = format_group,
 		buffer = 0,
 	})
+
+	if client.server_capabilities.inlayHintProvider then
+		vim.lsp.buf.inlay_hint(bufnr, true)
+	end
 end
 
 local function disable_formatting(client, bufnr)
@@ -100,6 +104,30 @@ function M.config()
 				capabilities = capabilities,
 				root_dir = root_pattern_excludes("package.json", "deno.json"),
 				single_file_support = false,
+				settings = {
+					typescript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "literal",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = false,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+					},
+					javascript = {
+						inlayHints = {
+							includeInlayParameterNameHints = "all",
+							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+							includeInlayFunctionParameterTypeHints = true,
+							includeInlayVariableTypeHints = true,
+							includeInlayPropertyDeclarationTypeHints = true,
+							includeInlayFunctionLikeReturnTypeHints = true,
+							includeInlayEnumMemberValueHints = true,
+						},
+					}
+				}
 			}
 		end,
 		["gopls"] = function()
