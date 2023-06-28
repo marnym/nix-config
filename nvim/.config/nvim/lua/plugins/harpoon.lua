@@ -1,8 +1,8 @@
 local function toggle_move()
     if vim.v.count > 0 then
-        require "harpoon.ui".nav_file(vim.v.count)
+        require("harpoon.ui").nav_file(vim.v.count)
     else
-        require "harpoon.mark".toggle_file()
+        require("harpoon.mark").toggle_file()
     end
 end
 
@@ -17,7 +17,7 @@ local M = {
         },
         {
             "gH",
-            function() require "harpoon.ui".toggle_quick_menu() end,
+            function() require("harpoon.ui").toggle_quick_menu() end,
             desc = "Toggle menu"
         },
     }

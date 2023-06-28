@@ -1,21 +1,6 @@
-local M = {
-	"neovim/nvim-lspconfig",
-	dependencies = {
-		"folke/neodev.nvim",
-	},
-	event = { "BufReadPre", "BufNewFile" },
-}
+local M = {}
 
 local format_group = vim.api.nvim_create_augroup("Format", { clear = false })
-
-local opts = { noremap = true, silent = true }
-
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, vim.tbl_extend("force", opts, { desc = "Open diagnostic" }))
-vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Go to previous diagnostic" }))
-vim.keymap.set("n", "gn", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Go to next diagnostic" }))
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist,
-	vim.tbl_extend("force", opts, { desc = "Open diagnostic in loclist" })
-)
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -53,14 +38,14 @@ function M.on_attach(client, bufnr)
 	end
 end
 
-local function disable_formatting(client, bufnr)
+function M.disable_formatting(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false
 	M.on_attach(client, bufnr)
 end
 
-local function root_pattern_excludes(root, exclude)
-	local util = require "lspconfig/util"
+function M.root_pattern_excludes(root, exclude)
+	local util = require("lspconfig/util")
 	local function matches(path, pattern) return 0 < #vim.fn.glob(util.path.join(path, pattern)) end
 
 	return function(startpath)
@@ -69,11 +54,10 @@ local function root_pattern_excludes(root, exclude)
 	end
 end
 
-function M.config()
-	local nvim_lsp = require "lspconfig"
+function M.setup_handlers()
+	local nvim_lsp = require("lspconfig")
 	local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-	require "mason-lspconfig".setup_handlers {
+	return {
 		function(server_name)
 			local settings = { on_attach = M.on_attach, capabilities = capabilities }
 			nvim_lsp[server_name].setup(settings)
@@ -91,7 +75,7 @@ function M.config()
 			nvim_lsp.denols.setup {
 				on_attach = M.on_attach,
 				capabilities = capabilities,
-				root_dir = root_pattern_excludes("deno.json", "package.json"),
+				root_dir = M.root_pattern_excludes("deno.json", "package.json"),
 				init_options = {
 					enable = true,
 					unstable = true,
@@ -102,7 +86,7 @@ function M.config()
 			nvim_lsp.tsserver.setup {
 				on_attach = disable_formatting,
 				capabilities = capabilities,
-				root_dir = root_pattern_excludes("package.json", "deno.json"),
+				root_dir = M.root_pattern_excludes("package.json", "deno.json"),
 				single_file_support = false,
 				settings = {
 					typescript = {
@@ -201,6 +185,10 @@ function M.config()
 			nvim_lsp.yamlls.setup(cfg)
 		end,
 	}
+end
+
+function M.eslint_condition(utils)
+	return utils.root_has_file { ".eslintrc", ".eslintrc.json", ".eslintrc.js" }
 end
 
 return M

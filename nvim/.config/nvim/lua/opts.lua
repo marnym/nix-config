@@ -1,4 +1,4 @@
-CACHE_PATH = vim.fn.stdpath "cache"
+CACHE_PATH = vim.fn.stdpath("cache")
 
 -- set leader key
 vim.api.nvim_set_keymap("", " ", "", { noremap = true })

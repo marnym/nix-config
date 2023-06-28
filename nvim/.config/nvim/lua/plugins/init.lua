@@ -1,14 +1,4 @@
-local cmp = require "plug-config.cmp"
-local lsp = require "lsp"
-local mason = require "plug-config.mason"
-local null_ls = require "plug-config.null-ls"
-local metals = require "plug-config.nvim-metals"
-local treesitter = require "plug-config.treesitter"
-local lualine = require "plug-config.lualine"
-local telescope = require "plug-config.telescope"
-local harpoon = require "plug-config.harpoon"
-
-require "lazy".setup {
+return {
     -- Visual
     {
         "catppuccin/nvim",
@@ -16,7 +6,7 @@ require "lazy".setup {
         name = "catppuccin",
         priority = 1000,
         config = function()
-            require "catppuccin".setup {
+            require("catppuccin").setup {
                 flavour = "mocha",
                 integrations = {
                     cmp = true,
@@ -40,15 +30,13 @@ require "lazy".setup {
                     },
                     telescope = true,
                     treesitter = true,
+                    treesitter_context = true,
                     ts_rainbow = true,
                 }
             }
             vim.cmd "colorscheme catppuccin"
         end
     },
-    treesitter,
-    -- Status line
-    lualine,
     {
         "lukas-reineke/indent-blankline.nvim",
         opts = {
@@ -68,30 +56,18 @@ require "lazy".setup {
             "nvim-lua/plenary.nvim",
         },
         config = function()
-            require "telescope".load_extension "yaml_schema"
+            require("telescope").load_extension("yaml_schema")
         end,
         lazy = true,
     },
     -- Autocompletion
-    cmp,
     {
         "David-Kunz/cmp-npm",
         dependencies = { 'nvim-lua/plenary.nvim' },
         ft = "json",
         config = function()
-            require "cmp-npm".setup({})
+            require("cmp-npm").setup({})
         end
-    },
-    -- LSP
-    lsp,
-    mason,
-    null_ls,
-    metals,
-    {
-        "ray-x/lsp_signature.nvim",
-        config = true,
-        lazy = true,
-        event = "InsertEnter",
     },
     -- Utils
     "folke/which-key.nvim",
@@ -99,12 +75,11 @@ require "lazy".setup {
         "unblevable/quick-scope",
         keys = { "f", "F", "t", "T" },
     },
-    telescope,
     {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-            require "telescope".load_extension "file_browser"
+            require("telescope").load_extension("file_browser")
         end,
         lazy = true,
     },
@@ -126,7 +101,7 @@ require "lazy".setup {
     {
         "ahmedkhalf/project.nvim",
         config = function()
-            require "project_nvim".setup {
+            require("project_nvim").setup {
                 manual_mode = true,
                 silent_chdir = false,
             }
@@ -160,26 +135,25 @@ require "lazy".setup {
         "echasnovski/mini.comment",
         version = false,
         config = function()
-            require "mini.comment".setup()
+            require("mini.comment").setup()
         end
     },
     {
         "echasnovski/mini.surround",
         version = false,
         config = function()
-            require "mini.surround".setup()
+            require("mini.surround").setup()
         end
     },
     {
         'echasnovski/mini.files',
         version = false,
         config = function()
-            require "mini.files".setup()
+            require("mini.files").setup()
         end,
         keys = {
             { "<Leader>n", function() vim.cmd [[ lua MiniFiles.open() ]] end },
             { "-",         function() vim.cmd [[ lua MiniFiles.open() ]] end },
         }
     },
-    harpoon,
 }

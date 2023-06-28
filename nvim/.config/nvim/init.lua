@@ -1,4 +1,4 @@
-require "opts"
+require("opts")
 
 -- load lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -14,11 +14,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require "plugins"
+require("lazy").setup("plugins")
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
     callback = function()
-        require "binds"
+        require("binds")
     end
 })
