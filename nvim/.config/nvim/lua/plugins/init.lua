@@ -104,6 +104,7 @@ return {
             require("project_nvim").setup {
                 manual_mode = true,
                 silent_chdir = false,
+                ignore_lsp = { "null-ls" }
             }
         end,
     },

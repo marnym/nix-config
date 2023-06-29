@@ -84,7 +84,7 @@ function M.setup_handlers()
 		end,
 		["tsserver"] = function()
 			nvim_lsp.tsserver.setup {
-				on_attach = disable_formatting,
+				on_attach = M.disable_formatting,
 				capabilities = capabilities,
 				root_dir = M.root_pattern_excludes("package.json", "deno.json"),
 				single_file_support = false,
@@ -147,7 +147,7 @@ function M.setup_handlers()
 		end,
 		["volar"] = function()
 			nvim_lsp.volar.setup {
-				on_attach = disable_formatting,
+				on_attach = M.disable_formatting,
 				capabilities = capabilities,
 			}
 		end,
