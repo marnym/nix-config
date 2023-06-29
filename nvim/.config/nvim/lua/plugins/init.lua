@@ -44,12 +44,6 @@ return {
             show_current_context_start = true,
         }
     },
-    -- Git
-    {
-        "lewis6991/gitsigns.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = true,
-    },
     {
         "someone-stole-my-name/yaml-companion.nvim",
         dependencies = {
@@ -84,10 +78,6 @@ return {
         lazy = true,
     },
     "tpope/vim-sleuth",
-    {
-        "tpope/vim-fugitive",
-        cmd = { "G", "Git" },
-    },
     "lervag/vimtex",
     {
         "iamcco/markdown-preview.nvim",
