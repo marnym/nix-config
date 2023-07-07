@@ -1,14 +1,14 @@
 [user]
-    name = Markus Nyman
+    name = Markus
     email = markus@nyman.dev
-    signingKey = ""
+    signingkey = B0F65D4A77E5E472!
 [core]
     autocrlf = input
     editor = nvim
 [gpg]
     program = gpg
 [commit]
-    gpgSign = false
+    gpgsign = true
 [tag]
     forceSignAnnotated = false
 [init]
