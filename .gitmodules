@@ -6,4 +6,4 @@
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "ssh/.ssh"]
 	path = ssh/.ssh
-	url = git@github.com:masnen/ssh-config.git
+	url = git@github.com:isofore/ssh-config.git
