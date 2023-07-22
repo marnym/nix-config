@@ -1,41 +1,13 @@
 return {
     -- Visual
     {
-        "catppuccin/nvim",
+        "folke/tokyonight.nvim",
         lazy = false,
-        name = "catppuccin",
         priority = 1000,
         config = function()
-            require("catppuccin").setup {
-                flavour = "mocha",
-                integrations = {
-                    cmp = true,
-                    gitsigns = true,
-                    mason = true,
-                    mini = true,
-                    native_lsp = {
-                        enabled = true,
-                        virtual_text = {
-                            errors = { "italic" },
-                            hints = { "italic" },
-                            warnings = { "italic" },
-                            information = { "italic" },
-                        },
-                        underlines = {
-                            errors = { "underline" },
-                            hints = { "underline" },
-                            warnings = { "underline" },
-                            information = { "underline" },
-                        },
-                    },
-                    telescope = true,
-                    treesitter = true,
-                    treesitter_context = true,
-                    ts_rainbow = true,
-                }
-            }
-            vim.cmd "colorscheme catppuccin"
-        end
+            vim.cmd [[ colorscheme tokyonight-night ]]
+        end,
+        opts = {},
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -98,28 +70,28 @@ return {
             }
         end,
     },
-    {
-        "zbirenbaum/copilot.lua",
-        lazy = true,
-        event = "InsertEnter",
-        config = true,
-        opts = {
-            suggestion = {
-                auto_trigger = true,
-                keymap = {
-                    accept = false,
-                    next = "<M-j>",
-                    prev = "<M-k>",
-                },
-            },
-            filetypes = {
-                lua = true,
-                ["*"] = function()
-                    return vim.fn.filereadable(vim.fn.getcwd() .. "/.copilot") == 1
-                end,
-            },
-        }
-    },
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     lazy = true,
+    --     event = "InsertEnter",
+    --     config = true,
+    --     opts = {
+    --         suggestion = {
+    --             auto_trigger = true,
+    --             keymap = {
+    --                 accept = false,
+    --                 next = "<M-j>",
+    --                 prev = "<M-k>",
+    --             },
+    --         },
+    --         filetypes = {
+    --             lua = true,
+    --             ["*"] = function()
+    --                 return vim.fn.filereadable(vim.fn.getcwd() .. "/.copilot") == 1
+    --             end,
+    --         },
+    --     }
+    -- },
     { "windwp/nvim-autopairs", lazy = true, config = true, },
     -- mini.nvim
     {
