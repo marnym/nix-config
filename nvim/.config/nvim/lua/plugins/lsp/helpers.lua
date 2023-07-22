@@ -33,9 +33,9 @@ function M.on_attach(client, bufnr)
 		buffer = 0,
 	})
 
-	if client.server_capabilities.inlayHintProvider then
-		vim.lsp.buf.inlay_hint(bufnr, true)
-	end
+	-- if client.server_capabilities.inlayHintProvider then
+	-- 	vim.lsp.buf.inlay_hint(bufnr, true)
+	-- end
 end
 
 function M.disable_formatting(client, bufnr)
