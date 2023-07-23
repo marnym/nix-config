@@ -1,3 +1,19 @@
+local function lsps()
+	local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+
+	local client_names = {}
+	for _, client in ipairs(clients) do
+		table.insert(client_names, client.name)
+	end
+
+	-- return empty string if empty
+	if #client_names == 0 then
+		return ""
+	end
+
+	return " LSP: [" .. table.concat(client_names, ", ") .. "]"
+end
+
 local function yaml_schema()
 	if vim.bo.filetype ~= "yaml" then
 		return ""
@@ -34,6 +50,7 @@ local M = {
 					symbols = { error = " ", warn = " ", info = " ", hint = " " },
 				},
 				yaml_schema,
+				lsps,
 				"filetype",
 			},
 			lualine_y = { "progress" },

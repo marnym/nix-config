@@ -70,28 +70,32 @@ return {
             }
         end,
     },
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     lazy = true,
-    --     event = "InsertEnter",
-    --     config = true,
-    --     opts = {
-    --         suggestion = {
-    --             auto_trigger = true,
-    --             keymap = {
-    --                 accept = false,
-    --                 next = "<M-j>",
-    --                 prev = "<M-k>",
-    --             },
-    --         },
-    --         filetypes = {
-    --             lua = true,
-    --             ["*"] = function()
-    --                 return vim.fn.filereadable(vim.fn.getcwd() .. "/.copilot") == 1
-    --             end,
-    --         },
-    --     }
-    -- },
+    {
+        "zbirenbaum/copilot.lua",
+        lazy = true,
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                suggestion = {
+                    auto_trigger = true,
+                    keymap = {
+                        accept = false,
+                        next = "<M-j>",
+                        prev = "<M-k>",
+                    },
+                },
+                filetypes = {
+                    lua = true,
+                    ["*"] = function()
+                        return vim.fn.filereadable(vim.fn.getcwd() .. "/.copilot") == 1
+                    end,
+                },
+            })
+
+            -- Bind <leader>cp to toggle copilot
+            vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot! toggle<CR>", { noremap = true, silent = true })
+        end,
+    },
     { "windwp/nvim-autopairs", lazy = true, config = true, },
     -- mini.nvim
     {
