@@ -11,6 +11,8 @@ if success and stdout:match('Darwin') then
         "JetBrains Mono Nerd Font",
         "JetBrains Mono",
     })
+    config.font_size = 14.0
+    config.color_scheme = "tokyonight"
 else
     wezterm.log_info("Running on Linux")
     config.font = wezterm.font_with_fallback({
@@ -19,10 +21,10 @@ else
         "JetBrains Mono Nerd Font",
         "JetBrains Mono",
     })
+    config.font_size = 16.0
+    config.color_scheme = "Tokyo Night"
 end
 
-config.font_size = 14.0
-config.color_scheme = "Tokyo Night"
 config.enable_tab_bar = false
 
 return config
