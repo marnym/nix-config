@@ -98,6 +98,7 @@ return {
 							return diagnostic.code ~= "MD013/line-length"
 						end
 					},
+					null_ls.builtins.formatting.nixpkgs_fmt
 				},
 				on_attach = helpers.on_attach,
 			}
