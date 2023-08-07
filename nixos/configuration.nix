@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -15,34 +16,31 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.efi.canTouchEfiVariables = true;
 
-networking.hostName = "l00ta"; # Define your hostname.
+  networking.hostName = "l00ta"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable = true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
-time.timeZone = "Europe/Helsinki";
+  time.timeZone = "Europe/Helsinki";
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Select internationalisation properties.
- i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   console = {
     # font = "Lat2-Terminus16";
     keyMap = "fi";
     # useXkbConfig = true; # use xkbOptions in tty.
- };
+  };
 
   # Enable the X11 windowing system.
-# services.xserver.enable = true;
-
-
-  
+  # services.xserver.enable = true;
 
   # Configure keymap in X11
- # services.xserver.layout = "fi";
+  # services.xserver.layout = "fi";
   # services.xserver.xkbOptions = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
@@ -64,8 +62,8 @@ time.timeZone = "Europe/Helsinki";
     ];
     initialPassword = "pw123";
     openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAYrteSUBgXlSPuZagjKFJQcfWhS10wQrJo3pVZtlm1P markus"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrndQoxNh1dr9O9yuBG6NiQvOgWCcTsk8Wz02N2mhoN markus"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAYrteSUBgXlSPuZagjKFJQcfWhS10wQrJo3pVZtlm1P markus"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrndQoxNh1dr9O9yuBG6NiQvOgWCcTsk8Wz02N2mhoN markus"
     ];
   };
 
@@ -92,7 +90,7 @@ time.timeZone = "Europe/Helsinki";
     settings.PasswordAuthentication = false;
     settings.KbdInteractiveAuthentication = false;
     settings.PermitRootLogin = "no";
-};
+  };
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
@@ -114,4 +112,3 @@ time.timeZone = "Europe/Helsinki";
   system.stateVersion = "23.05"; # Did you read the comment?
 
 }
-
