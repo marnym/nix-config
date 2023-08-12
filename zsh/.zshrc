@@ -1,3 +1,5 @@
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
 autoload -U colors && colors
 
 # History in cache directory

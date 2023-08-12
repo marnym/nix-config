@@ -17,6 +17,11 @@ return {
         }
     },
     {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = true,
+    },
+    {
         "someone-stole-my-name/yaml-companion.nvim",
         dependencies = {
             "nvim-lua/plenary.nvim",
