@@ -14,7 +14,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+    lockfile = "~/Cloud/lazy-lock.json",
+})
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "VeryLazy",
