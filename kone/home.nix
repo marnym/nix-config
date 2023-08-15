@@ -9,6 +9,7 @@
     pkgs.fuzzel
     pkgs.age
     pkgs.tldr
+    pkgs.ranger
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -40,8 +41,9 @@
       source = ../wezterm;
     };
 
-    ".config/starship.toml" = {
-      source = ../starship/starship.toml;
+    ".config/ranger" = {
+      recursive = true;
+      source = ../ranger;
     };
   };
 
@@ -82,5 +84,41 @@
           autoSetupRemote = true;
         };
       };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      "$schema" = "https://starship.rs/config-schema.json";
+      add_newline = true;
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+      };
+      directory = {
+        substitutions = {
+          Documents = "󰈙 ";
+          Downloads = " ";
+          Music = " ";
+          Pictures = " ";
+        };
+      };
+      nodejs = {
+        symbol = "";
+        style = "bg:#212736";
+        format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+      };
+      rust = {
+        symbol = "";
+        style = "bg:#212736";
+        format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+      };
+      golang = {
+        symbol = "";
+        style = "bg:#212736";
+        format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+      };
+    };
   };
 }
