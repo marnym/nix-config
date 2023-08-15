@@ -39,6 +39,10 @@
       recursive = true;
       source = ../wezterm;
     };
+
+    ".config/starship.toml" = {
+      source = ../starship/starship.toml;
+    };
   };
 
   # You can also manage environment variables but you will have to manually
