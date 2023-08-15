@@ -34,6 +34,11 @@
       recursive = true;
       source = ../fuzzel;
     };
+
+    ".config/wezterm" = {
+      recursive = true;
+      source = ../wezterm;
+    };
   };
 
   # You can also manage environment variables but you will have to manually
