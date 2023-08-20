@@ -6,10 +6,12 @@
   home.stateVersion = "23.05";
 
   home.packages = [
+    pkgs.gcc
     pkgs.fuzzel
     pkgs.age
     pkgs.tldr
     pkgs.ranger
+    pkgs.libgit2_1_6
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -25,7 +27,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-
     ".config/nvim" = {
       recursive = true;
       source = ../nvim;
@@ -57,11 +58,16 @@
   #  /etc/profiles/per-user/markus/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables.EDITOR = "nvim";
 
   programs.home-manager.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   programs.git = {
     enable = true;
@@ -120,5 +126,11 @@
         format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
       };
     };
+  };
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    icons = true;
   };
 }

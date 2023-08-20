@@ -1,5 +1,3 @@
-source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
-
 autoload -U colors && colors
 
 # History in cache directory
@@ -30,7 +28,6 @@ if [[ -n $SSH_CONNECTION ]]; then
    export EDITOR='nvim'
  fi
 
-alias ls="ls --color=auto"
 alias zshconfig="nvim ~/.zshrc"
 alias stow="stow --no-folding -vSt ~"
 alias a="ansible"
@@ -42,10 +39,6 @@ alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
 alias nohist="unset HISTFILE"
-
-if which exa > /dev/null; then
-  alias ls="exa --color=always"
-fi
 
 if which bat > /dev/null; then
   alias rat="bat"
@@ -105,3 +98,6 @@ autoload bashcompinit && bashcompinit
 complete -C '/usr/local/bin/aws_completer' aws
 
 eval "$(starship init zsh)"
+
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+
