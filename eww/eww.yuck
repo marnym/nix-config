@@ -1,0 +1,78 @@
+(defwidget bar []
+    (box :orientation "h"
+        (workspaces)
+        (music)
+        (tray)))
+
+(defwidget workspaces []
+    (box :class "workspaces"
+         :orientation "h"
+         :space-evenly true
+         :halign "start"
+         :spacing 10
+     (button :onclick "hyprctl dispatch workspace 1" :class "workspace-btn ${active-workspace == 1 ? "active" : "inactive"}" 1)
+     (button :onclick "hyprctl dispatch workspace 2" :class "workspace-btn ${active-workspace == 2 ? "active" : "inactive"}" 2)
+     (button :onclick "hyprctl dispatch workspace 3" :class "workspace-btn ${active-workspace == 3 ? "active" : "inactive"}" 3)
+     (button :onclick "hyprctl dispatch workspace 4" :class "workspace-btn ${active-workspace == 4 ? "active" : "inactive"}" 4)
+     (button :onclick "hyprctl dispatch workspace 5" :class "workspace-btn ${active-workspace == 5 ? "active" : "inactive"}" 5)
+     (button :onclick "hyprctl dispatch workspace 6" :class "workspace-btn ${active-workspace == 6 ? "active" : "inactive"}" 6)
+     (button :onclick "hyprctl dispatch workspace 7" :class "workspace-btn ${active-workspace == 7 ? "active" : "inactive"}" 7)
+     (button :onclick "hyprctl dispatch workspace 8" :class "workspace-btn ${active-workspace == 8 ? "active" : "inactive"}" 8)
+     (button :onclick "hyprctl dispatch workspace 9" :class "workspace-btn ${active-workspace == 9 ? "active" : "inactive"}" 9)
+     (button :onclick "hyprctl dispatch workspace 10" :class "workspace-btn ${active-workspace == 10 ? "active" : "inactive"}" 10)))
+
+(deflisten active-workspace :initial 0
+    "scripts/workspace")
+
+(defwidget music []
+    (box :class "music"
+         :orientation "h"
+         :space-evenly false  
+         :halign "center"
+         {music != "" ? " ${music}" : ""}))
+
+(deflisten music :initial ""
+    "playerctl --follow metadata --format '{{ artist }} - {{ title }}' || true")
+
+(defwidget tray []
+    (box :class "tray" :orientation "h" :space-evenly true :halign "end"
+    (metric :label "🔊"
+            :value volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label ""
+            :value {EWW_RAM.used_mem_perc}
+            :onchange "")
+    (metric :label "💾"
+            :value {round((1 - (EWW_DISK["/"].free / EWW_DISK["/"].total)) * 100, 0)}
+            :onchange "")
+    time))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly true
+    (box :class "label" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :onchange onchange)))
+
+(defpoll volume :interval "1s"
+    "amixer -D pulse sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
+
+(defpoll time :interval "1s"
+    "date '+%H:%M:%S'")
+
+(defwindow bar
+    :monitor 0
+    :geometry (geometry 
+       :x "0%"
+       :y "0%"
+       :width "90%"
+       :height "60px"
+       :anchor "top center")
+    :stacking "fg"
+    :exclusive true
+    :focusable false
+    (bar))

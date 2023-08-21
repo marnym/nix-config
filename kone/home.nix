@@ -12,6 +12,7 @@
     pkgs.tldr
     pkgs.ranger
     pkgs.libgit2_1_6
+    pkgs.rustup
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -132,5 +133,11 @@
     enable = true;
     enableAliases = true;
     icons = true;
+  };
+
+  programs.eww = {
+    enable = true;
+    package = pkgs.eww-wayland;
+    configDir = ../eww;
   };
 }
