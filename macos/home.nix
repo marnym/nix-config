@@ -6,7 +6,11 @@
   home.stateVersion = "23.05";
 
   home.packages = [
+    # pkgs.gcc
+    # pkgs.age
     pkgs.tldr
+    # pkgs.ranger
+    # pkgs.rustup
   ];
 
   home.file = {
@@ -25,6 +29,16 @@
       recursive = true;
       source = ../nvim;
     };
+
+    ".config/wezterm" = {
+      recursive = true;
+      source = ../wezterm;
+    };
+
+    ".config/ranger" = {
+      recursive = true;
+      source = ../ranger;
+    };
   };
 
   # You can also manage environment variables but you will have to manually
@@ -34,14 +48,19 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/markusnyman/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/markus/etc/profile.d/hm-session-vars.sh
   #
   # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables.EDITOR = "nvim";
 
   programs.home-manager.enable = true;
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
+  };
 
   programs.git = {
     enable = true;
@@ -52,20 +71,62 @@
       signByDefault = true;
     };
     ignores = [ ".copilot" ];
-    extraConfig =
-      {
-        core = {
-          editor = "nvim";
-        };
-        init = {
-          defaultBranch = "main";
-        };
-        push = {
-          autoSetupRemote = true;
-        };
-        credential = {
-          helper = "osxkeychain";
+    extraConfig = {
+      core = {
+        editor = "nvim";
+      };
+      init = {
+        defaultBranch = "main";
+      };
+      push = {
+        autoSetupRemote = true;
+      };
+      credential = {
+        helper = "osxkeychain";
+      };
+    };
+  };
+
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      "$schema" = "https://starship.rs/config-schema.json";
+      add_newline = true;
+      character = {
+        success_symbol = "[➜](bold green)";
+        error_symbol = "[➜](bold red)";
+      };
+      directory = {
+        substitutions = {
+          Documents = "󰈙 ";
+          Downloads = " ";
+          Music = " ";
+          Pictures = " ";
         };
       };
+      nodejs = {
+        symbol = "";
+        style = "bg:#212736";
+        format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+      };
+      rust = {
+        symbol = "";
+        style = "bg:#212736";
+        format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+      };
+      golang = {
+        symbol = "";
+        style = "bg:#212736";
+        format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
+      };
+    };
   };
+
+  programs.exa = {
+    enable = true;
+    enableAliases = true;
+    icons = true;
+  };
+
 }
