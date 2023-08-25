@@ -33,6 +33,9 @@ vim.keymap.set("n", "<C-s>", "a<C-X><C-S>", opts)
 -- bufdelete
 vim.keymap.set("n", "<leader>bd", vim_cmd("bwipeout!"), opts)
 
+-- exit terminal mode
+vim.keymap.set("t", "<C-space>", "<C-\\><C-n>", opts)
+
 -- Plugins
 vim.keymap.set("n", "<leader>tb", vim_cmd("Gitsigns toggle_current_line_blame"))
 vim.keymap.set("n", "<leader>th", vim_cmd("Gitsigns preview_hunk"))

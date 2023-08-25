@@ -11,7 +11,7 @@ local function lsps()
 		return ""
 	end
 
-	return " LSP: [" .. table.concat(client_names, ", ") .. "]"
+	return " LSP[" .. table.concat(client_names, ", ") .. "]"
 end
 
 local function yaml_schema()
@@ -41,6 +41,10 @@ local M = {
 			lualine_a = { "mode" },
 			lualine_b = { "branch", "diff" },
 			lualine_c = {
+				{
+					"filetype",
+					icon_only = true,
+				},
 				{ "filename", path = 1 }
 			},
 			lualine_x = {
@@ -51,7 +55,6 @@ local M = {
 				},
 				yaml_schema,
 				lsps,
-				"filetype",
 			},
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
