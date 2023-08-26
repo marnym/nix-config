@@ -1,5 +1,3 @@
-# My dotfiles
+# isofore's dotfiles
 
-Command that I use to symlink files
-
-`stow --no-folding -vSt ~ ${directory}`
+Migrating from `stow` to `nix`. Currently quite a mess.
