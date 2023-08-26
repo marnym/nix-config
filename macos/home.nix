@@ -1,16 +1,19 @@
 { config, pkgs, ... }:
 
+
 {
   home.username = "markusnyman";
   home.homeDirectory = "/Users/markusnyman";
   home.stateVersion = "23.05";
 
+
   home.packages = [
-    # pkgs.gcc
-    # pkgs.age
+    pkgs.gcc
+    pkgs.nodejs_20
+    pkgs.rustup
+    pkgs.rage
     pkgs.tldr
-    # pkgs.ranger
-    # pkgs.rustup
+    pkgs.ranger
   ];
 
   home.file = {
@@ -41,19 +44,63 @@
     };
   };
 
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/markus/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
   home.sessionVariables.EDITOR = "nvim";
 
   programs.home-manager.enable = true;
+
+  programs.zsh =
+    {
+      enable = true;
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      syntaxHighlighting = {
+        enable = true;
+      };
+      history = {
+        path = "$HOME/.cache/zsh/history";
+      };
+      shellAliases = {
+        a = "ansible";
+        p = "project.sh";
+        g = "git";
+        gs = "git status";
+        ga = "git add";
+        gc = "git commit";
+        gd = "git diff";
+      };
+      initExtra = ''
+        # Use vim keys in tab complete menu
+        bindkey -M menuselect "h" vi-backward-char
+        bindkey -M menuselect "k" vi-up-line-or-history
+        bindkey -M menuselect "l" vi-forward-char
+        bindkey -M menuselect "j" vi-down-line-or-history
+        bindkey "^e" end-of-line
+        bindkey -s "^o" ". ranger\n"
+
+        export PATH="$PATH:$HOME/.local/share/coursier/bin"
+        export PATH="$HOME/.local/bin:$PATH"
+        export PATH="$HOME/.deno/bin:$PATH"
+        export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+        export PATH="$HOME/apps:$PATH"
+        export PATH="$HOME/.cargo/bin:$PATH"
+
+        export GOPATH=$HOME/go
+        export XDG_CONFIG_HOME=$HOME/.config
+
+        export LANG=en_US.UTF-8
+        export LANGUAGE=en_US.UTF-8
+        export LC_ALL=en_US.UTF-8
+      '';
+      initExtraBeforeCompInit = ''
+        zstyle ":completion:*" menu select
+        zmodload zsh/complist
+      '';
+    };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.neovim = {
     enable = true;
@@ -126,7 +173,6 @@
   programs.exa = {
     enable = true;
     enableAliases = true;
-    icons = true;
   };
 
 }
