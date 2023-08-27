@@ -13,8 +13,6 @@ return {
         "onsails/lspkind.nvim",
     },
     config = function()
-        vim.opt.completeopt = "menu,menuone,noselect"
-
         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
         local cmp = require("cmp")
         local luasnip = require("luasnip")

@@ -33,7 +33,7 @@ local M = {
 		options = {
 			icons_enabled = true,
 			theme = "kanagawa",
-			section_separators = { left = "", right = "" },
+			section_separators = '',
 			component_separators = "|",
 			disabled_filetypes = {},
 		},

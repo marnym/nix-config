@@ -1,3 +1,8 @@
+vim.g.qs_highlight_on_keys = { "f", "F", "t", "T" }
+vim.cmd("highlight QuickScopePrimary guifg='#00C7DF' gui=underline ctermfg=155 cterm=underline")
+vim.cmd("highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline")
+vim.g.qs_max_chars = 150
+
 return {
     -- Visual
     {
@@ -54,8 +59,10 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         opts = {
+            char = '┊',
             show_current_context = true,
             show_current_context_start = true,
+            show_trailing_blankline_indent = false,
         }
     },
     {
@@ -88,16 +95,13 @@ return {
         "unblevable/quick-scope",
         keys = { "f", "F", "t", "T" },
     },
-    {
-        "nvim-telescope/telescope-file-browser.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("telescope").load_extension("file_browser")
-        end,
-        lazy = true,
-    },
     "tpope/vim-sleuth",
-    "lervag/vimtex",
+    {
+        "lervag/vimtex",
+        config = function()
+            vim.cmd "let g:tex_flavor = 'latex'"
+        end
+    },
     {
         "iamcco/markdown-preview.nvim",
         build = "cd app && npm install",
