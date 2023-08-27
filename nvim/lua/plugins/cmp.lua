@@ -23,13 +23,15 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
         require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.snippets" })
 
-        local source_mapping = {
+        local source_mapping = ({
+            buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
+            luasnip = "[LuaSnip]",
             nvim_lua = "[nvim]",
-            path = "[PATH]",
-            buffer = "[BUFFER]",
+            path = "[Path]",
             npm = "[NPM]",
-        }
+            latex = "[LaTeX]",
+        })
 
         cmp.setup {
             snippet = {
@@ -73,11 +75,10 @@ return {
                 { name = "buffer" },
             },
             formatting = {
-                format = function(entry, vim_item)
-                    vim_item.kind = lspkind.presets.default[vim_item.kind]
-                    vim_item.menu = source_mapping[entry.source.name]
-                    return vim_item
-                end,
+                format = lspkind.cmp_format({
+                    mode = "symbol_text",
+                    menu = source_mapping,
+                })
             },
             preselect = cmp.PreselectMode.None,
             window = {
