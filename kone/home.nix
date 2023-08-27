@@ -8,7 +8,7 @@
   home.packages = [
     pkgs.gcc
     pkgs.fuzzel
-    pkgs.age
+    pkgs.rage
     pkgs.tldr
     pkgs.ranger
     pkgs.libgit2_1_6
