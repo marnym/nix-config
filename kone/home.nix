@@ -47,6 +47,11 @@
       recursive = true;
       source = ../ranger;
     };
+
+    ".config/mako" = {
+      recursive = true;
+      source = ../mako;
+    };
   };
 
   # You can also manage environment variables but you will have to manually
