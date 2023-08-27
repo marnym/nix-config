@@ -6,7 +6,6 @@
   home.homeDirectory = "/Users/markusnyman";
   home.stateVersion = "23.05";
 
-
   home.packages = [
     pkgs.gcc
     pkgs.nodejs_20
@@ -97,18 +96,6 @@
       '';
     };
 
-  programs.fzf = {
-    enable = true;
-    enableZshIntegration = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-  };
-
   programs.git = {
     enable = true;
     userName = "Markus Nyman";
@@ -132,6 +119,18 @@
         helper = "osxkeychain";
       };
     };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+    vimAlias = true;
   };
 
   programs.starship = {
@@ -168,6 +167,48 @@
         format = "[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)";
       };
     };
+  };
+
+  programs.tmux = {
+    enable = true;
+    baseIndex = 1;
+    clock24 = true;
+    disableConfirmationPrompt = true;
+    escapeTime = 10;
+    mouse = true;
+    prefix = "C-a";
+    resizeAmount = 10;
+    terminal = "screen-256color";
+    keyMode = "vi";
+    customPaneNavigationAndResize = true;
+    extraConfig = ''
+      # Some tweaks to the status line
+      set -g status-right "%H:%M"
+      set -g status-left-length 20
+      set-option -g status-position top
+
+      # If running inside tmux ($TMUX is set), then change the status line to red
+      %if #{TMUX}
+      set -g status-bg red
+      %endif
+
+      # neovim specifics
+      set-option -g focus-events on
+
+      # Enable RGB colour if running in xterm(1)
+      set-option -sa terminal-overrides ",xterm*:Tc"
+
+      # No bells at all
+      set -g bell-action none
+
+      # Keep windows around after they exit
+      set -g remain-on-exit on
+
+      unbind -n MouseDrag1Pane
+      unbind -T copy-mode MouseDrag1Pane
+      unbind -T copy-mode-vi MouseDragEnd1Pane
+      bind-key -T copy-mode-vi y send-keys -X copy-selection
+    '';
   };
 
   programs.exa = {
