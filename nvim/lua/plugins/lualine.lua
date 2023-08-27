@@ -11,7 +11,7 @@ local function lsps()
 		return ""
 	end
 
-	return " LSP[" .. table.concat(client_names, ", ") .. "]"
+	return " LSP: " .. table.concat(client_names, ", ")
 end
 
 local function yaml_schema()
@@ -33,8 +33,8 @@ local M = {
 		options = {
 			icons_enabled = true,
 			theme = "kanagawa",
-			section_separators = { "", "" },
-			component_separators = { "", "" },
+			section_separators = { left = "", right = "" },
+			component_separators = "|",
 			disabled_filetypes = {},
 		},
 		sections = {
