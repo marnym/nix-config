@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "markus";
-  home.homeDirectory = "/home/markus";
   home.stateVersion = "23.05";
 
   home.packages = [
@@ -14,8 +12,6 @@
     pkgs.rage
     pkgs.tldr
     pkgs.ranger
-    pkgs.fuzzel
-    pkgs.libgit2_1_6
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -33,27 +29,27 @@
     # '';
     ".config/nvim" = {
       recursive = true;
-      source = ../nvim;
+      source = ./nvim;
     };
 
     ".config/fuzzel" = {
       recursive = true;
-      source = ../fuzzel;
+      source = ./fuzzel;
     };
 
     ".config/wezterm" = {
       recursive = true;
-      source = ../wezterm;
+      source = ./wezterm;
     };
 
     ".config/ranger" = {
       recursive = true;
-      source = ../ranger;
+      source = ./ranger;
     };
 
     ".config/mako" = {
       recursive = true;
-      source = ../mako;
+      source = ./mako;
     };
   };
 
@@ -235,11 +231,5 @@
   programs.exa = {
     enable = true;
     enableAliases = true;
-  };
-
-  programs.eww = {
-    enable = true;
-    package = pkgs.eww-wayland;
-    configDir = ../eww;
   };
 }
