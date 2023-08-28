@@ -6,7 +6,6 @@ local no_preview = function()
             results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
             preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
         },
-        width = 0.8,
         previewer = false,
         prompt_title = false
     })
