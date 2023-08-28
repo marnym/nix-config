@@ -5,8 +5,7 @@
             :tooltip volume
             :onchange "amixer -D pulse sset Master {}%")
     (metric :label " " :value {EWW_RAM.used_mem_perc} :onchange "")
-    (button :onclick "eww update display-date=${!display-date}" { display-date ? date : time }
-    )))
+    datetime))
 
 (defwidget metric [label value onchange]
   (box :orientation "h"
@@ -24,10 +23,6 @@
 (defpoll volume :interval "1s"
     "amixer -D pulse sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
 
-(defpoll time :interval "1s"
-    "date '+%H:%M:%S'")
+(defpoll datetime :interval "1s"
+    "date '+%H:%M:%S %d.%m.%Y'")
 
-(defpoll date :interval "5m"
-    "date '+%d.%m.%y'")
-
-(defvar display-date false)
