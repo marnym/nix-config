@@ -32,10 +32,6 @@
       source = ./nvim;
     };
 
-    ".config/fuzzel" = {
-      recursive = true;
-      source = ./fuzzel;
-    };
 
     ".config/wezterm" = {
       recursive = true;
@@ -45,11 +41,6 @@
     ".config/ranger" = {
       recursive = true;
       source = ./ranger;
-    };
-
-    ".config/mako" = {
-      recursive = true;
-      source = ./mako;
     };
   };
 
