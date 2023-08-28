@@ -1,0 +1,33 @@
+(defwidget tray []
+    (box :class "tray" :orientation "h" :space-evenly false :halign "end"
+    (metric :label "🔊"
+            :value volume
+            :tooltip volume
+            :onchange "amixer -D pulse sset Master {}%")
+    (metric :label " " :value {EWW_RAM.used_mem_perc} :onchange "")
+    (button :onclick "eww update display-date=${!display-date}" { display-date ? date : time }
+    )))
+
+(defwidget metric [label value onchange]
+  (box :orientation "h"
+       :class "metric"
+       :space-evenly false
+       :width 200
+    (box :class "label" :halign "baseline" label)
+    (scale :min 0
+           :max 101
+           :active {onchange != ""}
+           :value value
+           :hexpand true
+           :onchange onchange)))
+
+(defpoll volume :interval "1s"
+    "amixer -D pulse sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
+
+(defpoll time :interval "1s"
+    "date '+%H:%M:%S'")
+
+(defpoll date :interval "5m"
+    "date '+%d.%m.%y'")
+
+(defvar display-date false)

@@ -1,0 +1,19 @@
+(defvar workspaces "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]")
+
+(defwidget workspaces []
+    (box :class "workspaces"
+         :orientation "h"
+         :space-evenly true
+         :halign "start"
+         :spacing 10
+     (for workspace in workspaces
+        (button :onclick "hyprctl dispatch workspace ${workspace}" 
+                :class "workspace-btn ${(active-workspace-listen ?: active-workspace-poll.id) == workspace ? "active" : "inactive"}"
+         workspace))))
+
+(deflisten active-workspace-listen
+    "scripts/workspace")
+
+(defpoll active-workspace-poll :interval "3s" :initial '{"id": 0}'
+    "hyprctl activeworkspace -j")
+
