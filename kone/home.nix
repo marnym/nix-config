@@ -7,12 +7,15 @@
 
   home.packages = [
     pkgs.gcc
-    pkgs.fuzzel
+    pkgs.rustup
+    pkgs.go
+    pkgs.deno
+    pkgs.nodejs_20
     pkgs.rage
     pkgs.tldr
     pkgs.ranger
+    pkgs.fuzzel
     pkgs.libgit2_1_6
-    pkgs.rustup
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -99,7 +102,6 @@
 
         export PATH="$PATH:$HOME/.local/share/coursier/bin"
         export PATH="$HOME/.local/bin:$PATH"
-        export PATH="$HOME/.deno/bin:$PATH"
         export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
         export PATH="$HOME/apps:$PATH"
         export PATH="$HOME/.cargo/bin:$PATH"
