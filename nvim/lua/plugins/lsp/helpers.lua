@@ -29,7 +29,7 @@ function M.on_attach(client, bufnr)
 	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
 		vim.lsp.buf.format()
 	end, { desc = 'Format current buffer with LSP' })
-	nmap('<leader>f', ':Format<CR>', '[F]ormat current buffer')
+	nmap('<leader>fo', ':Format<CR>', '[FO]rmat current buffer')
 
 	if client.server_capabilities.documentFormattingProvider then
 		vim.api.nvim_create_autocmd('BufWritePre', {
