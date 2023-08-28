@@ -14,8 +14,16 @@ config.colors = kanagawa.colors
 
 if success and stdout:match('Darwin') then
     wezterm.log_info("Running on macOS")
+
     config.font = wezterm.font("JetBrainsMono Nerd Font")
     config.font_size = 14.0
+
+    config.keys = {
+        -- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
+        { key = "LeftArrow",  mods = "OPT", action = wezterm.action { SendString = "\x1b\x62" } },
+        -- Make Option-Right equivalent to Alt-f; forward-word
+        { key = "RightArrow", mods = "OPT", action = wezterm.action { SendString = "\x1b\x66" } },
+    }
 else
     wezterm.log_info("Running on Linux")
     config.font = wezterm.font("JetBrains Mono Nerd Font")
