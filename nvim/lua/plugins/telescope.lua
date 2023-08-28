@@ -43,14 +43,14 @@ return {
 
         vim.keymap.set('n', '<leader><space>', function() require("telescope.builtin").buffers(no_preview()) end,
             { desc = "[ ] Find existing buffers" })
-        vim.keymap.set('n', '<leader>fg', function() require("telescope.builtin").git_files(no_preview()) end,
-            { desc = "[F]ind [G]it files" })
+        vim.keymap.set('n', '<leader>fp', function() require("telescope.builtin").git_files(no_preview()) end,
+            { desc = "[F]ind [P]roject files" })
         vim.keymap.set('n', '<leader>ff', function() require("telescope.builtin").find_files(no_preview()) end,
             { desc = "[F]ind [F]iles" })
         vim.keymap.set('n', '<leader>sw', function() require("telescope.builtin").grep_string(no_preview()) end,
             { desc = "[S]earch current [W]ord" })
-        vim.keymap.set('n', '<leader>sg', function() require("telescope.builtin").live_grep(no_preview()) end,
-            { desc = "[S]earch by [G]rep" })
+        vim.keymap.set('n', '<leader>fg', function() require("telescope.builtin").live_grep(no_preview()) end,
+            { desc = "[F]ind by [G]rep" })
         vim.keymap.set('n', '<leader>sh', function() require("telescope.builtin").help_tags(no_preview()) end,
             { desc = "[S]earch [H]elp" })
         vim.keymap.set('n', '<leader>ss',
