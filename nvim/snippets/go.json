@@ -1,0 +1,19 @@
+{
+  "Error Handling": {
+    "prefix": "iferr",
+    "body": [
+      "if err != nil {",
+      "\t$0",
+      "}"
+    ]
+  },
+  "Inter": {
+    "prefix": "inter",
+    "body": [
+      "---",
+      "mainfont: Inter",
+      "sansfont: Inter",
+      "---"
+    ]
+  }
+}

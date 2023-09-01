@@ -77,6 +77,7 @@
         ga = "git add";
         gc = "git commit";
         gd = "git diff";
+        pandoc = "pandoc --pdf-engine=xelatex";
       };
       initExtra = ''
         set -o emacs

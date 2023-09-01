@@ -19,7 +19,7 @@ return {
         local lspkind = require("lspkind")
 
         require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.snippets" })
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippets" })
 
         local source_mapping = ({
             buffer = "[Buffer]",

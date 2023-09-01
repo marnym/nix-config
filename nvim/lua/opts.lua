@@ -12,8 +12,8 @@ vim.o.clipboard = "unnamedplus"
 -- enable mouse
 vim.o.mouse = "a"
 
--- set an indentation of 4
-vim.o.tabstop = 4
+-- set indentation
+vim.o.tabstop = 2
 
 -- enable break indent
 vim.o.breakindent = true
