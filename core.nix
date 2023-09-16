@@ -12,6 +12,7 @@
     pkgs.rage
     pkgs.tldr
     pkgs.ranger
+    pkgs.grc
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -58,9 +59,27 @@
 
   programs.home-manager.enable = true;
 
+  programs.fish = {
+    enable = true;
+    plugins = [
+      # Enable a plugin (here grc for colorized command output) from nixpkgs
+      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+    ];
+    shellAliases = {
+      a = "ansible";
+      p = "project.sh";
+      g = "git";
+      gs = "git status";
+      ga = "git add";
+      gc = "git commit";
+      gd = "git diff";
+      pandoc = "pandoc --pdf-engine=xelatex";
+    };
+  };
+
   programs.zsh =
     {
-      enable = true;
+      enable = false;
       enableAutosuggestions = true;
       enableCompletion = true;
       syntaxHighlighting = {
@@ -112,6 +131,7 @@
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
+    enableFishIntegration = true;
   };
 
   programs.neovim = {
@@ -222,7 +242,7 @@
     '';
   };
 
-  programs.exa = {
+  programs.eza = {
     enable = true;
     enableAliases = true;
   };
