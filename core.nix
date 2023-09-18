@@ -43,6 +43,11 @@
       recursive = true;
       source = ./ranger;
     };
+
+    ".config/fish/themes" = {
+      recursive = true;
+      source = ./fish/themes;
+    };
   };
 
   # You can also manage environment variables but you will have to manually
