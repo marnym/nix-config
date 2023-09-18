@@ -80,6 +80,9 @@
       gd = "git diff";
       pandoc = "pandoc --pdf-engine=xelatex";
     };
+    shellInit = ''
+      set -U fish_greeting "🐟"
+    '';
   };
 
   programs.zsh =
