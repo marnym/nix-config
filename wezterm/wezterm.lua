@@ -11,6 +11,7 @@ end
 
 config.force_reverse_video_cursor = kanagawa.force_reverse_video_cursor
 config.colors = kanagawa.colors
+config.default_cursor_style = 'BlinkingBar'
 
 if success and stdout:match('Darwin') then
     wezterm.log_info("Running on macOS")
