@@ -19,6 +19,7 @@
     pkgs.ranger
     pkgs.grc
     pkgs.jq
+    pkgs.ripgrep
     (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; })
   ];
 
