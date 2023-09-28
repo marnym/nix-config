@@ -91,6 +91,7 @@
     shellInit = ''
       set -U fish_greeting "🐟"
       fish_add_path "$HOME/.local/bin"
+      fish_add_path "$HOME/.nix-profile/bin"
     '';
   };
 
