@@ -1,6 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  nix = {
+    package = pkgs.nix;
+    settings.experimental-features = [ "nix-command" "flakes" ];
+  };
+
   home.stateVersion = "23.05";
 
   home.packages = [
@@ -13,6 +18,8 @@
     pkgs.tldr
     pkgs.ranger
     pkgs.grc
+    pkgs.jq
+    (pkgs.nerdfonts.override { fonts = ["JetBrainsMono"]; })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
