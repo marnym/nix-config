@@ -9,19 +9,19 @@
 
   home.stateVersion = "23.05";
 
-  home.packages = [
-    pkgs.gcc
-    pkgs.rustup
-    pkgs.go
-    pkgs.deno
-    pkgs.nodejs_20
-    pkgs.rage
-    pkgs.tldr
-    pkgs.ranger
-    pkgs.grc
-    pkgs.jq
-    pkgs.ripgrep
-    (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+  home.packages = with pkgs; [
+    gcc
+    rustup
+    go
+    deno
+    nodejs_20
+    rage
+    tldr
+    ranger
+    grc
+    jq
+    ripgrep
+    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -98,6 +98,11 @@
       fish_add_path "$HOME/.local/bin"
       fish_add_path "$HOME/.nix-profile/bin"
     '';
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
   };
 
   programs.zsh =
