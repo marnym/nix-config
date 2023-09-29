@@ -230,16 +230,18 @@
     disableConfirmationPrompt = true;
     escapeTime = 10;
     mouse = true;
-    prefix = "C-a";
+    prefix = "C-Space";
     resizeAmount = 10;
     terminal = "screen-256color";
     keyMode = "vi";
     customPaneNavigationAndResize = true;
     extraConfig = ''
       # Some tweaks to the status line
+      set-option -g status-position bottom
       set -g status-right "%H:%M"
       set -g status-left-length 20
-      set-option -g status-position top
+      set -g window-status-separator ""
+      set -g status-justify centre
 
       # If running inside tmux ($TMUX is set), then change the status line to red
       %if #{TMUX}
@@ -262,6 +264,9 @@
       unbind -T copy-mode MouseDrag1Pane
       unbind -T copy-mode-vi MouseDragEnd1Pane
       bind-key -T copy-mode-vi y send-keys -X copy-selection
+
+      bind t split-window -f -l 15 -c "#{pane_current_path}"
+      bind T split-window -h -f -p 35 -c "#{pane_current_path}"
     '';
   };
 
