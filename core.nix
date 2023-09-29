@@ -57,6 +57,10 @@
       recursive = true;
       source = ./fish/themes;
     };
+
+    ".ideavimrc" = {
+      source = ./jetbrains/.ideavimrc;
+    };
   };
 
   # You can also manage environment variables but you will have to manually
