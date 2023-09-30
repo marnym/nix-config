@@ -4,7 +4,6 @@ local M = {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
 		"nvim-treesitter/nvim-treesitter-context",
-		"p00f/nvim-ts-rainbow"
 	},
 }
 
@@ -40,7 +39,6 @@ function M.config()
 		},
 		auto_install = false,
 		highlight = { enable = true },
-		indent = { enable = true },
 		incremental_selection = {
 			enable = true,
 			keymaps = {
@@ -94,11 +92,6 @@ function M.config()
 				},
 			},
 		},
-		-- rainbow = {
-		-- 	enable = true,
-		-- 	extended = true,
-		-- 	max_file_lines = 1000,
-		-- },
 	}
 end
 

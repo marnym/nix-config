@@ -89,6 +89,7 @@ return {
 						condition = function(utils)
 							return not utils.root_has_file("deno.json")
 						end,
+						extra_filetypes = { "astro" }
 					}),
 					null_ls.builtins.formatting.black,
 					null_ls.builtins.code_actions.gitsigns,

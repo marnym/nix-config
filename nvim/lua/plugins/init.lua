@@ -58,11 +58,16 @@ return {
     },
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         opts = {
-            char = '┊',
-            show_current_context = true,
-            show_current_context_start = true,
-            show_trailing_blankline_indent = false,
+            debounce = 100,
+            indent = { char = "┊" },
+            scope = {
+                enable = true,
+                highlight = "Identifier",
+                char = "│",
+            }
+
         }
     },
     {
