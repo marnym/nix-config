@@ -92,6 +92,7 @@
       gc = "git commit";
       gd = "git diff";
       pandoc = "pandoc --pdf-engine=xelatex";
+      cat = "bat";
     };
     shellInit = ''
       set -U fish_greeting "🐟"
@@ -278,5 +279,9 @@
   programs.eza = {
     enable = true;
     enableAliases = true;
+  };
+
+  programs.bat = {
+    enable = true;
   };
 }
