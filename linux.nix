@@ -23,9 +23,10 @@
     };
   };
 
-  home.packages = [
-    pkgs.fuzzel
-    pkgs.libgit2_1_6
+  home.packages = with pkgs; [
+    fuzzel
+    libgit2_1_6
+    spicetify-cli
   ];
 
   programs.eww = {
