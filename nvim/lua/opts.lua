@@ -43,9 +43,6 @@ vim.o.completeopt = "menuone,noselect"
 
 vim.o.termguicolors = true
 
--- disable wrap
-vim.o.wrap = false
-
 -- so that `` is visible in markdown files
 vim.o.conceallevel = 0
 
