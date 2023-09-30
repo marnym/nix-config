@@ -27,7 +27,7 @@ else
     wezterm.log_info("Running on Linux")
 
     config.font = wezterm.font("JetBrains Mono Nerd Font")
-    config.font_size = 16.0
+    config.font_size = 14.0
 
     config.keys = {
         { key = "LeftArrow",  mods = "CTRL", action = wezterm.action { SendString = "\x1b\x62" } },
