@@ -15,7 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins", {
-    lockfile = "~/Cloud/lazy-lock.json",
+    lockfile = "~/.dotfiles/lazy-lock.json",
 })
 
 vim.api.nvim_create_autocmd("User", {
