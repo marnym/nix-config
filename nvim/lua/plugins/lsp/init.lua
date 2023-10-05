@@ -26,10 +26,7 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			opts = {
 				ensure_installed = {
-					"ansiblels",
 					"bashls",
-					"clangd",
-					"cmake",
 					"cssls",
 					"denols",
 					"dockerls",
@@ -42,13 +39,8 @@ return {
 					"marksman",
 					"pyright",
 					"rust_analyzer",
-					"sqlls",
-					"svelte",
-					"taplo",
 					"texlab",
 					"tailwindcss",
-					"terraformls",
-					"volar",
 				}
 			},
 			lazy = true
