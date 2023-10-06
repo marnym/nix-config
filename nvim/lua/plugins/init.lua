@@ -101,12 +101,12 @@ return {
         keys = { "f", "F", "t", "T" },
     },
     "tpope/vim-sleuth",
-    {
-        "lervag/vimtex",
-        config = function()
-            vim.cmd "let g:tex_flavor = 'latex'"
-        end
-    },
+    -- {
+    --     "lervag/vimtex",
+    --     config = function()
+    --         vim.cmd "let g:tex_flavor = 'latex'"
+    --     end
+    -- },
     {
         "danymat/neogen",
         config = true,

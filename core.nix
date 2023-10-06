@@ -1,10 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   nix = {
-    package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
-    settings.max-jobs = "auto";
+    package = lib.mkForce pkgs.nix;
+    settings.experimental-features = lib.mkForce [ "nix-command" "flakes" ];
+    settings.max-jobs = lib.mkForce "auto";
   };
 
   home.stateVersion = "23.05";
@@ -111,9 +111,6 @@
       enable = false;
       enableAutosuggestions = true;
       enableCompletion = true;
-      syntaxHighlighting = {
-        enable = true;
-      };
       history = {
         path = "$HOME/.cache/zsh/history";
       };
@@ -276,7 +273,7 @@
     '';
   };
 
-  programs.eza = {
+  programs.exa = {
     enable = true;
     enableAliases = true;
   };

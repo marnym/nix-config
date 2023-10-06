@@ -1,10 +1,12 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [ ./core.nix ];
 
   home.username = "markus";
   home.homeDirectory = "/home/markus";
+
+  programs.git.signing.signByDefault = lib.mkForce false;
 
   home.file = {
     ".config/hypr" = {
@@ -25,7 +27,6 @@
 
   home.packages = with pkgs; [
     fuzzel
-    libgit2_1_6
     spicetify-cli
   ];
 

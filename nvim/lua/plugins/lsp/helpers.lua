@@ -27,7 +27,9 @@ function M.on_attach(client, bufnr)
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
 	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-		vim.lsp.buf.format()
+		if client.server_capabilities.documentFormattingProvider then
+			vim.lsp.buf.format()
+		end
 	end, { desc = 'Format current buffer with LSP' })
 	nmap('<leader>fo', ':Format<CR>', '[FO]rmat current buffer')
 
