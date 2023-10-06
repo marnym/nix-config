@@ -5,7 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ /home/markus/.dotfiles/nixos/core.nix ];
-  networking.hostName = "koun"; 
+  imports = [
+    /home/markus/.dotfiles/nixos/core.nixos
+    ./home-manager.nix
+  ];
+  networking.hostName = "koun";
 }
-

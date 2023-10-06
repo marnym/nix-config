@@ -11,17 +11,17 @@
   home.file = {
     ".config/hypr" = {
       recursive = true;
-      source = ./hypr;
+      source = ../hypr-thinkpad;
     };
 
     ".config/fuzzel" = {
       recursive = true;
-      source = ./fuzzel;
+      source = ../fuzzel;
     };
 
     ".config/mako" = {
       recursive = true;
-      source = ./mako;
+      source = ../mako;
     };
   };
 
@@ -32,7 +32,7 @@
   programs.eww = {
     enable = true;
     package = pkgs.eww-wayland;
-    configDir = ./eww;
+    configDir = ../eww;
   };
 
 }
