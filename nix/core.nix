@@ -39,27 +39,27 @@
     # '';
     ".config/nvim" = {
       recursive = true;
-      source = ./nvim;
+      source = ../nvim;
     };
 
 
     ".config/wezterm" = {
       recursive = true;
-      source = ./wezterm;
+      source = ../wezterm;
     };
 
     ".config/ranger" = {
       recursive = true;
-      source = ./ranger;
+      source = ../ranger;
     };
 
     ".config/fish/themes" = {
       recursive = true;
-      source = ./fish/themes;
+      source = ../fish/themes;
     };
 
     ".ideavimrc" = {
-      source = ./jetbrains/.ideavimrc;
+      source = ../jetbrains/.ideavimrc;
     };
   };
 
