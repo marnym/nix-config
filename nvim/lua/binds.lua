@@ -6,10 +6,6 @@ local function vim_cmd(cmd)
 	end
 end
 
--- Use j and k to navigate wrapped lines
-vim.keymap.set("n", "j", "gj", opts)
-vim.keymap.set("n", "k", "gk", opts)
-
 -- Use alt + hjkl to resize windows
 vim.keymap.set("n", "<M-j>", vim_cmd("resize -2"), opts)
 vim.keymap.set("n", "<M-k>", vim_cmd("resize +2"), opts)

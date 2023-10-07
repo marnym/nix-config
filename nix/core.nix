@@ -10,7 +10,9 @@
   home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
+    tree
     gcc
+    gnumake
     rustup
     go
     deno
@@ -21,6 +23,8 @@
     grc
     jq
     ripgrep
+    nixfmt
+    temurin-bin-17
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 

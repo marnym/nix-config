@@ -36,7 +36,6 @@ return {
 					"tsserver",
 					"ltex",
 					"lua_ls",
-					"marksman",
 					"pyright",
 					"rust_analyzer",
 					"texlab",

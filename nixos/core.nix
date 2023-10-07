@@ -1,15 +1,17 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running `nixos-help`).
-
 { config, pkgs, ... }:
 
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+  imports = [ /etc/nixos/hardware-configuration.nix ];
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
     ];
+  };
+
+  nixpkgs.config.allowUnfree = true;
 
   programs.hyprland.enable = true;
   programs.fish.enable = true;
@@ -65,11 +67,11 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     packages = with pkgs; [
+      xdg-utils
       firefox
-      tree
       wezterm
-      nixfmt
       telegram-desktop
+      obsidian
     ];
     initialPassword = "pw123";
   };
@@ -81,6 +83,12 @@
     wget
     git
   ];
+
+  environment.sessionVariables = {
+    XDG_CONFIG_HOME = "$HOME/etc";
+    XDG_DATA_HOME = "$HOME/var/lib";
+    XDG_CACHE_HOME = "$HOME/var/cache";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
