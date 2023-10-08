@@ -6,7 +6,7 @@
 
 {
   imports = [
-    /home/markus/.dotfiles/nixos/core.nix
+    ./core.nix
     ./home-manager.nix
   ];
   networking.hostName = "koun";

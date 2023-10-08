@@ -7,10 +7,5 @@ in
     (import "${home-manager}/nixos")
   ];
 
-  home-manager.users.markus = {
-    home.stateVersion = "23.05";
-    imports = [
-      /home/markus/.dotfiles/nix/thinkpad.nix
-    ];
-  };
+  home-manager.users.markus = import /home/markus/.dotfiles/nix/thinkpad.nix;
 }

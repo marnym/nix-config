@@ -84,12 +84,6 @@
     git
   ];
 
-  environment.sessionVariables = {
-    XDG_CONFIG_HOME = "$HOME/etc";
-    XDG_DATA_HOME = "$HOME/var/lib";
-    XDG_CACHE_HOME = "$HOME/var/cache";
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
