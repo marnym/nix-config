@@ -2,5 +2,5 @@
 
 windows=$(hyprctl -j clients | jq)
 
-echo $""
+echo "$windows"
 

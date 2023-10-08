@@ -44,9 +44,6 @@
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
 
-
-
-
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e,caps:escape";
@@ -83,6 +80,24 @@
     wget
     git
   ];
+
+  services.syncthing = {
+    enable = true;
+    overrideDevices = true;
+    overrideFolders = true;
+    folders = {
+      "capiu-mnq68" = {
+        path = "/home/markus/Cloud";
+        devices = [ "persC" "macOS" ];
+        versioning = {
+          type = "simple";
+          params = {
+            keep = "10";
+          };
+        };
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

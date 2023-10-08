@@ -97,6 +97,7 @@ function M.setup_handlers()
 				'ts=typescript'
 			}
 			nvim_lsp.denols.setup {
+				cmd = { '/home/markus/.nix-profile/bin/deno', 'lsp' },
 				on_attach = M.on_attach,
 				capabilities = capabilities,
 				root_dir = M.root_pattern_excludes('deno.json', 'package.json'),

@@ -28,7 +28,6 @@ return {
 				ensure_installed = {
 					"bashls",
 					"cssls",
-					"denols",
 					"dockerls",
 					"gopls",
 					"html",
