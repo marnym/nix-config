@@ -90,6 +90,10 @@
     temurin-bin-17
     sqlite
 
+    # neovim
+    pkgs-unstable.neovim-unwrapped
+    pkgs-unstable.nixpkgs-fmt
+
     # document rendering
     pandoc
     texlive.combined.scheme-full

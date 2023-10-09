@@ -1,7 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
-  imports = [ ./core.nix ];
+  imports = [ ../../home/default.nix ];
 
   home.username = "markus";
   home.homeDirectory = "/home/markus";
@@ -11,17 +11,17 @@
   home.file = {
     ".config/hypr" = {
       recursive = true;
-      source = ../hypr;
+      source = ../../hypr;
     };
 
     ".config/fuzzel" = {
       recursive = true;
-      source = ../fuzzel;
+      source = ../../fuzzel;
     };
 
     ".config/mako" = {
       recursive = true;
-      source = ../mako;
+      source = ../../mako;
     };
   };
 
@@ -33,6 +33,6 @@
   programs.eww = {
     enable = true;
     package = pkgs.eww-wayland;
-    configDir = ../eww;
+    configDir = ../../eww;
   };
 }
