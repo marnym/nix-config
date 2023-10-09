@@ -1,64 +1,109 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 
 {
   nix = {
-    package = lib.mkForce pkgs.nix;
     settings.experimental-features = lib.mkForce [ "nix-command" "flakes" ];
-    settings.max-jobs = lib.mkForce "auto";
+    settings.extra-substituters = [
+      # Nix community's cache server
+      "https://nix-community.cachix.org"
+    ];
+    settings.extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+    settings.trusted-users = [ "markus" ];
   };
 
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-    };
-  };
-
-  home.stateVersion = "23.05";
+  nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
+    neofetch
+    nnn
+
+    #archives
+    zip
+    xz
+    unzip
+    p7zip
+
+    # utils
+    ripgrep
+    jq
+    yq-go
+    exa
+    fzf
+
+    # networking tools
+    mtr
+    iperf3
+    dnsutils
+    ldns
+    aria2
+    socat
+    nmap
+    ipcalc
+
+    # misc
+    grc
+    cowsay
+    file
+    which
     tree
+    gnused
+    gnutar
+    gawk
+    zstd
+    gnupg
+    age
+    tldr
+
+    # nix
+    nix-output-monitor
+    nixfmt
+
+    # productivity
+    hugo
+    glow
+
+    btop
+    iotop
+    iftop
+
+    # system call monitoring
+    strace
+    ltrace
+    lsof
+
+    # system tools
+    sysstat
+    lm_sensors
+    ethtool
+    pciutils
+    usbutils
+
+    # development
     gcc
     gnumake
     rustup
     go
     deno
     nodejs_20
-    rage
-    tldr
-    ranger
-    grc
-    jq
-    ripgrep
-    nixfmt
     temurin-bin-17
-    socat
     sqlite
+
+    # document rendering
     pandoc
     texlive.combined.scheme-full
     librsvg
+
+    # font
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
-  # Home Manager is pretty good at managing dotfiles. The primary way to manage
-  # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
     ".config/nvim" = {
       recursive = true;
       source = ../nvim;
     };
-
 
     ".config/wezterm" = {
       recursive = true;
@@ -79,20 +124,6 @@
       source = ../jetbrains/.ideavimrc;
     };
   };
-
-  # You can also manage environment variables but you will have to manually
-  # source
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/markus/etc/profile.d/hm-session-vars.sh
-  #
-  # if you don't want to manage your shell through Home Manager.
-  home.sessionVariables.EDITOR = "nvim";
-
-  programs.home-manager.enable = true;
 
   programs.fish = {
     enable = true;
@@ -122,54 +153,6 @@
     nix-direnv.enable = true;
   };
 
-  programs.zsh =
-    {
-      enable = false;
-      enableAutosuggestions = true;
-      enableCompletion = true;
-      history = {
-        path = "$HOME/.cache/zsh/history";
-      };
-      shellAliases = {
-        a = "ansible";
-        p = "project.sh";
-        g = "git";
-        gs = "git status";
-        ga = "git add";
-        gc = "git commit";
-        gd = "git diff";
-        pandoc = "pandoc --pdf-engine=xelatex";
-      };
-      initExtra = ''
-        set -o emacs
-
-        # Use vim keys in tab complete menu
-        bindkey -M menuselect "h" vi-backward-char
-        bindkey -M menuselect "k" vi-up-line-or-history
-        bindkey -M menuselect "l" vi-forward-char
-        bindkey -M menuselect "j" vi-down-line-or-history
-        bindkey "^e" end-of-line
-        bindkey -s "^o" ". ranger\n"
-
-        export PATH="$PATH:$HOME/.local/share/coursier/bin"
-        export PATH="$HOME/.local/bin:$PATH"
-        export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-        export PATH="$HOME/apps:$PATH"
-        export PATH="$HOME/.cargo/bin:$PATH"
-
-        export GOPATH=$HOME/go
-        export XDG_CONFIG_HOME=$HOME/.config
-
-        export LANG=en_US.UTF-8
-        export LANGUAGE=en_US.UTF-8
-        export LC_ALL=en_US.UTF-8
-      '';
-      initExtraBeforeCompInit = ''
-        zstyle ":completion:*" menu select
-        zmodload zsh/complist
-      '';
-    };
-
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -181,7 +164,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    package = pkgs.unstable.neovim-unwrapped;
+    package = pkgs-unstable.neovim-unwrapped;
   };
 
   programs.git = {
@@ -212,7 +195,10 @@
     enableZshIntegration = true;
     settings = {
       "$schema" = "https://starship.rs/config-schema.json";
-      add_newline = true;
+      add_newline = false;
+      aws.disabled = true;
+      gcloud.disabled = true;
+      line_break.disabled = true;
       character = {
         success_symbol = "[➜](bold green)";
         error_symbol = "[➜](bold red)";
@@ -298,4 +284,8 @@
   programs.bat = {
     enable = true;
   };
+
+  home.stateVersion = "23.05";
+
+  programs.home-manager.enable = true;
 }

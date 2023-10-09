@@ -1,21 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  nixpkgs.config = {
-    allowUnfree = true;
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-    };
-  };
-
-  nix.settings = {
-    substituters = ["https://hyprland.cachix.org"];
-    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-  };
-
-  imports = [ /etc/nixos/hardware-configuration.nix ];
+  nixpkgs.config.allowUnfree = true;
 
   xdg.portal = {
     enable = true;
@@ -23,6 +9,11 @@
     extraPortals = [
       pkgs.unstable.xdg-desktop-portal-gtk
     ];
+  };
+
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
   };
 
   programs.hyprland = {
@@ -82,7 +73,7 @@
       xdg-utils
       xfce.thunar
       wl-clipboard
-      firefox
+      firefox-wayland
       chromium
       wezterm
       zathura
@@ -97,33 +88,31 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    neovim
-    wget
     git
+    pkgs.unstable.neovim
+    wget
+    curl
   ];
 
-  services.syncthing = {
-    enable = true;
-    overrideDevices = true;
-    overrideFolders = true;
-    folders = {
-      "capiu-mnq68" = {
-        path = "/home/markus/Cloud";
-        devices = [ "persC" "macOS" ];
-        versioning = {
-          type = "simple";
-          params = {
-            keep = "10";
-          };
-        };
-      };
-    };
-  };
+  environment.variables.EDITOR = "nvim";
 
-  services.dbus = {
-    enable = true;
-    implementation = "broker";
-  };
+  # services.syncthing = {
+  #  enable = true;
+  #  overrideDevices = true;
+  #  overrideFolders = true;
+  #  folders = {
+  #    "capiu-mnq68" = {
+  #      path = "/home/markus/Cloud";
+  #      devices = [ "persC" "macOS" ];
+  #      versioning = {
+  #        type = "simple";
+  #        params = {
+  #          keep = "10";
+  #        };
+  #      };
+  #    };
+  #  };
+  #};
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
