@@ -25,6 +25,8 @@
     ripgrep
     nixfmt
     temurin-bin-17
+    socat
+    sqlite
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 

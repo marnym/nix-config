@@ -65,10 +65,15 @@
     shell = pkgs.fish;
     packages = with pkgs; [
       xdg-utils
+      xfce.thunar
       firefox
+      chromium
       wezterm
+      zathura
+      spotify
       telegram-desktop
       obsidian
+      pavucontrol
     ];
     initialPassword = "pw123";
   };
