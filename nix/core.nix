@@ -7,6 +7,14 @@
     settings.max-jobs = lib.mkForce "auto";
   };
 
+  nixpkgs.config = {
+    packageOverrides = pkgs: {
+      unstable = import <nixos-unstable> {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+
   home.stateVersion = "23.05";
 
   home.packages = with pkgs; [
@@ -27,6 +35,9 @@
     temurin-bin-17
     socat
     sqlite
+    pandoc
+    texlive.combined.scheme-full
+    librsvg
     (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
@@ -170,6 +181,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
+    package = pkgs.unstable.neovim-unwrapped;
   };
 
   programs.git = {

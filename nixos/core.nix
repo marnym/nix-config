@@ -1,19 +1,34 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config = {
+    allowUnfree = true;
+    packageOverrides = pkgs: {
+      unstable = import <nixos-unstable> {
+        config = config.nixpkgs.config;
+      };
+    };
+  };
+
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
   imports = [ /etc/nixos/hardware-configuration.nix ];
 
   xdg.portal = {
     enable = true;
+    gtkUsePortal = false;
     extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
+      pkgs.unstable.xdg-desktop-portal-gtk
     ];
   };
 
-  nixpkgs.config.allowUnfree = true;
-
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.unstable.hyprland;
+  };
   programs.fish.enable = true;
 
   virtualisation.docker.enable = true;
@@ -66,6 +81,7 @@
     packages = with pkgs; [
       xdg-utils
       xfce.thunar
+      wl-clipboard
       firefox
       chromium
       wezterm
@@ -102,6 +118,11 @@
         };
       };
     };
+  };
+
+  services.dbus = {
+    enable = true;
+    implementation = "broker";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
