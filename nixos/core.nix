@@ -24,9 +24,7 @@
   xdg.portal = {
     enable = true;
     gtkUsePortal = false;
-    extraPortals = [
-      pkgs.unstable.xdg-desktop-portal-gtk
-    ];
+    extraPortals = [ pkgs.unstable.xdg-desktop-portal-gtk ];
   };
 
   services.dbus = {
