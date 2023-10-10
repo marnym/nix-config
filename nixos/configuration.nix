@@ -7,10 +7,8 @@
   ];
 
   nixpkgs.config.allowUnfree = true;
-
-  nix.settings = {
-    trusted-users = [ "markus" ];
-  };
+  nix.settings.experimental-features = "nix-command flakes";
+  nix.settings.trusted-users = "markus";
 
   programs.fish.enable = true;
 

@@ -2,6 +2,8 @@
 
 {
   nixpkgs.config.allowUnfree = true;
+  nix.settings.experimental-features = "nix-command flakes";
+  nix.package = pkgs.nix;
 
   home.packages = with pkgs; [
     neofetch

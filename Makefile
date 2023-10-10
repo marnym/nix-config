@@ -1,7 +1,9 @@
-deploy:
+all: nixos home
+
+nixos:
 	nixos-rebuild switch --flake . --use-remote-sudo
 
-deploy-home:
+home: FRC
 	home-manager switch --flake .
 
 debug:
@@ -20,3 +22,5 @@ gc:
 
 	# garbage collect all unused nix store entries
 	sudo nix store gc --debug
+
+FRC:
