@@ -2,8 +2,9 @@
 
 {
   imports = [
-    ../../core.nix
-    ./hardware-configuration.nix
+    ../configuration.nix
+    ../hardware-configuration/thinkpad.nix
+    ../../modules/nixos/intel-undervolt.nix
   ];
 
   nixpkgs.config = {

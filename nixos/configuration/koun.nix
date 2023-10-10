@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../../core.nix
-    ./hardware-configuration.nix
+    ../configuration.nix
+    ../hardware-configuration/koun.nix
   ];
 
   nixpkgs.config = {
