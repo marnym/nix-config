@@ -1,6 +1,6 @@
 all: nixos home
 
-nixos:
+nixos: FRC
 	nixos-rebuild switch --flake . --use-remote-sudo
 
 home: FRC

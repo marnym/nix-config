@@ -2,13 +2,9 @@
 
 {
   imports = [
+    ../modules/nix.nix
     ../modules/hyprland.nix
-
   ];
-
-  nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = "nix-command flakes";
-  nix.settings.trusted-users = "markus";
 
   programs.fish.enable = true;
 
