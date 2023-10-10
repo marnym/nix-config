@@ -4,13 +4,13 @@
   nixConfig = {
     experimental-features = [ "nix-command" "flakes" ];
     extra-substituters = [
-      "https://hyprland.cachix.org"
       # Nix community's cache server
       "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
     trusted-users = [ "markus" ];
   };
@@ -28,55 +28,51 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
+      system = "x86_64-linux";
+      specialArgs = {
+        inherit inputs outputs;
+        pkgs-unstable = import nixpkgs-unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
     in
     {
       packages.x86_64-linux = import ./pkgs nixpkgs.legacyPackages.x86_64-linux;
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
       nixosModules = import ./modules/nixos;
 
-      nixosConfigurations =
-        let
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs outputs;
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
-          };
-        in
-        {
-          thinkpad = nixpkgs.lib.nixosSystem {
-            inherit system specialArgs;
-            modules = [
-              ./hosts/thinkpad/configuration.nix
-              outputs.nixosModules.intel-undervolt
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-
-                home-manager.extraSpecialArgs = specialArgs;
-                home-manager.users.markus = import ./hosts/thinkpad/home.nix;
-              }
-            ];
-          };
-
-          koun = nixpkgs.lib.nixosSystem {
-            inherit system specialArgs;
-            modules = [
-              ./hosts/koun/configuration.nix
-
-              home-manager.nixosModules.home-manager
-              {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-
-                home-manager.extraSpecialArgs = specialArgs;
-                home-manager.users.markus = import ./hosts/koun/home.nix;
-              }
-            ];
-          };
+      nixosConfigurations = {
+        koun = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            ./nixos/hosts/koun/configuration.nix
+          ];
         };
+        thinkpad = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [
+            outputs.nixosModules.intel-undervolt
+            ./nixos/hosts/thinkpad/configuration.nix
+          ];
+        };
+      };
+
+      homeConfigurations = {
+        "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./home/hosts/thinkpad/home.nix
+          ];
+        };
+        "markus@koun" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = specialArgs;
+          modules = [
+            ./home/hosts/koun/home.nix
+          ];
+        };
+      };
     };
 }
