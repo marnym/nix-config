@@ -1,7 +1,10 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [ ./core.nix ];
+  imports = [
+    ./core.nix
+    ../hyprland
+  ];
 
   home.username = "markus";
   home.homeDirectory = "/home/markus";
@@ -9,11 +12,6 @@
   programs.git.signing.signByDefault = lib.mkForce false;
 
   home.file = {
-    ".config/hypr" = {
-      recursive = true;
-      source = ../config/hypr;
-    };
-
     ".config/fuzzel" = {
       recursive = true;
       source = ../config/fuzzel;
