@@ -65,6 +65,7 @@
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     shell = pkgs.fish;
     packages = with pkgs; [
+      mako
       xdg-utils
       xfce.thunar
       wl-clipboard
