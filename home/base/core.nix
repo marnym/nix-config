@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  imports = [ ../../modules/nix-settings.nix ];
+  imports = [
+    ../../modules/nix-settings.nix
+    ../server/neovim
+  ];
 
   nix.package = pkgs.nix;
 
@@ -80,11 +83,6 @@
     jdk17
     sqlite
 
-    # neovim
-    pkgs.unstable.lua-language-server
-    pkgs.unstable.neovim-unwrapped
-    pkgs.unstable.nixpkgs-fmt
-
     # document rendering
     pandoc
     texlive.combined.scheme-full
@@ -95,10 +93,6 @@
   ];
 
   home.file = {
-    ".config/nvim" = {
-      recursive = true;
-      source = ../config/nvim;
-    };
     ".config/wezterm" = {
       recursive = true;
       source = ../config/wezterm;
@@ -151,14 +145,6 @@
     enable = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
-  };
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    viAlias = true;
-    vimAlias = true;
-    package = pkgs.unstable.neovim-unwrapped;
   };
 
   programs.git = {
