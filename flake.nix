@@ -15,17 +15,30 @@
     let
       inherit (self) outputs;
       system = "x86_64-linux";
+      pkgs-unstable = import nixpkgs-unstable {
+        inherit system;
+        config.allowUnfree = true;
+      };
+
       specialArgs = {
         inherit inputs outputs;
-        pkgs-unstable = import nixpkgs-unstable {
+        pkgs = import nixpkgs {
           inherit system;
-          config.allowUnfree = true;
+          config = {
+            allowUnfree = true;
+            packageOverrides = pkgs: {
+              unstable = pkgs-unstable;
+              hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
+              hyprshot = outputs.packages.${pkgs.system}.hyprshot;
+              intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
+            };
+          };
         };
       };
     in
     {
-      packages.x86_64-linux = import ./pkgs nixpkgs.legacyPackages.x86_64-linux;
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      packages.${system} = import ./pkgs nixpkgs.legacyPackages.${system};
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
       nixosModules = import ./modules;
 
       nixosConfigurations = {

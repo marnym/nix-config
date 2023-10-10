@@ -1,17 +1,10 @@
-{ pkgs, pkgs-unstable, inputs, ... }:
+{ ... }:
 
 {
   imports = [
     ../configuration.nix
     ../hardware-configuration/koun.nix
   ];
-
-  nixpkgs.config = {
-    packageOverrides = pkgs: {
-      unstable = pkgs-unstable;
-      hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
-    };
-  };
 
   networking.hostName = "koun";
 

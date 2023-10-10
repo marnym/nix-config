@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -83,8 +83,8 @@
     sqlite
 
     # neovim
-    pkgs-unstable.neovim-unwrapped
-    pkgs-unstable.nixpkgs-fmt
+    pkgs.unstable.neovim-unwrapped
+    pkgs.unstable.nixpkgs-fmt
 
     # document rendering
     pandoc
@@ -160,7 +160,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    package = pkgs-unstable.neovim-unwrapped;
+    package = pkgs.unstable.neovim-unwrapped;
   };
 
   programs.git = {
