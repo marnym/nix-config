@@ -2,6 +2,7 @@
 
 {
   config = {
+    environment.systemPackages = [ pkgs.intel-undervolt ];
     systemd.services.intel-undervolt = {
       description = "Intel Undervolt Service";
       after = [

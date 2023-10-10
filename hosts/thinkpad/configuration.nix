@@ -9,8 +9,5 @@
 
   networking.hostName = "thinkpad";
 
-  environment.systemPackages = [
-    pkgs.acpi
-    pkgs.intel-undervolt
-  ];
+  environment.systemPackages = [ pkgs.acpi ];
 }
