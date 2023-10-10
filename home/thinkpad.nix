@@ -1,4 +1,4 @@
-{}:
+{ ... }:
 
 {
   imports = [ ./base/linux.nix ];
