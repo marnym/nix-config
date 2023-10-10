@@ -8,5 +8,5 @@ stdenv.mkDerivation rec {
     hash = "sha256-KafrruSDDWXQtc76bUl4h9TyPzRlmHbf6UTzoCDPM/8=";
   };
 
-  makeFlags = [ "DESTDIR=$(out)" ];
+  makeFlags = [ "DESTDIR=$(out)" "BINDIR=/bin" ];
 }

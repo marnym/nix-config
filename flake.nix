@@ -25,52 +25,58 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs: {
-    packages.x86_64-linux = import ./pkgs nixpkgs.legacyPackages.x86_64-linux;
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+    let
+      inherit (self) outputs;
+    in
+    {
+      packages.x86_64-linux = import ./pkgs nixpkgs.legacyPackages.x86_64-linux;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      nixosModules = import ./modules/nixos;
 
-    nixosConfigurations =
-      let
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs;
-          pkgs-unstable = import nixpkgs-unstable {
-            inherit system;
-            config.allowUnfree = true;
+      nixosConfigurations =
+        let
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit inputs outputs;
+            pkgs-unstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
+          };
+        in
+        {
+          thinkpad = nixpkgs.lib.nixosSystem {
+            inherit system specialArgs;
+            modules = [
+              ./hosts/thinkpad/configuration.nix
+              outputs.nixosModules.intel-undervolt
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+
+                home-manager.extraSpecialArgs = specialArgs;
+                home-manager.users.markus = import ./hosts/thinkpad/home.nix;
+              }
+            ];
+          };
+
+          koun = nixpkgs.lib.nixosSystem {
+            inherit system specialArgs;
+            modules = [
+              ./hosts/koun/configuration.nix
+
+              home-manager.nixosModules.home-manager
+              {
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+
+                home-manager.extraSpecialArgs = specialArgs;
+                home-manager.users.markus = import ./hosts/koun/home.nix;
+              }
+            ];
           };
         };
-      in
-      {
-        thinkpad = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [
-            ./hosts/thinkpad/configuration.nix
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.markus = import ./hosts/thinkpad/home.nix;
-            }
-          ];
-        };
-
-        koun = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [
-            ./hosts/koun/configuration.nix
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-
-              home-manager.extraSpecialArgs = specialArgs;
-              home-manager.users.markus = import ./hosts/koun/home.nix;
-            }
-          ];
-        };
-      };
-  };
+    };
 }
