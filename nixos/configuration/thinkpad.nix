@@ -4,7 +4,7 @@
   imports = [
     ../configuration.nix
     ../hardware-configuration/thinkpad.nix
-    ../../modules/nixos/intel-undervolt.nix
+    ../../modules/intel-undervolt.nix
   ];
 
   nixpkgs.config = {
@@ -16,8 +16,6 @@
   };
 
   environment.systemPackages = [ outputs.packages.x86_64-linux.intel-undervolt ];
-
-  services.intel-undervolt.enable = true;
 
   networking.hostName = "thinkpad";
 }
