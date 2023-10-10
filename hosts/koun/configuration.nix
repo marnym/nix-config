@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ../configuration.nix
-    ../hardware-configuration/koun.nix
+    ./hardware-configuration.nix
+    ../base.nix
   ];
 
   networking.hostName = "koun";

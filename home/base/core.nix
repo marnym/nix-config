@@ -1,9 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [
-    ../modules/nix.nix
-  ];
+  imports = [ ../../modules/nix-settings.nix ];
 
   nix.package = pkgs.nix;
 
@@ -79,7 +77,7 @@
     go
     deno
     nodejs_20
-    temurin-bin-17
+    jdk17
     sqlite
 
     # neovim
@@ -98,26 +96,25 @@
   home.file = {
     ".config/nvim" = {
       recursive = true;
-      source = ../nvim;
+      source = ../config/nvim;
     };
-
     ".config/wezterm" = {
       recursive = true;
-      source = ../wezterm;
+      source = ../config/wezterm;
     };
 
     ".config/ranger" = {
       recursive = true;
-      source = ../ranger;
+      source = ../config/ranger;
     };
 
     ".config/fish/themes" = {
       recursive = true;
-      source = ../fish/themes;
+      source = ../config/fish/themes;
     };
 
     ".ideavimrc" = {
-      source = ../jetbrains/.ideavimrc;
+      source = ../config/jetbrains/.ideavimrc;
     };
   };
 

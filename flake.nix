@@ -39,20 +39,15 @@
     {
       packages.${system} = import ./pkgs nixpkgs.legacyPackages.${system};
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-      nixosModules = import ./modules;
 
       nixosConfigurations = {
         koun = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [
-            ./nixos/configuration/koun.nix
-          ];
+          modules = [ ./hosts/koun/configuration.nix ];
         };
         thinkpad = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [
-            ./nixos/configuration/thinkpad.nix
-          ];
+          modules = [ ./hosts/thinkpad/configuration.nix ];
         };
       };
 
@@ -60,16 +55,12 @@
         "markus@koun" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs;
-          modules = [
-            ./home/koun.nix
-          ];
+          modules = [ ./home/koun.nix ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs;
-          modules = [
-            ./home/thinkpad.nix
-          ];
+          modules = [ ./home/thinkpad.nix ];
         };
       };
     };

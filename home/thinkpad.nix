@@ -1,39 +1,12 @@
 { pkgs, lib, ... }:
 
 {
-  imports = [ ./home.nix ];
-
-  home.username = "markus";
-  home.homeDirectory = "/home/markus";
-
-  programs.git.signing.signByDefault = lib.mkForce false;
+  imports = [ ./base/linux.nix ];
 
   home.file = {
-    ".config/hypr" = {
+    ".config/hypr" = lib.mkForce {
       recursive = true;
-      source = ../hypr-thinkpad;
-    };
-
-    ".config/fuzzel" = {
-      recursive = true;
-      source = ../fuzzel;
-    };
-
-    ".config/mako" = {
-      recursive = true;
-      source = ../mako;
+      source = ./config/hypr-thinkpad;
     };
   };
-
-  home.packages = with pkgs; [
-    acpi
-    fuzzel
-  ];
-
-  programs.eww = {
-    enable = true;
-    package = pkgs.eww-wayland;
-    configDir = ../eww;
-  };
-
 }

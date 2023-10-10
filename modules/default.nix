@@ -1,3 +1,3 @@
 {
-  # intel-undervolt = import ./intel-undervolt.nix;
+  # module = import ./module.nix
 }

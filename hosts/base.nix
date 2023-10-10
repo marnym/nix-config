@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../modules/nix.nix
+    ../modules/nix-settings.nix
     ../modules/hyprland.nix
   ];
 
