@@ -3,6 +3,11 @@
 {
   nixpkgs.config.allowUnfree = true;
 
+  programs.hyprland = {
+    enable = true;
+    package = pkgs.hyprland-flake;
+  };
+
   xdg.portal = {
     enable = true;
     gtkUsePortal = false;
@@ -16,10 +21,6 @@
     implementation = "broker";
   };
 
-  programs.hyprland = {
-    enable = true;
-    package = pkgs.unstable.hyprland;
-  };
   programs.fish.enable = true;
 
   virtualisation.docker.enable = true;

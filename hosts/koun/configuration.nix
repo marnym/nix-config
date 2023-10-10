@@ -1,4 +1,4 @@
-{ pkgs-unstable, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 
 {
   imports = [
@@ -9,6 +9,7 @@
   nixpkgs.config = {
     packageOverrides = pkgs: {
       unstable = pkgs-unstable;
+      hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
     };
   };
 
