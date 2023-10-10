@@ -34,7 +34,6 @@ return {
 					"jsonls",
 					"tsserver",
 					"ltex",
-					"lua_ls",
 					"pyright",
 					"rust_analyzer",
 					"texlab",

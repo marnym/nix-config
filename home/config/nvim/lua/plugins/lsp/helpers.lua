@@ -78,6 +78,21 @@ function M.setup_handlers()
 	local settings = { on_attach = M.on_attach, capabilities = capabilities }
 	nvim_lsp.nil_ls.setup(settings)
 
+	nvim_lsp.lua_ls.setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
+		settings = {
+			Lua = {
+				diagnostics = {
+					globals = { 'vim' }
+				}
+			},
+			workspace = {
+				checkThirdParty = false,
+			}
+		}
+	}
+
 	return {
 		function(server_name)
 			nvim_lsp[server_name].setup(settings)
@@ -150,22 +165,6 @@ function M.setup_handlers()
 							shadow = true
 						},
 						staticcheck = true,
-					}
-				}
-			}
-		end,
-		['lua_ls'] = function()
-			nvim_lsp.lua_ls.setup {
-				on_attach = M.on_attach,
-				capabilities = capabilities,
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { 'vim' }
-						}
-					},
-					workspace = {
-						checkThirdParty = false,
 					}
 				}
 			}

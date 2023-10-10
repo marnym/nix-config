@@ -81,6 +81,7 @@
     sqlite
 
     # neovim
+    pkgs.unstable.lua-language-server
     pkgs.unstable.neovim-unwrapped
     pkgs.unstable.nixpkgs-fmt
 
