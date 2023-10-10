@@ -70,7 +70,6 @@
       xfce.thunar
       wl-clipboard
       hyprshot
-      firefox-wayland
       chromium
       wezterm
       zathura

@@ -5,5 +5,5 @@
     ./base/linux.nix
   ];
 
-  local.hyprland.path = ./hyprland/koun.conf;
+  local.hyprland.path = ./desktop/hyprland/koun.conf;
 }
