@@ -4,6 +4,7 @@
   imports = [
     ./core.nix
     ../desktop/hyprland
+    ../desktop/firefox.nix
   ];
 
   home.username = "markus";

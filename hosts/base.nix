@@ -90,7 +90,6 @@
     curl
   ];
 
-  environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
   environment.variables.EDITOR = "nvim";
 
   # services.syncthing = {
