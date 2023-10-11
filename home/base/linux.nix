@@ -5,6 +5,7 @@
     ./core.nix
     ../desktop/hyprland
     ../desktop/firefox.nix
+    ../desktop/gammastep.nix
   ];
 
   home.username = "markus";
