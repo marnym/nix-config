@@ -76,6 +76,7 @@
     # development
     gcc
     gnumake
+    just
     rustup
     go
     deno
