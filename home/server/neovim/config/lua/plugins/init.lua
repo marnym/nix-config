@@ -63,7 +63,7 @@ return {
             debounce = 100,
             indent = { char = "┊" },
             scope = {
-                enable = true,
+                enabled = true,
                 highlight = "Identifier",
                 char = "│",
             }
