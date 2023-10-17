@@ -71,6 +71,7 @@
       wl-clipboard
       hyprshot
       chromium
+      thunderbird-bin
       wezterm
       zathura
       spotify
