@@ -4,6 +4,7 @@
   imports = [
     ../modules/nix-settings.nix
     ../modules/hyprland.nix
+    ../modules/syncthing.nix
   ];
 
   programs.fish.enable = true;
