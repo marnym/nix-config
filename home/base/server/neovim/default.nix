@@ -12,6 +12,7 @@
   home.packages = with pkgs.unstable; [
     lua-language-server
     nixpkgs-fmt
+    marksman
   ];
 
   home.file.".config/nvim" = {

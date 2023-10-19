@@ -70,12 +70,12 @@
         "markus@koun" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs;
-          modules = [ ./home/koun.nix ];
+          modules = [ ./home/linux/koun.nix ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs;
-          modules = [ ./home/thinkpad.nix ];
+          modules = [ ./home/linux/thinkpad.nix ];
         };
       };
     };

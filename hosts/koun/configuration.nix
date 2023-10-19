@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../base.nix
+    ../../modules/base/core-desktop.nix
   ];
 
   networking.hostName = "koun";

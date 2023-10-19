@@ -2,26 +2,22 @@
 
 {
   imports = [
-    ./core.nix
-    ../desktop/hyprland
-    ../desktop/firefox.nix
-    ../desktop/gammastep.nix
+    ./hyprland
+    ./firefox.nix
+    ./gammastep.nix
   ];
-
-  home.username = "markus";
-  home.homeDirectory = "/home/markus";
 
   programs.git.signing.signByDefault = lib.mkForce false;
 
   home.file = {
     ".config/fuzzel" = {
       recursive = true;
-      source = ../config/fuzzel;
+      source = ./fuzzel;
     };
 
     ".config/mako" = {
       recursive = true;
-      source = ../config/mako;
+      source = ./mako;
     };
   };
 
@@ -33,6 +29,6 @@
   programs.eww = {
     enable = true;
     package = pkgs.eww-wayland;
-    configDir = ../config/eww;
+    configDir = ./eww;
   };
 }
