@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ../../../modules/nix-settings.nix
+    ../../../modules/nixos/nix-settings.nix
 
     ./boot.nix
     ./fish.nix

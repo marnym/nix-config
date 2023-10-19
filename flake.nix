@@ -71,7 +71,7 @@
         "markus@timred" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs;
-          modules = [ ./home/linux/koun.nix ];
+          modules = [ ./home/timred.nix ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
