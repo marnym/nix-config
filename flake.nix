@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    hardware.url = "github:nixos/nixos-hardware";
+
     home-manager = {
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,24 +53,22 @@
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
 
       nixosConfigurations = {
-        koun = nixpkgs.lib.nixosSystem {
+        timred = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [
-            ./hosts/koun/configuration.nix
-            nixFrozen
-          ];
+          modules = [ ./hosts/timred nixFrozen ];
         };
         thinkpad = nixpkgs.lib.nixosSystem {
           inherit system specialArgs;
-          modules = [
-            ./hosts/thinkpad/configuration.nix
-            nixFrozen
-          ];
+          modules = [ ./hosts/thinkpad nixFrozen ];
+        };
+        pers-h = nixpkgs.lib.nixosSystem {
+          inherit system specialArgs;
+          modules = [ ./hosts/pers-h nixFrozen ];
         };
       };
 
       homeConfigurations = {
-        "markus@koun" = home-manager.lib.homeManagerConfiguration {
+        "markus@timred" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs;
           modules = [ ./home/linux/koun.nix ];

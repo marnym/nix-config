@@ -1,13 +1,8 @@
-{ pkgs, ... }:
-
-{
+{ pkgs, ... }: {
   imports = [
-    ./core.nix
-    ../hyprland.nix
+    ../../modules/hyprland.nix
   ];
 
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   users.users.markus.packages = with pkgs; [
     mako
@@ -24,9 +19,4 @@
     obsidian
     pavucontrol
   ];
-
-  services.mullvad-vpn = {
-    enable = true;
-    package = pkgs.mullvad-vpn;
-  };
 }

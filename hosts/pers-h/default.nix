@@ -1,5 +1,16 @@
+{ lib, ... }:
+
 {
-  imports = [ ./core.nix ];
+  imports = [
+    ./hardware-configuration.nix
+
+    ../common/global
+    ../common/features/docker.nix
+    ../common/features/openssh.nix
+    ../common/features/syncthing.nix
+  ];
+
+  networking.hostName = "pers-h";
 
   users.users.markus = {
     hashedPassword = "$6$ZMgx0BL66B2P5k4o$6qHzWuZCkuth52VMmcm4D1OVpMavvSJOXwUFw7jpwplcxDRDTakPnfWlWnPCvOFphQhRITJqF169HxfKHbbl4/";
@@ -9,12 +20,5 @@
     ];
   };
 
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-    settings.KbdInteractiveAuthentication = false;
-    settings.PermitRootLogin = "no";
-  };
-
-  networking.firewall.allowedTCPPorts = [ 22 ];
+  services.syncthing.folders.Cloud.type = lib.mkForce "receiveencrypted";
 }
