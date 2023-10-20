@@ -9,5 +9,6 @@
     spotify
     telegram-desktop
     obsidian
+    todoist-electron
   ];
 }
