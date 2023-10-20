@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./gammastep.nix
+    ./playerctl.nix
     ./eww
     ./fuzzel
     ./mako
@@ -14,5 +15,6 @@
     hyprshot
     thunderbird-bin
     pavucontrol
+    discord
   ];
 }
