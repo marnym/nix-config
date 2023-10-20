@@ -13,11 +13,11 @@ config.force_reverse_video_cursor = kanagawa.force_reverse_video_cursor
 config.colors = kanagawa.colors
 config.default_cursor_style = 'BlinkingBar'
 
+config.font = wezterm.font("JetBrainsMono Nerd Font")
+config.font_size = 14.0
+
 if success and stdout:match('Darwin') then
     wezterm.log_info("Running on macOS")
-
-    config.font = wezterm.font("JetBrainsMono Nerd Font")
-    config.font_size = 14.0
 
     config.keys = {
         { key = "LeftArrow",  mods = "OPT", action = wezterm.action { SendString = "\x1b\x62" } },
@@ -25,9 +25,6 @@ if success and stdout:match('Darwin') then
     }
 else
     wezterm.log_info("Running on Linux")
-
-    config.font = wezterm.font("JetBrains Nerd Font")
-    config.font_size = 14.0
 
     config.keys = {
         { key = "LeftArrow",  mods = "CTRL", action = wezterm.action { SendString = "\x1b\x62" } },
