@@ -13,7 +13,6 @@ function M.on_attach(client, bufnr)
 		vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
 	end
 
-
 	nmap('<leader>re', vim.lsp.buf.rename, '[R]e[N]ame')
 	nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
@@ -78,6 +77,7 @@ function M.setup_handlers()
 	capabilities.offsetEncoding = { 'utf-16' }
 
 	local settings = { on_attach = M.on_attach, capabilities = capabilities }
+
 	nvim_lsp.nil_ls.setup(settings)
 
 	nvim_lsp.lua_ls.setup {

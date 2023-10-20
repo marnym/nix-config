@@ -1,7 +1,7 @@
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>q", function() require("trouble").open() end,
-	vim.tbl_extend("force", opts, { desc = "Open trouble.nvim" }))
+vim.keymap.set("n", "<leader>q", function() require("trouble").open() end)
+vim.tbl_extend("force", opts, { desc = "Open trouble.nvim" })
 vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, vim.tbl_extend("force", opts, { desc = "Go to previous diagnostic" }))
 vim.keymap.set("n", "gn", vim.diagnostic.goto_next, vim.tbl_extend("force", opts, { desc = "Go to next diagnostic" }))
 

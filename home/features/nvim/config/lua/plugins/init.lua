@@ -167,11 +167,16 @@ return {
         'echasnovski/mini.files',
         version = false,
         config = function()
-            require("mini.files").setup()
+            require("mini.files").setup({
+                mappings = {
+                    go_in = 'L',
+                    go_in_plus = 'l',
+                },
+            })
         end,
         keys = {
             { "<Leader>n", function() vim.cmd [[ lua MiniFiles.open() ]] end },
-            { "-",         function() vim.cmd [[ lua MiniFiles.open() ]] end },
+            { "-",         function() vim.cmd [[ lua MiniFiles.open(vim.api.nvim_buf_get_name(0)) ]] end },
         }
     },
 }
