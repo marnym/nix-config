@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./gtk.nix
     ./gammastep.nix
     ./playerctl.nix
     ./eww
