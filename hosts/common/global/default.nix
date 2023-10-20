@@ -1,5 +1,6 @@
-{ ... }: {
+{ inputs, outputs, pkgs, ... }: {
   imports = [
+    inputs.home-manager.nixosModules.home-manager
     ../../../modules/nixos/nix-settings.nix
 
     ./boot.nix
@@ -9,13 +10,7 @@
     ./networking.nix
   ];
 
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 1w";
-  };
-
-  nix.settings.auto-optimise-store = true;
+  home-manager.extraSpecialArgs = { inherit inputs outputs pkgs; };
 
   system.stateVersion = "23.05";
 }

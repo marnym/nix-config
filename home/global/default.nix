@@ -1,13 +1,9 @@
 { pkgs, ... }: {
 
   imports = [
-    ../../modules/nixos/nix-settings.nix
-
     ../features/cli
     ../features/nvim
   ];
-
-  nix.package = pkgs.nix;
 
   home.packages = with pkgs; [
     nix-output-monitor
