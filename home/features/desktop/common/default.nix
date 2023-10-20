@@ -3,7 +3,6 @@
     ./font.nix
     ./firefox.nix
     ./wezterm
-    ./jetbrains
   ];
 
   home.packages = with pkgs; [
