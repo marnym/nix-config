@@ -26,7 +26,7 @@ if success and stdout:match('Darwin') then
 else
     wezterm.log_info("Running on Linux")
 
-    config.font = wezterm.font("JetBrains Mono Nerd Font")
+    config.font = wezterm.font("JetBrains Nerd Font")
     config.font_size = 14.0
 
     config.keys = {
