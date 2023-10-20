@@ -75,6 +75,8 @@ function M.setup_handlers()
 	local nvim_lsp = require('lspconfig')
 	local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+	capabilities.offsetEncoding = { 'utf-16' }
+
 	local settings = { on_attach = M.on_attach, capabilities = capabilities }
 	nvim_lsp.nil_ls.setup(settings)
 
@@ -92,6 +94,8 @@ function M.setup_handlers()
 			}
 		}
 	}
+
+	nvim_lsp.clangd.setup(settings)
 
 	return {
 		function(server_name)

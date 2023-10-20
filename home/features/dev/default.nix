@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    gcc
+    llvmPackages_16.clang
+    llvmPackages_16.libcxx
+    clang-tools_16
     gnumake
     just
     rustup
