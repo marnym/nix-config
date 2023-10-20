@@ -85,14 +85,21 @@ function M.setup_handlers()
 		capabilities = capabilities,
 		settings = {
 			Lua = {
+				runtime = {
+					version = 'LuaJIT',
+				},
 				diagnostics = {
-					globals = { 'vim' }
-				}
+					globals = { 'vim', 'require' },
+				},
+				workspace = {
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME
+					}
+				},
+				telemetry = { enable = false },
 			},
-			workspace = {
-				checkThirdParty = false,
-			}
-		}
+		},
 	}
 
 	nvim_lsp.clangd.setup(settings)
