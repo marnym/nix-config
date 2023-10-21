@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.pointerCursor = {
-    name = "Catppuccin-Macchiato-Dark";
-    package = pkgs.catppuccin-cursors.macchiatoDark;
+    name = "Catppuccin-Mocha-Dark-Cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
     size = 24;
   };
 
@@ -9,11 +9,8 @@
     enable = true;
 
     theme = {
-      name = "Catppuccin-Macchiato-Standard-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = [ "yellow" ];
-        variant = "macchiato";
-      };
+      name = "Arc-Dark";
+      package = pkgs.arc-theme;
     };
 
     font = {
@@ -23,8 +20,8 @@
     };
 
     cursorTheme = {
-      name = "Catppuccin-Macchiato-Dark";
-      package = pkgs.catppuccin-cursors.macchiatoDark;
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
       size = 24;
     };
 
