@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/usr/bin/env bash
 
 if playerctl -p spotify play-pause; then
     exit 0

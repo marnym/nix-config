@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 cd "$HOME" || (echo "Error: Could not change directory to /home/markus/" && exit 1)
 
