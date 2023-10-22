@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 selected=$({ find ~/dev/* -mindepth 1 -maxdepth 1 -type d; cat "$HOME/.local/share/nvim/project_nvim/project_history"; } | fzf)
 if [[ -z $selected ]]; then
