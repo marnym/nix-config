@@ -1,4 +1,4 @@
-local no_preview = function()
+local function no_preview()
     return require('telescope.themes').get_dropdown({
         borderchars = {
             { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
@@ -61,4 +61,6 @@ return {
             function() require("telescope").extensions.yaml_schema.yaml_schema(no_preview()) end,
             { desc = "[Y]aml [S]chema" })
     end,
+
+    no_preview = no_preview,
 }
