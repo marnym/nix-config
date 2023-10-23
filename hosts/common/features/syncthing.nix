@@ -6,6 +6,10 @@ let
       value = { id = "TK7YIDD-JPLACEZ-Q3SQAKJ-2FRW7PI-WZMXHHJ-BCG3YAC-ULV27ZX-K42HQAW"; };
     }
     {
+      name = "thinkpad";
+      value = { id = "L5GYP2W-PLYPCNP-MJCTAI2-VXNOZAS-2MVYSPP-2PHYS55-E5FPCG5-ZP2TQAI"; };
+    }
+    {
       name = "macOS";
       value = { id = "TA4TOU5-BFEAXWC-2ZIEN6I-G6PZAND-R2ADBUQ-OIDYGKC-NC5E3E6-ZDYOZAB"; };
     }
