@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports = [
@@ -18,7 +18,10 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAYrteSUBgXlSPuZagjKFJQcfWhS10wQrJo3pVZtlm1P markus"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrndQoxNh1dr9O9yuBG6NiQvOgWCcTsk8Wz02N2mhoN markus"
     ];
+    packages = [ pkgs.grc ];
   };
+
+  security.pam.enableSSHAgentAuth = true;
 
   services.syncthing.folders.Cloud.type = lib.mkForce "receiveencrypted";
 }

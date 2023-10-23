@@ -1,6 +1,3 @@
-# rebuild switch all
-all: nixos home
-
 # rebuild switch nixos
 nixos:
 	nixos-rebuild switch --flake . --use-remote-sudo
@@ -8,6 +5,10 @@ nixos:
 # rebuild switch home
 home:
 	home-manager switch --flake .
+
+remote:
+	export NIX_SSHOPTS="-A"
+	nixos-rebuild switch --flake .#pers-h --target-host markus@pers-h --build-host markus@pers-h --use-remote-sudo
 
 # rebuild switch with more output
 debug:
