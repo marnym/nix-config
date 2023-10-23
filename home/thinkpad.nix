@@ -2,11 +2,10 @@
 
 {
   imports = [
-    ../base/desktop
-
-    ./server
-    ./desktop
+    ./global
+    ./features/desktop/hyprland
+    ./features/productivity
   ];
 
-  local.hyprland.path = ./desktop/hyprland/thinkpad.conf;
+  local.hyprland.path = ./features/desktop/hyprland/thinkpad.conf;
 }

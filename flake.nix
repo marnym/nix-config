@@ -95,7 +95,7 @@
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs;
-          modules = [ ./home/linux/thinkpad.nix ];
+          modules = [ ./home/thinkpad.nix ];
         };
       };
     };

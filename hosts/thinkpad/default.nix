@@ -2,7 +2,7 @@
 
 {
   imports = [
-    inputs.hardware.lenovo-thinkpad-t490
+    inputs.hardware.nixosModules.lenovo-thinkpad-t490
 
     ./hardware-configuration.nix
 
