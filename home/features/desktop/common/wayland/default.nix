@@ -17,5 +17,6 @@
     thunderbird-bin
     pavucontrol
     discord
+    mpv
   ];
 }

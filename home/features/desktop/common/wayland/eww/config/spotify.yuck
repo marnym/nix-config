@@ -1,7 +1,7 @@
 (defwidget spotify []
     (button :class "music ${spotify-playing == "Playing" ? "playing" : ""}"
             :halign "center"
-            :onclick "spotify-play-pause"
+            :onclick "spotify-play-pause.sh"
             :onmiddleclick "playerctl -p spotify previous"
             :onrightclick "playerctl -p spotify next"
             " ${spotify}"))
