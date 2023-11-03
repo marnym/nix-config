@@ -1,5 +1,5 @@
 local wezterm = require "wezterm"
-local kanagawa = require "kanagawa"
+local gruvbox_material = require "gruvbox-material"
 
 local success, stdout, _ = wezterm.run_child_process { 'uname' }
 
@@ -9,8 +9,8 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.force_reverse_video_cursor = kanagawa.force_reverse_video_cursor
-config.colors = kanagawa.colors
+config.force_reverse_video_cursor = true
+config.colors = gruvbox_material.colors
 config.default_cursor_style = 'BlinkingBar'
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
