@@ -3,6 +3,6 @@
     pandoc
     glow
     librsvg
-    texlive.combined.scheme-minimal
+    texlive.combined.scheme-full
   ];
 }

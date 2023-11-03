@@ -82,6 +82,8 @@ function M.setup_handlers()
 
 	local settings = { on_attach = M.on_attach, capabilities = capabilities }
 
+	nvim_lsp.marksman.setup(settings)
+
 	nvim_lsp.nil_ls.setup(settings)
 
 	nvim_lsp.lua_ls.setup {
