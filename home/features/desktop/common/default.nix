@@ -8,7 +8,7 @@
   home.packages = with pkgs; [
     spotify
     telegram-desktop
-    obsidian
-    todoist-electron
+    pkgs.unstable.obsidian
+    pkgs.unstable.todoist-electron
   ];
 }
