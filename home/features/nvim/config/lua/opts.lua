@@ -2,6 +2,9 @@
 vim.api.nvim_set_keymap("", " ", "", { noremap = true })
 vim.g.mapleader = " "
 
+-- add all subdirectories to path
+vim.o.path = vim.o.path .. "**"
+
 -- line numbers default
 vim.wo.number = true
 vim.o.relativenumber = true
