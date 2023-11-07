@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ./gtk.nix
+    ./firefox.nix
     ./gammastep.nix
     ./playerctl.nix
     ./eww
@@ -18,5 +19,9 @@
     pavucontrol
     discord
     mpv
+    spotify
+    telegram-desktop
+    pkgs.unstable.obsidian
+    pkgs.unstable.todoist-electron
   ];
 }

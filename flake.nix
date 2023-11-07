@@ -36,27 +36,35 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      system = "x86_64-linux";
-      pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-      };
 
-      specialArgs = {
-        inherit inputs outputs;
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = true;
-            packageOverrides = pkgs: {
-              unstable = pkgs-unstable;
-              hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
-              hyprshot = outputs.packages.${pkgs.system}.hyprshot;
-              intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
+      x64_system = "x86_64-linux";
+      aarch_darwin = "aarch64-darwin";
+      x64_darwin = "x86_64-darwin";
+      systems = [ x64_system aarch_darwin x64_darwin ];
+      forAllSystems = nixpkgs.lib.genAttrs systems;
+
+      specialArgs = system:
+        let
+          pkgs-unstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in
+        {
+          inherit inputs outputs;
+          pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = true;
+              packageOverrides = pkgs: {
+                unstable = pkgs-unstable;
+                hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
+                hyprshot = outputs.packages.${pkgs.system}.hyprshot;
+                intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
+              };
             };
           };
         };
-      };
 
       nixFrozen = {
         # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
@@ -68,34 +76,43 @@
       };
     in
     {
-      packages.${system} = import ./pkgs nixpkgs.legacyPackages.${system};
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
 
-      nixosConfigurations = {
-        timred = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [ ./hosts/timred nixFrozen ];
+      nixosConfigurations =
+        let
+          system = x64_system;
+        in
+        {
+          timred = nixpkgs.lib.nixosSystem {
+            specialArgs = specialArgs system;
+            modules = [ ./hosts/timred nixFrozen ];
+          };
+          thinkpad = nixpkgs.lib.nixosSystem {
+            specialArgs = specialArgs system;
+            modules = [ ./hosts/thinkpad nixFrozen ];
+          };
+          pers-h = nixpkgs.lib.nixosSystem {
+            specialArgs = specialArgs system;
+            modules = [ ./hosts/pers-h nixFrozen ];
+          };
         };
-        thinkpad = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [ ./hosts/thinkpad nixFrozen ];
-        };
-        pers-h = nixpkgs.lib.nixosSystem {
-          inherit system specialArgs;
-          modules = [ ./hosts/pers-h nixFrozen ];
-        };
-      };
 
       homeConfigurations = {
         "markus@timred" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = specialArgs;
+          extraSpecialArgs = specialArgs x64_system;
           modules = [ ./home/timred.nix ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = specialArgs;
+          extraSpecialArgs = specialArgs x64_system;
           modules = [ ./home/thinkpad.nix ];
+        };
+        "markus@WorkBook-Pro" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          extraSpecialArgs = specialArgs aarch_darwin;
+          modules = [ ./home/work.nix ];
         };
       };
     };

@@ -32,17 +32,11 @@
     gawk
     zstd
     gnupg
-    age
+    rage
     tldr
 
     # monitoring
     btop
-    iotop
-    iftop
-
-    strace
-    ltrace
-    lsof
 
     # networking
     mtr
@@ -53,13 +47,6 @@
     socat
     nmap
     ipcalc
-
-    # tools
-    sysstat
-    lm_sensors
-    ethtool
-    pciutils
-    usbutils
 
     # utils
     ripgrep

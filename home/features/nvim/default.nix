@@ -10,6 +10,7 @@
   };
 
   home.packages = with pkgs.unstable; [
+    nil
     lua-language-server
     nixpkgs-fmt
     marksman
