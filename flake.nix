@@ -109,6 +109,11 @@
           extraSpecialArgs = specialArgs x64_system;
           modules = [ ./home/thinkpad.nix ];
         };
+        "markusnyman@MacFrier-Pro" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-darwin;
+          extraSpecialArgs = specialArgs x64_darwin;
+          modules = [ ./home/mac.nix ];
+        };
         "markus@WorkBook-Pro" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.aarch64-darwin;
           extraSpecialArgs = specialArgs aarch_darwin;
