@@ -29,30 +29,6 @@ function M.on_attach(client, bufnr)
 
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
-	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-		if client.server_capabilities.documentFormattingProvider then
-			vim.lsp.buf.format({ async = true })
-		end
-	end, { desc = 'Format current buffer with LSP' })
-	nmap('<leader>fo', ':Format<CR>', '[FO]rmat current buffer')
-
-	if client.server_capabilities.documentFormattingProvider then
-		vim.api.nvim_create_autocmd('BufWritePre', {
-			callback = function()
-				vim.lsp.buf.format()
-			end,
-			group = format_group,
-			buffer = 0,
-		})
-
-		vim.api.nvim_buf_create_user_command(bufnr, 'FormatOnSaveDisable', function(_)
-			local autocmds = vim.api.nvim_get_autocmds({ group = 'Format' })
-			for _, autocmd in ipairs(autocmds) do
-				vim.api.nvim_del_autocmd(autocmd.id)
-			end
-		end, { desc = 'Disable formatting on save' })
-	end
-
 	-- if client.server_capabilities.inlayHintProvider then
 	-- 	vim.lsp.buf.inlay_hint(bufnr, true)
 	-- end
