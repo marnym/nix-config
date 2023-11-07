@@ -6,8 +6,8 @@
     gnumake
     just
     rustup
-    go
-    deno
+    unstable.go
+    unstable.deno
     nodejs_20
     python3Minimal
     jdk17
