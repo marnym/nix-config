@@ -23,6 +23,15 @@ vim.api.nvim_create_user_command("FormatEnable",
     }
 )
 
+local function deno_overwrite()
+    local is_deno_project = vim.fn.glob("deno.json") ~= ""
+    if is_deno_project then
+        return { "deno_fmt" }
+    else
+        return { { "prettierd", "prettier" } }
+    end
+end
+
 return {
     {
         "stevearc/conform.nvim",
@@ -44,11 +53,11 @@ return {
                 lua = { "stylua" },
                 python = { "black" },
 
-                javascript = { { "prettierd", "prettier" } },
-                typescript = { { "prettierd", "prettier" } },
-                javascriptreact = { { "prettierd", "prettier" } },
-                typescriptreact = { { "prettierd", "prettier" } },
-                astro = { { "prettierd", "prettier" } },
+                javascript = deno_overwrite(),
+                typescript = deno_overwrite(),
+                javascriptreact = deno_overwrite(),
+                typescriptreact = deno_overwrite(),
+                astro = deno_overwrite(),
 
                 nix = { "nixpkgs_fmt" },
             },
