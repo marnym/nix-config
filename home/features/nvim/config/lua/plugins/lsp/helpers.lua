@@ -1,10 +1,8 @@
 local M = {}
 
-local format_group = vim.api.nvim_create_augroup('Format', { clear = false })
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-function M.on_attach(client, bufnr)
+function M.on_attach(_, bufnr)
 	local nmap = function(keys, func, desc)
 		if desc then
 			desc = 'LSP: ' .. desc
@@ -110,6 +108,20 @@ function M.setup_handlers()
 		}
 	}
 
+	nvim_lsp.gopls.setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
+		settings = {
+			gopls = {
+				analyses = {
+					unusedparams = true,
+					shadow = true
+				},
+				staticcheck = true,
+			}
+		}
+	}
+
 	return {
 		function(server_name)
 			nvim_lsp[server_name].setup(settings)
@@ -151,21 +163,6 @@ function M.setup_handlers()
 							includeInlayFunctionLikeReturnTypeHints = true,
 							includeInlayEnumMemberValueHints = true,
 						},
-					}
-				}
-			}
-		end,
-		['gopls'] = function()
-			nvim_lsp.gopls.setup {
-				on_attach = M.on_attach,
-				capabilities = capabilities,
-				settings = {
-					gopls = {
-						analyses = {
-							unusedparams = true,
-							shadow = true
-						},
-						staticcheck = true,
 					}
 				}
 			}

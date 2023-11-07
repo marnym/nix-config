@@ -13,6 +13,7 @@
     lua-language-server
     nixpkgs-fmt
     marksman
+    gopls
   ];
 
   home.file.".config/nvim" = {
