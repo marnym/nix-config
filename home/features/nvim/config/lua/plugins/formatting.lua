@@ -43,11 +43,14 @@ return {
             formatters_by_ft = {
                 lua = { "stylua" },
                 python = { "black" },
+
                 javascript = { { "prettierd", "prettier" } },
                 typescript = { { "prettierd", "prettier" } },
                 javascriptreact = { { "prettierd", "prettier" } },
                 typescriptreact = { { "prettierd", "prettier" } },
                 astro = { { "prettierd", "prettier" } },
+
+                nix = { "nixpkgs_fmt" },
             },
             format_on_save = function(bufnr)
                 if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
