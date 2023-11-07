@@ -1,18 +1,18 @@
 (defwidget tray []
     (box :class "tray" :orientation "h" :space-evenly false :halign "end"
-    (metric :label "🔊"
-            :value volume
-            :tooltip volume
-            :onchange "amixer -D pulse sset Master {}%")
-    (metric :label " " :value {EWW_RAM.used_mem_perc} :onchange "")
-    datetime))
+        (metric :value volume
+                :tooltip volume
+                :onchange "amixer -D pulse sset Master {}%"
+                (button :onclick "wezterm -e pavucontrol" "墳"))
+        (metric :value {EWW_RAM.used_mem_perc} :onchange "" " ")
+        datetime))
 
-(defwidget metric [label value onchange]
+(defwidget metric [value onchange]
   (box :orientation "h"
        :class "metric"
        :space-evenly false
        :width 200
-    (box :class "label" :halign "baseline" label)
+    (box :class "label" :halign "baseline" (children))
     (scale :min 0
            :max 101
            :active {onchange != ""}
