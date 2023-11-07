@@ -86,6 +86,21 @@ function M.setup_handlers()
 
 	nvim_lsp.clangd.setup(settings)
 
+
+	vim.g.markdown_fenced_languages = {
+		'ts=typescript'
+	}
+
+	nvim_lsp.denols.setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
+		root_dir = M.root_pattern_excludes('deno.json', 'package.json'),
+		init_options = {
+			enable = true,
+			unstable = true,
+		}
+	}
+
 	return {
 		function(server_name)
 			nvim_lsp[server_name].setup(settings)
@@ -97,22 +112,6 @@ function M.setup_handlers()
 				filetypes = { 'yml', 'yaml', 'yml.ansible', 'yaml.ansible' },
 				root_dir = nvim_lsp.util.root_pattern('ansible.cfg'),
 				single_file_support = false,
-			}
-		end,
-		['denols'] = function()
-			-- To appropriately highlight codefences returned from denols, you will need to augment vim.g.markdown_fenced languages
-			vim.g.markdown_fenced_languages = {
-				'ts=typescript'
-			}
-			nvim_lsp.denols.setup {
-				cmd = { '/home/markus/.nix-profile/bin/deno', 'lsp' },
-				on_attach = M.on_attach,
-				capabilities = capabilities,
-				root_dir = M.root_pattern_excludes('deno.json', 'package.json'),
-				init_options = {
-					enable = true,
-					unstable = true,
-				}
 			}
 		end,
 		['tsserver'] = function()
