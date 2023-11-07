@@ -95,9 +95,18 @@ function M.setup_handlers()
 		on_attach = M.on_attach,
 		capabilities = capabilities,
 		root_dir = M.root_pattern_excludes('deno.json', 'package.json'),
-		init_options = {
-			enable = true,
-			unstable = true,
+		settings = {
+			deno = {
+				enable = true,
+				unstable = true,
+				suggest = {
+					imports = {
+						hosts = {
+							["https://deno.land"] = true,
+						}
+					}
+				}
+			}
 		}
 	}
 
