@@ -2,6 +2,15 @@ return {
     {
         "mfussenegger/nvim-lint",
         config = function()
+            vim.diagnostic.config({
+                virtual_text = {
+                    source = true
+                },
+                float = {
+                    source = true
+                }
+            })
+
             local lint = require("lint")
             lint.linters_by_ft = {
                 javascript = { "eslint_d" },
