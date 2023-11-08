@@ -11,6 +11,8 @@ return {
                 }
             })
 
+            require("lint").linters_by_ft = {}
+
             local eslint_d_exists = vim.fn.executable("eslint_d") == 1
 
             ---@param path string
