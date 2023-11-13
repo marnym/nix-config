@@ -15,6 +15,7 @@
     nixpkgs-fmt
     marksman
     gopls
+    texlab
   ];
 
   home.file.".config/nvim" = {

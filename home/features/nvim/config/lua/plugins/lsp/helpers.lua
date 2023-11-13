@@ -122,6 +122,12 @@ function M.setup_handlers()
 		}
 	}
 
+	nvim_lsp.texlab.setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
+		root_dir = nvim_lsp.util.root_pattern('*.tex')
+	}
+
 	return {
 		function(server_name)
 			nvim_lsp[server_name].setup(settings)
@@ -171,13 +177,6 @@ function M.setup_handlers()
 			nvim_lsp.volar.setup {
 				on_attach = M.disable_formatting,
 				capabilities = capabilities,
-			}
-		end,
-		['texlab'] = function()
-			nvim_lsp.texlab.setup {
-				on_attach = M.on_attach,
-				capabilities = capabilities,
-				root_dir = nvim_lsp.util.root_pattern('*.tex')
 			}
 		end,
 		['jsonls'] = function()
