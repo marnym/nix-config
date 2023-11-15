@@ -28,6 +28,7 @@ return {
                         local lint = require("lint")
                         lint.try_lint()
 
+                        -- todo check filetype
                         if root_has("deno.json") then
                             lint.try_lint("deno")
                         elseif root_has(".eslintrc*") and eslint_d_exists then

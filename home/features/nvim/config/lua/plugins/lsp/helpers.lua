@@ -38,16 +38,6 @@ function M.disable_formatting(client, bufnr)
 	M.on_attach(client, bufnr)
 end
 
-function M.root_pattern_excludes(root, exclude)
-	local util = require('lspconfig/util')
-	local function matches(path, pattern) return 0 < #vim.fn.glob(util.path.join(path, pattern)) end
-
-	return function(startpath)
-		return util.search_ancestors(startpath,
-			function(path) return matches(path, root) and not matches(path, exclude) end)
-	end
-end
-
 function M.setup_handlers()
 	local nvim_lsp = require('lspconfig')
 	local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -92,7 +82,7 @@ function M.setup_handlers()
 	nvim_lsp.denols.setup {
 		on_attach = M.on_attach,
 		capabilities = capabilities,
-		root_dir = M.root_pattern_excludes('deno.json', 'package.json'),
+		root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
 		settings = {
 			deno = {
 				enable = true,
@@ -145,7 +135,7 @@ function M.setup_handlers()
 			nvim_lsp.tsserver.setup {
 				on_attach = M.disable_formatting,
 				capabilities = capabilities,
-				root_dir = M.root_pattern_excludes('package.json', 'deno.json'),
+				root_dir = nvim_lsp.util.root_pattern('package.json'),
 				single_file_support = false,
 				settings = {
 					typescript = {

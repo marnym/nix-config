@@ -24,22 +24,6 @@ return {
 		"williamboman/mason.nvim",
 		dependencies = { {
 			"williamboman/mason-lspconfig.nvim",
-			opts = {
-				ensure_installed = {
-					"bashls",
-					"cssls",
-					"dockerls",
-					"gopls",
-					"html",
-					"jsonls",
-					"tsserver",
-					"ltex",
-					"pyright",
-					"rust_analyzer",
-					"texlab",
-					"tailwindcss",
-				}
-			},
 			lazy = true
 		} },
 		opts = {

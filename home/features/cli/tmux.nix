@@ -6,7 +6,7 @@
     disableConfirmationPrompt = true;
     escapeTime = 10;
     mouse = true;
-    prefix = "C-Space";
+    prefix = "C-a";
     resizeAmount = 10;
     terminal = "screen-256color";
     keyMode = "vi";
