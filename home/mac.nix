@@ -6,6 +6,8 @@
 
     ./features/desktop/common
     ./features/desktop/common/darwin
+
+    ./features/productivity
   ];
 
   nix.package = pkgs.nix;
