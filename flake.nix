@@ -112,7 +112,7 @@
         "markusnyman@MacFrier-Pro" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-darwin;
           extraSpecialArgs = specialArgs x64_darwin;
-          modules = [ ./home/mac.nix ];
+          modules = [ ./home/frier.nix ];
         };
         "markus@WorkBook-Pro" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.aarch64-darwin;
