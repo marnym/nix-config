@@ -16,6 +16,7 @@
     xfce.thunar
     wl-clipboard
     hyprshot
+    chromium
     thunderbird-bin
     pavucontrol
     discord
