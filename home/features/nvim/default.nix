@@ -12,10 +12,10 @@
   home.packages = with pkgs.unstable; [
     # LSP
     nil
-    lua-language-server
     nixpkgs-fmt
-    marksman
+    lua-language-server
     gopls
+    marksman
     texlab
 
     # TreeSitter

@@ -103,12 +103,28 @@ function M.setup_handlers()
 		capabilities = capabilities,
 		settings = {
 			gopls = {
+				experimentalPostfixCompletions = true,
 				analyses = {
 					unusedparams = true,
 					shadow = true
 				},
 				staticcheck = true,
 			}
+		},
+		init_options = {
+			usePlaceholders = true,
+		}
+	}
+
+	require("typescript-tools").setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
+	}
+
+	require("rust-tools").setup {
+		server = {
+			on_attach = M.on_attach,
+			capabilities = capabilities,
 		}
 	}
 
@@ -117,6 +133,7 @@ function M.setup_handlers()
 		capabilities = capabilities,
 		root_dir = nvim_lsp.util.root_pattern('*.tex')
 	}
+
 
 	return {
 		function(server_name)
@@ -129,38 +146,6 @@ function M.setup_handlers()
 				filetypes = { 'yml', 'yaml', 'yml.ansible', 'yaml.ansible' },
 				root_dir = nvim_lsp.util.root_pattern('ansible.cfg'),
 				single_file_support = false,
-			}
-		end,
-		['tsserver'] = function()
-			nvim_lsp.tsserver.setup {
-				on_attach = M.disable_formatting,
-				capabilities = capabilities,
-				root_dir = nvim_lsp.util.root_pattern('package.json'),
-				single_file_support = false,
-				settings = {
-					typescript = {
-						inlayHints = {
-							includeInlayParameterNameHints = 'literal',
-							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayVariableTypeHints = false,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayEnumMemberValueHints = true,
-						},
-					},
-					javascript = {
-						inlayHints = {
-							includeInlayParameterNameHints = 'all',
-							includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-							includeInlayFunctionParameterTypeHints = true,
-							includeInlayVariableTypeHints = true,
-							includeInlayPropertyDeclarationTypeHints = true,
-							includeInlayFunctionLikeReturnTypeHints = true,
-							includeInlayEnumMemberValueHints = true,
-						},
-					}
-				}
 			}
 		end,
 		['volar'] = function()

@@ -38,46 +38,6 @@ return {
 		lazy = true,
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
-		dependencies = {
-			{ "nvim-lua/plenary.nvim" },
-		},
-		event = "InsertEnter *.*",
-		config = function()
-			-- local null_ls = require("null-ls")
-			-- null_ls.setup {
-			-- 	debug = false,
-			-- 	sources = {
-			-- 		null_ls.builtins.diagnostics.eslint_d.with({
-			-- 			condition = function(utils)
-			-- 				return not utils.root_has_file("deno.json")
-			-- 			end,
-			-- 		}),
-			-- 		null_ls.builtins.code_actions.eslint_d.with({
-			-- 			condition = function(utils)
-			-- 				return not utils.root_has_file("deno.json")
-			-- 			end,
-			-- 		}),
-			-- 		null_ls.builtins.formatting.prettierd.with({
-			-- 			condition = function(utils)
-			-- 				return not utils.root_has_file("deno.json")
-			-- 			end,
-			-- 			extra_filetypes = { "astro" }
-			-- 		}),
-			-- 		null_ls.builtins.formatting.black,
-			-- 		null_ls.builtins.code_actions.gitsigns,
-			-- 		null_ls.builtins.diagnostics.markdownlint.with {
-			-- 			filter = function(diagnostic)
-			-- 				return diagnostic.code ~= "MD013/line-length"
-			-- 			end
-			-- 		},
-			-- 		null_ls.builtins.formatting.nixpkgs_fmt
-			-- 	},
-			-- 	on_attach = helpers.on_attach,
-			-- }
-		end,
-	},
-	{
 		"ray-x/lsp_signature.nvim",
 		config = function()
 			require("lsp_signature").setup {

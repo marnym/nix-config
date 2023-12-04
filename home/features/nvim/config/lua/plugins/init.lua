@@ -43,6 +43,11 @@ return {
             require("cmp-npm").setup({})
         end
     },
+    "simrat39/rust-tools.nvim",
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    },
     -- Utils
     "folke/which-key.nvim",
     {
