@@ -11,7 +11,8 @@
   ];
 
   home.packages = with pkgs; [
-    wezterm
+    pkgs.unstable.wezterm
+    gnome.gnome-terminal
     xdg-utils
     xfce.thunar
     wl-clipboard

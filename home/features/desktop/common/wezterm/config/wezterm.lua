@@ -9,6 +9,7 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
+config.enable_wayland = false
 config.force_reverse_video_cursor = true
 config.colors = gruvbox_material.colors
 config.default_cursor_style = 'BlinkingBar'
