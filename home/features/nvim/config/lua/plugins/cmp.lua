@@ -76,17 +76,28 @@ return {
             sorting = {
                 priority_weight = 1.0,
                 comparators = {
-                    -- compare.score_offset, -- not good at all
-                    compare.locality,
-                    compare.recently_used,
-                    compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
                     compare.offset,
+                    compare.exact,
+                    compare.score,
+
+                    -- copied from cmp-under, but I don't think I need the plugin for this.
+                    -- I might add some more of my own.
+                    function(entry1, entry2)
+                        local _, entry1_under = entry1.completion_item.label:find "^_+"
+                        local _, entry2_under = entry2.completion_item.label:find "^_+"
+                        entry1_under = entry1_under or 0
+                        entry2_under = entry2_under or 0
+                        if entry1_under > entry2_under then
+                            return false
+                        elseif entry1_under < entry2_under then
+                            return true
+                        end
+                    end,
+
+                    compare.kind,
+                    compare.sort_text,
+                    compare.length,
                     compare.order,
-                    -- compare.scopes, -- what?
-                    -- compare.sort_text,
-                    -- compare.exact,
-                    -- compare.kind,
-                    -- compare.length, -- useless
                 },
             },
             formatting = {
@@ -105,11 +116,15 @@ return {
                 },
             },
             performance = {
-                debounce = 500,
-                throttle = 550,
-                fetching_timeout = 80,
+                fetching_timeout = 50,
+                debounce = 100,
+                throttle = 150,
                 max_view_entries = 12,
-            }
+            },
+            experimental = {
+                native_menu = false,
+            },
+
         }
 
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

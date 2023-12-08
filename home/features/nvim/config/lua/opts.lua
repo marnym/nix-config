@@ -58,3 +58,5 @@ vim.o.scrolloff = 8
 -- open splits to the right and bottom
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+vim.diagnostic.config({ update_in_insert = true })
