@@ -2,61 +2,67 @@
 vim.api.nvim_set_keymap("", " ", "", { noremap = true })
 vim.g.mapleader = " "
 
+local opt = vim.opt
+
 -- add all subdirectories to path
-vim.o.path = vim.o.path .. "**"
+opt.path = vim.o.path .. "**"
 
 -- line numbers default
 vim.wo.number = true
-vim.o.relativenumber = true
+opt.relativenumber = true
 
 -- copy paste between vim and everything else
-vim.o.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 
 -- enable mouse
-vim.o.mouse = "a"
+opt.mouse = "a"
 
 -- set indentation
-vim.o.tabstop = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
+opt.expandtab = true
 
 -- enable break indent
-vim.o.breakindent = true
+opt.breakindent = true
 
 -- save undo history
-vim.o.undofile = true
+opt.undofile = true
 
 -- disable highlight on search
-vim.o.hlsearch = false
+opt.hlsearch = false
 
 -- case insensitive search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+opt.ignorecase = true
+opt.smartcase = true
 
 -- hide status, since status line shows it
-vim.o.showmode = false
+opt.showmode = false
 
 -- keep signcolumn on
 vim.wo.signcolumn = 'yes'
 
 -- decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
+opt.updatetime = 1000
 
 -- set completeopt
-vim.o.completeopt = "menuone,noselect"
+opt.completeopt = "menuone,noselect"
 
-vim.o.termguicolors = true
+opt.termguicolors = true
 
 -- so that `` is visible in markdown files
-vim.o.conceallevel = 0
+opt.conceallevel = 0
 
 -- Enable highlighting of the current line
-vim.o.cursorline = true
+opt.cursorline = true
 
--- always keep 8 lines between cursor and top/bottom
-vim.o.scrolloff = 8
+-- always keep 10 lines between cursor and top/bottom
+opt.scrolloff = 10
+
+-- opt.smoothscroll = true
 
 -- open splits to the right and bottom
-vim.o.splitright = true
-vim.o.splitbelow = true
+opt.splitright = true
+opt.splitbelow = true
 
 vim.diagnostic.config({ update_in_insert = true })
