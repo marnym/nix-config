@@ -15,6 +15,7 @@ return {
     config = function()
         local cmp_autopairs = require("nvim-autopairs.completion.cmp")
         local cmp = require("cmp")
+        local compare = require("cmp.config.compare")
         local luasnip = require("luasnip")
         local lspkind = require("lspkind")
 
@@ -65,12 +66,28 @@ return {
                 end, { "i", "s" }),
             },
             sources = {
-                { name = "npm",     keyword_length = 4 },
-                { name = "nvim_lsp" },
-                { name = "nvim_lua" },
-                { name = "luasnip", option = { history = false } },
-                { name = "path" },
-                { name = "buffer" },
+                { name = "npm",      priority = 9, keyword_length = 4 },
+                { name = "nvim_lsp", priority = 8 },
+                { name = "nvim_lua", priority = 8 },
+                { name = "luasnip",  priority = 7, max_item_count = 4, option = { history = false } },
+                { name = "path",     priority = 6 },
+                { name = "buffer",   priority = 5 },
+            },
+            sorting = {
+                priority_weight = 1.0,
+                comparators = {
+                    -- compare.score_offset, -- not good at all
+                    compare.locality,
+                    compare.recently_used,
+                    compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+                    compare.offset,
+                    compare.order,
+                    -- compare.scopes, -- what?
+                    -- compare.sort_text,
+                    -- compare.exact,
+                    -- compare.kind,
+                    -- compare.length, -- useless
+                },
             },
             formatting = {
                 format = lspkind.cmp_format({
@@ -86,6 +103,12 @@ return {
                 documentation = {
                     border = "rounded",
                 },
+            },
+            performance = {
+                debounce = 500,
+                throttle = 550,
+                fetching_timeout = 80,
+                max_view_entries = 12,
             }
         }
 

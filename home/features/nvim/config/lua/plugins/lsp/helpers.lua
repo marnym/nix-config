@@ -116,16 +116,30 @@ function M.setup_handlers()
 		}
 	}
 
+	nvim_lsp.rust_analyzer.setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
+		settings = {
+			['rust-analyzer'] = {
+				cargo = {
+					buildScripts = {
+						enable = true,
+					},
+					features = "all",
+				},
+				procMacro = {
+					enable = true,
+				},
+				lru = {
+					capacity = 1024,
+				}
+			}
+		}
+	}
+
 	require("typescript-tools").setup {
 		on_attach = M.on_attach,
 		capabilities = capabilities,
-	}
-
-	require("rust-tools").setup {
-		server = {
-			on_attach = M.on_attach,
-			capabilities = capabilities,
-		}
 	}
 
 	nvim_lsp.texlab.setup {
