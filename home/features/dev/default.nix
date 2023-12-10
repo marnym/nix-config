@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
+    lazygit
     vscode
 
     llvmPackages_16.clang

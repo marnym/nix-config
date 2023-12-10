@@ -15,6 +15,7 @@
     shellAliases = {
       a = "ansible";
       p = "project.sh";
+      lg = "lazygit";
       g = "git";
       gs = "git status";
       ga = "git add";
