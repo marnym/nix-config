@@ -10,6 +10,8 @@
     ./networking.nix
   ];
 
+  services.pcscd.enable = true;
+
   home-manager.extraSpecialArgs = { inherit inputs outputs pkgs; };
 
   system.stateVersion = "23.05";
