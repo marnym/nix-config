@@ -131,7 +131,7 @@ function M.setup_handlers()
 					enable = true,
 				},
 				lru = {
-					capacity = 1024,
+					capacity = 256,
 				}
 			}
 		}
