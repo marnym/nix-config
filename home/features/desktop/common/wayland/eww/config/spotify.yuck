@@ -2,7 +2,7 @@
     (button :class "music ${spotify-playing == "Playing" ? "playing" : ""}"
             :halign "center"
             :onclick "spotify-play-pause.sh"
-            :onmiddleclick "playerctl -p spotify previous"
+            :onmiddleclick "hyprctl dispatch togglespecialworkspace spotify"
             :onrightclick "playerctl -p spotify next"
             " ${spotify}"))
 
