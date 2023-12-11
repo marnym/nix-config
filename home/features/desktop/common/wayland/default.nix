@@ -13,8 +13,8 @@
   home.packages = with pkgs; [
     pkgs.unstable.wezterm
     gnome.gnome-terminal
+    gnome.nautilus
     xdg-utils
-    xfce.thunar
     wl-clipboard
     hyprshot
     chromium
