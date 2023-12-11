@@ -36,6 +36,10 @@
   home.username = "markus";
   home.homeDirectory = "/Users/markus";
 
+  home.packages = with pkgs; [
+    awscli2
+  ];
+
   programs.git.extraConfig.credential.helper = "osxkeychain";
   programs.git.signing.signByDefault = lib.mkForce false;
 
