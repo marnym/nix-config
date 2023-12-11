@@ -13,6 +13,7 @@
     ../common/features/hyprland.nix
     ../common/features/mullvad.nix
     ../common/features/syncthing.nix
+    ../common/features/steam.nix
   ];
 
   networking.hostName = "timred";
