@@ -48,7 +48,19 @@ function M.setup_handlers()
 
 	nvim_lsp.marksman.setup(settings)
 
-	nvim_lsp.nil_ls.setup(settings)
+	nvim_lsp.nil_ls.setup {
+		on_attach = M.on_attach,
+		capabilities = capabilities,
+		settings = {
+			['nil'] = {
+				nix = {
+					flake = {
+						autoArchive = true,
+					}
+				}
+			}
+		}
+	}
 
 	nvim_lsp.lua_ls.setup {
 		on_attach = M.on_attach,
