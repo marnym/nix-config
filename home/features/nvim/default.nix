@@ -17,6 +17,7 @@
     gopls
     marksman
     texlab
+    typescript
 
     # TreeSitter
     vimPlugins.nvim-treesitter-parsers.bash
