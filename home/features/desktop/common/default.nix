@@ -3,5 +3,6 @@
     ./font.nix
     ./wezterm
     ./kitty
+    ./foot
   ];
 }
