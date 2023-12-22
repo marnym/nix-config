@@ -32,6 +32,10 @@
           font = "BlexMono Nerd Font:size=14";
         };
         colors = gruvbox_material_dark;
+        cursor = {
+          style = "beam";
+          blink = "yes";
+        };
       };
     };
 }
