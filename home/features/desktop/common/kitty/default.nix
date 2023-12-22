@@ -8,9 +8,11 @@
     };
     shellIntegration.enableFishIntegration = true;
     theme = "Gruvbox Material Dark Hard";
-    extraConfig = ''
-      confirm_os_window_close 0
-    '';
+    settings = {
+      sync_to_monitor = "no";
+      confirm_os_window_close = 0;
+      cursor_shape = "beam";
+    };
     # darwinLaunchOptions = [
     #   "--single-instance"
     # ];
