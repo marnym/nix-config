@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./foot
     ./gtk.nix
     ./firefox.nix
     ./gammastep.nix
