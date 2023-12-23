@@ -95,6 +95,7 @@ function M.setup_handlers()
 		on_attach = M.on_attach,
 		capabilities = capabilities,
 		root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
+		filetypes = "typescript,typescriptreact,typescript.tsx",
 		settings = {
 			deno = {
 				enable = true,

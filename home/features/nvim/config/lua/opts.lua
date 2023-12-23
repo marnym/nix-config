@@ -46,7 +46,7 @@ vim.wo.signcolumn = 'yes'
 opt.updatetime = 1000
 
 -- decrease timeoutlen
-opt.timeoutlen = 100
+opt.timeoutlen = 500
 
 -- set completeopt
 opt.completeopt = "menuone,noselect"
