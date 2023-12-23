@@ -11,6 +11,7 @@
     ./fzf.nix
     ./eza.nix
     ./bat.nix
+    ./btop.nix
   ];
 
   home.packages = with pkgs; [
@@ -35,9 +36,6 @@
     rage
     age-plugin-yubikey
     tldr
-
-    # monitoring
-    btop
 
     # networking
     mtr
