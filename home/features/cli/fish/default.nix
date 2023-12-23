@@ -15,6 +15,7 @@
     shellAliases = {
       a = "ansible";
       p = "project.sh";
+
       lg = "lazygit";
       g = "git";
       gs = "git status";
@@ -23,6 +24,7 @@
       gd = "git diff";
       gp = "git pull";
       gP = "git push";
+      gsw = "g switch";
       pandoc = "pandoc --pdf-engine=xelatex";
       cat = "bat";
     };
