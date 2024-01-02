@@ -1,10 +1,10 @@
 local function no_preview()
     return require('telescope.themes').get_dropdown({
         borderchars = {
-            { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
-            prompt = { "─", "│", " ", "│", '┌', '┐', "│", "│" },
-            results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
-            preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+            prompt = { "─", "│", " ", "│", '╭', '╮', "│", "│" },
+            results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+            preview = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
         },
         previewer = false,
         prompt_title = false
