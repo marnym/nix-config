@@ -21,6 +21,8 @@
       ga = "git add";
       gc = "git commit";
       gd = "git diff";
+      gp = "git pull";
+      gP = "git push";
       pandoc = "pandoc --pdf-engine=xelatex";
       cat = "bat";
     };
