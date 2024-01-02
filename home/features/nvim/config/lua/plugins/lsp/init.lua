@@ -8,6 +8,9 @@ vim.keymap.set("n", "gn", vim.diagnostic.goto_next, vim.tbl_extend("force", opts
 
 local helpers = require("plugins/lsp/helpers")
 
+vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded' })
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+
 return {
 	{
 		"neovim/nvim-lspconfig",

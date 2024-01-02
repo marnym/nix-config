@@ -111,17 +111,10 @@ return {
             },
             preselect = cmp.PreselectMode.None,
             window = {
-                completion = {
-                    border = "rounded",
-                },
-                documentation = {
-                    border = "rounded",
-                },
+                completion = cmp.config.window.bordered { winhighlight = 'Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None' },
+                documentation = cmp.config.window.bordered { winhighlight = 'Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None' },
             },
             performance = {
-                fetching_timeout = 50,
-                debounce = 100,
-                throttle = 150,
                 max_view_entries = 12,
             },
             experimental = {
@@ -131,6 +124,8 @@ return {
         }
 
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+        vim.api.nvim_set_hl(0, "BorderBG", { bg = "NONE", fg = "#928374" })
 
         -- cmp.event:on("menu_opened", function()
         --     vim.b.copilot_suggestion_hidden = true
