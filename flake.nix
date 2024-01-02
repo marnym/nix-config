@@ -35,6 +35,8 @@
           pkgs-unstable = import nixpkgs-unstable {
             inherit system;
             config.allowUnfree = true;
+            # for obsidian
+            config.permittedInsecurePackages = [ "electron-25.9.0" ];
           };
         in
         {

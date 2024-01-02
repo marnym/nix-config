@@ -28,4 +28,5 @@
     pkgs.unstable.obsidian
     pkgs.unstable.todoist-electron
   ];
+
 }

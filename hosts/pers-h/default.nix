@@ -23,5 +23,5 @@
 
   security.pam.enableSSHAgentAuth = true;
 
-  services.syncthing.folders.Cloud.type = lib.mkForce "receiveencrypted";
+  services.syncthing.settings.folders.Cloud.type = lib.mkForce "receiveencrypted";
 }

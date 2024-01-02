@@ -30,7 +30,7 @@ in
     configDir = "/home/markus/.config/syncthing";
     overrideDevices = true;
     overrideFolders = false;
-    folders = {
+    settings.folders = {
       Cloud = {
         id = "capiu-mnq67";
         label = "Cloud";
