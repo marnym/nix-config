@@ -102,6 +102,18 @@ return {
         end,
     },
     { "windwp/nvim-autopairs", lazy = true, config = true, },
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        },
+        keys = {
+            { "<Leader>n", function() vim.cmd [[Neotree toggle]] end },
+        },
+    },
     -- mini.nvim
     {
         "echasnovski/mini.comment",
@@ -129,8 +141,7 @@ return {
             })
         end,
         keys = {
-            { "<Leader>n", function() vim.cmd [[ lua MiniFiles.open() ]] end },
-            { "-",         function() vim.cmd [[ lua MiniFiles.open(vim.api.nvim_buf_get_name(0)) ]] end },
+            { "-", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end },
         }
     },
 }
