@@ -16,5 +16,5 @@
 
   networking.hostName = "thinkpad";
 
-  environment.systemPackages = [ pkgs.acpi ];
+  environment.systemPackages = [ pkgs.acpi pkgs.powertop ];
 }
