@@ -28,7 +28,7 @@
       set-option -g focus-events on
 
       # Enable RGB colour if running in xterm(1)
-      set-option -sa terminal-overrides ",xterm*:Tc"
+      set -a terminal-features '*:RGB'
 
       # No bells at all
       set -g bell-action none
