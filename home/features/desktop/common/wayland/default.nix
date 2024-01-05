@@ -12,7 +12,8 @@
   ];
 
   home.packages = with pkgs; [
-    pkgs.unstable.wezterm
+    ghostty
+    unstable.wezterm
     gnome.gnome-terminal
     gnome.nautilus
     xdg-utils
@@ -25,8 +26,8 @@
     mpv
     spotify
     telegram-desktop
-    pkgs.unstable.obsidian
-    pkgs.unstable.todoist-electron
+    unstable.obsidian
+    unstable.todoist-electron
   ];
 
 }
