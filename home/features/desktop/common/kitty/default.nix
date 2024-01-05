@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.unstable.kitty;
     font = {
-      name = "BlexMono Nerd Font";
+      name = "JetBrainsMono Nerd Font";
       size = 14;
     };
     shellIntegration.enableFishIntegration = true;

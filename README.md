@@ -1,3 +1,3 @@
-# isofore's dotfiles
+# Nix Configuration
 
-Built with nix
+Check `justfiles for common commands`

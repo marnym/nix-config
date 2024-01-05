@@ -2,12 +2,17 @@
   description = "isofore's NixOS Flake";
 
   nixConfig = {
-    experimental-features = [ "nix-command" "flakes" ];
-    builders-use-substitutes = true;
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
   };
 
   inputs = {
-
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -17,7 +22,10 @@
       url = "github:nix-community/home-manager/release-23.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
+
+    ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -48,6 +56,7 @@
               packageOverrides = pkgs: {
                 unstable = pkgs-unstable;
                 hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
+                ghostty = inputs.ghostty.packages.${pkgs.system}.default;
                 hyprshot = outputs.packages.${pkgs.system}.hyprshot;
                 intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
               };
@@ -75,7 +84,10 @@
         {
           timred = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;
-            modules = [ ./hosts/timred nixFrozen ];
+            modules = [
+              ./hosts/timred
+              nixFrozen
+            ];
           };
           thinkpad = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;
