@@ -26,4 +26,10 @@ return {
             vim.cmd("colorscheme gruvbox-material")
         end
     },
+    {
+        "eoh-bse/minintro.nvim",
+        config = true,
+        lazy = false,
+        priority = 750,
+    }
 }
