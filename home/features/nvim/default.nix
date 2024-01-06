@@ -18,6 +18,7 @@
     marksman
     texlab
     typescript
+    yaml-language-server
 
     # TreeSitter
     vimPlugins.nvim-treesitter-parsers.bash
