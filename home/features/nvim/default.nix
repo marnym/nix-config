@@ -45,6 +45,7 @@
     vimPlugins.nvim-treesitter-parsers.toml
     vimPlugins.nvim-treesitter-parsers.tsx
     vimPlugins.nvim-treesitter-parsers.typescript
+    vimPlugins.nvim-treesitter-parsers.vimdoc
     vimPlugins.nvim-treesitter-parsers.vue
     vimPlugins.nvim-treesitter-parsers.yaml
   ];

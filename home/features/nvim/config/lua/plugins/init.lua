@@ -8,6 +8,7 @@ return {
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
+        event = "BufEnter",
         opts = {
             debounce = 100,
             indent = { char = "┊" },
@@ -21,18 +22,28 @@ return {
     },
     {
         "folke/trouble.nvim",
+        keys = {
+            { "<leader>q", function() require("trouble").open() end,                                       desc = "Open trouble.nvim" },
+            { "gp",        function() require("trouble").previous { skip_groups = true, jump = true } end, desc = "[G]o to [P}revious diagnostic" },
+            { "gn",        function() require("trouble").next { skip_groups = true, jump = true } end,     desc = "[G]o to [N]ext diagnostic" },
+        },
         dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = true,
+        opts = {
+            auto_preview = false,
+            win_config = {
+                border = "rounded",
+            },
+        },
     },
     {
         "someone-stole-my-name/yaml-companion.nvim",
+        lazy = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
         },
         config = function()
             require("telescope").load_extension("yaml_schema")
         end,
-        lazy = true,
     },
     -- Autocompletion
     {
@@ -40,30 +51,33 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         ft = "json",
         config = function()
-            require("cmp-npm").setup({})
+            require("cmp-npm").setup {}
         end
     },
-    "simrat39/rust-tools.nvim",
+    {
+        "simrat39/rust-tools.nvim",
+        ft = "rust",
+    },
     {
         "pmizio/typescript-tools.nvim",
+        ft = "javascript,javascriptreact,javascript.jsx,typescript,typescriptreact,typescript.tsx",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     },
     -- Utils
-    "folke/which-key.nvim",
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+    },
     {
         "unblevable/quick-scope",
         keys = { "f", "F", "t", "T" },
     },
-    "tpope/vim-sleuth",
-    -- {
-    --     "lervag/vimtex",
-    --     config = function()
-    --         vim.cmd "let g:tex_flavor = 'latex'"
-    --     end
-    -- },
     {
         "danymat/neogen",
-        config = true,
+        cmd = "Neogen",
+        opts = {
+            snippet_engine = "luasnip"
+        },
     },
     {
         "ahmedkhalf/project.nvim",
@@ -71,16 +85,15 @@ return {
             require("project_nvim").setup {
                 manual_mode = true,
                 silent_chdir = false,
-                ignore_lsp = { "null-ls" }
             }
-        end,
+        end
     },
     {
         "zbirenbaum/copilot.lua",
         lazy = true,
         event = "InsertEnter",
         config = function()
-            require("copilot").setup({
+            require("copilot").setup {
                 suggestion = {
                     auto_trigger = false,
                     keymap = {
@@ -95,7 +108,7 @@ return {
                         return vim.fn.glob(".copilot") ~= ""
                     end,
                 },
-            })
+            }
 
             -- Bind <leader>cp to toggle copilot
             vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot! toggle<CR>", { noremap = true, silent = true })
@@ -120,11 +133,15 @@ return {
         version = false,
         config = function()
             require("mini.comment").setup()
-        end
+        end,
+        keys = {
+            { "gc", function() require("mini.comment").toggle() end, mode = "v" },
+        }
     },
     {
         "echasnovski/mini.surround",
         version = false,
+        event = "BufEnter",
         config = function()
             require("mini.surround").setup()
         end
@@ -133,12 +150,12 @@ return {
         'echasnovski/mini.files',
         version = false,
         config = function()
-            require("mini.files").setup({
+            require("mini.files").setup {
                 mappings = {
                     go_in = 'L',
                     go_in_plus = 'l',
                 },
-            })
+            }
         end,
         keys = {
             { "-", function() require("mini.files").open(vim.api.nvim_buf_get_name(0)) end },

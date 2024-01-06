@@ -23,9 +23,9 @@ return {
         local lspkind = require("lspkind")
 
         require("luasnip.loaders.from_vscode").lazy_load()
-        require("luasnip.loaders.from_vscode").lazy_load({ paths = "./snippets" })
+        require("luasnip.loaders.from_vscode").lazy_load { paths = "./snippets" }
 
-        local source_mapping = ({
+        local source_mapping = {
             buffer = "[Buffer]",
             nvim_lsp = "[LSP]",
             luasnip = "[LuaSnip]",
@@ -33,7 +33,7 @@ return {
             path = "[Path]",
             npm = "[NPM]",
             latex = "[LaTeX]",
-        })
+        }
 
         cmp.setup {
             snippet = {
@@ -111,8 +111,8 @@ return {
             },
             preselect = cmp.PreselectMode.None,
             window = {
-                completion = cmp.config.window.bordered { winhighlight = 'Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None' },
-                documentation = cmp.config.window.bordered { winhighlight = 'Normal:Normal,FloatBorder:BorderBG,CursorLine:PmenuSel,Search:None' },
+                completion = cmp.config.window.bordered { winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
+                documentation = cmp.config.window.bordered { winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
             },
             performance = {
                 max_view_entries = 12,
@@ -124,8 +124,6 @@ return {
         }
 
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-        vim.api.nvim_set_hl(0, "BorderBG", { bg = "NONE", fg = "#928374" })
 
         -- cmp.event:on("menu_opened", function()
         --     vim.b.copilot_suggestion_hidden = true

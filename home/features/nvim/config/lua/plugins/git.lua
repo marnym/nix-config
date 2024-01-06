@@ -2,6 +2,7 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
+        event = "BufEnter",
         opts = {
             signs = {
                 add = { text = '+' },
@@ -21,10 +22,7 @@ return {
         },
     },
     {
-        "tpope/vim-fugitive",
-        cmd = { "G", "Git" },
-    },
-    {
         "sindrets/diffview.nvim",
+        event = "VeryLazy",
     }
 }

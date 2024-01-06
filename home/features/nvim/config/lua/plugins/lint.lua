@@ -1,15 +1,16 @@
 return {
     {
         "mfussenegger/nvim-lint",
+        event = "BufEnter",
         config = function()
-            vim.diagnostic.config({
+            vim.diagnostic.config {
                 virtual_text = {
                     source = true
                 },
                 float = {
                     source = true
                 }
-            })
+            }
 
             require("lint").linters_by_ft = {}
 
