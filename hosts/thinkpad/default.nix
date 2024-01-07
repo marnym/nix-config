@@ -11,7 +11,6 @@
     ../common/features/hyprland.nix
     ../common/features/mullvad.nix
     ../common/features/syncthing.nix
-    ../common/features/idlelock.nix
   ];
 
   networking.hostName = "thinkpad";

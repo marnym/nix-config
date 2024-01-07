@@ -9,6 +9,8 @@
     ./fuzzel
     ./mako
     ./zathura
+    ./swayidle.nix
+    ./swaylock.nix
   ];
 
   home.packages = with pkgs; [

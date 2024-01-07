@@ -14,7 +14,6 @@
     ../common/features/mullvad.nix
     ../common/features/syncthing.nix
     ../common/features/steam.nix
-    ../common/features/idlelock.nix
   ];
 
   networking.hostName = "timred";

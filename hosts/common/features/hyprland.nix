@@ -26,4 +26,13 @@
     jack.enable = true;
     wireplumber.enable = true;
   };
+
+  systemd.user.targets.graphical-session = {
+    unitConfig = {
+      RefuseManualStart = false;
+      StopWhenUnneeded = false;
+    };
+  };
+
+  security.pam.services.swaylock = { };
 }
