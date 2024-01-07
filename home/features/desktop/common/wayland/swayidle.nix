@@ -14,16 +14,16 @@
         resumeCommand = "hyprctl dispatch dpms on";
       }
       {
-        timeout = 300;
+        timeout = 150;
         command = "${pkgs.swaylock}/bin/swaylock -fF";
       }
       {
-        timeout = 310;
+        timeout = 200;
         command = "hyprctl dispatch dpms off";
         resumeCommand = "hyprctl dispatch dpms on";
       }
       {
-        timeout = 600;
+        timeout = 300;
         command = "${pkgs.systemd}/bin/systemctl suspend";
       }
     ];
