@@ -5,7 +5,7 @@ selected=$(echo -e "lock\nsuspend\nreboot\nshutdown" | fuzzel -d)
 case $selected in
 
     lock)
-        swaylock -c 000000
+        swaylock -fF
     ;;
 
     suspend)
