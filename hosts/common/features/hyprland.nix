@@ -3,9 +3,9 @@
 {
   environment.pathsToLink = [ "/libexec" ];
 
-  environment.systemPackages = [
-    pkgs.unstable.swaybg
-    pkgs.unstable.hyprpaper
+  environment.systemPackages = with pkgs.unstable; [
+    swaybg
+    hyprpaper
   ];
 
   programs.hyprland = {
@@ -35,4 +35,10 @@
   };
 
   security.pam.services.swaylock = { };
+
+  services.gnome.gnome-keyring.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "gnome3";
+  };
 }

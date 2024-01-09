@@ -32,7 +32,6 @@
     gnutar
     gawk
     zstd
-    gnupg
     rage
     age-plugin-yubikey
     tldr
