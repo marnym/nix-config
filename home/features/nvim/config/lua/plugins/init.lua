@@ -23,9 +23,37 @@ return {
     {
         "folke/trouble.nvim",
         keys = {
-            { "<leader>q", function() require("trouble").open() end,                                       desc = "Open trouble.nvim" },
-            { "gp",        function() require("trouble").previous { skip_groups = true, jump = true } end, desc = "[G]o to [P}revious diagnostic" },
-            { "gn",        function() require("trouble").next { skip_groups = true, jump = true } end,     desc = "[G]o to [N]ext diagnostic" },
+            {
+                "<leader>q",
+                function() require("trouble").open() end,
+                desc =
+                "Open trouble.nvim"
+            },
+            {
+                "gp",
+                function()
+                    local trouble = require("trouble")
+                    if trouble.is_open() then
+                        trouble.previous({ skip_groups = true, jump = true })
+                    else
+                        vim.diagnostic.goto_prev()
+                    end
+                end,
+                desc = "[G]o to [P}revious diagnostic"
+            },
+            {
+                "gn",
+                function()
+                    local trouble = require("trouble")
+                    if trouble.is_open() then
+                        trouble.next({ skip_groups = true, jump = true })
+                    else
+                        vim.diagnostic.goto_next()
+                    end
+                end,
+                desc =
+                "[G]o to [N]ext diagnostic"
+            },
         },
         dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
