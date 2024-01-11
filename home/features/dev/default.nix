@@ -3,6 +3,8 @@
     lazygit
     vscode
 
+    man-pages
+    man-pages-posix
     llvmPackages_16.clang
     llvmPackages_16.libcxx
     clang-tools_16
