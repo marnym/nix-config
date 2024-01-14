@@ -1,8 +1,6 @@
 local M = {}
 
--- Use an on_attach function to only map the following keys
--- after the language server attaches to the current buffer
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
     local nmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
@@ -27,9 +25,9 @@ function M.on_attach(_, bufnr)
 
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
-    -- if client.server_capabilities.inlayHintProvider then
-    -- 	vim.lsp.buf.inlay_hint(bufnr, true)
-    -- end
+    if client.server_capabilities.inlayHintProvider then
+        vim.lsp.inlay_hint.enable(bufnr, true)
+    end
 end
 
 function M.disable_formatting(client, bufnr)
