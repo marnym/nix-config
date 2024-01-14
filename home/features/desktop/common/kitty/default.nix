@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.unstable.kitty;
     font = {
-      name = "JetBrainsMono Nerd Font";
+      name = "Cascadia Code";
       size = 14;
     };
     shellIntegration.enableFishIntegration = true;

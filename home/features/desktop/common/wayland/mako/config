@@ -9,7 +9,7 @@ border-radius=15
 max-icon-size=64
 default-timeout=5000
 ignore-timeout=1
-font=Jetbrains Mono Nerd Font 16
+font=Cascadia Code 16
 
 [urgency=low]
 border-color=#cccccc

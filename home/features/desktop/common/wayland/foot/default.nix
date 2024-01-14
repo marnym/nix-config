@@ -29,7 +29,7 @@
       settings = {
         main = {
           term = "xterm-256color";
-          font = "JetBrainsMono Nerd Font:size=14";
+          font = "Cascadia Code:size=14";
         };
         colors = gruvbox_material_dark;
         cursor = {
