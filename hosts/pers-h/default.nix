@@ -8,6 +8,8 @@
     ../common/features/docker.nix
     ../common/features/openssh.nix
     ../common/features/syncthing.nix
+
+    ../common/features/bookstack.nix
   ];
 
   networking.hostName = "pers-h";
@@ -20,8 +22,6 @@
     ];
     packages = [ pkgs.grc ];
   };
-
-  security.pam.enableSSHAgentAuth = true;
 
   services.syncthing.settings.folders.Cloud.type = lib.mkForce "receiveencrypted";
 }
