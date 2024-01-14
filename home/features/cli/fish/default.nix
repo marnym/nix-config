@@ -31,6 +31,11 @@
     shellInit = ''
       set -U fish_greeting "🐟"
       fish_add_path "$HOME/.local/bin"
+
+      set TTY1 (tty)
+      if [ "$TTY1" = "/dev/tty1" ]; then
+        exec wrappedhl.sh
+      end
     '';
   };
 }

@@ -47,6 +47,7 @@ local M = {
                     "filetype",
                     icon_only = true,
                 },
+                "encoding",
                 { "filename", path = 1 }
             },
             lualine_x = {
