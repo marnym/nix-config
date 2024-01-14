@@ -8,7 +8,7 @@ home:
 
 remote:
 	export NIX_SSHOPTS="-A"
-	nixos-rebuild switch --flake .#pers-h --target-host markus@pers-h --build-host markus@pers-h --use-remote-sudo
+	nixos-rebuild switch --flake .#pers-h --target-host root@pers-h --use-remote-sudo
 
 # rebuild switch with more output
 debug:
