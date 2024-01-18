@@ -111,16 +111,14 @@ return {
             },
             preselect = cmp.PreselectMode.None,
             window = {
-                completion = cmp.config.window.bordered { winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
-                documentation = cmp.config.window.bordered { winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
+                completion = cmp.config.window.bordered { winhighlight =
+                'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
+                documentation = cmp.config.window.bordered { winhighlight =
+                'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
             },
             performance = {
                 max_view_entries = 12,
             },
-            experimental = {
-                native_menu = false,
-            },
-
         }
 
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

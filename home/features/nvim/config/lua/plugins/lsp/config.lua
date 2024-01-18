@@ -1,6 +1,12 @@
 local M = {}
 
 function M.on_attach(client, bufnr)
+    -- stop TSServer from attaching when Deno project
+    if (client.name == "tsserver" or client.name == "typescript-tools") and require("lspconfig").util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
+        client.stop()
+        return
+    end
+
     local nmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
@@ -28,6 +34,8 @@ function M.on_attach(client, bufnr)
     if client.server_capabilities.inlayHintProvider then
         vim.lsp.inlay_hint.enable(bufnr, true)
     end
+
+    require("lsp_signature").on_attach()
 end
 
 function M.disable_formatting(client, bufnr)

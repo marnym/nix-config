@@ -67,5 +67,3 @@ opt.scrolloff = 10
 -- open splits to the right and bottom
 opt.splitright = true
 opt.splitbelow = true
-
-vim.diagnostic.config({ update_in_insert = true })
