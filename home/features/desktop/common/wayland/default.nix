@@ -3,6 +3,7 @@
     ./foot
     ./gtk.nix
     ./firefox.nix
+    ./librewolf.nix
     ./gammastep.nix
     ./playerctl.nix
     ./eww
