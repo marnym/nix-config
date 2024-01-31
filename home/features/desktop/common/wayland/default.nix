@@ -6,13 +6,15 @@
     ./librewolf.nix
     ./gammastep.nix
     ./playerctl.nix
-    ./eww
+    ./waybar
     ./fuzzel
     ./mako
     ./zathura
     ./swayidle.nix
     ./swaylock.nix
   ];
+
+  programs.waybar.enable = true;
 
   home.packages = with pkgs; [
     ghostty

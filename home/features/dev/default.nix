@@ -5,9 +5,8 @@
 
     man-pages
     man-pages-posix
-    llvmPackages_16.clang
-    llvmPackages_16.libcxx
-    clang-tools_16
+    libcxx
+    clang-tools_17
     gnumake
     just
     unstable.go
