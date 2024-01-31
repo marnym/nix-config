@@ -3,6 +3,7 @@
     noto-fonts
     ibm-plex
     cascadia-code
+    font-awesome
     (nerdfonts.override { fonts = [ "JetBrainsMono" "IBMPlexMono" "Noto" ]; })
   ];
 
