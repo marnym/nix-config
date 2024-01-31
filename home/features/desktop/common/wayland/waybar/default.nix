@@ -69,6 +69,10 @@ in
     };
 
     style = /* css */ ''
+      @define-color bg #1d2021;
+      @define-color fg #d4be98;
+      @define-color green #a9b665;
+
        * {
           border: none;
           border-radius: 0;
@@ -78,23 +82,24 @@ in
       }
 
       window#waybar {
-          background: rgba(43, 48, 59, 0.5);
+          background: @bg;
           border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-          color: white;
+          color: @fg;
       }
 
       tooltip {
         background: rgba(43, 48, 59, 0.5);
         border: 1px solid rgba(100, 114, 125, 0.5);
       }
+
       tooltip label {
-        color: white;
+        color: @fg;
       }
 
       #workspaces button {
           padding: 0 5px;
           background: transparent;
-          color: white;
+          color: @fg;
           border-bottom: 3px solid transparent;
       }
 
@@ -142,6 +147,15 @@ in
           animation-iteration-count: infinite;
           animation-direction: alternate;
       }     
+
+      #workspaces button {
+        padding: 0 0.5em;
+        margin: 0.25em;
+      }
+
+      #workspaces button.active {
+        color: @green;
+      }
     '';
   };
 }
