@@ -114,6 +114,7 @@ in
       @define-color bg #282828;
       @define-color bg2 #32302f;
       @define-color bg3 #504945;
+      @define-color bg-light #a89984;
       @define-color fg #d4be98;
       @define-color red #ea6962;
       @define-color orange #e78a4e;
@@ -168,25 +169,28 @@ in
       }
 
       #battery {
-          background-color: #ffffff;
-          color: black;
+          background-color: @bg-light;
+          color: @bg0;
+          border: 1px solid @bg3;
+          margin: 3px 0;
+          border-radius: .5em;
       }
 
       #battery.charging {
-          color: white;
-          background-color: #26A65B;
+          color: @bg0;
+          background-color: @green;
       }
 
       @keyframes blink {
           to {
-              background-color: #ffffff;
-              color: black;
+              background-color: @bg-light;
+              color: @bg0;
           }
       }
 
       #battery.warning:not(.charging) {
-          background: #f53c3c;
-          color: white;
+          background: @orange;
+          color: @bg0;
           animation-name: blink;
           animation-duration: 0.5s;
           animation-timing-function: steps(12);
