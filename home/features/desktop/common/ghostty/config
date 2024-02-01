@@ -1,9 +1,12 @@
 font-size = 14
 font-family = "Cascadia Code PL"
+
 background-opacity = 0.95
 background-blur-radius = 20
 
 gtk-titlebar = false
+
+confirm-close-surface = false
 
 macos-non-native-fullscreen = visible-menu
 macos-option-as-alt = left

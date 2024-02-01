@@ -6,6 +6,8 @@
     ./features/desktop/hyprland
     ./features/productivity
 
+    ./features/cli/linux.nix
+
     ./features/dev/jetbrains/idea.nix
     ./features/dev/jetbrains/webstorm.nix
     ./features/dev/jetbrains/goland.nix
