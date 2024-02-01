@@ -28,6 +28,10 @@
       pandoc = "pandoc --pdf-engine=xelatex";
       cat = "bat";
     };
+    shellAbbrs = {
+      wifi = "nmcli device wifi";
+      bt = "bluetoothctl";
+    };
     shellInit = ''
       set -U fish_greeting "🐟"
       fish_add_path "$HOME/.local/bin"
