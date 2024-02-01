@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/features/bluetooth.nix
     ../common/features/docker.nix
     ../common/features/hyprland.nix
     ../common/features/mullvad.nix
@@ -15,7 +16,13 @@
 
   networking.hostName = "thinkpad";
 
-  environment.systemPackages = with pkgs; [ acpi powertop intel-gpu-tools intel-undervolt ];
+  environment.systemPackages = with pkgs; [
+    acpi
+    powertop
+    intel-gpu-tools
+    intel-undervolt
+    bluez
+  ];
 
   services.undervolt = {
     enable = true;
