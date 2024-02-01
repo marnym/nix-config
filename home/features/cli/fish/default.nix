@@ -37,7 +37,7 @@
       fish_add_path "$HOME/.local/bin"
 
       set TTY1 (tty)
-      if [ "$TTY1" = "/dev/tty1" ]; then
+      if [ "$TTY1" = "/dev/tty1" ]
         exec wrappedhl.sh
       end
     '';
