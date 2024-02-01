@@ -5,6 +5,7 @@
 
     man-pages
     man-pages-posix
+    gcc13
     libcxx
     clang-tools_17
     gnumake
