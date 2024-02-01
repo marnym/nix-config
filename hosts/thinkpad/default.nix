@@ -8,6 +8,7 @@
 
     ../common/global
     ../common/features/bluetooth.nix
+    ../common/features/brightness.nix
     ../common/features/docker.nix
     ../common/features/hyprland.nix
     ../common/features/mullvad.nix

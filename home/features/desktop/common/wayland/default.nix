@@ -33,6 +33,7 @@
     telegram-desktop
     unstable.obsidian
     unstable.todoist-electron
+    wob
   ];
 
 }

@@ -4,7 +4,7 @@
     users = {
       markus = {
         isNormalUser = true;
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "video" ];
         shell = pkgs.fish;
         hashedPassword = lib.mkDefault "$y$j9T$GsfORnC5W3lX4vd5ZNnl4.$br9rkMZi7jk9VL69scPzpGLpy2SkOjwvBjRF4QlWfj8";
         packages = [ pkgs.home-manager ];
