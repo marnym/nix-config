@@ -7,7 +7,7 @@ in
     settings = {
       mainBar = {
         layer = "top";
-        output = [ "DP-3" "eDP1" ];
+        output = [ "DP-3" "eDP-1" ];
         position = "top";
         height = 40;
         modules-left = [
