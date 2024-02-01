@@ -1,57 +1,29 @@
 let
-  common = {
-    "hyprland/workspaces" = {
-      disable-scroll = true;
-      show-special = true;
-    };
-    spacing = 15;
-    tray.spacing = 10;
-    clock = {
-      interval = 5;
-      format = "{:%H:%M:%S}";
-    };
-    network = {
-      format-wifi = "{essid} ({signalStrength}%) ";
-      format-ethernet = "{ipaddr}/{cidr} ";
-      tooltip-format = "{ifname} via {gwaddr} ";
-      format-linked = "{ifname} (No IP) ";
-      format-disconnected = "Disconnected ⚠";
-      format-alt = "{ifname}: {ipaddr}/{cidr}";
-      on-click = "";
-    };
-    "pulseaudio" = {
-      format = "{volume}% {icon} {format_source}";
-      format-bluetooth = "{volume}% {icon} {format_source}";
-      format-bluetooth-muted = " {icon} {format_source}";
-      format-muted = " {format_source}";
-      format-source = "{volume}% ";
-      format-source-muted = "";
-      format-icons = {
-        headphone = "";
-        hands-free = "";
-        headset = "";
-        phone = "";
-        portable = "";
-        car = "";
-        default = [ "" "" "" ];
-      };
-      on-click = "pavucontrol";
-    };
-  };
+  nix-snowflake = ./nix-snowflake.svg;
 in
 {
   programs.waybar = {
     enable = true;
     settings = {
-      timred = common // {
+      mainBar = {
         layer = "top";
+        output = [ "DP-3" "eDP1" ];
         position = "top";
-        height = 30;
-        output = "DP-3";
-        modules-left = [ "hyprland/workspaces" ];
-        modules-right = [ "pulseaudio" "battery" "network" "clock" "tray" ];
-      };
-      thinkpad = common // {
+        height = 40;
+        modules-left = [
+          "custom/logo"
+          "hyprland/workspaces"
+          "hyprland/window"
+        ];
+        modules-right = [
+          "pulseaudio"
+          "network"
+          "battery"
+          "clock"
+          "tray"
+        ];
+        margin = "5";
+        spacing = 10;
         battery = {
           states = {
             good = 95;
@@ -59,56 +31,126 @@ in
             critical = 15;
           };
           format = "{capacity}% {icon}";
-          format-charging = "{capacity}%";
-          format-plugged = "{capacity}%";
+          format-charging = "{capacity}%  ";
+          format-plugged = "{capacity}%  ";
           format-alt = "{time} {icon}";
           format-full = "";
-          format-icons = [ ];
+          format-icons = [ " " " " " " " " " " ];
+        };
+        clock = {
+          format = "{:%H:%M:%S}";
+          tooltip-format = "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>";
+          interval = 5;
+        };
+        "custom/logo" = {
+          format = "  ";
+          tooltip = false;
+        };
+        "hyprland/workspaces" = {
+          active-only = false;
+          all-outputs = true;
+          disable-scroll = true;
+          format = "{icon}";
+          format-icons = {
+            "1" = "1";
+            "2" = "2";
+            "3" = "3";
+            "4" = "4";
+            "5" = "5";
+            "6" = "6";
+            "7" = "7";
+            "8" = "8";
+            "9" = "9";
+            "10" = "10";
+            spotify = " ";
+          };
+          persistent-workspaces = {
+            "*" = 10;
+          };
+          show-special = true;
+        };
+        "hyprland/window" = {
+          format = "{}";
+          rewrite = {
+            "(.*) — Mozilla Firefox" = "  $1";
+          };
+        };
+        network = {
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
+          format-disconnected = "Disconnected ⚠";
+          format-ethernet = "{ipaddr}/{cidr}  ";
+          format-linked = "{ifname} (No IP)  ";
+          format-wifi = "{essid} ({signalStrength}%)  ";
+          on-click = "";
+          tooltip-format = "{ifname} via {gwaddr}  ";
+        };
+        pulseaudio = {
+          format = "{volume}% {icon} {format_source}";
+          format-bluetooth = "{volume}% {icon} {format_source}";
+          format-bluetooth-muted = " {icon} {format_source}";
+          format-muted = " {format_source}";
+          format-source = "{volume}%  ";
+          format-source-muted = " ";
+          format-icons = {
+            headphone = " ";
+            hands-free = " ";
+            headset = " ";
+            phone = " ";
+            portable = " ";
+            car = " ";
+            default = [ " " " " " " ];
+          };
+          on-click = "pavucontrol";
+        };
+        tray = {
+          icon-size = 21;
+          spacing = 10;
         };
       };
     };
 
     style = /* css */ ''
-      @define-color bg #1d2021;
+      @define-color bg0 #1d2021;
+      @define-color bg #282828;
+      @define-color bg2 #32302f;
+      @define-color bg3 #504945;
       @define-color fg #d4be98;
+      @define-color red #ea6962;
+      @define-color orange #e78a4e;
+      @define-color yellow #d8a657;
       @define-color green #a9b665;
+      @define-color aqua #89b482;
+      @define-color blue #7daea3;
+      @define-color purple #d3869b;
+      @define-color grey #928374;
 
-       * {
+      * {
           border: none;
           border-radius: 0;
           font-family: BlexMono Nerd Font, Inter, Roboto, Helvetica, Arial, sans-serif;
-          font-size: 16px;
+          font-size: 20px;
           min-height: 0;
       }
 
       window#waybar {
           background: @bg;
-          border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+          border: 2px solid @bg3;
           color: @fg;
+          border-radius: .5em;
       }
 
       tooltip {
-        background: rgba(43, 48, 59, 0.5);
-        border: 1px solid rgba(100, 114, 125, 0.5);
+          background: @bg2;
+          border: 1px solid rgba(100, 114, 125, 0.5);
       }
 
       tooltip label {
-        color: @fg;
-      }
-
-      #workspaces button {
-          padding: 0 5px;
-          background: transparent;
           color: @fg;
-          border-bottom: 3px solid transparent;
       }
 
-      #workspaces button.focused {
-          background: #64727D;
-          border-bottom: 3px solid white;
-      }
-
-      #mode, #clock, #battery {
+      #mode,
+      #clock,
+      #battery {
           padding: 0 10px;
       }
 
@@ -118,7 +160,11 @@ in
       }
 
       #clock {
-          background-color: #64727D;
+          background-color: @blue;
+          border: 1px solid @bg3;
+          color: @bg0;
+          margin: 3px 0;
+          border-radius: .5em;
       }
 
       #battery {
@@ -146,15 +192,56 @@ in
           animation-timing-function: steps(12);
           animation-iteration-count: infinite;
           animation-direction: alternate;
-      }     
+      }
+
+      .modules-left {
+          padding-left: 10px;
+      }
+
+      .modules-right {
+          padding-right: 10px;
+      }
+
+      #workspaces {
+          background-color: @bg2;
+          border: 1px solid @bg3;
+          border-radius: .5em;
+          margin: 5px 0;
+      }
 
       #workspaces button {
-        padding: 0 0.5em;
-        margin: 0.25em;
+          padding: 0 0.5em;
+          margin: 0;
+          color: @fg;
+      }
+
+      #workspaces button.empty {
+          color: @grey;
+      }
+
+      #workspaces button.visible {
+          color: @blue;
       }
 
       #workspaces button.active {
-        color: @green;
+          color: @green;
+      }
+
+      #workspaces button.urgent {
+          background-color: @red;
+          border-radius: 1em;
+          color: @bg0;
+      }
+
+      #window {
+          color: @fg;
+      }
+
+      #custom-logo {
+          background-image: url('${nix-snowflake}');
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
       }
     '';
   };
