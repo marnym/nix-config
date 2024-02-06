@@ -3,7 +3,7 @@
     enable = true;
     package = pkgs.unstable.kitty;
     font = {
-      name = "Cascadia Code";
+      name = "Maple Mono NF";
       size = 14;
     };
     shellIntegration.enableFishIntegration = true;

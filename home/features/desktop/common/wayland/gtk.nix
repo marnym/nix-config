@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+  # todo)) Rose Piné cursor
   home.pointerCursor = {
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
@@ -9,8 +10,8 @@
     enable = true;
 
     theme = {
-      name = "Arc-Dark";
-      package = pkgs.arc-theme;
+      name = "rose-pine-moon";
+      package = pkgs.rose-pine-gtk-theme;
     };
 
     font = {
@@ -19,6 +20,7 @@
       size = 14.0;
     };
 
+    # todo)) Rose Piné cursor
     cursorTheme = {
       name = "Catppuccin-Mocha-Dark-Cursors";
       package = pkgs.catppuccin-cursors.mochaDark;
@@ -26,8 +28,8 @@
     };
 
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = "rose-pine-moon";
+      package = pkgs.rose-pine-icon-theme;
     };
   };
 }

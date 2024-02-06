@@ -34,7 +34,7 @@ local M = {
     opts = {
         options = {
             icons_enabled = true,
-            theme = "gruvbox-material",
+            theme = "rose-pine",
             section_separators = { left = '', right = '' },
             component_separators = "|",
             disabled_filetypes = {},

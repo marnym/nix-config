@@ -2,6 +2,8 @@ let
   nix-snowflake = ./nix-snowflake.svg;
 in
 {
+  xdg.configFile."waybar/rose-pine-moon.css".source = ./rose-pine-moon.css;
+
   programs.waybar = {
     enable = true;
     settings = {
@@ -110,6 +112,8 @@ in
     };
 
     style = /* css */ ''
+      @import "./rose-pine-moon.css";
+
       @define-color bg0 #1d2021;
       @define-color bg #282828;
       @define-color bg2 #32302f;
@@ -126,126 +130,122 @@ in
       @define-color grey #928374;
 
       * {
-          border: none;
-          border-radius: 0;
-          font-family: BlexMono Nerd Font, Inter, Roboto, Helvetica, Arial, sans-serif;
-          font-size: 20px;
-          min-height: 0;
+        border: none;
+        border-radius: 0;
+        font-family: "Maple Mono NF", "Hack Nerd Font", Inter, Roboto, Helvetica, Arial, sans-serif;
+        font-size: 20px;
+        min-height: 0;
       }
 
       window#waybar {
-          background: @bg;
-          border: 2px solid @bg3;
-          color: @fg;
-          border-radius: .5em;
+        background-color: @base;
+        color: @text;
       }
 
       tooltip {
-          background: @bg2;
-          border: 1px solid rgba(100, 114, 125, 0.5);
+        background: @base;
+        border-radius: 4px;
+        border-width: 2px;
+        border-style: solid;
+        border-color: @overlay;
       }
 
       tooltip label {
-          color: @fg;
+        color: @fg;
       }
 
       #mode,
       #clock,
       #battery {
-          padding: 0 10px;
+        padding: 0 10px;
       }
 
       #mode {
-          background: #64727D;
-          border-bottom: 3px solid white;
+        background: #64727D;
+        border-bottom: 3px solid white;
       }
 
       #clock {
-          background-color: @blue;
-          border: 1px solid @bg3;
-          color: @bg0;
-          margin: 3px 0;
-          border-radius: .5em;
+        color: @gold;
+        margin: 3px 0;
+        border-radius: .5em;
       }
 
       #battery {
-          background-color: @bg-light;
-          color: @bg0;
-          border: 1px solid @bg3;
-          margin: 3px 0;
-          border-radius: .5em;
+        margin: 3px 0;
       }
 
       #battery.charging {
-          color: @bg0;
-          background-color: @green;
-      }
-
-      @keyframes blink {
-          to {
-              background-color: @bg-light;
-              color: @bg0;
-          }
+        color: @pine;
       }
 
       #battery.warning:not(.charging) {
-          background: @orange;
-          color: @bg0;
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: steps(12);
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
+        color: @gold;
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-timing-function: steps(12);
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
       }
 
       .modules-left {
-          padding-left: 10px;
+        padding-left: 10px;
       }
 
       .modules-right {
-          padding-right: 10px;
+        padding-right: 10px;
       }
 
       #workspaces {
-          background-color: @bg2;
-          border: 1px solid @bg3;
-          border-radius: .5em;
-          margin: 5px 0;
+        margin: 5px 0;
       }
 
       #workspaces button {
-          padding: 0 0.5em;
-          margin: 0;
-          color: @fg;
-      }
-
-      #workspaces button.empty {
-          color: @grey;
-      }
-
-      #workspaces button.visible {
-          color: @blue;
+        padding: 5px;
+        color: @highlightMed;
+        margin-right: 5px;
       }
 
       #workspaces button.active {
-          color: @green;
+        color: @text;
+      }
+
+      #workspaces button.focused {
+        color: @subtle;
+        background: @love;
+        border-radius: 8px;
       }
 
       #workspaces button.urgent {
-          background-color: @red;
-          border-radius: 1em;
-          color: @bg0;
+        color: @base;
+        background-color: @love;
+        border-radius: 8px;
+      }
+
+      #workspaces button:hover {
+        background-color: @highlightLow;
+        color: @text;
+        border-radius: 8px;
       }
 
       #window {
-          color: @fg;
+        border-radius: 8px;
+        margin-left: 8px;
       }
 
       #custom-logo {
-          background-image: url('${nix-snowflake}');
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: contain;
+        background-image: url('${nix-snowflake}');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+
+      #pulseaudio {
+        color: @rose;
+      }
+
+      #network {
+        color: @iris;
       }
     '';
   };

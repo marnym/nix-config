@@ -14,7 +14,7 @@ config.force_reverse_video_cursor = true
 config.colors = gruvbox_material.colors
 config.default_cursor_style = 'BlinkingBar'
 
-config.font = wezterm.font("Cascadia Code")
+config.font = wezterm.font("Maple Mono NF")
 config.font_size = 14.0
 
 if success and stdout:match('Darwin') then
