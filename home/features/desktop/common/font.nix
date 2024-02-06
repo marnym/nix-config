@@ -1,10 +1,12 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    noto-fonts
-    ibm-plex
     cascadia-code
     font-awesome
-    (nerdfonts.override { fonts = [ "JetBrainsMono" "IBMPlexMono" "Noto" ]; })
+    ibm-plex
+    maple-mono
+    maple-mono-NF
+    noto-fonts
+    (nerdfonts.override { fonts = [ "Hack" "IBMPlexMono" "JetBrainsMono" "Noto" ]; })
   ];
 
   fonts.fontconfig.enable = true;
