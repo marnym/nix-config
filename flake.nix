@@ -30,6 +30,11 @@
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
+    waybar-spotify = {
+      url = "github:marnym/waybar-spotify/0e4ab6eb3deb7f79453e4c54032d2e006f5f50e2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -66,6 +71,7 @@
                 ghostty = inputs.ghostty.packages.${pkgs.system}.default;
                 hyprshot = outputs.packages.${pkgs.system}.hyprshot;
                 intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
+                waybar-spotify = inputs.waybar-spotify.packages.${pkgs.system}.default;
               };
             };
           };

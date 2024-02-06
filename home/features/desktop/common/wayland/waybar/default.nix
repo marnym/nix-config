@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 let
   nix-snowflake = ./nix-snowflake.svg;
 in
@@ -17,6 +18,7 @@ in
           "hyprland/workspaces"
           "hyprland/window"
         ];
+        modules-center = [ "custom/spotify" ];
         modules-right = [
           "pulseaudio"
           "network"
@@ -33,11 +35,11 @@ in
             critical = 15;
           };
           format = "{capacity}% {icon}";
-          format-charging = "{capacity}%  ";
-          format-plugged = "{capacity}%  ";
+          format-charging = "{capacity}% ";
+          format-plugged = "{capacity}% ";
           format-alt = "{time} {icon}";
           format-full = "";
-          format-icons = [ " " " " " " " " " " ];
+          format-icons = [ "" "" "" "" "" ];
         };
         clock = {
           format = "{:%H:%M:%S}";
@@ -64,7 +66,7 @@ in
             "8" = "8";
             "9" = "9";
             "10" = "10";
-            spotify = " ";
+            spotify = "";
           };
           persistent-workspaces = {
             "*" = 10;
@@ -74,33 +76,44 @@ in
         "hyprland/window" = {
           format = "{}";
           rewrite = {
-            "(.*) — Mozilla Firefox" = "  $1";
+            "(.*) — Mozilla Firefox" = " $1";
           };
+        };
+        "custom/spotify" = {
+          format = "{icon} {}";
+          format-icons = "";
+          on-click = "playerctl play-pause";
+          on-scroll-up = "playerctl next";
+          on-scroll-down = "playerctl previous";
+          return-type = "json";
+          exec = "${pkgs.waybar-spotify}/bin/waybar-spotify";
+          exec-if = "pgrep spotify";
+          escape = true;
         };
         network = {
           format-alt = "{ifname}: {ipaddr}/{cidr}";
           format-disconnected = "Disconnected ⚠";
-          format-ethernet = "{ipaddr}/{cidr}  ";
-          format-linked = "{ifname} (No IP)  ";
-          format-wifi = "{essid} ({signalStrength}%)  ";
+          format-ethernet = "{ipaddr}/{cidr} ";
+          format-linked = "{ifname} (No IP) ";
+          format-wifi = "{essid} ({signalStrength}%) ";
           on-click = "";
-          tooltip-format = "{ifname} via {gwaddr}  ";
+          tooltip-format = "{ifname} via {gwaddr} ";
         };
         pulseaudio = {
           format = "{volume}% {icon} {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
           format-bluetooth-muted = " {icon} {format_source}";
           format-muted = " {format_source}";
-          format-source = "{volume}%  ";
-          format-source-muted = " ";
+          format-source = "{volume}% ";
+          format-source-muted = "";
           format-icons = {
-            headphone = " ";
-            hands-free = " ";
-            headset = " ";
-            phone = " ";
-            portable = " ";
-            car = " ";
-            default = [ " " " " " " ];
+            headphone = "";
+            hands-free = "";
+            headset = "";
+            phone = "";
+            portable = "";
+            car = "";
+            default = [ "" "" "" ];
           };
           on-click = "pavucontrol";
         };
@@ -240,8 +253,16 @@ in
         background-size: contain;
       }
 
+      #custom-spotify {
+        color: @text;
+      }
+
+      #custom-spotify.playing {
+        color: @pine;
+      }
+
       #pulseaudio {
-        color: @rose;
+        color: @foam;
       }
 
       #network {

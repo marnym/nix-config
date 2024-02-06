@@ -484,7 +484,8 @@
         "hyprland": "hyprland",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
-        "nixpkgs-unstable": "nixpkgs-unstable_2"
+        "nixpkgs-unstable": "nixpkgs-unstable_2",
+        "waybar-spotify": "waybar-spotify"
       }
     },
     "systems": {
@@ -529,6 +530,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "waybar-spotify": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1707249681,
+        "narHash": "sha256-m5kPXq6n7p09lyUWeHtlIaMl/XMejRoRKRRWPT4MJSU=",
+        "owner": "marnym",
+        "repo": "waybar-spotify",
+        "rev": "0e4ab6eb3deb7f79453e4c54032d2e006f5f50e2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marnym",
+        "repo": "waybar-spotify",
+        "rev": "0e4ab6eb3deb7f79453e4c54032d2e006f5f50e2",
         "type": "github"
       }
     },
