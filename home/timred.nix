@@ -14,6 +14,8 @@
     ./features/dev/jetbrains/pycharm.nix
     ./features/dev/jetbrains/clion.nix
     ./features/dev/jetbrains/rust-rover.nix
+
+    ./features/desktop/runelite.nix
   ];
 
   local.hyprland.path = ./features/desktop/hyprland/koun.conf;
