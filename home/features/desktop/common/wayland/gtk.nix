@@ -3,7 +3,7 @@
   home.pointerCursor = {
     name = "Catppuccin-Mocha-Dark-Cursors";
     package = pkgs.catppuccin-cursors.mochaDark;
-    size = 24;
+    size = 30;
   };
 
   gtk = {
@@ -28,8 +28,8 @@
     };
 
     iconTheme = {
-      name = "rose-pine-moon";
-      package = pkgs.rose-pine-icon-theme;
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
   };
 }
