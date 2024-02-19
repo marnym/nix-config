@@ -165,11 +165,11 @@
         "zls": "zls"
       },
       "locked": {
-        "lastModified": 1707198392,
-        "narHash": "sha256-54FsPawNhG94mBmg063TodYnkVSOb1OqOXHFjI366y0=",
+        "lastModified": 1707871544,
+        "narHash": "sha256-dULYk5xHkSQS2jXEUTOTgiEZQdK/ntyxSHEjaE85XRM=",
         "ref": "refs/heads/main",
-        "rev": "7256c8e0910b867ac875a4f6166dd6980da4d7e0",
-        "revCount": 5016,
+        "rev": "b945a6c3b6721ee2ac3d51cf5bcd4e0b747ca2d4",
+        "revCount": 5155,
         "type": "git",
         "url": "ssh://git@github.com/mitchellh/ghostty"
       },
@@ -430,11 +430,11 @@
     },
     "nixpkgs-zig-0-12": {
       "locked": {
-        "lastModified": 1707156663,
-        "narHash": "sha256-T0Ah65Sj/HnbEkKmOCaQGSIoNDZDh3K299A0nvXceCk=",
+        "lastModified": 1707846486,
+        "narHash": "sha256-ek2NESo8WPqUIuUPVs3L2rliCFofvjhR/i3ptaxfaJ4=",
         "owner": "vancluever",
         "repo": "nixpkgs",
-        "rev": "dfe11015af91c9317604d792715f166d9fce7831",
+        "rev": "31119ca40f326e3a6552883fa62f2df56c17a7bf",
         "type": "github"
       },
       "original": {
@@ -612,11 +612,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1707148508,
-        "narHash": "sha256-fAQN2Y8wZn8JQWQvA5dfDEorxZLLWTNSdZp39YFAWXk=",
+        "lastModified": 1707783766,
+        "narHash": "sha256-kD90pK+KAzr3UrohYRqE7fWUaEg4Mv3rk1IhubiHFUM=",
         "owner": "mitchellh",
         "repo": "zig-overlay",
-        "rev": "3e47b1a260a5521e51888b8e71cd04b8e8928cb3",
+        "rev": "06f4507d05f90a54409a5206fcfba5966eea0c03",
         "type": "github"
       },
       "original": {
