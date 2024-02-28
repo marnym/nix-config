@@ -10,7 +10,6 @@
     ./fuzzel
     ./mako
     ./zathura
-    ./swayidle.nix
     ./swaylock.nix
   ];
 
