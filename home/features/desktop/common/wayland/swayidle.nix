@@ -3,6 +3,8 @@
     let
       swaylock = "${pkgs.swaylock}/bin/swaylock";
       hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+      pgrep = "${pkgs.procps}/bin/pgrep";
+      systemctl = "${pkgs.systemd}/bin/systemctl";
     in
     {
       enable = true;
@@ -15,7 +17,7 @@
       timeouts = [
         {
           timeout = 10;
-          command = "if pgrep swaylock; then hyprctl dispatch dpms off; fi";
+          command = "if ${pgrep} swaylock; then ${hyprctl} dispatch dpms off; fi";
           resumeCommand = "${hyprctl} dispatch dpms on";
         }
         {
@@ -24,12 +26,12 @@
         }
         {
           timeout = 200;
-          command = "hyprctl dispatch dpms off";
+          command = "${hyprctl} dispatch dpms off";
           resumeCommand = "${hyprctl} dispatch dpms on";
         }
         {
           timeout = 300;
-          command = "${pkgs.systemd}/bin/systemctl suspend";
+          command = "${systemctl} suspend";
         }
       ];
     };
