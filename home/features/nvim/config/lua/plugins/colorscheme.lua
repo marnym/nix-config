@@ -33,13 +33,14 @@ local rosepine = {
     priority = 1000,
     config = function()
         require("rose-pine").setup({
-            variant = "moon",
-            dark_variant = "moon",
+            variant = "main",
+            dark_variant = "main",
         })
 
-        vim.cmd("colorscheme rose-pine-moon")
+        vim.cmd("colorscheme rose-pine")
     end,
 }
+
 return {
     -- gruvbox_material,
     rosepine,
