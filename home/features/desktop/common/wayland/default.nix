@@ -28,6 +28,7 @@
     pavucontrol
     discord
     mpv
+    sxiv
     spotify
     telegram-desktop
     unstable.obsidian
