@@ -476,6 +476,23 @@
         "type": "github"
       }
     },
+    "ranger-devicons": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709209315,
+        "narHash": "sha256-ETE13REDIVuoFIbvWqWvQLj/2fGST+1koowmmuBzGmo=",
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
+        "rev": "ed718dd6a6d5d2c0f53cba8474c5ad96185057e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexanderjeurissen",
+        "repo": "ranger_devicons",
+        "rev": "ed718dd6a6d5d2c0f53cba8474c5ad96185057e9",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "ghostty": "ghostty",
@@ -485,6 +502,7 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
+        "ranger-devicons": "ranger-devicons",
         "waybar-spotify": "waybar-spotify"
       }
     },

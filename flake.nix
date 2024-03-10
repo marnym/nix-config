@@ -35,6 +35,11 @@
       url = "github:marnym/waybar-spotify/0e4ab6eb3deb7f79453e4c54032d2e006f5f50e2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ranger-devicons = {
+      url = "github:alexanderjeurissen/ranger_devicons/ed718dd6a6d5d2c0f53cba8474c5ad96185057e9";
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
