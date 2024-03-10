@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -22,6 +22,4 @@
     ];
     packages = [ pkgs.grc ];
   };
-
-  services.syncthing.settings.folders.Cloud.type = lib.mkForce "receiveencrypted";
 }
