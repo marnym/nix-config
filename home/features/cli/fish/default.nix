@@ -27,6 +27,8 @@
       gsw = "g switch";
       pandoc = "pandoc --pdf-engine=xelatex";
       cat = "bat";
+
+      md = "glow";
     };
     shellAbbrs = {
       wifi = "nmcli device wifi";
