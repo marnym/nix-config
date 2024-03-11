@@ -1,3 +1,3 @@
 # Nix Configuration
 
-Check `justfiles for common commands`
+Check `justfile` for common commands
