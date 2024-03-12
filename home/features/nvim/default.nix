@@ -1,10 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, lib, ... }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    package = pkgs.neovim-nightly;
+    package = lib.mkDefault pkgs.unstable.neovim;
     extraPackages = with pkgs; [
       nil
       nixpkgs-fmt

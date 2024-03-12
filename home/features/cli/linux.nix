@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  programs.neovim.package = pkgs.neovim-nightly;
+
   home.packages = with pkgs; [
     iotop
     iftop
