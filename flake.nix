@@ -27,6 +27,7 @@
 
     hyprland.url = "github:hyprwm/Hyprland";
     hypridle.url = "github:hyprwm/hypridle/v0.1.1";
+    hyprlock.url = "github:hyprwm/hyprlock/v0.1.0";
 
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
 

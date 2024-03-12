@@ -2,6 +2,7 @@
   imports = [
     ./foot
     ./gtk.nix
+    ./hypr
     ./firefox.nix
     ./librewolf.nix
     ./gammastep.nix
@@ -10,8 +11,6 @@
     ./fuzzel
     ./mako
     ./zathura
-    ./hyprlock.nix
-    ./hypridle.nix
   ];
 
   programs.waybar.enable = true;

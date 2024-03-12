@@ -3,11 +3,6 @@
 {
   environment.pathsToLink = [ "/libexec" ];
 
-  environment.systemPackages = with pkgs.unstable; [
-    swaybg
-    hyprpaper
-  ];
-
   programs.hyprland = {
     enable = true;
     package = pkgs.hyprland-flake;
