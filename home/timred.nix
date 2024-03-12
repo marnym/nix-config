@@ -20,4 +20,10 @@
   ];
 
   local.hyprland.path = ./features/desktop/hyprland/koun.conf;
+
+  local.hypridle.timeout = {
+    lock = 150;
+    screenOff = 300;
+    suspend = 1800;
+  };
 }

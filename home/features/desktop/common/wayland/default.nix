@@ -11,6 +11,7 @@
     ./mako
     ./zathura
     ./hyprlock.nix
+    ./hypridle.nix
   ];
 
   programs.waybar.enable = true;

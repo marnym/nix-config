@@ -5,7 +5,6 @@
     ./global
     ./features/desktop/hyprland
     ./features/cli/linux.nix
-    ./features/desktop/common/wayland/swayidle.nix
     ./features/productivity
   ];
 

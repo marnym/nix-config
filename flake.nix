@@ -26,6 +26,7 @@
     };
 
     hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
+    hypridle.url = "github:hyprwm/hypridle/v0.1.1";
 
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
 
@@ -121,9 +122,7 @@
         "markus@timred" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs x64_system;
-          modules = [
-            ./home/timred.nix
-          ];
+          modules = [ ./home/timred.nix ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
