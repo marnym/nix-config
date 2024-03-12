@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, ... }: {
   users = {
     mutableUsers = false;
     users = {
@@ -15,6 +15,4 @@
       };
     };
   };
-
-  home-manager.users.markus = import ../../../home/${config.networking.hostName}.nix;
 }

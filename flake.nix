@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.33.1";
+    hyprland.url = "github:hyprwm/Hyprland";
     hypridle.url = "github:hyprwm/hypridle/v0.1.1";
 
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
@@ -103,10 +103,7 @@
         {
           timred = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;
-            modules = [
-              ./hosts/timred
-              nixFrozen
-            ];
+            modules = [ ./hosts/timred nixFrozen ];
           };
           thinkpad = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;

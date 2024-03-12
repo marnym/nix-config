@@ -1,7 +1,7 @@
-{ inputs, outputs, pkgs, ... }: {
+{
   imports = [
-    inputs.home-manager.nixosModules.home-manager
     ../../../modules/nixos/nix-settings.nix
+    ../../../home
 
     ./boot.nix
     ./fish.nix
@@ -11,8 +11,6 @@
   ];
 
   services.pcscd.enable = true;
-
-  home-manager.extraSpecialArgs = { inherit inputs outputs pkgs; };
 
   system.stateVersion = "23.05";
 }
