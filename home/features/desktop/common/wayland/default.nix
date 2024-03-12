@@ -10,7 +10,7 @@
     ./fuzzel
     ./mako
     ./zathura
-    ./swaylock.nix
+    ./hyprlock.nix
   ];
 
   programs.waybar.enable = true;

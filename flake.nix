@@ -1,5 +1,5 @@
 {
-  description = "isofore's NixOS Flake";
+  description = "Personal NixOS flake";
 
   nixConfig = {
     extra-substituters = [
@@ -121,7 +121,9 @@
         "markus@timred" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = specialArgs x64_system;
-          modules = [ ./home/timred.nix ];
+          modules = [
+            ./home/timred.nix
+          ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
