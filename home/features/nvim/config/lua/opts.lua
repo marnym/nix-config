@@ -67,3 +67,11 @@ opt.scrolloff = 10
 -- open splits to the right and bottom
 opt.splitright = true
 opt.splitbelow = true
+
+-- listchars
+vim.opt.list = true
+vim.opt.listchars = {
+    eol = "↲",
+    tab = "» ",
+    trail = "·",
+}
