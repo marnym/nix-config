@@ -4,7 +4,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    package = lib.mkDefault pkgs.unstable.neovim;
+    package = lib.mkDefault pkgs.unstable.neovim-unwrapped;
     extraPackages = with pkgs; [
       nil
       nixpkgs-fmt
