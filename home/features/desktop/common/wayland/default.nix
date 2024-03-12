@@ -4,7 +4,7 @@
     ./gtk.nix
     ./hypr
     ./firefox.nix
-    ./librewolf.nix
+    ./floorp.nix
     ./gammastep.nix
     ./playerctl.nix
     ./waybar

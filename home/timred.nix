@@ -5,7 +5,6 @@
     ./global
     ./features/desktop/hyprland
     ./features/productivity
-    ./features/desktop/common/wayland/floorp.nix
 
     ./features/cli/linux.nix
 
