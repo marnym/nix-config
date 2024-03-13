@@ -87,6 +87,6 @@ in
     macos-non-native-fullscreen = visible-menu
     macos-option-as-alt = left
 
-    ${rosepine}
+    ${rosepine-moon}
   '';
 }

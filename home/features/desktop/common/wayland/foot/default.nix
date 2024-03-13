@@ -75,7 +75,7 @@
           term = "xterm-256color";
           font = "Maple Mono NF:size=14";
         };
-        colors = rosepine;
+        colors = rosepine-moon;
         cursor = {
           style = "beam";
           blink = "yes";
