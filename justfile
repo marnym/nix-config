@@ -18,6 +18,9 @@ debug:
 update:
 	nix flake update
 
+uppdate:
+    nix flake lock --update-input $(i)
+
 # display history
 history:
 	nix profile history --profile /nix/var/nix/profiles/system

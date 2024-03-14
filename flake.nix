@@ -34,7 +34,7 @@
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
     waybar-spotify = {
-      url = "github:marnym/waybar-spotify/0e4ab6eb3deb7f79453e4c54032d2e006f5f50e2";
+      url = "github:marnym/waybar-spotify/5787438a07054b3081a527bc1bfc7e6cfcedea95";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
