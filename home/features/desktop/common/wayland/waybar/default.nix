@@ -144,7 +144,7 @@ in
 
       * {
         border: none;
-        border-radius: 0;
+        border-radius: 15px;
         font-family: "Maple Mono NF", "Hack Nerd Font", Inter, Roboto, Helvetica, Arial, sans-serif;
         font-size: 20px;
         min-height: 0;
