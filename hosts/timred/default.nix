@@ -17,4 +17,9 @@
   ];
 
   networking.hostName = "timred";
+
+  services.udev.extraRules = ''
+    # Disable Logitech waking
+    ACTION=="add", SUBSYSTEM=="usb", DRIVERS=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c548", ATTR{power/wakeup}="disabled"
+  '';
 }
