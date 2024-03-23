@@ -92,6 +92,8 @@ function M.setup()
 
     lsp.clangd.setup(default_settings)
 
+    lsp.ltex.setup(default_settings)
+
 
     vim.g.markdown_fenced_languages = {
         'ts=typescript'

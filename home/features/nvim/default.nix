@@ -12,6 +12,7 @@
       gopls
       marksman
       texlab
+      ltex-ls
       typescript
     ];
   };
