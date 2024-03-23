@@ -55,7 +55,22 @@
       x64_darwin = "x86_64-darwin";
       systems = [ x64_system aarch_darwin x64_darwin ];
 
-      overlays = [ inputs.neovim-nightly-overlay.overlay ];
+      overlays = [
+        inputs.neovim-nightly-overlay.overlay
+
+        (self: super:
+          let
+            version = "v7.0-beta11";
+          in
+          {
+            maple-mono = super.maple-mono-NF.overrideAttrs {
+              inherit version;
+            };
+            maple-mono-NF = super.maple-mono-NF.overrideAttrs {
+              inherit version;
+            };
+          })
+      ];
 
       specialArgs = system:
         let
