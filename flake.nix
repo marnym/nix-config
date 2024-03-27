@@ -38,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    homework-template = {
+      url = "git+ssh://git@github.com/marnym/homework-template?rev=b4755961dd6a7ca155b4951498d1a8888db27470";
+      flake = false;
+    };
+
     ranger-devicons = {
       url = "github:alexanderjeurissen/ranger_devicons/ed718dd6a6d5d2c0f53cba8474c5ad96185057e9";
       flake = false;

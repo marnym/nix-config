@@ -258,6 +258,23 @@
         "type": "github"
       }
     },
+    "homework-template": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1711512030,
+        "narHash": "sha256-ttoFs1VYrXFU4W3zvKACKKcceV5QCWfK9DXF8/7Q01w=",
+        "ref": "refs/heads/main",
+        "rev": "b4755961dd6a7ca155b4951498d1a8888db27470",
+        "revCount": 2,
+        "type": "git",
+        "url": "ssh://git@github.com/marnym/homework-template"
+      },
+      "original": {
+        "rev": "b4755961dd6a7ca155b4951498d1a8888db27470",
+        "type": "git",
+        "url": "ssh://git@github.com/marnym/homework-template"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": "hyprlang_2",
@@ -688,6 +705,7 @@
         "ghostty": "ghostty",
         "hardware": "hardware",
         "home-manager": "home-manager",
+        "homework-template": "homework-template",
         "hypridle": "hypridle",
         "hyprland": "hyprland",
         "hyprlock": "hyprlock",
