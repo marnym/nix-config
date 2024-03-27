@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
   imports = [
@@ -56,5 +56,7 @@
       source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
     end
   '';
+
+  home.file."/Users/markus/Library/Application Support/typst/packages/local/homework-template/0.1.0".source = inputs.homework-template;
 
 }
