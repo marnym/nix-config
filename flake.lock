@@ -261,16 +261,16 @@
     "homework-template": {
       "flake": false,
       "locked": {
-        "lastModified": 1711512030,
-        "narHash": "sha256-ttoFs1VYrXFU4W3zvKACKKcceV5QCWfK9DXF8/7Q01w=",
+        "lastModified": 1711534841,
+        "narHash": "sha256-9Nh7F6fLZMs5UK4tpAHCpmI7zEYN1xiFovl6//4o0gs=",
         "ref": "refs/heads/main",
-        "rev": "b4755961dd6a7ca155b4951498d1a8888db27470",
-        "revCount": 2,
+        "rev": "697fd543d130e405c5c01978da682178a666a140",
+        "revCount": 4,
         "type": "git",
         "url": "ssh://git@github.com/marnym/homework-template"
       },
       "original": {
-        "rev": "b4755961dd6a7ca155b4951498d1a8888db27470",
+        "rev": "697fd543d130e405c5c01978da682178a666a140",
         "type": "git",
         "url": "ssh://git@github.com/marnym/homework-template"
       }
