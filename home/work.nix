@@ -6,6 +6,9 @@
 
     ./features/desktop/common
     ./features/desktop/common/darwin
+
+    ./features/productivity/glow.nix
+    ./features/productivity/typst.nix
   ];
 
   nix.package = pkgs.nix;
@@ -53,4 +56,5 @@
       source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish'
     end
   '';
+
 }
