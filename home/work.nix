@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -8,7 +8,7 @@
     ./features/desktop/common/darwin
 
     ./features/productivity/glow.nix
-    ./features/productivity/typst.nix
+    ./features/productivity/documents/typst.nix
   ];
 
   nix.package = pkgs.nix;

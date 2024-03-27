@@ -1,6 +1,6 @@
 {
   imports = [
-    ./documents.nix
+    ./documents
     ./glow.nix
   ];
 }
