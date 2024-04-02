@@ -1,5 +1,5 @@
 local function attached_clients()
-    local clients = vim.lsp.get_active_clients { bufnr = 0 }
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
 
     local client_names = {}
     for _, client in ipairs(clients) do
