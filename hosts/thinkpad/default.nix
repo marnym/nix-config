@@ -39,6 +39,16 @@
     temp = 80;
   };
 
+  services.tlp = {
+    enable = true;
+    settings = {
+      TLP_DEFAULT_MODE = "BAT";
+      TLP_PERSISTENT_DEFAULT = 1;
+      USB_AUTOSUSPEND = 0;
+      PCIE_ASPM_ON_BAT = "powersupersave";
+    };
+  };
+
   powerManagement = {
     enable = true;
     cpuFreqGovernor = "powersave";
