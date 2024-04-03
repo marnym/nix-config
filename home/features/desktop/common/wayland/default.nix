@@ -25,6 +25,7 @@
     chromium
     thunderbird-bin
     firefox
+    brave
     pavucontrol
     discord
     mpv
@@ -34,6 +35,7 @@
     unstable.obsidian
     unstable.todoist-electron
     wob
+    bitwarden
   ];
 
 }
