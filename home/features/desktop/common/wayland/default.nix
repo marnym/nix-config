@@ -3,7 +3,6 @@
     ./foot
     ./gtk.nix
     ./hypr
-    ./firefox.nix
     ./floorp.nix
     ./gammastep.nix
     ./playerctl.nix
@@ -25,6 +24,7 @@
     hyprshot
     chromium
     thunderbird-bin
+    firefox
     pavucontrol
     discord
     mpv
