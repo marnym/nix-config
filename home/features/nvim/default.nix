@@ -6,6 +6,8 @@
     vimAlias = true;
     package = lib.mkDefault pkgs.unstable.neovim-unwrapped;
     extraPackages = with pkgs; [
+      fswatch
+
       nil
       nixpkgs-fmt
       lua-language-server
