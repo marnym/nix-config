@@ -12,7 +12,13 @@ return {
                 }
             }
 
-            require("lint").linters_by_ft = {}
+            local lint = require("lint")
+
+            lint.linters.ansible_lint.args = { "-p", "--nocolor" }
+
+            lint.linters_by_ft = {
+                ['yaml.ansible'] = { 'ansible_lint', }
+            }
 
             local eslint_d_exists = vim.fn.executable("eslint_d") == 1
 
@@ -22,23 +28,21 @@ return {
                 return vim.fn.glob(path) ~= ""
             end
 
-            vim.api.nvim_create_autocmd({ "BufWritePost" },
-                {
-                    group = vim.api.nvim_create_augroup("lint", { clear = true }),
-                    callback = function()
-                        local lint = require("lint")
-                        lint.try_lint()
+            vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+                group = vim.api.nvim_create_augroup("lint", { clear = true }),
+                callback = function()
+                    lint.try_lint()
 
-                        -- todo check filetype
-                        if root_has("deno.json") then
-                            lint.try_lint("deno")
-                        elseif root_has(".eslintrc*") and eslint_d_exists then
-                            lint.try_lint("eslint_d")
-                        elseif root_has(".eslintrc*") and not eslint_d_exists then
-                            lint.try_lint("eslint")
-                        end
-                    end,
-                })
+                    -- todo: check filetype
+                    if root_has("deno.json") then
+                        lint.try_lint("deno")
+                    elseif root_has(".eslintrc*") and eslint_d_exists then
+                        lint.try_lint("eslint_d")
+                    elseif root_has(".eslintrc*") and not eslint_d_exists then
+                        lint.try_lint("eslint")
+                    end
+                end,
+            })
         end
     }
 }
