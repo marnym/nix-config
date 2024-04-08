@@ -16,6 +16,8 @@
       texlab
       ltex-ls
       typescript
+
+      ansible-language-server
       yaml-language-server
     ];
   };
