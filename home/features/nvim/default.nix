@@ -16,6 +16,7 @@
       texlab
       ltex-ls
       typescript
+      yaml-language-server
     ];
   };
 
