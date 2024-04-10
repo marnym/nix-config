@@ -74,10 +74,17 @@
               inherit version;
             };
           })
+
+        (self: super: {
+          obsidian = super.obsidian.override {
+            electron = super.electron_28-bin;
+          };
+        })
       ];
 
       specialArgs = system: {
         inherit inputs;
+
         pkgs = import nixpkgs {
           inherit system overlays;
           config = {
