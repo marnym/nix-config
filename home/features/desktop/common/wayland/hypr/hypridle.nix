@@ -1,4 +1,4 @@
-{ config, pkgs, pkgs-unstable, lib, hyprland, hypridle-module, ... }:
+{ config, pkgs, lib, hyprland, hypridle, hypridle-module, hyprlock, ... }:
 let
   inherit (lib.options) mkOption;
 
@@ -28,15 +28,15 @@ in
     services.hypridle =
       let
         hyprctl = "${hyprland}/bin/hyprctl";
-        hyprlock = "${pkgs-unstable.hyprlock}/bin/hyprlock";
+        hyprlock-bin = "${hyprlock}/bin/hyprlock";
         pgrep = "${pkgs.procps}/bin/pgrep";
         systemctl = "${pkgs.systemd}/bin/systemctl";
         loginctl = "${pkgs.systemd}/bin/loginctl";
       in
       {
         enable = true;
-        package = pkgs-unstable.hypridle;
-        lockCmd = "${pgrep} hyprlock || ${hyprlock}";
+        package = hypridle;
+        lockCmd = "${pgrep} hyprlock || ${hyprlock-bin}";
         unlockCmd = "";
         beforeSleepCmd = "${loginctl} lock-session";
         afterSleepCmd = "${hyprctl} dispatch dpms on";

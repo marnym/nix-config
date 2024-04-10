@@ -27,7 +27,7 @@
 
     hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
     hypridle.url = "github:hyprwm/hypridle/v0.1.1";
-    hyprlock.url = "github:hyprwm/hyprlock/v0.1.0";
+    hyprlock.url = "github:hyprwm/hyprlock/v0.3.0";
 
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
 
@@ -92,10 +92,16 @@
       };
 
       moduleArgs = system: packages: {
-        hyprland = inputs.hyprland.packages.${system}.hyprland;
+        hyprland = inputs.hyprland.packages.${system}.default;
+
+        hypridle = inputs.hypridle.packages.${system}.default;
         hypridle-module = inputs.hypridle.homeManagerModules.default;
+
+        hyprlock = inputs.hyprlock.packages.${system}.default;
         hyprlock-module = inputs.hyprlock.homeManagerModules.default;
+
         hyprshot = outputs.packages.${system}.hyprshot;
+
         ghostty = inputs.ghostty.packages.${system}.default;
         intel-undervolt = outputs.packages.${system}.intel-undervolt;
         waybar-spotify = inputs.waybar-spotify.packages.${system}.default;

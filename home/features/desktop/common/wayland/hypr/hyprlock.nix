@@ -1,9 +1,9 @@
-{ pkgs-unstable, hyprlock-module, ... }: {
+{ hyprlock, hyprlock-module, ... }: {
   imports = [ hyprlock-module ];
 
   programs.hyprlock = {
     enable = true;
-    package = pkgs-unstable.hyprlock;
+    package = hyprlock;
 
     general = {
       disable_loading_bar = true;
