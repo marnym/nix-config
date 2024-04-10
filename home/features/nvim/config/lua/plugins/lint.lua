@@ -13,12 +13,7 @@ return {
             }
 
             local lint = require("lint")
-
-            lint.linters.ansible_lint.args = { "-p", "--nocolor" }
-
-            lint.linters_by_ft = {
-                ['yaml.ansible'] = { 'ansible_lint', }
-            }
+            lint.linters_by_ft = {}
 
             local eslint_d_exists = vim.fn.executable("eslint_d") == 1
 
