@@ -157,14 +157,10 @@ return {
     },
     -- mini.nvim
     {
-        "echasnovski/mini.comment",
+        "echasnovski/mini.starter",
         version = false,
-        config = function()
-            require("mini.comment").setup()
-        end,
-        keys = {
-            { "gc", function() require("mini.comment").toggle() end, mode = "v" },
-        }
+        lazy = false,
+        config = true,
     },
     {
         "echasnovski/mini.surround",

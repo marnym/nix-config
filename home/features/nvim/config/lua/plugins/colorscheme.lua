@@ -44,10 +44,4 @@ local rosepine = {
 return {
     -- gruvbox_material,
     rosepine,
-    {
-        "eoh-bse/minintro.nvim",
-        config = true,
-        lazy = false,
-        priority = 750,
-    }
 }
