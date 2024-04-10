@@ -52,12 +52,15 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs systems;
 
-      x64_system = "x86_64-linux";
+      x64_linux = "x86_64-linux";
       aarch_darwin = "aarch64-darwin";
       x64_darwin = "x86_64-darwin";
-      systems = [ x64_system aarch_darwin x64_darwin ];
+      systems = [ x64_linux aarch_darwin x64_darwin ];
+      forAllSystems = f: nixpkgs.lib.genAttrs systems (system: f {
+        pkgs = import nixpkgs { inherit system overlays; };
+      });
+
 
       overlays = [
         inputs.neovim-nightly-overlay.overlay
@@ -124,12 +127,17 @@
       };
     in
     rec {
-      packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+      packages = forAllSystems ({ pkgs }: import ./pkgs pkgs);
+      formatter = forAllSystems ({ pkgs }: pkgs.nixpkgs-fmt);
+      devShells = forAllSystems ({ pkgs }: {
+        default = pkgs.mkShell {
+          packages = with pkgs; [ just nil nixpkgs-fmt ];
+        };
+      });
 
       nixosConfigurations =
         let
-          system = x64_system;
+          system = x64_linux;
         in
         {
           timred = nixpkgs.lib.nixosSystem {
@@ -153,12 +161,12 @@
       homeConfigurations = {
         "markus@timred" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = specialArgs x64_system // moduleArgs x64_system packages;
+          extraSpecialArgs = specialArgs x64_linux // moduleArgs x64_linux packages;
           modules = [ ./home/timred.nix ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = specialArgs x64_system // moduleArgs x64_system packages;
+          extraSpecialArgs = specialArgs x64_linux // moduleArgs x64_linux packages;
           modules = [ ./home/thinkpad.nix ];
         };
         "markusnyman@MacFrier-Pro" = home-manager.lib.homeManagerConfiguration {
