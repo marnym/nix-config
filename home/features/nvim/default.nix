@@ -4,7 +4,7 @@
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    package = lib.mkDefault pkgs.unstable.neovim-unwrapped;
+    package = lib.mkDefault pkgs.neovim-nightly;
     extraPackages = with pkgs; [
       fswatch
 

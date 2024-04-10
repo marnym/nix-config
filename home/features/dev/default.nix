@@ -1,10 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
   imports = [
     ./golang.nix
   ];
 
-  home.packages = with pkgs;
-    [
+  home.packages = with pkgs; [
       lazygit
       vscode
 
@@ -14,7 +13,7 @@
       libcxx
       gnumake
       just
-      unstable.deno
+      pkgs-unstable.deno
       nodejs_20
       python3Minimal
       jdk17

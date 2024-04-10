@@ -77,32 +77,27 @@
           })
       ];
 
-      specialArgs = system:
-        let
-          pkgs-unstable = import nixpkgs-unstable {
-            inherit system overlays;
-            config.allowUnfree = true;
-            # for obsidian
-            config.permittedInsecurePackages = [ "electron-25.9.0" ];
-          };
-        in
-        {
-          inherit inputs outputs;
-          pkgs = import nixpkgs {
-            inherit system overlays;
-            config = {
-              allowUnfree = true;
-              packageOverrides = pkgs: {
-                unstable = pkgs-unstable;
-                hyprland-flake = inputs.hyprland.packages.${pkgs.system}.hyprland;
-                ghostty = inputs.ghostty.packages.${pkgs.system}.default;
-                hyprshot = outputs.packages.${pkgs.system}.hyprshot;
-                intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
-                waybar-spotify = inputs.waybar-spotify.packages.${pkgs.system}.default;
-              };
-            };
+      specialArgs = system: rec {
+        inherit inputs outputs;
+
+        pkgs = import nixpkgs {
+          inherit system overlays;
+          config = {
+            allowUnfree = true;
           };
         };
+
+        pkgs-unstable = import nixpkgs-unstable {
+          inherit system overlays;
+          config.allowUnfree = true;
+        };
+
+        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
+        ghostty = inputs.ghostty.packages.${pkgs.system}.default;
+        hyprshot = outputs.packages.${pkgs.system}.hyprshot;
+        intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
+        waybar-spotify = inputs.waybar-spotify.packages.${pkgs.system}.default;
+      };
 
       nixFrozen = {
         # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.

@@ -1,9 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs, pkgs-unstable, inputs, ... }:
 let
   inherit (inputs) homework-template;
 in
 {
-  home.packages = with pkgs.unstable; [
+  home.packages = with pkgs-unstable; [
     typst
     typstfmt
     typst-lsp

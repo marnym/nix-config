@@ -1,7 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs-unstable, ... }: {
   programs.kitty = {
     enable = true;
-    package = pkgs.unstable.kitty;
+    package = pkgs-unstable.kitty;
     font = {
       name = "Maple Mono NF";
       size = 14;
