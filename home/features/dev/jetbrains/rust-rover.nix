@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.unstable.jetbrains.rust-rover ];
+{ pkgs-unstable, ... }: {
+  home.packages = [ pkgs-unstable.jetbrains.rust-rover ];
   home.file.".ideavimrc".source = ./.ideavimrc;
 }

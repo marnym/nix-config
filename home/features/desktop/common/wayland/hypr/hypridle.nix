@@ -1,4 +1,4 @@
-{ config, pkgs, lib, inputs, ... }:
+{ config, pkgs, pkgs-unstable, lib, hyprland, hypridle-module, ... }:
 let
   inherit (lib.options) mkOption;
 
@@ -6,9 +6,7 @@ let
 in
 
 {
-  imports = [
-    inputs.hypridle.homeManagerModules.default
-  ];
+  imports = [ hypridle-module ];
   options.local.hypridle.timeout = {
     lock = mkOption {
       type = lib.types.int;
@@ -29,15 +27,15 @@ in
   config = {
     services.hypridle =
       let
-        hyprctl = "${pkgs.hyprland-flake}/bin/hyprctl";
-        hyprlock = "${pkgs.unstable.hyprlock}/bin/hyprlock";
+        hyprctl = "${hyprland}/bin/hyprctl";
+        hyprlock = "${pkgs-unstable.hyprlock}/bin/hyprlock";
         pgrep = "${pkgs.procps}/bin/pgrep";
         systemctl = "${pkgs.systemd}/bin/systemctl";
         loginctl = "${pkgs.systemd}/bin/loginctl";
       in
       {
         enable = true;
-        package = pkgs.unstable.hypridle;
+        package = pkgs-unstable.hypridle;
         lockCmd = "${pgrep} hyprlock || ${hyprlock}";
         unlockCmd = "";
         beforeSleepCmd = "${loginctl} lock-session";

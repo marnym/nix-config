@@ -1,16 +1,16 @@
-{ pkgs, ... }:
+{ pkgs-unstable, hyprland, ... }:
 
 {
   environment.pathsToLink = [ "/libexec" ];
 
   programs.hyprland = {
     enable = true;
-    package = pkgs.hyprland-flake;
+    package = hyprland;
   };
 
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.unstable.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs-unstable.xdg-desktop-portal-gtk ];
   };
 
   services.pipewire = {

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, waybar-spotify, ... }:
 let
   nix-snowflake = ./nix-snowflake.svg;
 in
@@ -86,7 +86,7 @@ in
           on-scroll-up = "playerctl -p spotify next";
           on-scroll-down = "playerctl -p spotify previous";
           return-type = "json";
-          exec = "${pkgs.waybar-spotify}/bin/waybar-spotify";
+          exec = "${waybar-spotify}/bin/waybar-spotify";
           exec-if = "pgrep spotify";
           escape = true;
         };

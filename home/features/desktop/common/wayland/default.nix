@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, pkgs-unstable, ghostty, hyprshot, ... }: {
   imports = [
     ./foot
     ./gtk.nix
@@ -16,7 +16,7 @@
 
   home.packages = with pkgs; [
     ghostty
-    unstable.wezterm
+    pkgs-unstable.wezterm
     gnome.gnome-terminal
     gnome.nautilus
     xdg-utils
@@ -32,8 +32,8 @@
     sxiv
     spotify
     telegram-desktop
-    unstable.obsidian
-    unstable.todoist-electron
+    pkgs-unstable.obsidian
+    pkgs-unstable.todoist-electron
     wob
     bitwarden
   ];

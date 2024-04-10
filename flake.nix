@@ -52,7 +52,6 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
-
       forAllSystems = nixpkgs.lib.genAttrs systems;
 
       x64_system = "x86_64-linux";
@@ -77,9 +76,8 @@
           })
       ];
 
-      specialArgs = system: rec {
-        inherit inputs outputs;
-
+      specialArgs = system: {
+        inherit inputs;
         pkgs = import nixpkgs {
           inherit system overlays;
           config = {
@@ -91,12 +89,16 @@
           inherit system overlays;
           config.allowUnfree = true;
         };
+      };
 
-        hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-        ghostty = inputs.ghostty.packages.${pkgs.system}.default;
-        hyprshot = outputs.packages.${pkgs.system}.hyprshot;
-        intel-undervolt = outputs.packages.${pkgs.system}.intel-undervolt;
-        waybar-spotify = inputs.waybar-spotify.packages.${pkgs.system}.default;
+      moduleArgs = system: packages: {
+        hyprland = inputs.hyprland.packages.${system}.hyprland;
+        hypridle-module = inputs.hypridle.homeManagerModules.default;
+        hyprlock-module = inputs.hyprlock.homeManagerModules.default;
+        hyprshot = outputs.packages.${system}.hyprshot;
+        ghostty = inputs.ghostty.packages.${system}.default;
+        intel-undervolt = outputs.packages.${system}.intel-undervolt;
+        waybar-spotify = inputs.waybar-spotify.packages.${system}.default;
       };
 
       nixFrozen = {
@@ -108,7 +110,7 @@
         nix.nixPath = [ "/etc/nix/inputs" ];
       };
     in
-    {
+    rec {
       packages = forAllSystems (system: import ./pkgs nixpkgs.legacyPackages.${system});
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
 
@@ -119,7 +121,11 @@
         {
           timred = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;
-            modules = [ ./hosts/timred nixFrozen ];
+            modules = [
+              { _module.args = moduleArgs system packages; }
+              ./hosts/timred
+              nixFrozen
+            ];
           };
           thinkpad = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;
@@ -134,22 +140,22 @@
       homeConfigurations = {
         "markus@timred" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = specialArgs x64_system;
+          extraSpecialArgs = specialArgs x64_system // moduleArgs x64_system packages;
           modules = [ ./home/timred.nix ];
         };
         "markus@thinkpad" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = specialArgs x64_system;
+          extraSpecialArgs = specialArgs x64_system // moduleArgs x64_system packages;
           modules = [ ./home/thinkpad.nix ];
         };
         "markusnyman@MacFrier-Pro" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-darwin;
-          extraSpecialArgs = specialArgs x64_darwin;
+          extraSpecialArgs = specialArgs x64_darwin // moduleArgs x64_darwin packages;
           modules = [ ./home/frier.nix ];
         };
         "markus@WorkBook-Pro" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          extraSpecialArgs = specialArgs aarch_darwin;
+          extraSpecialArgs = specialArgs aarch_darwin // moduleArgs aarch_darwin packages;
           modules = [ ./home/work.nix ];
         };
       };

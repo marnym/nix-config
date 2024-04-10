@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
-  home.packages = [ pkgs.unstable.jetbrains.webstorm ];
+{ pkgs-unstable, ... }: {
+  home.packages = [ pkgs-unstable.jetbrains.webstorm ];
   home.file.".ideavimrc".source = ./.ideavimrc;
 }
