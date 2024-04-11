@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, inputs, ... }:
+{ pkgs-unstable, inputs, ... }:
 let
   inherit (inputs) homework-template;
 in
