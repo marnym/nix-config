@@ -42,6 +42,6 @@ local rosepine = {
 }
 
 return {
-    -- gruvbox_material,
-    rosepine,
+    gruvbox_material,
+    -- rosepine,
 }

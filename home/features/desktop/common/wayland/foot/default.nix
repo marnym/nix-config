@@ -75,7 +75,7 @@
           term = "xterm-256color";
           font = "Maple Mono NF:size=14";
         };
-        colors = rosepine-moon;
+        colors = gruvbox_material_dark;
         cursor = {
           style = "beam";
           blink = "yes";

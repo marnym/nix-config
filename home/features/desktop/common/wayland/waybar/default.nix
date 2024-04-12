@@ -1,4 +1,4 @@
-{ pkgs, waybar-spotify, ... }:
+{ waybar-spotify, ... }:
 let
   nix-snowflake = ./nix-snowflake.svg;
 in
