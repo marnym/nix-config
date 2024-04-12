@@ -9,7 +9,7 @@ return {
     {
         "marnym/typst-watch.nvim",
         opts = {
-            preview_cmd = "zathura",
+            preview_cmd = {"zathura"},
         },
         ft = "typst",
     },
