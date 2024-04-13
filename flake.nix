@@ -150,11 +150,19 @@
           };
           thinkpad = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;
-            modules = [ ./hosts/thinkpad nixFrozen ];
+            modules = [
+              { _module.args = moduleArgs system packages; }
+              ./hosts/thinkpad
+              nixFrozen
+            ];
           };
           pers-h = nixpkgs.lib.nixosSystem {
             specialArgs = specialArgs system;
-            modules = [ ./hosts/pers-h nixFrozen ];
+            modules = [
+              { _module.args = moduleArgs system packages; }
+              ./hosts/pers-h
+              nixFrozen
+            ];
           };
         };
 
