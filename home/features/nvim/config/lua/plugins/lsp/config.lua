@@ -138,22 +138,24 @@ function M.setup()
         }
     }
 
-    lsp.rust_analyzer.setup {
-        on_attach = M.on_attach,
-        capabilities = capabilities,
-        settings = {
-            ['rust-analyzer'] = {
-                cargo = {
-                    buildScripts = {
+    vim.g.rustaceanvim = {
+        server = {
+            on_attach = M.on_attach,
+            capabilities = capabilities,
+            default_settings = {
+                ['rust-analyzer'] = {
+                    cargo = {
+                        buildScripts = {
+                            enable = true,
+                        },
+                        features = "all",
+                    },
+                    procMacro = {
                         enable = true,
                     },
-                    features = "all",
-                },
-                procMacro = {
-                    enable = true,
-                },
-                lru = {
-                    capacity = 256,
+                    lru = {
+                        capacity = 256,
+                    }
                 }
             }
         }
