@@ -137,8 +137,8 @@ return {
                 },
             }
 
-            -- Bind <leader>cp to toggle copilot
-            vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot! toggle<CR>", { noremap = true, silent = true })
+            -- Bind <leader>cp to disable copilot
+            vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot disable<CR>", { noremap = true, silent = true })
         end,
     },
     { "windwp/nvim-autopairs", lazy = true, config = true, },
