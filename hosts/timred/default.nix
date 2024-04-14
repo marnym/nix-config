@@ -16,6 +16,11 @@
     ../common/features/steam.nix
   ];
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+  };
+
   networking.hostName = "timred";
 
   services.udev.extraRules = ''
