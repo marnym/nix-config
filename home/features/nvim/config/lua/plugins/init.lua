@@ -122,7 +122,7 @@ return {
         config = function()
             require("copilot").setup {
                 suggestion = {
-                    auto_trigger = false,
+                    auto_trigger = true,
                     keymap = {
                         accept = false,
                         next = "<M-j>",
