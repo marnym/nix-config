@@ -39,7 +39,7 @@
     };
 
     homework-template = {
-      url = "git+ssh://git@github.com/marnym/homework-template?rev=697fd543d130e405c5c01978da682178a666a140";
+      url = "git+ssh://git@github.com/marnym/homework-template";
       flake = false;
     };
 
