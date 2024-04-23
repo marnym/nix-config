@@ -9,6 +9,7 @@
     ./tmux.nix
     ./ranger
     ./fzf.nix
+    ./atuin.nix
     ./eza.nix
     ./bat.nix
     ./btop.nix
