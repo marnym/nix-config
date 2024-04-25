@@ -7,7 +7,7 @@
       key = "B0F65D4A77E5E472!";
       signByDefault = false;
     };
-    ignores = [ ".copilot" ];
+    ignores = [ ".envrc" ".direnv" ".copilot" ];
     extraConfig =
       {
         core = {
