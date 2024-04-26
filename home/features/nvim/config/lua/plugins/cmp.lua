@@ -111,24 +111,18 @@ return {
             },
             preselect = cmp.PreselectMode.None,
             window = {
-                completion = cmp.config.window.bordered { winhighlight =
-                'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
-                documentation = cmp.config.window.bordered { winhighlight =
-                'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None' },
+                completion = cmp.config.window.bordered {
+                    winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+                },
+                documentation = cmp.config.window.bordered {
+                    winhighlight = 'Normal:NormalFloat,FloatBorder:FloatBorder,CursorLine:PmenuSel,Search:None',
+                },
             },
             performance = {
-                max_view_entries = 12,
+                max_view_entries = 50,
             },
         }
 
         cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-        -- cmp.event:on("menu_opened", function()
-        --     vim.b.copilot_suggestion_hidden = true
-        -- end)
-        --
-        -- cmp.event:on("menu_closed", function()
-        --     vim.b.copilot_suggestion_hidden = false
-        -- end)
     end
 }
