@@ -1,12 +1,6 @@
 local M = {}
 
 function M.on_attach(client, bufnr)
-    -- stop TSServer from attaching when Deno project
-    if (client.name == "tsserver" or client.name == "typescript-tools") and require("lspconfig").util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) then
-        client.stop()
-        return
-    end
-
     local nmap = function(keys, func, desc)
         if desc then
             desc = 'LSP: ' .. desc
@@ -32,7 +26,7 @@ function M.on_attach(client, bufnr)
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
     if client.server_capabilities.inlayHintProvider then
-        vim.lsp.inlay_hint.enable(bufnr, true)
+        vim.lsp.inlay_hint.enable(true)
     end
 
     require("lsp_signature").on_attach()
@@ -221,4 +215,27 @@ function M.eslint_condition(utils)
     return utils.root_has_file { '.eslintrc', '.eslintrc.json', '.eslintrc.js' }
 end
 
+vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+        local bufnr = args.buf
+        local client = vim.lsp.get_client_by_id(args.data.client_id)
+
+        if client and client.name == "denols" then
+            local clients = vim.lsp.get_clients({
+                bufnr = bufnr,
+                name = "typescript-tools",
+            })
+            for _, c in ipairs(clients) do
+                vim.lsp.stop_client(c.id, true)
+            end
+        end
+
+        -- if tsserver attached, stop it if there is a denols server attached
+        if client and client.name == "typescript-tools" then
+            if next(vim.lsp.get_clients({ bufnr = bufnr, name = "denols" })) then
+                vim.lsp.stop_client(client.id, true)
+            end
+        end
+    end
+})
 return M
