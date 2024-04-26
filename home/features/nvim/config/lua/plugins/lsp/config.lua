@@ -201,6 +201,10 @@ function M.setup()
                         fileMatch = { 'tsconfig.json' },
                         url = 'https://json.schemastore.org/tsconfig.json',
                     },
+                    {
+                        fileMatch = { 'deno.json' },
+                        url = 'https://deno.land/x/deno/cli/schemas/config-file.v1.json',
+                    },
                 },
             },
         }
