@@ -12,12 +12,17 @@
     keyMode = "vi";
     customPaneNavigationAndResize = true;
     extraConfig = ''
-      # Some tweaks to the status line
-      set-option -g status-position bottom
+      # Status line
       set -g status-right "%H:%M"
-      set -g status-left-length 20
-      set -g window-status-separator ""
-      set -g status-justify centre
+      set -g status-style "fg=#665c54"
+      set -g status-left-style "fg=#928374"
+      set -g status-bg default
+      set -g status-position top
+      set -g status-interval 1
+      set -g status-left ""
+
+      set -g base-index 1
+      set -g pane-base-index 1
 
       # If running inside tmux ($TMUX is set), then change the status line to red
       %if #{TMUX}
@@ -33,9 +38,6 @@
       # No bells at all
       set -g bell-action none
 
-      # Keep windows around after they exit
-      set -g remain-on-exit on
-
       unbind -n MouseDrag1Pane
       unbind -T copy-mode MouseDrag1Pane
       unbind -T copy-mode-vi MouseDragEnd1Pane
@@ -43,6 +45,8 @@
 
       bind t split-window -f -l 15 -c "#{pane_current_path}"
       bind T split-window -h -f -p 35 -c "#{pane_current_path}"
+
+      bind space copy-mode
     '';
   };
 }
