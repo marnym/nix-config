@@ -73,7 +73,7 @@
       settings = {
         main = {
           term = "xterm-256color";
-          font = "Maple Mono NF:size=14";
+          font = "Maple Mono:size=14, Maple Mono NF:size=14";
         };
         colors = gruvbox_material_dark;
         cursor = {

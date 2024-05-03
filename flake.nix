@@ -25,8 +25,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.38.1";
-    hypridle.url = "github:hyprwm/hypridle/v0.1.1";
+    hyprland.url = "github:hyprwm/Hyprland/v0.39.1";
+    hypridle.url = "github:hyprwm/hypridle/v0.1.2";
     hyprlock.url = "github:hyprwm/hyprlock/v0.3.0";
 
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
@@ -67,15 +67,11 @@
 
         (self: super:
           let
-            version = "v7.0-beta11";
+            version = "v7.0-beta14";
           in
           {
-            maple-mono = super.maple-mono-NF.overrideAttrs {
-              inherit version;
-            };
-            maple-mono-NF = super.maple-mono-NF.overrideAttrs {
-              inherit version;
-            };
+            maple-mono-otf = super.maple-mono-otf.overrideAttrs { inherit version; };
+            maple-mono-NF = super.maple-mono-NF.overrideAttrs { inherit version; };
           })
 
         (self: super: {
