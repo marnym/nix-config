@@ -12,7 +12,10 @@
     ./zathura
   ];
 
-  programs.waybar.enable = true;
+  programs.waybar = {
+    enable = true;
+    package = pkgs-unstable.waybar;
+  };
 
   home.packages = with pkgs; [
     ghostty
