@@ -1,16 +1,23 @@
 { pkgs, ... }: {
   home.packages = [ pkgs.hyprpaper ];
 
-  xdg.configFile."hypr/hyprpaper.conf".text = ''
-    preload = /home/markus/nix-config/wallpapers/blockwavemoon.png
-    preload = /home/markus/nix-config/wallpapers/dune.jpg
-    preload = /home/markus/nix-config/wallpapers/astronaut.jpg
+  xdg.configFile."hypr/hyprpaper.conf".text =
+    let
+      wallpapers-path = ../../../../../../wallpapers;
+      wallpaper-files = builtins.attrNames (builtins.readDir wallpapers-path);
+      wallpapers = map (file: "preload = ${wallpapers-path}/${file}") wallpaper-files;
 
-    splash = false
-    ipc = false
+      primary = "${wallpapers-path}/astronaut.jpg";
+      secondary = "${wallpapers-path}/blockwavemoon.png";
+    in
+    ''
+      ${builtins.concatStringsSep "\n" wallpapers}
 
-    wallpaper = eDP-1,/home/markus/nix-config/wallpapers/blockwavemoon.png
-    wallpaper = DP-3,/home/markus/nix-config/wallpapers/dune.jpg
-    wallpaper = HDMI-A-1,/home/markus/nix-config/wallpapers/astronaut.jpg
-  '';
+      splash = false
+      ipc = false
+
+      wallpaper = DP-3,${primary}
+      wallpaper = HDMI-A-1,${secondary}
+      wallpaper = eDP-1,${secondary}
+    '';
 }
