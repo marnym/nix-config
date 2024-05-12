@@ -7,7 +7,8 @@
     ./starship.nix
     ./direnv.nix
     ./tmux.nix
-    ./ranger
+    ./ranger.nix
+    ./yazi.nix
     ./fzf.nix
     ./atuin.nix
     ./eza.nix

@@ -41,7 +41,12 @@
     bitwarden
   ];
 
-  xdg.mimeApps.defaultApplications = {
-    "application/pdf" = "org.pwmt.zathura.desktop";
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "org.pwmt.zathura-pdf-mupdf.desktop";
+      "image/png" = "sxiv.desktop";
+      "image/jpeg" = "sxiv.desktop";
+    };
   };
 }

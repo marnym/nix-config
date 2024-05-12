@@ -675,21 +675,6 @@
         "type": "github"
       }
     },
-    "private": {
-      "locked": {
-        "lastModified": 1715264328,
-        "narHash": "sha256-O6syuYTwoH7+y2DEXNv59fwOODR19wHxz0b+jx5tgUA=",
-        "ref": "refs/heads/main",
-        "rev": "6a0ecb40e320c3b555272f09a55aee765f9487a9",
-        "revCount": 3,
-        "type": "git",
-        "url": "ssh://git@github.com/marnym/nix-private"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/marnym/nix-private"
-      }
-    },
     "ranger-devicons": {
       "flake": false,
       "locked": {
@@ -719,7 +704,6 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
-        "private": "private",
         "ranger-devicons": "ranger-devicons",
         "waybar-spotify": "waybar-spotify"
       }
