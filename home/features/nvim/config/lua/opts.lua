@@ -76,6 +76,8 @@ vim.opt.listchars = {
     trail = "·",
 }
 
+opt.inccommand = "split"
+
 -- filetypes
 vim.filetype.add {
     pattern = {
