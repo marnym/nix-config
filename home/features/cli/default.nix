@@ -53,5 +53,6 @@
     fd
     jq
     yq-go
+    tokei
   ];
 }
