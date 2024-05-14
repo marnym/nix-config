@@ -46,6 +46,8 @@
       TLP_PERSISTENT_DEFAULT = 1;
       USB_AUTOSUSPEND = 0;
       PCIE_ASPM_ON_BAT = "powersupersave";
+      INTEL_GPU_MIN_FREQ_ON_AC = 500;
+      INTEL_GPU_MIN_FREQ_ON_BAT = 500;
     };
   };
 
