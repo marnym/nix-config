@@ -16,7 +16,7 @@
     font = {
       name = "Inter";
       package = pkgs.inter;
-      size = 14.0;
+      size = 13.0;
     };
 
     # todo)) Rose Piné cursor

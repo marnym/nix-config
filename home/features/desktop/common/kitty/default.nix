@@ -4,7 +4,7 @@
     package = pkgs-unstable.kitty;
     font = {
       name = "Maple Mono NF";
-      size = 14;
+      size = 13;
     };
     shellIntegration.enableFishIntegration = true;
     theme = "Gruvbox Material Dark Hard";

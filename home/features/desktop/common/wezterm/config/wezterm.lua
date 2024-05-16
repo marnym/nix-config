@@ -15,7 +15,7 @@ config.colors = gruvbox_material.colors
 config.default_cursor_style = 'BlinkingBar'
 
 config.font = wezterm.font("Maple Mono NF")
-config.font_size = 14.0
+config.font_size = 13.0
 
 if success and stdout:match('Darwin') then
     wezterm.log_info("Running on macOS")

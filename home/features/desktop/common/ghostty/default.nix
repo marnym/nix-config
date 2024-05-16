@@ -70,7 +70,7 @@ let
 in
 {
   home.file.".config/ghostty/config".text = ''
-    font-size = 14
+    font-size = 13
     font-family = "Maple Mono"
     font-family = "Maple Mono NF"
 
