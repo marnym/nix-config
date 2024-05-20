@@ -31,8 +31,6 @@
 
     ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
-
     waybar-spotify = {
       url = "github:marnym/waybar-spotify/5787438a07054b3081a527bc1bfc7e6cfcedea95";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,8 +61,6 @@
 
 
       overlays = [
-        inputs.neovim-nightly-overlay.overlay
-
         (self: super:
           let
             version = "v7.0-beta14";

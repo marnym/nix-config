@@ -1,10 +1,10 @@
-{ pkgs, lib, ... }: {
+{ pkgs, pkgs-unstable, ... }: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
-    package = lib.mkDefault pkgs.neovim-nightly;
+    package = pkgs-unstable.neovim-unwrapped;
     extraPackages = with pkgs; [
       fswatch
 
