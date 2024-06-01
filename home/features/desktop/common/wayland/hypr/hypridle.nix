@@ -1,4 +1,4 @@
-{ config, pkgs, lib, hyprland, hypridle, hypridle-module, hyprlock, ... }:
+{ config, pkgs, lib, hyprland, hypridle, hyprlock, ... }:
 let
   inherit (lib.options) mkOption;
 
@@ -6,7 +6,6 @@ let
 in
 
 {
-  imports = [ hypridle-module ];
   options.local.hypridle.timeout = {
     lock = mkOption {
       type = lib.types.int;
@@ -36,37 +35,41 @@ in
       {
         enable = true;
         package = hypridle;
-        lockCmd = "${pgrep} hyprlock || ${hyprlock-bin}";
-        unlockCmd = "";
-        beforeSleepCmd = "${loginctl} lock-session";
-        afterSleepCmd = "${hyprctl} dispatch dpms on";
-        ignoreDbusInhibit = false;
 
-        listeners = [
-          {
-            timeout = 10;
-            onTimeout = "${pgrep} hyprlock && ${hyprctl} dispatch dpms off";
-            onResume = "${hyprctl} dispatch dpms on";
-          }
+        settings = {
+          general = {
+            lockCmd = "${pgrep} hyprlock || ${hyprlock-bin}";
+            unlockCmd = "";
+            beforeSleepCmd = "${loginctl} lock-session";
+            afterSleepCmd = "${hyprctl} dispatch dpms on";
+            ignoreDbusInhibit = false;
+          };
+          listener = [
+            {
+              timeout = 10;
+              onTimeout = "${pgrep} hyprlock && ${hyprctl} dispatch dpms off";
+              onResume = "${hyprctl} dispatch dpms on";
+            }
 
-          {
-            timeout = cfg.lock;
-            onTimeout = "${loginctl} lock-session";
-            onResume = "";
-          }
+            {
+              timeout = cfg.lock;
+              onTimeout = "${loginctl} lock-session";
+              onResume = "";
+            }
 
-          {
-            timeout = cfg.screenOff;
-            onTimeout = "${hyprctl} dispatch dpms off";
-            onResume = "${hyprctl} dispatch dpms on";
-          }
+            {
+              timeout = cfg.screenOff;
+              onTimeout = "${hyprctl} dispatch dpms off";
+              onResume = "${hyprctl} dispatch dpms on";
+            }
 
-          {
-            timeout = cfg.suspend;
-            onTimeout = "${systemctl} suspend";
-            onResume = "";
-          }
-        ];
+            {
+              timeout = cfg.suspend;
+              onTimeout = "${systemctl} suspend";
+              onResume = "";
+            }
+          ];
+        };
       };
   };
 }

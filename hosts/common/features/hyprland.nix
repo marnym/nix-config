@@ -1,4 +1,4 @@
-{ pkgs-unstable, hyprland, ... }:
+{ pkgs, pkgs-unstable, hyprland, ... }:
 
 {
   environment.pathsToLink = [ "/libexec" ];
@@ -34,6 +34,6 @@
   services.gnome.gnome-keyring.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "gnome3";
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
 }

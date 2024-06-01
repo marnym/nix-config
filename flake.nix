@@ -15,13 +15,13 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hardware.url = "github:nixos/nixos-hardware";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.11";
+      url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -95,12 +95,8 @@
 
       moduleArgs = system: packages: {
         hyprland = inputs.hyprland.packages.${system}.default;
-
         hypridle = inputs.hypridle.packages.${system}.default;
-        hypridle-module = inputs.hypridle.homeManagerModules.default;
-
         hyprlock = inputs.hyprlock.packages.${system}.default;
-        hyprlock-module = inputs.hyprlock.homeManagerModules.default;
 
         hyprshot = outputs.packages.${system}.hyprshot;
 
@@ -120,7 +116,7 @@
     in
     rec {
       packages = forAllSystems ({ pkgs }: import ./pkgs pkgs);
-      formatter = forAllSystems ({ pkgs }: pkgs.nixpkgs-fmt);
+      formatter = forAllSystems ({ pkgs }: pkgs.nixfmt-rfc-style);
       devShells = forAllSystems ({ pkgs }: {
         default = pkgs.mkShell {
           packages = with pkgs; [ just nil nixpkgs-fmt ];
