@@ -7,7 +7,7 @@
 
   home.packages = with pkgs; [
     nix-output-monitor
-    nixfmt
+    nixfmt-rfc-style
   ];
 
   home.file.".local/bin" = {
