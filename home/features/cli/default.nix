@@ -24,7 +24,7 @@
     p7zip
 
     # misc
-    neofetch
+    fastfetch
     grc
     cowsay
     file
