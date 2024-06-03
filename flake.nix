@@ -29,7 +29,7 @@
     hypridle.url = "github:hyprwm/hypridle/v0.1.2";
     hyprlock.url = "github:hyprwm/hyprlock/v0.3.0";
 
-    ghostty.url = "git+ssh://git@github.com/mitchellh/ghostty";
+    ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
 
     waybar-spotify = {
       url = "github:marnym/waybar-spotify/5787438a07054b3081a527bc1bfc7e6cfcedea95";
