@@ -9,5 +9,6 @@ return {
     {
         "marnym/typst-watch.nvim",
         ft = "typst",
+        config = true,
     },
 }
