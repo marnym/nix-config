@@ -9,6 +9,7 @@
 
       primary = "${wallpapers-path}/astronaut.jpg";
       secondary = "${wallpapers-path}/blockwavemoon.png";
+      thinkpad = "${wallpapers-path}/blackhole.png";
     in
     ''
       ${builtins.concatStringsSep "\n" wallpapers}
@@ -18,6 +19,6 @@
 
       wallpaper = DP-3,${primary}
       wallpaper = HDMI-A-1,${secondary}
-      wallpaper = eDP-1,${secondary}
+      wallpaper = eDP-1,${thinkpad}
     '';
 }
