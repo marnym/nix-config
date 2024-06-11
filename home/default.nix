@@ -3,8 +3,6 @@
 , pkgs-unstable
 , inputs
 , hyprland
-, hypridle
-, hyprlock
 , hyprshot
 , ghostty
 , waybar-spotify
@@ -17,7 +15,7 @@
     extraSpecialArgs = {
       inherit inputs;
       inherit pkgs pkgs-unstable;
-      inherit hyprland hypridle hyprlock hyprshot ghostty waybar-spotify ranger-devicons;
+      inherit hyprland hyprshot ghostty waybar-spotify ranger-devicons;
     };
     users.markus = import ./${config.networking.hostName}.nix;
   };

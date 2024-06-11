@@ -35,8 +35,8 @@
     sxiv
     spotify
     telegram-desktop
-    pkgs-unstable.obsidian
-    pkgs-unstable.todoist-electron
+    pkgs.obsidian
+    pkgs.todoist-electron
     wob
     bitwarden
   ];

@@ -25,9 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.40.0";
-    hypridle.url = "github:hyprwm/hypridle/v0.1.2";
-    hyprlock.url = "github:hyprwm/hyprlock/v0.3.0";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?tag=v0.41.0&submodules=1";
 
     ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
 
@@ -69,12 +67,6 @@
             maple-mono-otf = super.maple-mono-otf.overrideAttrs { inherit version; };
             maple-mono-NF = super.maple-mono-NF.overrideAttrs { inherit version; };
           })
-
-        (self: super: {
-          obsidian = super.obsidian.override {
-            electron = super.electron_28-bin;
-          };
-        })
       ];
 
       specialArgs = system: {
@@ -95,8 +87,6 @@
 
       moduleArgs = system: packages: {
         hyprland = inputs.hyprland.packages.${system}.default;
-        hypridle = inputs.hypridle.packages.${system}.default;
-        hyprlock = inputs.hyprlock.packages.${system}.default;
 
         hyprshot = outputs.packages.${system}.hyprshot;
 

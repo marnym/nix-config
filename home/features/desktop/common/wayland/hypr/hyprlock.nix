@@ -1,8 +1,6 @@
-{ hyprlock, ... }: {
+{
   programs.hyprlock = {
     enable = true;
-    package = hyprlock;
-
     settings = {
       general = {
         disable_loading_bar = true;
