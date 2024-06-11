@@ -43,13 +43,6 @@ cmp.setup {
         ["<C-Space>"] = cmp.mapping.complete(),
         ["<C-e>"] = cmp.mapping.close(),
         ["<CR>"] = cmp.mapping.confirm { select = true },
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if require("copilot.suggestion").is_visible() then
-                require("copilot.suggestion").accept()
-            else
-                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-            end
-        end, { "i", "s" }),
     },
     sources = {
         { name = "npm",      priority = 9, keyword_length = 4 },
