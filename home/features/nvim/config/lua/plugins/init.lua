@@ -116,32 +116,6 @@ return {
             }
         end
     },
-    {
-        "zbirenbaum/copilot.lua",
-        lazy = true,
-        event = "InsertEnter",
-        config = function()
-            require("copilot").setup {
-                suggestion = {
-                    auto_trigger = true,
-                    keymap = {
-                        accept = false,
-                        next = "<M-j>",
-                        prev = "<M-k>",
-                    },
-                },
-                filetypes = {
-                    lua = true,
-                    ["*"] = function()
-                        return vim.fn.glob(".copilot") ~= ""
-                    end,
-                },
-            }
-
-            -- Bind <leader>cp to disable copilot
-            vim.api.nvim_set_keymap("n", "<leader>cp", ":Copilot disable<CR>", { noremap = true, silent = true })
-        end,
-    },
     { "windwp/nvim-autopairs", lazy = true, config = true, },
     {
         "nvim-neo-tree/neo-tree.nvim",
