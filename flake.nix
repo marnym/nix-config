@@ -62,7 +62,7 @@
       overlays = [
         (self: super:
           let
-            version = "v7.0-beta14";
+            version = "v7.0-beta20";
           in
           {
             maple-mono-otf = super.maple-mono-otf.overrideAttrs { inherit version; };
