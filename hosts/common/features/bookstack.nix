@@ -2,32 +2,17 @@
   virtualisation.oci-containers.containers = {
     bookstack = {
       image = "lscr.io/linuxserver/bookstack";
-      environment = {
-        PUID = 1000;
-        PGID = 1000;
-        APP_URL = "https://bookstack.nyma.cc";
-        DB_HOST = "bookstack_db";
-        DB_PORT = 3306;
-        DB_USER = "bookstack";
-        DB_PASS = "pw123";
-        DB_DATABASE = "bookstackapp";
-      };
       volumes = [ "/srv/bookstack/bookstack_app_data:/config" ];
+      environmentFiles = [ /home/markus/bookstack.env ];
       ports = [ "6875:80" ];
       dependsOn = [ "bookstack_db" ];
+      extraOptions = [ "--network=pers-h" ];
     };
     bookstack_db = {
       image = "lscr.io/linuxserver/mariadb";
-      environment = {
-        PUID = 1000;
-        PGID = 1000;
-        MYSQL_ROOT_PASSWORD = "pw123";
-        TZ = "Europe/Helsinki";
-        MYSQL_DATABASE = "bookstackapp";
-        MYSQL_USER = "bookstack";
-        MYSQL_PASSWORD = "pw123";
-      };
+      environmentFiles = [ /home/markus/mysql.env ];
       volumes = [ "/srv/bookstack/bookstack_db_data:/config" ];
+      extraOptions = [ "--network=pers-h" ];
     };
   };
 }

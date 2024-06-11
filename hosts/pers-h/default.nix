@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -7,7 +7,6 @@
     ../common/global
     ../common/features/docker.nix
     ../common/features/openssh.nix
-    ../common/features/syncthing.nix
 
     ../common/features/bookstack.nix
   ];
@@ -21,5 +20,11 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPrndQoxNh1dr9O9yuBG6NiQvOgWCcTsk8Wz02N2mhoN markus"
     ];
     packages = [ pkgs.grc ];
+  };
+
+
+  services.syncthing = {
+    enable = true;
+    openDefaultPorts = true;
   };
 }
