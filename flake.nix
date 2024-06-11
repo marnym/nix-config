@@ -50,6 +50,7 @@
       inherit (self) outputs;
 
       x64_linux = "x86_64-linux";
+      aarch_linux = "aarch64-linux";
       aarch_darwin = "aarch64-darwin";
       x64_darwin = "x86_64-darwin";
       systems = [ x64_linux aarch_darwin x64_darwin ];
@@ -139,6 +140,14 @@
             modules = [
               { _module.args = moduleArgs system packages; }
               ./hosts/pers-h
+              nixFrozen
+            ];
+          };
+          pers-c = nixpkgs.lib.nixosSystem {
+            specialArgs = specialArgs aarch_linux;
+            modules = [
+              { _module.args = moduleArgs aarch_linux packages; }
+              ./hosts/pers-c
               nixFrozen
             ];
           };
