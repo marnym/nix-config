@@ -174,6 +174,8 @@ function M.setup()
         single_file_support = false,
     }
 
+    lsp.terraformls.setup {}
+
     lsp.volar.setup {
         on_attach = M.disable_formatting,
         capabilities = capabilities,
