@@ -22,8 +22,8 @@ debug:
 update:
 	nix flake update
 
-uppdate:
-    nix flake lock --update-input $(i)
+uppdate input:
+    nix flake lock --update-input {{input}}
 
 # display history
 history:

@@ -8,6 +8,7 @@
     ./locale.nix
     ./markus.nix
     ./networking.nix
+    ./wireguard
   ];
 
   services.pcscd.enable = true;

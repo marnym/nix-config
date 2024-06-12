@@ -43,6 +43,8 @@
       url = "github:alexanderjeurissen/ranger_devicons/ed718dd6a6d5d2c0f53cba8474c5ad96185057e9";
       flake = false;
     };
+
+    private.url = "git+ssh://git@github.com/marnym/nix-private";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
@@ -87,6 +89,8 @@
       };
 
       moduleArgs = system: packages: {
+        inherit (inputs) private;
+
         hyprland = inputs.hyprland.packages.${system}.default;
 
         hyprshot = outputs.packages.${system}.hyprshot;

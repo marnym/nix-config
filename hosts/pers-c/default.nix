@@ -7,6 +7,7 @@
     ../common/global
     ../common/features/docker.nix
     ../common/features/openssh.nix
+    ../common/global/wireguard/server.nix
   ];
 
   networking.hostName = "pers-c";

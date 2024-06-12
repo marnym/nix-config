@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, private, ... }:
 
 {
   imports = [
@@ -26,5 +26,24 @@
   services.syncthing = {
     enable = true;
     openDefaultPorts = true;
+  };
+
+  networking.wg-quick.interfaces = {
+    wg0 =
+      {
+        address = [ "10.100.0.5/24" ];
+        listenPort = private.wireguard.port;
+
+        privateKeyFile = "/home/markus/wireguard-keys/private";
+
+        peers = [
+          {
+            publicKey = private.wireguard.peers.pers-c.key;
+            allowedIPs = [ "0.0.0.0/0" ];
+            endpoint = "${private.wireguard.server}:${toString private.wireguard.port}";
+            persistentKeepalive = 25;
+          }
+        ];
+      };
   };
 }
