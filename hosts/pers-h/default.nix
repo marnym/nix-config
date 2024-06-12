@@ -8,7 +8,7 @@
     ../common/features/docker.nix
     ../common/features/openssh.nix
 
-    ../common/features/bookstack.nix
+    ../common/features/docker/bookstack.nix
   ];
 
   networking.hostName = "pers-h";
