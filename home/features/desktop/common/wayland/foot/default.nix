@@ -2,6 +2,8 @@
   programs.foot =
     let
       gruvbox_material_dark = {
+        alpha = "0.95";
+
         background = "1d2021";
         foreground = "d4be98";
 
