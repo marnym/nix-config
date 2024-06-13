@@ -155,6 +155,8 @@ function M.setup()
         }
     }
 
+    lsp.zls.setup {}
+
     require("typescript-tools").setup {
         on_attach = M.on_attach,
         capabilities = capabilities,
