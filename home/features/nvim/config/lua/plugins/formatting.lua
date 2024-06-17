@@ -41,7 +41,7 @@ return {
             {
                 "<leader>fo",
                 function()
-                    require("conform").format { async = true, lsp_fallback = true }
+                    require("conform").format { async = true, lsp_format = "fallback" }
                 end,
                 mode = "",
                 desc = "Format buffer",
@@ -49,7 +49,6 @@ return {
         },
         opts = {
             formatters_by_ft = {
-                lua = { "stylua" },
                 python = { "black" },
 
                 javascript = deno_overwrite(),
@@ -66,7 +65,7 @@ return {
                 if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
                     return
                 end
-                return { timeout_ms = 500, lsp_fallback = true }
+                return { timeout_ms = 500, lsp_format = "fallback" }
             end,
         },
     }
