@@ -5,7 +5,7 @@ in
 {
   home.packages = with pkgs-unstable; [
     typst
-    typstfmt
+    typstyle
     typst-lsp
   ];
 
