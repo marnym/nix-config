@@ -25,12 +25,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?tag=v0.41.0&submodules=1";
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?tag=v0.41.1&submodules=1";
 
     ghostty.url = "git+ssh://git@github.com/ghostty-org/ghostty";
 
     waybar-spotify = {
-      url = "github:marnym/waybar-spotify/5787438a07054b3081a527bc1bfc7e6cfcedea95";
+      url = "github:marnym/waybar-spotify";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
