@@ -15,6 +15,7 @@
       marksman
       texlab
       ltex-ls
+      nodePackages.bash-language-server
       typescript
 
       ansible-language-server

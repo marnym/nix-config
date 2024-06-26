@@ -84,6 +84,8 @@ function M.setup()
         },
     }
 
+    lsp.bashls.setup(default_settings)
+
     lsp.clangd.setup(default_settings)
 
     lsp.ltex.setup(default_settings)

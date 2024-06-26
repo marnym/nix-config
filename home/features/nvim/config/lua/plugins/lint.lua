@@ -13,7 +13,9 @@ return {
             }
 
             local lint = require("lint")
-            lint.linters_by_ft = {}
+            lint.linters_by_ft = {
+                sh = { "shellcheck" },
+            }
 
             local eslint_d_exists = vim.fn.executable("eslint_d") == 1
 
