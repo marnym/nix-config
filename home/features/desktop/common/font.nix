@@ -8,6 +8,7 @@
     noto-fonts
     (nerdfonts.override { fonts = [ "Hack" "IBMPlexMono" "JetBrainsMono" "Noto" ]; })
     iosevka
+    helvetica-neue-lt-std
   ];
 
   fonts.fontconfig.enable = true;
