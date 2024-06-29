@@ -42,7 +42,7 @@ in
           format-icons = [ "" "" "" "" "" ];
         };
         clock = {
-          format = "{:%H:%M:%S}";
+          format = "{:%d.%m.%Y %H:%M:%S}";
           tooltip-format = "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>";
           interval = 5;
         };
